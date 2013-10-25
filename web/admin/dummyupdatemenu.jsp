@@ -105,16 +105,32 @@
               var noOfSabzi=document.getElementById("ddlNoOFSabzilunch").value;
               var sabzi1=document.getElementById("ddlsabzilunch1").value;
               var costOfsabzi1= document.getElementById("txtcostOfsabzilunch1").value;
-              alert('here');
+              //alert('here');
               var sabzi2=document.getElementById("ddlsabzilunch2").value;
               var costOfsabzi2= document.getElementById("txtcostOfsabzilunch2").value;
               var sabzi3=document.getElementById("ddlsabzilunch3").value;
               var costOfsabzi3= document.getElementById("txtcostOfsabzilunch3").value;
               var sabzi4=document.getElementById("ddlsabzilunch4").value;
               var costOfsabzi4= document.getElementById("txtcostOfsabzilunch4").value;
-              var url='../Controller?action=uploadUpdateMenuPage&btnUpdateMenulunch=lunch&noOfSabzi='+noOfSabzi+'&sabzi1='+sabzi1+'&costOfsabzi1='+costOfsabzi1+'&sabzi2='+sabzi2+'&costOfsabzi2='+costOfsabzi2+'&sabzi3='+sabzi3+'&costOfsabzi3='+costOfsabzi3+'&sabzi4='+sabzi4+'&costOfsabzi4='+costOfsabzi4;
-              alert(url);
-              window.location.href = '../Controller?action=uploadUpdateMenuPage&btnUpdateMenulunch=lunch';
+              var dal=document.getElementById("ddlDalTypelunch").value;
+              var costOfdal=document.getElementById("txtDalPrizelunch").value;
+              var roti=document.getElementById("ddlRotiTypelunch").value;
+              var costOfroti= document.getElementById("txtRotiPricelunch").value;
+              var rice=document.getElementById("ddlRiceTypelunch").value;
+              var costOfrice=document.getElementById("txtRicePricelunch").value;
+              var salad=document.getElementById("cbxSaladlunch").value;
+              var pickle=document.getElementById("cbxPicklelunch").value;
+              var papad=document.getElementById("cbxPapadlunch").value;
+              var buttermilk=document.getElementById("cbxButterMilklunch").value;
+              var curd=document.getElementById("cbxCurdlunch").value;
+
+              var url='../Controller?action=uploadUpdateMenuPage&btnUpdateMenulunch=lunch&noOfSabzi='+noOfSabzi+
+                  '&sabzi1='+sabzi1+'&costOfsabzi1='+costOfsabzi1+'&sabzi2='+sabzi2+'&costOfsabzi2='
+                  +costOfsabzi2+'&sabzi3='+sabzi3+'&costOfsabzi3='+costOfsabzi3+'&sabzi4='+sabzi4+'&costOfsabzi4='+costOfsabzi4+
+                  '&dal='+dal+'&costOfdal='+costOfdal+'&roti='+roti+'&costOfroti'+costOfroti+'&rice='+rice+'&costOfrice='+costOfrice+
+                  '&salad='+salad+'&pickle='+pickle+'&papad='+papad+'&buttermilk='+buttermilk+'&curd='+curd;
+              //alert(url);
+              window.location.href = url;
           }
         </script>
     </head>
