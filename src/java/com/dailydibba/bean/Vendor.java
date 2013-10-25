@@ -135,20 +135,20 @@ public class Vendor extends User {
     }
 
 
-    /* public boolean updateMenu(Menu m){
+   // public boolean updateMenu(Menu m){
     
-    //Author: Prachi Deodhar
-    //Date: 13-October-2013
-    //For updating menu for lunch and dinner daily
-    try{
-    
-    con.executeQuery("insert into ");
-    
-    return true;
-    }catch(SQLException ex){
-    return false;
-    }
-    }*/
+//        Author: Prachi Deodhar
+//        Date: 13-October-2013
+//        For updating menu for lunch and dinner daily
+//        try{
+//
+//        con.executeQuery("insert into ");
+//
+//        return true;
+//        }catch(SQLException ex){
+//        return false;
+      //  }
+  //  }
     public ArrayList<Tiffin> getAllOrderForVendor(String vendor) {
         //Author: Prachi Deodhar
         //Date: 13-October-2013

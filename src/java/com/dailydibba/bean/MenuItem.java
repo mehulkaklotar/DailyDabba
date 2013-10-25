@@ -13,100 +13,50 @@ import java.sql.SQLException;
  * @author NIDHI
  */
 public class MenuItem {
-    protected int itemID;
-    protected double cost;
-    protected int quantity;
-    protected String itemName;
-    protected int typeID;
+   private Item item;
+   private double cost;
+   private int quantity;
+   private int menuID;
 
-     public MenuItem(int itemID,double cost,int quantity,String itemName,int typeID)
-    {
-         //Author: Nidhi Patel
-        //Date: 13-October-2013
-        this.itemID=itemID;
-        this.cost=cost;
-        this.quantity=quantity;
-        this.itemName=itemName;
+    public MenuItem() {
     }
 
-    public int getItemID() {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
-        return itemID;
+    public MenuItem(Item item, double cost, int quantity) {
+        this.item = item;
+        this.cost = cost;
+        this.quantity = quantity;
     }
 
-    public void setItemID(int itemID) {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
-        this.itemID = itemID;
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     public double getCost() {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
         return cost;
     }
 
     public void setCost(double cost) {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
         this.cost = cost;
     }
 
     public int getQuantity() {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
         return quantity;
     }
 
     public void setQuantity(int quantity) {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
         this.quantity = quantity;
     }
 
-    public String getItemName() {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
-        return itemName;
+    public int getMenuID() {
+        return menuID;
     }
 
-    public void setItemName(String itemName) {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
-        this.itemName = itemName;
+    public void setMenuID(int menuID) {
+        this.menuID = menuID;
     }
-
-    public int getTypeID() {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
-        return typeID;
-    }
-
-    public void setTypeID(int typeID) {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
-        this.typeID = typeID;
-
-    }
-
-    public String getItemType(String itemName)
-    {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
-        //To get Item Type from the given Item Name
-           return "Hello";
-
-
-    }
-
-    public String getItemType(int itemID)
-    {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
-        //To get Item Type from the given ItemID
-          return "Hello";
-
-
-    }
+   
 }

@@ -19,6 +19,9 @@ public class Menu {
     protected String tiffinName;
     ArrayList<MenuItem> menuItem = new ArrayList<MenuItem>();
 
+    public Menu() {
+    }
+
 
 
     public Menu(int menuID,String vendorUserName,Date uploadDateTime,String tiffinName)

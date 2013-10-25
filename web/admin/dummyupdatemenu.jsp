@@ -116,6 +116,7 @@
               var costOfdal=document.getElementById("txtDalPrizelunch").value;
               var roti=document.getElementById("ddlRotiTypelunch").value;
               var costOfroti= document.getElementById("txtRotiPricelunch").value;
+              var qtyOfroti= document.getElementById("txtRotiQuantitylunch").value;
               var rice=document.getElementById("ddlRiceTypelunch").value;
               var costOfrice=document.getElementById("txtRicePricelunch").value;
               var salad=document.getElementById("cbxSaladlunch").value;
@@ -123,11 +124,12 @@
               var papad=document.getElementById("cbxPapadlunch").value;
               var buttermilk=document.getElementById("cbxButterMilklunch").value;
               var curd=document.getElementById("cbxCurdlunch").value;
+             
 
               var url='../Controller?action=uploadUpdateMenuPage&btnUpdateMenulunch=lunch&noOfSabzi='+noOfSabzi+
                   '&sabzi1='+sabzi1+'&costOfsabzi1='+costOfsabzi1+'&sabzi2='+sabzi2+'&costOfsabzi2='
                   +costOfsabzi2+'&sabzi3='+sabzi3+'&costOfsabzi3='+costOfsabzi3+'&sabzi4='+sabzi4+'&costOfsabzi4='+costOfsabzi4+
-                  '&dal='+dal+'&costOfdal='+costOfdal+'&roti='+roti+'&costOfroti'+costOfroti+'&rice='+rice+'&costOfrice='+costOfrice+
+                  '&dal='+dal+'&costOfdal='+costOfdal+'&roti='+roti+'&costOfroti'+costOfroti+'&qtyOfroti='+qtyOfroti+'&rice='+rice+'&costOfrice='+costOfrice+
                   '&salad='+salad+'&pickle='+pickle+'&papad='+papad+'&buttermilk='+buttermilk+'&curd='+curd;
               //alert(url);
               window.location.href = url;
@@ -270,6 +272,7 @@
                                                             <td>Price :</td>
                                                             <td>
                                                                 <input value="" placeholder="Rs." class="span2" type="text" name="txtRotiPricelunch" id="txtRotiPricelunch" />
+                                                                <input value="" placeholder="Rs." class="span2" type="text" name="txtRotiQuantitylunch" id="txtRotiQuantitylunch" />
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -340,6 +343,7 @@
                                         </label>
                                         <input value="" placeholder="Rs." class="span3" type="text" name="txtOtherPricelunch" id="txtOtherPricelunch" />
                                         -->
+                                        
                                     </div>
                                     <div class="formSep">
                                         <button type="button" class="btn" name="btnUpdateMenulunch" id="btnUpdateMenulunch" onclick="submitLunch()">Update Menu</button>
