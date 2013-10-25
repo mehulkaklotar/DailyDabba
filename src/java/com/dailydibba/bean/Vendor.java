@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.dailydibba.bean;
 
 import java.sql.CallableStatement;
@@ -10,10 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author PRACHI
- */
+
 public class Vendor extends User {
 
     private String vendorName;
@@ -134,25 +127,7 @@ public class Vendor extends User {
         this.staus = staus;
     }
 
-
-    /* public boolean updateMenu(Menu m){
-    
-    //Author: Prachi Deodhar
-    //Date: 13-October-2013
-    //For updating menu for lunch and dinner daily
-    try{
-    
-    con.executeQuery("insert into ");
-    
-    return true;
-    }catch(SQLException ex){
-    return false;
-    }
-    }*/
     public ArrayList<Tiffin> getAllOrderForVendor(String vendor) {
-        //Author: Prachi Deodhar
-        //Date: 13-October-2013
-        //Will return orders on the daily basis
         try {
             con = new DBConnection();
 
@@ -178,9 +153,6 @@ public class Vendor extends User {
     }
 
     public boolean updateProfile(String userName, String password, String vendorName, String mobileNo, String emailID, String lane, int areaID, String ownerName, String landlineNumber, boolean flag) {
-        //Author: Prachi Deodhar
-        //Date: 13-October-2013
-        //For updating profile for vendor
         con = new DBConnection();
         try {
 
@@ -212,9 +184,6 @@ public class Vendor extends User {
     }
 
     public boolean blockCustomer(String username) {
-        //Author: Prachi Deodhar
-        //Date: 13-October-2013
-        //Required for blocking customer
         con = new DBConnection();
         try {
 
@@ -255,54 +224,3 @@ public class Vendor extends User {
         }
     }
 }
-
-
-
-/*private void addMenuItem(MenuItem mi){
-    //Author: Prachi Deodhar
-    //Date: 13-October-2013
-    //Private method called while adding menu item to the menu
-    
-    }*/
-
-    /* public boolean cancelMenu(int MenuID){
-    //Author: Prachi Deodhar
-    //Date: 13-October-2013
-    //Will be called while canceling the menu
-    try{
-    int row=con.executeQuery("");
-    if(row==1)
-    {
-    return true;
-    }
-    else
-    {
-    return false;
-    }
-    }catch(SQLException ex){
-    return false;
-    }
-    
-    }
-    public ArrayList<Feedback> viewReview() {
-    
-    //Author: Prachi Deodhar
-    //Date: 13-October-2013
-    //Called while viewing feedback
-    try {
-    con = new DBConnection();
-    
-    
-    ArrayList<Feedback> feedback = new ArrayList<>();
-    callableStatement = con.connection.prepareCall("{call getViewReview()}");
-    //cstmt.setString(1,user_name);
-    ResultSet rs = callableStatement.executeQuery();
-    while (rs.next()) {
-    feedback.add(new Feedback(rs.getString(1), rs.getString(2), rs.getString(4), rs.getDate(3)));
-    }
-    return feedback;
-    } catch (SQLException ex) {
-    return null;
-    
-    }
-    }*/

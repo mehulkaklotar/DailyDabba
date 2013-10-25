@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.dailydibba.bean;
 
 import java.sql.CallableStatement;
@@ -11,15 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author PRACHI
- */
 public class Customer extends User{
-    //Author: Prachi Deohar
-    //Date: 13-October-2013
-    //Will deal with the functionalities of Customer
-
     private String firstName;
     private String lastName;
     private String lane;
@@ -127,9 +114,6 @@ public class Customer extends User{
     }
 
     public List<Vendor> searchVendor(String city, String area) {
-        //Author: Vivek Shukla
-        //Date: 14-October-2013
-        //Description:
         List<Vendor> vendorList = new ArrayList<Vendor>();
         con = new DBConnection();
         try {
@@ -161,9 +145,6 @@ public class Customer extends User{
     }
 
     public boolean insertOrder(String customer, String deliveryaddress, int nooftiffin,int menuID, boolean status, Date orderdate){
-        //Author: Prachi Deodhar
-        //Date:13- October-2013
-        //Called when user places order
         con = new DBConnection();
         try {
 
@@ -190,9 +171,6 @@ public class Customer extends User{
     }
     
     public boolean insertOrderDetails(int orderID,int itemID,int qunatity){
-        //Author: Prachi Deodhar
-        //Date:13- October-2013
-        //Called when user places order
         con = new DBConnection();
         try {
 
@@ -279,11 +257,11 @@ public class Customer extends User{
         //Author: Hiren Savalia
         //Date :  10-19-2013
         //Called when user wants to update profile
-        con = new DBConnection();
+        con = new DBConnection(); // connection created
         try {
 
-            callableStatement = con.connection.prepareCall("{call updateCustomerProfile(?,?,?,?,?,?,?)}");
-            callableStatement.setString(1, username);
+            callableStatement = con.connection.prepareCall("{call updateCustomerProfile(?,?,?,?,?,?,?)}"); // procedure called
+            callableStatement.setString(1, username); //setting all the perameters
             callableStatement.setInt(2, areaID);
             callableStatement.setString(3, firstname);
             callableStatement.setString(4, lastname);
@@ -369,37 +347,4 @@ public class Customer extends User{
             con.closeConnection();
         }
     }
-    
-    
-    
-
-    /*public MenuItem getVendorMenu(String vendor) {
-        //Author: Hiren Savalia
-        //Date :  10-19-2013
-        //Will fetch menu for a particular vendor
-        //Changed method's name to getVendorMenu from getMenuForVendor
-        MenuItem mi = new MenuItem();
-        con = new DBConnection();
-        callableStatement = con.connection.prepareCall("{call getVendorMenu(?)}");
-        try {
-            callableStatement.setString(1, vendor);
-            ResultSet rs = callableStatement.executeQuery();
-            while(rs.next()){
-                mi.setCost(rs.getString("Cost"));
-                mi.setQuantity(rs.getString("Quantity"));
-                mi.setItemID(itemID);
-                mi.setItemName(userName);
-                mi.se
-                
-            }
-            
-        } catch (Exception ex) {
-            return false;
-        } finally {
-            con.closeConnection();
-        }
-
-        ResultSet rs = null;
-        return rs;
-    }*/
-}
+}    

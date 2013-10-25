@@ -1,11 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.dailydibba.bean;
 
 import java.sql.CallableStatement;
@@ -14,10 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author AKYP
- */
 public class Visitor {
 
     DBConnection con;
@@ -40,9 +28,8 @@ public class Visitor {
     }
 
     public List<Vendor> searchVendor(String city, String area) {
-        //Author: Vivek Shukla
-        //Date: 14-October-2013
-        //Description:
+        //Author: Hiren Savalia & Mehul
+        //Description: searchVendor called on searching
         List<Vendor> vendorList = new ArrayList<Vendor>();
         con = new DBConnection();
         try {
@@ -53,11 +40,9 @@ public class Visitor {
             ResultSet rs = callableStatement.executeQuery();
 
             while (rs.next()) {
-                Vendor objVendor = new Vendor();
+                Vendor objVendor = new Vendor(); // Vendor object created and all properties set
                 objVendor.setVendorName(rs.getString("VendorName"));
                 objVendor.setUserName(rs.getString("UserName"));
-                //objVendor.setUserName("UserName");
-
 
                 Area objArea = new Area();
                 objArea.setAreaName(rs.getString("AreaName"));
@@ -76,14 +61,16 @@ public class Visitor {
 
             con.closeConnection();
         }
-        return vendorList;
+        return vendorList; // returned vendorList
     }
 
     public boolean insertSuggestion(String suggestion, Date DateOfSuggestion) {
+        //Author: Hiren Savalia & Mehul Kaklotar
+        //Description: insertSuggestion called when user wants to insert any suggestion
         con = new DBConnection();
         try {
 
-            callableStatement = con.connection.prepareCall("{call insertSuggestion(?,?)}");
+            callableStatement = con.connection.prepareCall("{call insertSuggestion(?,?)}"); // procedure called
             callableStatement.setString(1, suggestion);
             callableStatement.setDate(2, DateOfSuggestion);
             int row = callableStatement.executeUpdate();
@@ -128,12 +115,14 @@ public class Visitor {
     }
 
     public List<Feedback> getFeedbackForVendor(String vendor) {
+        //Author: Hiren Savalia
+        //Description: fatching all feedback of a vendor
         List<Feedback> feedbackList = new ArrayList<Feedback>();
         con = new DBConnection();
         try {
 
-            callableStatement = con.connection.prepareCall("{call getFeedbackForVendor(?)}");
-            callableStatement.setString(1, vendor);
+            callableStatement = con.connection.prepareCall("{call getFeedbackForVendor(?)}"); // procedure called
+            callableStatement.setString(1, vendor); // parameters are set
             ResultSet rs = callableStatement.executeQuery();
 
             while (rs.next()) {
@@ -142,7 +131,6 @@ public class Visitor {
                 Customer objCustomer = new Customer();
                 objCustomer.setFirstName(rs.getString("FirstName"));
                 objCustomer.setLastName(rs.getString("LastName"));
-
                 objFeedback.setCustomer(objCustomer);
                 objFeedback.setMessage(rs.getString("Message"));
                 objFeedback.setFeedbackDate(rs.getDate("Date"));
@@ -189,6 +177,8 @@ public class Visitor {
     }
 
     public int getRatings(String vendor) {
+        //Author: Hiren Savalia & Mehul Kaklotar
+        //Description: getRatings will calculate the rating of a given vendor
         int rating = 0;
         con = new DBConnection();
         try {
@@ -211,6 +201,8 @@ public class Visitor {
     }
 
     public Vendor getVendor(String vendor) {
+        //Author: Hiren Savalia & Mehul Kaklotar
+        //Description: getVendor will get all the values of a given vendor
         Vendor objVendor = new Vendor();
         con = new DBConnection();
         try {
@@ -297,8 +289,6 @@ public class Visitor {
             callableStatement.setString(6, mobileNo);
             callableStatement.setString(7, emailID);
             callableStatement.setBoolean(8, status);
-
-
 
             int row = callableStatement.executeUpdate();
 
