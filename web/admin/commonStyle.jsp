@@ -24,11 +24,11 @@
         <!-- main stylesheet -->
             <link rel="stylesheet" href="../admin/css/beoro.css">
 
-        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css"><![endif]-->
-        <!--[if IE 9]><link rel="stylesheet" href="css/ie9.css"><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="../admin/css/ie8.css"><![endif]-->
+        <!--[if IE 9]><link rel="stylesheet" href="../admin/css/ie9.css"><![endif]-->
             
         <!--[if lt IE 9]>
-            <script src="js/ie/html5shiv.min.js"></script>
-            <script src="js/ie/respond.min.js"></script>
-            <script src="js/lib/flot-charts/excanvas.min.js"></script>
+            <script src="../admin/js/ie/html5shiv.min.js"></script>
+            <script src="../admin/js/ie/respond.min.js"></script>
+            <script src="../admin/js/lib/flot-charts/excanvas.min.js"></script>
         <![endif]-->
