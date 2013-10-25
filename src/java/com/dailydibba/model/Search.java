@@ -7,8 +7,6 @@ package com.dailydibba.model;
 import com.dailydibba.action.Action;
 import com.dailydibba.bean.Vendor;
 import com.dailydibba.bean.Visitor;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
