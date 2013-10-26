@@ -126,7 +126,7 @@ public class Administrator extends User {
         //Author: Vivek Shukla
         //Date: 14-October-2013
         //Description:
-
+        con = new DBConnection();
         try {
             cstmt = con.connection.prepareCall("{call addCity(?)}");
             cstmt.setString(1, city_name);

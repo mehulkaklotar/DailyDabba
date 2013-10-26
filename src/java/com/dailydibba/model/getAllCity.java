@@ -20,10 +20,9 @@ public class getAllCity implements Action{
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {
         Administrator objAdministrator = new Administrator();
-
         List<City> cities=objAdministrator.getAllCity();
         req.setAttribute("cities", cities);
-        return "admin/city.jsp";
+        return "city.jsp";
     }
     
 }

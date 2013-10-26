@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Kiran
  */
-public class editCity implements Action{
+public class deleteCity implements Action{
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {

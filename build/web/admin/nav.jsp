@@ -34,15 +34,15 @@
                     <li><a href="vendors.jsp">Vendors</a>
 
                     </li>
-                    <li><a href="../Controller?action=getAllCity">City</a>
+                    <li><a href="AdminController?action=getAllCity">City</a>
                         <ul>
-                            <li><a href="../admin/addCity.jsp">Add City</a></li>
+                            <li><a href="addCity.jsp">Add City</a></li>
 
                         </ul>
                     </li>
                     <li><a href="area.jsp">Area</a>
                         <ul>
-                            <li><a href="../Controller?action=getAllCityArea">Add Area</a></li>
+                            <li><a href="AdminController?action=getAllCityArea">Add Area</a></li>
 
                         </ul>
                     </li>

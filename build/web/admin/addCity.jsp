@@ -39,7 +39,7 @@
                 <div class="container">
                     <div class="row-fluid">
                         <div class="span12">
-                            <form class="form-horizontal" action="../Controller?action=addCity" method="post">
+                            <form class="form-horizontal" action="AdminController?action=addCity" method="post">
                                 <fieldset>
                                     <legend>Add city</legend>
                                     <div class="control-group">

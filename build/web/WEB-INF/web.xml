@@ -8,6 +8,15 @@
         <servlet-name>Controller</servlet-name>
         <url-pattern>/Controller</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AdminController</servlet-name>
+        <servlet-class>com.dailydibba.controller.Controller</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminController</servlet-name>
+        <url-pattern>/admin/AdminController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
