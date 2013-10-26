@@ -7,7 +7,7 @@ package com.dailydibba.bean;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 /**
  *
  * @author NIDHI
