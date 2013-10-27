@@ -7,7 +7,7 @@ package com.dailydibba.bean;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 /**
  *
  * @author NIDHI
@@ -18,6 +18,9 @@ public class Menu {
     protected Date uploadDateTime;
     protected String tiffinName;
     ArrayList<MenuItem> menuItem = new ArrayList<MenuItem>();
+
+    public Menu() {
+    }
 
 
 

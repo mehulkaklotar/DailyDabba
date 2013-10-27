@@ -223,4 +223,45 @@ public class Vendor extends User {
 
         }
     }
+     
+     public boolean updateMenu(Menu m){
+    
+        //Author: Prachi Deodhar
+        //Date: 13-October-2013
+        //For updating menu for lunch and dinner daily
+        try{
+            con=new DBConnection();
+            callableStatement=con.connection.prepareCall("{call insertmenu(?,?,?)}");
+            callableStatement.setString(1, userName);
+            callableStatement.setDate(2, m.getUploadDateTime());
+            callableStatement.setString(3,m.getTiffinName());
+            int i=callableStatement.executeUpdate();
+            if(i>0){
+                con=new DBConnection();
+                callableStatement=con.connection.prepareCall("{call  getmaxmenuid()}");
+                ResultSet rs=callableStatement.executeQuery();
+                rs.next();
+                int menuID=rs.getInt(1);
+
+                for (MenuItem mi : m.getMenuItem()){
+                    con=new DBConnection();
+                    callableStatement=con.connection.prepareCall("{call  insertMenuItem(?,?,?,?)}");
+                    callableStatement.setInt(1, menuID);
+                    int itemId=mi.getItem().getItemID();
+                    callableStatement.setInt(2, itemId);
+                    callableStatement.setInt(3, (int)mi.getCost());
+                    callableStatement.setInt(4, mi.getQuantity());
+                    i=callableStatement.executeUpdate();
+                    if(i<1){
+                        return false;
+                    }
+                }  
+         }else{
+                return false;
+            }
+            return true;
+        }catch(SQLException ex){
+        return false;
+        }
+    }
 }
