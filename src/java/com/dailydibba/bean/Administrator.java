@@ -15,6 +15,34 @@ public class Administrator extends User {
     DBConnection con;
     CallableStatement cstmt;
     
+    public List<Area> getAllArea()
+    {
+        List<Area> areaList = new ArrayList<Area>();
+        con = new DBConnection();
+        try {
+
+            cstmt = con.connection.prepareCall("{call getAllArea()}");
+            ResultSet rs = cstmt.executeQuery();
+            
+            while (rs.next()) {
+                
+                Area objArea= new Area();
+                objArea.setAreaID(rs.getInt("AreaID"));
+                objArea.setAreaName(rs.getString("AreaName"));
+                
+                areaList.add(objArea);
+                
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+
+            con.closeConnection();
+        }
+        return areaList;
+    }
+    
     public List<City> getAllCity()
     {
         List<City> cityList = new ArrayList<City>();
@@ -162,13 +190,13 @@ public class Administrator extends User {
         }
     }
 
-    public boolean deleteCity(String city_name) {
+    public boolean deleteCity(int city_id) {
         //Author: Vivek Shukla
         //Date: 14-October-2013
         //Description:
         try {
             cstmt = con.connection.prepareCall("{call deleteCity(?)}");
-            cstmt.setString(1, city_name);
+            cstmt.setInt(1, city_id);
             int row = cstmt.executeUpdate();
             if (row == 1) {
                 return true;

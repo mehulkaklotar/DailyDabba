@@ -1,12 +1,11 @@
 <%-- 
-    Document   : customer_registration
-    Created on : 14 Oct, 2013, 4:05:50 PM
-    Author     : sony
+    Document   : updateProfileCustomer
+    Created on : Oct 25, 2013, 12:24:24 PM
+    Author     : hp
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="com.dailydibba.model.*" %>
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -16,21 +15,6 @@
         <meta name="author" content="Marcin Banaszek">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> <!-- or use local jquery -->
 <script src="/js/jqBootstrapValidation.js"></script>
-<script>
-  $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
-</script>
-<script>
-    function validateForm()
-{
-var x=document.forms["registrationForm"]["fname"].value;
-if (x==null || x=="")
-  {
-  alert("First name must be filled out");
-  return false;
-  }
-}
-</script>
-
 
         <jsp:include page="include.jsp"></jsp:include>
 
@@ -103,14 +87,14 @@ if (x==null || x=="")
                 <div class="row">
                     <div class="span12">
                         <hr>
-                        <h2>Customer Registration</h2>
+                        <h2>Update Profile</h2>
                         <div class="message">
                             <div id="alert"></div>
                         </div>
                     </div>
                 </div>
 
-                <form name="registrationForm" method="post" action="Controller?action=customerRegistration" id="customerRegister">
+                <form name="updateProfileCustomer" method="post" action="" id="updateProfileCustomer">
                     <div align="left" class="row">
                         <table align="center" width="500px">
                             <tr align="left">
@@ -120,15 +104,6 @@ if (x==null || x=="")
                             <span class="required">Should be unique</span> -->
                         </div> 
                             </tr>
-                        
-                        <br>
-                        <tr align="left">
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Password" name="txtPassword">
-                            <input type="text" style="width:auto;" placeholder="Confirm Password" name="txtConfirmPassword">
-                       </div>    
-                        </tr>
-                        
                         <br>
                         <div>
                             <input type="text" style="width:auto;" placeholder="First Name" name="txtFirstname" >
@@ -157,10 +132,8 @@ if (x==null || x=="")
                         </div>
                         <br>
                         <div>
-                            <input type="text" style="width:auto;" placeholder="Flat Number" name="txtFlatNumber" >
-                            <input type="text" style="width:auto;" placeholder="Street Name" name="txtStreetName">
-                            <input type="text" style="width:auto;" placeholder="Landmark" name="txtLandmark">
-                            
+                            <textarea placeholder="Address" style="width:300px;" name="txtAddress" >
+                            </textarea>              
                         </div>
                         
                         
@@ -170,7 +143,7 @@ if (x==null || x=="")
                     <div class="row" >
                         <div class="span6">
                          
-                            <input type="submit" value="Submit">
+                            <input type="submit" value="Update">
                         </div>
                     </div>
                 </form>

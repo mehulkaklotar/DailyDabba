@@ -1,12 +1,11 @@
 <%-- 
-    Document   : customer_registration
-    Created on : 14 Oct, 2013, 4:05:50 PM
-    Author     : sony
+    Document   : updateProfileVendor
+    Created on : Oct 25, 2013, 12:57:33 PM
+    Author     : hp
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="com.dailydibba.model.*" %>
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -14,23 +13,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> <!-- or use local jquery -->
-<script src="/js/jqBootstrapValidation.js"></script>
-<script>
-  $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
-</script>
-<script>
-    function validateForm()
-{
-var x=document.forms["registrationForm"]["fname"].value;
-if (x==null || x=="")
-  {
-  alert("First name must be filled out");
-  return false;
-  }
-}
-</script>
-
 
         <jsp:include page="include.jsp"></jsp:include>
 
@@ -103,74 +85,57 @@ if (x==null || x=="")
                 <div class="row">
                     <div class="span12">
                         <hr>
-                        <h2>Customer Registration</h2>
+                        <h2>Vendor Registration</h2>
                         <div class="message">
                             <div id="alert"></div>
                         </div>
                     </div>
                 </div>
 
-                <form name="registrationForm" method="post" action="Controller?action=customerRegistration" id="customerRegister">
+                <form name="updateProfileVendorForm" method="post" action="#" id="updateProfileVendor">
                     <div align="left" class="row">
-                        <table align="center" width="500px">
-                            <tr align="left">
-                               <div>
-                            <input type="text" style="width:auto;" placeholder="User Name" name="txtUsername" required="">
-                           <!-- <span class="required">*</span>
-                            <span class="required">Should be unique</span> -->
-                        </div> 
-                            </tr>
-                        
-                        <br>
-                        <tr align="left">
                         <div>
-                            <input type="text" style="width:auto;" placeholder="Password" name="txtPassword">
-                            <input type="text" style="width:auto;" placeholder="Confirm Password" name="txtConfirmPassword">
-                       </div>    
-                        </tr>
-                        
+                            <input type="text" style="width:auto;" placeholder="User Name" name="txtUsername" required="">
+     
+                        </div>
                         <br>
                         <div>
                             <input type="text" style="width:auto;" placeholder="First Name" name="txtFirstname" >
                             <input type="text" style="width:auto;" placeholder="Last Name" name="txtLastname">
                         </div>
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Mobile Number"   name="txtMobileNumber">
-                            <input type="text" style="width:auto;" placeholder="Alternate Number" name="txtAlternateNumber">
-                        </div>
                         
-                           
                         <br>
-                        <tr align=left"">
                         <div>
-                            <input type="email" style="width:auto;" placeholder="Email ID" name="txtEmailID">
+                            <input type="text" style="width:auto;" placeholder="Mobile Number" name="txtMobileNumber">
+                        <input type="text" style="width:auto;" placeholder="Alternate Number" name="txtAlternateNumber">
                         </div>
                         <br>
                         <div>
+                            <input type="text" style="width:auto;" placeholder="Email ID" name="txtEmailID">
+                        </div>
+                        <br>
+                        <div>
+                            <h3> Tiffin Center address </h3>
+                             <select id="City" class ="selectStyle">
+                                <option value="1">City
+                                </option>
+                            </select>
+                        
                             <select id="Area" class ="selectStyle">
                                 <option value="1">Area
                                 </option>
                             </select>
-                            
-                            
                         </div>
                         <br>
                         <div>
-                            <input type="text" style="width:auto;" placeholder="Flat Number" name="txtFlatNumber" >
-                            <input type="text" style="width:auto;" placeholder="Street Name" name="txtStreetName">
-                            <input type="text" style="width:auto;" placeholder="Landmark" name="txtLandmark">
-                            
+                            <textarea style="width:300px;" placeholder="Address" id="txtAdressVendor"></textarea>           
                         </div>
-                        
-                        
-                    </div>     
-                        </table>
-                       
-                    <div class="row" >
+                        <br>
+
+                    </div>
+                    <div class="row">
                         <div class="span6">
-                         
-                            <input type="submit" value="Submit">
+                            <input type="submit" value="Update">
                         </div>
                     </div>
                 </form>
@@ -183,3 +148,4 @@ if (x==null || x=="")
         <button class="back-to-top">^</button>
     </body>
 </html>
+
