@@ -66,8 +66,8 @@
                                                     <td>
                                                         <div class="btn-group">
                                                             <a href="../Controller?action=editCity&cityId=<c:out value="${city.cityID}"></c:out>" class="btn btn-mini" title="Edit"><i class="icon-pencil"></i></a>
-                                                        <!--<a href="../Controller?action?viewCity&cityId=" class="btn btn-mini" title="View"><i class="icon-eye-open"></i></a>-->
-                                                        <a href="../Controller?action=deleteCity&cityId=<c:out value="${city.cityID}"></c:out>" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
+                                                        <!--<a href="../Controller?action=viewCity&cityId=" class="btn btn-mini" title="View"><i class="icon-eye-open"></i></a>-->
+                                                            <a href="../Controller?action=deleteCity&cityId=<c:out value="${city.cityID}"></c:out>" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

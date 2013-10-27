@@ -14,18 +14,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Kiran
  */
-public class editCity implements Action{
+public class deleteCity implements Action{
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {
         Administrator objAdministrator = new Administrator();
         int cityid = Integer.parseInt(req.getParameter("cityId"));
-        City objCity = new City();
-        objCity = objAdministrator.getCity(cityid);
-        req.setAttribute("city", objCity);
-        return "../admin/addCity.jsp";
+        objAdministrator.deleteCity(cityid);
+        return "admin/city.jsp";
     }
-    
-    
-    
 }

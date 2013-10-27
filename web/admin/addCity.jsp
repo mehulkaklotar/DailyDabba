@@ -14,9 +14,14 @@
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
+        <script>
+            function test(){
+                alert("hello");
+            }
+        </script>
         <jsp:include page="commonStyle.jsp"></jsp:include>
         </head>
-        <body class="bg_d">
+        <body class="bg_d" onload="test()">
             <!-- main wrapper (without footer) -->    
             <div class="main-wrapper">
                 <!-- top bar -->

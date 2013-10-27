@@ -158,7 +158,8 @@ public class Vendor extends User {
                     con=new DBConnection();
                     callableStatement=con.connection.prepareCall("{call  insertMenuItem(?,?,?,?)}");
                     callableStatement.setInt(1, menuID);
-                    callableStatement.setInt(2, mi.getItem().getItemID());
+                    int itemId=mi.getItem().getItemID();
+                    callableStatement.setInt(2, itemId);
                     callableStatement.setInt(3, (int)mi.getCost());
                     callableStatement.setInt(4, mi.getQuantity());
                     i=callableStatement.executeUpdate();

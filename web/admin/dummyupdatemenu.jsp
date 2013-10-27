@@ -119,18 +119,117 @@
               var qtyOfroti= document.getElementById("txtRotiQuantitylunch").value;
               var rice=document.getElementById("ddlRiceTypelunch").value;
               var costOfrice=document.getElementById("txtRicePricelunch").value;
-              var salad=document.getElementById("cbxSaladlunch").value;
-              var pickle=document.getElementById("cbxPicklelunch").value;
-              var papad=document.getElementById("cbxPapadlunch").value;
-              var buttermilk=document.getElementById("cbxButterMilklunch").value;
-              var curd=document.getElementById("cbxCurdlunch").value;
-             
+              var salad;
+              if(document.getElementById("cbxSaladlunch").checked){
+                  salad=true;
+              }
+              else{
+                  salad=false;
+              }
+              var pickle;
+              if(document.getElementById("cbxPicklelunch").checked){
+                  pickle=true;
+              }
+              else{
+                  pickle=false;
+              }
+              var papad;
+              if(document.getElementById("cbxPapadlunch").checked){
+                  papad=true;
+              }
+              else
+              {
+                  papad=false;
+              }
+              var buttermilk;
+              if(document.getElementById("cbxButterMilklunch").checked){
+                  buttermilk=true;
+              }
+              else{
+                  buttermilk=false;
+              }    
+              var curd;
+              if(document.getElementById("cbxCurdlunch").checked)
+              {
+                  curd=true;
+              }
+              else{
+                  curd=false;
+              }
+              var description =document.getElementById("txttiffinDescriptionlunch").value;
 
               var url='../Controller?action=uploadUpdateMenuPage&btnUpdateMenulunch=lunch&noOfSabzi='+noOfSabzi+
                   '&sabzi1='+sabzi1+'&costOfsabzi1='+costOfsabzi1+'&sabzi2='+sabzi2+'&costOfsabzi2='
                   +costOfsabzi2+'&sabzi3='+sabzi3+'&costOfsabzi3='+costOfsabzi3+'&sabzi4='+sabzi4+'&costOfsabzi4='+costOfsabzi4+
-                  '&dal='+dal+'&costOfdal='+costOfdal+'&roti='+roti+'&costOfroti'+costOfroti+'&qtyOfroti='+qtyOfroti+'&rice='+rice+'&costOfrice='+costOfrice+
-                  '&salad='+salad+'&pickle='+pickle+'&papad='+papad+'&buttermilk='+buttermilk+'&curd='+curd;
+                  '&dal='+dal+'&costOfdal='+costOfdal+'&roti='+roti+'&costOfroti='+costOfroti+'&qtyOfroti='+qtyOfroti+'&rice='+rice+'&costOfrice='+costOfrice+
+                  '&salad='+salad+'&pickle='+pickle+'&papad='+papad+'&buttermilk='+buttermilk+'&curd='+curd+'&desc='+description;
+              //alert(url);
+              window.location.href = url;
+          }
+          function submitDinner(){
+              var noOfSabzi=document.getElementById("ddlNoOFSabzidinner").value;
+              var sabzi1=document.getElementById("ddlsabzidinner1").value;
+              var costOfsabzi1= document.getElementById("txtcostOfSabzidinner1").value;
+              //alert('here');
+              var sabzi2=document.getElementById("ddlsabzidinner2").value;
+              var costOfsabzi2= document.getElementById("txtcostOfSabzidinner2").value;
+              var sabzi3=document.getElementById("ddlsabzidinner3").value;
+              var costOfsabzi3= document.getElementById("txtcostOfSabzidinner3").value;
+              var sabzi4=document.getElementById("ddlsabzidinner4").value;
+              var costOfsabzi4= document.getElementById("txtcostOfSabzidinner4").value;
+              var dal=document.getElementById("ddlDalTypedinner").value;
+              var costOfdal=document.getElementById("txtDalPrizedinner").value;
+              var roti=document.getElementById("ddlRotiTypedinner").value;
+              var costOfroti= document.getElementById("txtRotiPricedinner").value;
+              var qtyOfroti= document.getElementById("txtRotiQtydinner").value;
+              var rice=document.getElementById("ddlRiceTypedinner").value;
+              var costOfrice=document.getElementById("txtRicePricedinner").value;
+              var salad;
+              if(document.getElementById("cbxSaladdinner").checked){
+                salad=true;
+              }
+              else
+              {
+                  salad=false;
+              }
+              var pickle;
+              if(document.getElementById("cbxPickledinner").checked){
+                  pickle=true;
+              }
+              else
+              {
+                  pickle=false;
+              }
+              
+              var papad;
+              if(document.getElementById("cbxPapaddinner").checked){
+                  papad=true;
+              }
+              else{
+                  papad=false;
+              }
+              var buttermilk;
+              if(document.getElementById("cbxButterMilkdinner").checked){
+                  buttermilk=true;
+              }
+              else{
+                  buttermilk=false;
+              }
+              var curd;
+              if(document.getElementById("cbxCurddinner").checked){
+                  curd=true;
+              }
+              else
+              {
+                  curd=false;
+              }
+              var description =document.getElementById("txttiffinDescriptiondinner").value;
+
+              var url='../Controller?action=uploadUpdateMenuPage&btnUpdateMenulunch=dinner&noOfSabzi='+noOfSabzi+
+                  '&sabzi1='+sabzi1+'&costOfsabzi1='+costOfsabzi1+'&sabzi2='+sabzi2+'&costOfsabzi2='
+                  +costOfsabzi2+'&sabzi3='+sabzi3+'&costOfsabzi3='+costOfsabzi3+'&sabzi4='+sabzi4+'&costOfsabzi4='+costOfsabzi4+
+                  '&dal='+dal+'&costOfdal='+costOfdal+'&roti='+roti+'&costOfroti='+costOfroti+'&qtyOfroti='+qtyOfroti+'&rice='+rice+'&costOfrice='+costOfrice+
+                  '&salad='+salad+'&pickle='+pickle+'&papad='+papad+'&buttermilk='+buttermilk+'&curd='+curd+'&desc='+description;
               //alert(url);
               window.location.href = url;
           }
@@ -167,6 +266,18 @@
                                 <form id="validate_field_types">
                                     <div class="formSep">
                                         <div class="w-box w-box-blue">
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                           <th>
+                                                               Tiffin Description:
+                                                           </th>
+                                                           <td>
+                                                               <input id="txttiffinDescriptionlunch" name="txttiffinDescriptionlunch" type="text">
+                                                           </td> 
+                                                       </tr>
+                                                </tbody>
+                                            </table>
                                             <div class="w-box-header">
                                                 Sabzi
                                             </div>
@@ -174,6 +285,7 @@
                                                 <table id="table-stacking-simple" class="table stackable">
 
                                                    <tbody>
+                                                       
                                                         <tr>
                                                             <td>Number of subzi offered :</td>
                                                             <td>
@@ -228,7 +340,6 @@
                                                             <td>Select dal type :</td>
                                                             <td>
                                                                 <select name="ddlDalTypelunch" id="ddlDalTypelunch" class="span12">
-                                                                    <option>Add Dal Type</option>
                                                                       <c:forEach items="${itemlistDal}" var="item">
                                                                             <option value="${item.itemID}">${item.itemName}</option>
                                                                       </c:forEach>
@@ -261,7 +372,6 @@
                                                             <td>Select roti type :</td>
                                                             <td>
                                                                 <select name="ddlRotiTypelunch" id="ddlRotiTypelunch" class="span12">
-                                                                    <option>Add roti Type</option>
                                                                      <c:forEach items="${itemlistRoti}" var="item">
                                                                             <option value="${item.itemID}">${item.itemName}</option>
                                                                       </c:forEach>
@@ -269,10 +379,15 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Price :</td>
+                                                            <th>Price</th>
+                                                            <th>Quantity</th>
+                                                        </tr>
+                                                        <tr>
                                                             <td>
                                                                 <input value="" placeholder="Rs." class="span2" type="text" name="txtRotiPricelunch" id="txtRotiPricelunch" />
-                                                                <input value="" placeholder="Rs." class="span2" type="text" name="txtRotiQuantitylunch" id="txtRotiQuantitylunch" />
+                                                            </td>
+                                                            <td>
+                                                                <input value="" class="span2" type="text" name="txtRotiQuantitylunch" id="txtRotiQuantitylunch" />
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -295,7 +410,6 @@
                                                             <td>Select rice type :</td>
                                                             <td>
                                                                 <select name="ddlRiceTypelunch" id="ddlRiceTypelunch" class="span12">
-                                                                    <option>Add rice Type</option>
                                                                      <c:forEach items="${itemlistRice}" var="item">
                                                                             <option value="${item.itemID}">${item.itemName}</option>
                                                                       </c:forEach>
@@ -361,6 +475,18 @@
                                 <form id="validate_field_types">
                                     <div class="formSep">
                                         <div class="w-box w-box-green">
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                           <th>
+                                                               Tiffin Description:
+                                                           </th>
+                                                           <td>
+                                                               <input id="txttiffinDescriptiondinner" name="txttiffinDescriptiondinner" type="text">
+                                                           </td> 
+                                                       </tr>
+                                                </tbody>
+                                            </table>
                                             <div class="w-box-header">
                                                 Sabzi
                                             </div>
@@ -423,7 +549,6 @@
                                                             <td>Select dal type :</td>
                                                             <td>
                                                                 <select name="ddlDalTypedinner" id="ddlDalTypedinner" class="span12">
-                                                                    <option>Add Dal Type</option>
                                                                     <c:forEach items="${itemlistDal}" var="item">
                                                                             <option value="${item.itemID}">${item.itemName}</option>
                                                                      </c:forEach>
@@ -456,7 +581,6 @@
                                                             <td>Select roti type :</td>
                                                             <td>
                                                                 <select name="ddlRotiTypedinner" id="ddlRotiTypedinner" class="span12">
-                                                                    <option>Add roti Type</option>
                                                                     <c:forEach items="${itemlistRoti}" var="item">
                                                                             <option value="${item.itemID}">${item.itemName}</option>
                                                                       </c:forEach>
@@ -464,9 +588,15 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Price :</td>
+                                                            <th>Price</th>
+                                                            <th>Quantity</th>
+                                                        </tr>
+                                                        <tr>
                                                             <td>
                                                                 <input value="" placeholder="Rs." class="span2" type="text" name="txtRotiPricedinner" id="txtRotiPricedinner" />
+                                                            </td>
+                                                            <td>
+                                                                <input value="" class="span2" type="text" name="txtRotiQtydinner" id="txtRotiQtydinner" />
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -489,7 +619,6 @@
                                                             <td>Select rice type :</td>
                                                             <td>
                                                                 <select name="ddlRiceTypedinner" id="ddlRiceTypedinner" class="span12">
-                                                                    <option>Add rice Type</option>
                                                                     <c:forEach items="${itemlistRice}" var="item">
                                                                             <option value="${item.itemID}">${item.itemName}</option>
                                                                       </c:forEach>
@@ -532,14 +661,14 @@
                                             <input type="checkbox" name="cbxCurddinner" id="cbxCurddinner" >
                                             Curd (Dahi)
                                         </label>
-                                        <label class="checkbox">
+                                       <!-- <label class="checkbox">
                                             <input type="checkbox" name="cbxOthersdinner" id="cbxOthersdinner">
                                             Others
                                         </label>
-                                        <input value="" placeholder="Rs." class="span3" type="text" name="txtOtherPricedinner" id="txtOtherPricedinner" />
+                                        <input value="" placeholder="Rs." class="span3" type="text" name="txtOtherPricedinner" id="txtOtherPricedinner" />-->
                                     </div>
                                     <div class="formSep">
-                                        <button type="button" class="btn" name="btnUpdateMenudinner" id="btnupdateMenudinner">Update Menu</button>
+                                        <button type="button" class="btn" name="btnUpdateMenudinner" id="btnupdateMenudinner" onclick="submitDinner()">Update Menu</button>
                                     </div>
                                 </form>
                             </div>

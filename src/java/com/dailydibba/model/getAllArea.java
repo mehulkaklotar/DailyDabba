@@ -6,26 +6,23 @@ package com.dailydibba.model;
 
 import com.dailydibba.action.Action;
 import com.dailydibba.bean.Administrator;
-import com.dailydibba.bean.City;
+import com.dailydibba.bean.Area;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Kiran
+ * @author kaklo
  */
-public class editCity implements Action{
+public class getAllArea implements Action{
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {
         Administrator objAdministrator = new Administrator();
-        int cityid = Integer.parseInt(req.getParameter("cityId"));
-        City objCity = new City();
-        objCity = objAdministrator.getCity(cityid);
-        req.setAttribute("city", objCity);
-        return "../admin/addCity.jsp";
+        List<Area> areas=objAdministrator.getAllArea();
+        req.setAttribute("areas", areas);
+        return "admin/area.jsp";
     }
-    
-    
     
 }
