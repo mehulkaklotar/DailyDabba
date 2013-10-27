@@ -23,7 +23,7 @@ public class editCity implements Action{
         City objCity = new City();
         objCity = objAdministrator.getCity(cityid);
         req.setAttribute("city", objCity);
-        return "../admin/addCity.jsp";
+        return "admin/addCity.jsp";
     }
     
     

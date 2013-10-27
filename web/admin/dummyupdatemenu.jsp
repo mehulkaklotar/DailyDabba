@@ -158,7 +158,7 @@
               }
               var description =document.getElementById("txttiffinDescriptionlunch").value;
 
-              var url='../Controller?action=uploadUpdateMenuPage&btnUpdateMenulunch=lunch&noOfSabzi='+noOfSabzi+
+              var url='AdminController?action=uploadUpdateMenuPage&btnUpdateMenulunch=lunch&noOfSabzi='+noOfSabzi+
                   '&sabzi1='+sabzi1+'&costOfsabzi1='+costOfsabzi1+'&sabzi2='+sabzi2+'&costOfsabzi2='
                   +costOfsabzi2+'&sabzi3='+sabzi3+'&costOfsabzi3='+costOfsabzi3+'&sabzi4='+sabzi4+'&costOfsabzi4='+costOfsabzi4+
                   '&dal='+dal+'&costOfdal='+costOfdal+'&roti='+roti+'&costOfroti='+costOfroti+'&qtyOfroti='+qtyOfroti+'&rice='+rice+'&costOfrice='+costOfrice+
@@ -225,7 +225,7 @@
               }
               var description =document.getElementById("txttiffinDescriptiondinner").value;
 
-              var url='../Controller?action=uploadUpdateMenuPage&btnUpdateMenulunch=dinner&noOfSabzi='+noOfSabzi+
+              var url='AdminController?action=uploadUpdateMenuPage&btnUpdateMenulunch=dinner&noOfSabzi='+noOfSabzi+
                   '&sabzi1='+sabzi1+'&costOfsabzi1='+costOfsabzi1+'&sabzi2='+sabzi2+'&costOfsabzi2='
                   +costOfsabzi2+'&sabzi3='+sabzi3+'&costOfsabzi3='+costOfsabzi3+'&sabzi4='+sabzi4+'&costOfsabzi4='+costOfsabzi4+
                   '&dal='+dal+'&costOfdal='+costOfdal+'&roti='+roti+'&costOfroti='+costOfroti+'&qtyOfroti='+qtyOfroti+'&rice='+rice+'&costOfrice='+costOfrice+

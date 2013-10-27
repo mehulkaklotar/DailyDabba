@@ -14,14 +14,9 @@
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
-        <script>
-            function test(){
-                alert("hello");
-            }
-        </script>
         <jsp:include page="commonStyle.jsp"></jsp:include>
         </head>
-        <body class="bg_d" onload="test()">
+        <body class="bg_d">
             <!-- main wrapper (without footer) -->    
             <div class="main-wrapper">
                 <!-- top bar -->
@@ -44,7 +39,7 @@
                 <div class="container">
                     <div class="row-fluid">
                         <div class="span12">
-                            <form class="form-horizontal" action="../Controller?action=addCity" method="post">
+                            <form class="form-horizontal" action="AdminController?action=addCity" method="post">
                                 <fieldset>
                                     <legend>Add city</legend>
                                     <div class="control-group">

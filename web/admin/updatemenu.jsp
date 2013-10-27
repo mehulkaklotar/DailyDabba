@@ -14,6 +14,6 @@
         <title>Update Menu</title>
     </head>
     <body <!--onload="createUpdateMenuPage()"-->>
-        <jsp:forward page="../Controller?action=createUpdateMenuPage"></jsp:forward>
+        <jsp:forward page="/admin/AdminController?action=createUpdateMenuPage"></jsp:forward>
     </body>
 </html>
