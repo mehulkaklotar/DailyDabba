@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Vendor extends User {
@@ -127,6 +129,25 @@ public class Vendor extends User {
         this.staus = staus;
     }
 
+    public void getProfileDetails(){
+        con=new DBConnection();
+        try {
+            callableStatement=con.connection.prepareCall("{call getVendor(?)}");
+            callableStatement.setString(1, userName);
+            ResultSet rs=callableStatement.executeQuery();
+            if(rs.next()){
+                vendorName=rs.getString("VendorName");
+                mobileNo=rs.getString("MobileNo");
+                ownerName=rs.getString("OwnerName");
+                emailID=rs.getString("EmailID");
+                lane=rs.getString("Lane");
+                ownerName=rs.getString("OwnerName");
+                landlineNumber=rs.getString("LandlineNo");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Vendor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public ArrayList<Tiffin> getAllOrderForVendor(String vendor) {
         try {
             con = new DBConnection();
@@ -152,7 +173,7 @@ public class Vendor extends User {
         }
     }
 
-    public boolean updateProfile(String userName, String password, String vendorName, String mobileNo, String emailID, String lane, int areaID, String ownerName, String landlineNumber, boolean flag) {
+    public boolean updateProfile() {
         con = new DBConnection();
         try {
 
@@ -163,7 +184,7 @@ public class Vendor extends User {
             callableStatement.setString(4, mobileNo);
             callableStatement.setString(5, emailID);
             callableStatement.setString(6, lane);
-            callableStatement.setInt(7, areaID);
+            callableStatement.setInt(7, area.getAreaID());
             callableStatement.setString(8, ownerName);
             callableStatement.setString(9, landlineNumber);
             callableStatement.setBoolean(0, flag);
