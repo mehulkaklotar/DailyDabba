@@ -148,6 +148,7 @@ public class Vendor extends User {
             Logger.getLogger(Vendor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     public ArrayList<Tiffin> getAllOrderForVendor(String vendor) {
         try {
             con = new DBConnection();
@@ -173,7 +174,7 @@ public class Vendor extends User {
         }
     }
 
-    public boolean updateProfile() {
+    public boolean updateProfile(String userName, String password, String vendorName, String mobileNo, String emailID, String lane, int areaID, String ownerName, String landlineNumber, boolean flag) {
         con = new DBConnection();
         try {
 
@@ -184,7 +185,7 @@ public class Vendor extends User {
             callableStatement.setString(4, mobileNo);
             callableStatement.setString(5, emailID);
             callableStatement.setString(6, lane);
-            callableStatement.setInt(7, area.getAreaID());
+            callableStatement.setInt(7, areaID);
             callableStatement.setString(8, ownerName);
             callableStatement.setString(9, landlineNumber);
             callableStatement.setBoolean(0, flag);
@@ -239,6 +240,38 @@ public class Vendor extends User {
                 itemList.add(item);
             }
             return itemList;
+        } catch (SQLException ex) {
+            return null;
+
+        }
+    }
+     
+    public Menu getVendorMenu(String vendor){
+         try {
+            con = new DBConnection();
+            ArrayList<MenuItem> menuList = new ArrayList<MenuItem>();
+            callableStatement = con.connection.prepareCall("{call getVendorMenu(?)}");
+            callableStatement.setString(1, vendor);
+            ResultSet rs = callableStatement.executeQuery();
+            Menu objMenu = new Menu();
+            while (rs.next()) {
+                
+                MenuItem objMenuItem = new MenuItem();
+                
+                Item objItem = new Item();
+                objItem.setItemName(rs.getString("ItemName"));
+                
+                ItemType objItemType = new ItemType();
+                objItemType.setTypeName(rs.getString("TypeName"));
+                objItem.setType(objItemType);
+                
+                objMenuItem.setItem(objItem);
+                objMenuItem.setCost(rs.getDouble("Cost"));
+                objMenuItem.setQuantity(rs.getInt("Quantity"));
+                menuList.add(objMenuItem);
+            }
+            objMenu.setMenuItem(menuList);
+            return objMenu;
         } catch (SQLException ex) {
             return null;
 
