@@ -7,6 +7,7 @@ package com.dailydibba.model;
 import java.util.Date;
 import com.dailydibba.action.Action;
 import com.dailydibba.bean.Feedback;
+import com.dailydibba.bean.Menu;
 import com.dailydibba.bean.Vendor;
 import com.dailydibba.bean.Visitor;
 import java.sql.Timestamp;
@@ -27,7 +28,6 @@ public class addFeedback implements Action {
         String vendorUN = req.getParameter("vendorUN");
         int rating = Integer.parseInt(req.getParameter("rating"));
         Timestamp date = new Timestamp(new Date().getTime());
-        //String p_date = date.toString();
         
         Feedback objFeedback = new Feedback(); //creating feedback object
         objFeedback.insertFeedback("Hiren",vendorUN,date,message,rating); // calling method and inserting data
@@ -37,13 +37,17 @@ public class addFeedback implements Action {
         
         rating = objVisitor.getRatings(vendorUN);
         
+        //Vendor menu
+        Menu objMenu = objVendor.getVendorMenu(vendorUN);
+        objMenu.setVendorUserName(vendorUN);
+        
         // Get the details of feedback of that vendor
         List<Feedback> feedbackList = objVisitor.getFeedbackForVendor(vendorUN);
         req.setAttribute("feedback", feedbackList);
         req.setAttribute("vendor", objVendor);
         req.setAttribute("rating", rating);
-        
-        
+        req.setAttribute("menu", objMenu);
+        // Go to vendor.jsp
         return "vendor.jsp";
     }
     

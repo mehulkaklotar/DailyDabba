@@ -21,6 +21,9 @@ public class ItemType {
         this.typeName=typeName;
 
     }
+
+    ItemType() {
+    }
     public int getTypeID() {
         //Author: Nidhi Patel
         //Date: 13-October-2013
