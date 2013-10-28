@@ -19,18 +19,18 @@ public class User {
 
     protected String userName;
     protected String password;
-    protected String usertype;
+    protected UserRole usertype;
     DBConnection con;
     CallableStatement stmt;
 
     public User() {
     }
 
-    public String getUsertype() {
+    public UserRole getUsertype() {
         return usertype;
     }
 
-    public void setUsertype(String usertype) {
+    public void setUsertype(UserRole usertype) {
         this.usertype = usertype;
     }
 

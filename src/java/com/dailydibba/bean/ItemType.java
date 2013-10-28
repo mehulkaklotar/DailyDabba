@@ -12,6 +12,8 @@ package com.dailydibba.bean;
 public class ItemType {
     protected int typeID;
     protected String typeName;
+    
+    public ItemType(){}
 
      public ItemType(int typeID,String typeName)
     {

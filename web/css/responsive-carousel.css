@@ -6,15 +6,15 @@
  * Licensed under the MIT, GPL licenses.
  */
 .carousel {
-	width: 100%;
-	position: relative;
+    width: 100%;
+    position: relative;
 }
 .carousel .carousel-item {
-	display: none;
+    display: none;
 }
 .carousel .carousel-active {
-	display: block;
+    display: block;
 }
 .carousel .carousel-nav:nth-child(2) {
-	display: none;
+    display: none;
 }

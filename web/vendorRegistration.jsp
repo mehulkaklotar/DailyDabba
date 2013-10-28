@@ -79,7 +79,7 @@
 
             </header>
 
-                <article class="wrapper" style="margin-left: 40%"> 
+            <article class="wrapper" style="margin-left: 40%"> 
                 <div class="row">
                     <div class="span12">
                         <hr>
@@ -110,7 +110,7 @@
                             <input type="text" style="width:auto;" placeholder="First Name" name="txtFirstname" >
                             <input type="text" style="width:auto;" placeholder="Last Name" name="txtLastname">
                         </div>
-                        
+
                         <br>
                         <div>
                             <input type="text" style="width:auto;" placeholder="Mobile Number" name="txtMobileNumber">
@@ -130,12 +130,12 @@
                                 <option value="1">State
                                 </option>
                             </select>
-                             <select id="City" class ="selectStyle">
+                            <select id="City" class ="selectStyle">
                                 <option value="1">City
                                 </option>
                             </select>
                         </div>
-                       
+
                         <br>
                         <div>
                             <select id="Area" class ="selectStyle">
@@ -148,7 +148,7 @@
                         <div>
                             <input type="text" style="width:auto;" placeholder="Street Name" name="txtStreetName">
                             <input type="text" style="width:auto;" placeholder="Flat Number" name="txtFlatNumber" >
-                            
+
                         </div>
                         <br>
 
@@ -156,7 +156,7 @@
                         <div>
                             <input type="text" style="width:auto;" placeholder="Pin Code" name="txtPincode">
                         </div>
-                        
+
                     </div>
                     <div class="row">
                         <div class="span6">

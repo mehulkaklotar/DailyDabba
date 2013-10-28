@@ -119,7 +119,7 @@
 
                     <!-- ******** LOGO START ******** -->
                     <div class="logo">
-                        <h2>Daily Dibba</h2>
+                        <h2>Daily Dabba</h2>
                         <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
                         <p>Eat Healthy, Live Healthy</p>
                         <a href="index.html"></a> </div>
@@ -174,6 +174,7 @@
 
                         <div class="vendorlist" style="float: left" id="vendorList">
                             <!-- AJAX call to getVendor.js and geVendorList.jsp -->
+                            
                         </div>
 
                     </div>
@@ -192,7 +193,7 @@
                     </div>
 
                     <div class="labelWelcome">
-                        <span>Welcome, Guest</span>
+                        <span>Welcome, <% if(session.getAttribute("UserName")!=null){ out.print(session.getAttribute("UserName")); %>&nbsp;<a href="Controller?action=logout">Logout</a> <% }else { out.print("Guest");} %></span>
                     </div>
                 </div>
 

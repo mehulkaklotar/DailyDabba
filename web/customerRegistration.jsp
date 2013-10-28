@@ -15,21 +15,23 @@
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> <!-- or use local jquery -->
-<script src="/js/jqBootstrapValidation.js"></script>
-<script>
-  $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
-</script>
-<script>
-    function validateForm()
-{
-var x=document.forms["registrationForm"]["fname"].value;
-if (x==null || x=="")
-  {
-  alert("First name must be filled out");
-  return false;
-  }
-}
-</script>
+        <script src="/js/jqBootstrapValidation.js"></script>
+        <script>
+            $(function() {
+                $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+            });
+        </script>
+        <script>
+            function validateForm()
+            {
+                var x = document.forms["registrationForm"]["fname"].value;
+                if (x == null || x == "")
+                {
+                    alert("First name must be filled out");
+                    return false;
+                }
+            }
+        </script>
 
 
         <jsp:include page="include.jsp"></jsp:include>
@@ -114,62 +116,62 @@ if (x==null || x=="")
                     <div align="left" class="row">
                         <table align="center" width="500px">
                             <tr align="left">
-                               <div>
-                            <input type="text" style="width:auto;" placeholder="User Name" name="txtUsername" required="">
-                           <!-- <span class="required">*</span>
-                            <span class="required">Should be unique</span> -->
-                        </div> 
+                            <div>
+                                <input type="text" style="width:auto;" placeholder="User Name" name="txtUsername" required="">
+                                <!-- <span class="required">*</span>
+                                 <span class="required">Should be unique</span> -->
+                            </div> 
                             </tr>
-                        
-                        <br>
-                        <tr align="left">
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Password" name="txtPassword">
-                            <input type="text" style="width:auto;" placeholder="Confirm Password" name="txtConfirmPassword">
-                       </div>    
-                        </tr>
-                        
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="First Name" name="txtFirstname" >
-                            <input type="text" style="width:auto;" placeholder="Last Name" name="txtLastname">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Mobile Number"   name="txtMobileNumber">
-                            <input type="text" style="width:auto;" placeholder="Alternate Number" name="txtAlternateNumber">
-                        </div>
-                        
-                           
-                        <br>
-                        <tr align=left"">
-                        <div>
-                            <input type="email" style="width:auto;" placeholder="Email ID" name="txtEmailID">
-                        </div>
-                        <br>
-                        <div>
-                            <select id="Area" class ="selectStyle">
-                                <option value="1">Area
-                                </option>
-                            </select>
-                            
-                            
-                        </div>
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Flat Number" name="txtFlatNumber" >
-                            <input type="text" style="width:auto;" placeholder="Street Name" name="txtStreetName">
-                            <input type="text" style="width:auto;" placeholder="Landmark" name="txtLandmark">
-                            
-                        </div>
-                        
-                        
+
+                            <br>
+                            <tr align="left">
+                            <div>
+                                <input type="text" style="width:auto;" placeholder="Password" name="txtPassword">
+                                <input type="text" style="width:auto;" placeholder="Confirm Password" name="txtConfirmPassword">
+                            </div>    
+                            </tr>
+
+                            <br>
+                            <div>
+                                <input type="text" style="width:auto;" placeholder="First Name" name="txtFirstname" >
+                                <input type="text" style="width:auto;" placeholder="Last Name" name="txtLastname">
+                            </div>
+                            <br>
+                            <div>
+                                <input type="text" style="width:auto;" placeholder="Mobile Number"   name="txtMobileNumber">
+                                <input type="text" style="width:auto;" placeholder="Alternate Number" name="txtAlternateNumber">
+                            </div>
+
+
+                            <br>
+                            <tr align=left"">
+                            <div>
+                                <input type="email" style="width:auto;" placeholder="Email ID" name="txtEmailID">
+                            </div>
+                            <br>
+                            <div>
+                                <select id="Area" class ="selectStyle">
+                                    <option value="1">Area
+                                    </option>
+                                </select>
+
+
+                            </div>
+                            <br>
+                            <div>
+                                <input type="text" style="width:auto;" placeholder="Flat Number" name="txtFlatNumber" >
+                                <input type="text" style="width:auto;" placeholder="Street Name" name="txtStreetName">
+                                <input type="text" style="width:auto;" placeholder="Landmark" name="txtLandmark">
+
+                            </div>
+
+
                     </div>     
-                        </table>
-                       
+                    </table>
+
                     <div class="row" >
                         <div class="span6">
-                         
+
                             <input type="submit" value="Submit">
                         </div>
                     </div>

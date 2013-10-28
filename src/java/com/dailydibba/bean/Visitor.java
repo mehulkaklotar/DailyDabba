@@ -303,4 +303,29 @@ public class Visitor {
         }
 
     }
+
+    public User login(String username) {
+        con = new DBConnection();
+        User objUser = new User();
+        try {
+            
+            callableStatement = con.connection.prepareCall("{call getUser(?)}");
+            callableStatement.setString(1, username);
+            ResultSet rsUser = callableStatement.executeQuery();
+                
+                if (rsUser.next()) {
+                  objUser.setUserName(rsUser.getString("UserName"));
+                  objUser.setPassword(rsUser.getString("Password"));
+                  UserRole objUserRole = new UserRole();
+                  objUserRole.setRole(rsUser.getString("Role"));
+                  objUser.setUsertype(objUserRole);
+                }
+            
+        } catch (Exception e) {
+            e.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return objUser;
+    }
 }

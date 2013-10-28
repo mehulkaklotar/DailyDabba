@@ -17,83 +17,83 @@
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
         <jsp:include page="include.jsp"></jsp:include>
-        <script src="js/addFeedback.js"></script>
+            <script src="js/addFeedback.js"></script>
 
 
-    </head>
+        </head>
 
-    <body class="home">
-        <header>
-            <div class="nav-bar">
-                <div class="nav-inside"> </div>
-            </div>
-            <div class="wrapper"> 
+        <body class="home">
+            <header>
+                <div class="nav-bar">
+                    <div class="nav-inside"> </div>
+                </div>
+                <div class="wrapper"> 
 
-                <!-- ******** LOGO START ******** -->
-                <div class="logo">
-                    <h2>Daily Dibba</h2>
-                    <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
-                    <p>Eat Healthy, Live Healthy</p>
-                    <a href="index.html"></a> </div>
-                <!-- ******** LOGO END ******** -->
+                    <!-- ******** LOGO START ******** -->
+                    <div class="logo">
+                        <h2>Daily Dibba</h2>
+                        <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
+                        <p>Eat Healthy, Live Healthy</p>
+                        <a href="index.html"></a> </div>
+                    <!-- ******** LOGO END ******** -->
 
-                <!-- ******** NAVIGATION START ******** -->
+                    <!-- ******** NAVIGATION START ******** -->
 
                 <jsp:include page="nav.jsp"></jsp:include>
 
-                <button class="nav-trigger">Navigation</button>
+                    <button class="nav-trigger">Navigation</button>
 
-                <!-- ******** NAVIGATION END ******** --> 
+                    <!-- ******** NAVIGATION END ******** --> 
 
-                <div class="labelWelcome">
-                    <span>Welcome, Guest</span>
+                    <div class="labelWelcome">
+                        <span>Welcome, Guest</span>
+                    </div>
                 </div>
-            </div>
-            <!-- ******** FULL WIDTH SLIDER START ******** -->
-            <div id="fwslider">
-                <div class="slider_container">
+                <!-- ******** FULL WIDTH SLIDER START ******** -->
+                <div id="fwslider">
+                    <div class="slider_container">
 
-                    <div class="slide" style="height:300px;" > 
-                        <img src="images/thali.JPG" />
+                        <div class="slide" style="height:300px;" > 
+                            <img src="images/thali.JPG" />
+
+                        </div>
+
+                        <div class="slide" style="height:300px;"> 
+                            <img src="images/thali1.jpg" />
+
+                        </div>
+
+                        <div class="slide" style="height:300px;"> 
+                            <img src="images/thali2.jpg" />
+
+                        </div>
 
                     </div>
 
-                    <div class="slide" style="height:300px;"> 
-                        <img src="images/thali1.jpg" />
 
-                    </div>
-
-                    <div class="slide" style="height:300px;"> 
-                        <img src="images/thali2.jpg" />
-
-                    </div>
+                    <div class="timers"></div>
+                    <div class="slidePrev"><span></span></div>
+                    <div class="slideNext"><span></span></div>
+                </div> 
+                <div style="height:20px;background-color: #222;">
 
                 </div>
+                <!-- ******** FULL WIDTH SLIDER END ******** -->
 
+            </header>
 
-                <div class="timers"></div>
-                <div class="slidePrev"><span></span></div>
-                <div class="slideNext"><span></span></div>
-            </div> 
-            <div style="height:20px;background-color: #222;">
-
-            </div>
-            <!-- ******** FULL WIDTH SLIDER END ******** -->
-
-        </header>
-
-        <article class="wrapper"> 
-            <div style="margin: auto">
-                <h2 class="center">Feedback</h2>
-                <div class="message">
-                    <div id="alert"></div>
+            <article class="wrapper"> 
+                <div style="margin: auto">
+                    <h2 class="center">Feedback</h2>
+                    <div class="message">
+                        <div id="alert"></div>
+                    </div>
                 </div>
-            </div>
-            <hr></hr>
-            <form name="contactform" method="post" action="" id="reservation">
-                <div align="center" class="row">
-                    <div>
-                        <label> Vendor Name :  ${param['userName']} </label> 
+                <hr></hr>
+                <form name="contactform" method="post" action="" id="reservation">
+                    <div align="center" class="row">
+                        <div>
+                            <label> Vendor Name :  ${param['userName']} </label> 
                     </div>
                     <br></br>
                     <div>

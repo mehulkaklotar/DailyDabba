@@ -15,7 +15,7 @@
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> <!-- or use local jquery -->
-<script src="/js/jqBootstrapValidation.js"></script>
+        <script src="/js/jqBootstrapValidation.js"></script>
 
         <jsp:include page="include.jsp"></jsp:include>
 
@@ -97,19 +97,19 @@
 
                 <form name="updateProfileCustomer" method="post" action="" id="updateProfileCustomer">
                     <div align="center" class="row">
-                        <%
-                            Customer cust=(Customer)request.getAttribute("Customer");
-                        %>
-                        <table align="center" width="500px">
-                            <tbody>
+                    <%
+                        Customer cust=(Customer)request.getAttribute("Customer");
+                    %>
+                    <table align="center" width="500px">
+                        <tbody>
                             <tr align="left">
                                 <th>Username:</th>
                                 <td>
-                                 <div>
-                                     <label style="width:auto;" name="lblUsername" required="" ><%=cust.getUserName()%>"</label>
-                           <!-- <span class="required">*</span>
-                            <span class="required">Should be unique</span> -->
-                                 </div>
+                                    <div>
+                                        <label style="width:auto;" name="lblUsername" required="" ><%=cust.getUserName()%>"</label>
+                                        <!-- <span class="required">*</span>
+                                         <span class="required">Should be unique</span> -->
+                                    </div>
                                 </td>
                             </tr>
                             <tr></tr>
@@ -125,60 +125,60 @@
                                 <th>Last Name:</th>
                                 <td>
                                     <div>
-                                           <input type="text" style="width:auto;" placeholder="Last Name" name="txtLastname" value="<%=cust.getLastName()%>">
+                                        <input type="text" style="width:auto;" placeholder="Last Name" name="txtLastname" value="<%=cust.getLastName()%>">
                                     </div>
                                 </td>
-                        </tr>
-                        <tr>
-                            <th>Mobile Number:</th>
-                            <td>
-                                <div>
-                                    <input type="text" style="width:auto;" placeholder="Mobile Number"   name="txtMobileNumber" value="<%=cust.getMobileNo()%>">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Email ID:</th>
-                            <td>
-                                <div>
-                                    <input type="email" style="width:auto;" placeholder="Email ID" name="txtEmailID" value="<%=cust.getEmailID()%>"> 
-                                </div>
-                            </td>
-                        <tr>
-                            <th>Area</th>
-                            <td>
-                            <div>
-                                <select id="Area" class ="selectStyle">
-                                    <option value="1">Area
-                                    </option>
-                                </select>
-                            </div>
+                            </tr>
+                            <tr>
+                                <th>Mobile Number:</th>
+                                <td>
+                                    <div>
+                                        <input type="text" style="width:auto;" placeholder="Mobile Number"   name="txtMobileNumber" value="<%=cust.getMobileNo()%>">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Email ID:</th>
+                                <td>
+                                    <div>
+                                        <input type="email" style="width:auto;" placeholder="Email ID" name="txtEmailID" value="<%=cust.getEmailID()%>"> 
+                                    </div>
+                                </td>
+                            <tr>
+                                <th>Area</th>
+                                <td>
+                                    <div>
+                                        <select id="Area" class ="selectStyle">
+                                            <option value="1">Area
+                                            </option>
+                                        </select>
+                                    </div>
 
-                         </td>
-                        </tr>
-                        <tr>
-                            <th>Address:</th>
-                            <td>
-                                <div>
-                                    <textarea placeholder="Address" style="width:300px;" name="txtAddress" ><%=cust.getLane()%>
-                                    </textarea>              
-                                </div>
-                            </td>
-                        </tr>
-                        
-                    </div>    
-                </tbody>
-            </table>
-                       
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Address:</th>
+                                <td>
+                                    <div>
+                                        <textarea placeholder="Address" style="width:300px;" name="txtAddress" ><%=cust.getLane()%>
+                                        </textarea>              
+                                    </div>
+                                </td>
+                            </tr>
+
+                            </div>    
+                        </tbody>
+                    </table>
+
                     <div class="row" >
                         <div class="span6">
-                         
+
                             <input type="submit" value="Update">
                         </div>
                     </div>
-                </form>
-                <button class="back-to-top">^</button>
-            </article>
+            </form>
+            <button class="back-to-top">^</button>
+        </article>
 
 
         <jsp:include page="footer.jsp"></jsp:include>
