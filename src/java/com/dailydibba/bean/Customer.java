@@ -3,6 +3,7 @@ package com.dailydibba.bean;
 import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -225,6 +226,7 @@ public class Customer extends User{
         }
         return tiffinList;
     }
+    
     public boolean insertFeedback(String customer,String vendor,Date date,String message,int rating){
         //Author: Prachi Deodhar
         //Date:13- October-2013
@@ -253,7 +255,7 @@ public class Customer extends User{
     }
     
       // Methods' prtotype by Prachi and body by Hiren
-    public boolean updateCustomerProfile(String username, int areaID, String firstname, String lastname, String lane, String mobileno, String emailID) {
+    public boolean updateCustomerProfile() {
         //Author: Hiren Savalia
         //Date :  10-19-2013
         //Called when user wants to update profile
@@ -261,12 +263,12 @@ public class Customer extends User{
         try {
 
             callableStatement = con.connection.prepareCall("{call updateCustomerProfile(?,?,?,?,?,?,?)}"); // procedure called
-            callableStatement.setString(1, username); //setting all the perameters
-            callableStatement.setInt(2, areaID);
-            callableStatement.setString(3, firstname);
-            callableStatement.setString(4, lastname);
+            callableStatement.setString(1, userName); //setting all the perameters
+            callableStatement.setInt(2, area.getAreaID());
+            callableStatement.setString(3, firstName);
+            callableStatement.setString(4, lastName);
             callableStatement.setString(5, lane);
-            callableStatement.setString(6, mobileno);
+            callableStatement.setString(6, mobileNo);
             callableStatement.setString(7, emailID);
             int row = callableStatement.executeUpdate();
 
@@ -346,5 +348,26 @@ public class Customer extends User{
         } finally {
             con.closeConnection();
         }
+    }
+    
+    public void getProfileDetails(){
+       try{
+        con=new DBConnection();
+        callableStatement=con.connection.prepareCall("{call getCustomer(?)}");
+        callableStatement.setString(1, userName);
+        ResultSet rs=callableStatement.executeQuery();
+        if(rs.next()){
+            int areaID=rs.getInt(2);
+            String areaName=rs.getString(3);
+            area=new Area(areaID,areaName);
+            firstName=rs.getString(4);
+            lastName=rs.getString(5);
+            lane=rs.getString(6);
+            mobileNo=rs.getString(7);
+            emailID=rs.getString(8);
+        }
+       }catch(SQLException exc){
+           System.out.println(exc.toString());
+       }
     }
 }    
