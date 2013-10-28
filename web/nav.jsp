@@ -1,7 +1,7 @@
 <nav class="main">
     
       <ul>
-        <li class="active"><a href="index.jsp">Home</a></li>
+        <li class="active"><a href="Controller?action=getIndex">Home</a></li>
         <li><a href="aboutUs.jsp">About Us</a></li>
           <!--<ul>
             <li><a href="typography.html">Typography</a></li>
