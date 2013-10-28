@@ -20,6 +20,13 @@ public class Area {
      
     }
 
+    public Area(int areaID, String areaName) {
+        this.areaID = areaID;
+        this.areaName = areaName;
+    }
+
+   
+
     public City getCity() {
         return city;
     }
