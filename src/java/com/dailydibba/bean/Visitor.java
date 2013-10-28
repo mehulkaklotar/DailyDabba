@@ -27,16 +27,15 @@ public class Visitor {
         return "";
     }
 
-    public List<Vendor> searchVendor(String city, String area) {
+    public List<Vendor> searchVendor(String searchString) {
         //Author: Hiren Savalia & Mehul
         //Description: searchVendor called on searching
         List<Vendor> vendorList = new ArrayList<Vendor>();
         con = new DBConnection();
         try {
 
-            callableStatement = con.connection.prepareCall("{call searchVendor(?,?)}");
-            callableStatement.setString(1, city);
-            callableStatement.setString(2, area);
+            callableStatement = con.connection.prepareCall("{call searchVendor(?)}");
+            callableStatement.setString(1, searchString);
             ResultSet rs = callableStatement.executeQuery();
 
             while (rs.next()) {
@@ -248,30 +247,6 @@ public class Visitor {
             con.closeConnection();
         }
         return objVendor;
-    }
-
-    public List<Area> getAreaCityList() {
-        List<Area> areaCity = new ArrayList<Area>();
-        con = new DBConnection();
-        try {
-            callableStatement = con.connection.prepareCall("{call getAreaCityList()}");
-            ResultSet rs = callableStatement.executeQuery();
-            while (rs.next()) {
-                Area objArea = new Area();
-                objArea.setAreaName(rs.getString("AreaName"));
-                City objCity = new City();
-                objCity.setCityName(rs.getString("CityName"));
-                objArea.setCity(objCity);
-                areaCity.add(objArea);
-            }
-            rs.close();
-        } catch (Exception ex) {
-            ex.getMessage();
-        } finally {
-
-            con.closeConnection();
-        }
-        return areaCity;
     }
 
     // Integration : Nidhi : insertCustomer, insertUser Method

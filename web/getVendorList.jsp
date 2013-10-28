@@ -16,5 +16,5 @@
                 <br/>
                 <font size="2">Rating : <c:out value="${vendor.rating}" /></font>
         </tr>
-    </c:forEach>
+    </c:forEach>5
 </table>
