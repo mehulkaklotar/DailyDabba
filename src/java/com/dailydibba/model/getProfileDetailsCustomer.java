@@ -23,7 +23,7 @@ public class getProfileDetailsCustomer implements Action {
         Customer customer=new Customer();
         String uname=req.getParameter("uname");
         customer.setUserName(uname);
-        //customer.getProfileDetails();;
+        customer.getProfileDetails();;
         req.setAttribute("Customer", customer);
         return "/dummyupdateProfileCustomer.jsp";
     }
