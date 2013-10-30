@@ -335,24 +335,42 @@ public class Administrator extends User {
         }
         return customerList;
     }
-    /*public List<Vendor> viewVendorProfile(String user_name) {
+    public Vendor viewVendorProfile(String user_name) {
      //Author: Vivek Shukla
      //Date: 14-October-2013
      //Description:
+         Vendor objVendor = new Vendor();
+        CallableStatement callstmt;
      try{
-     cstmt=con.connection.prepareCall("{call viewVendorProfile(?)}");
+     cstmt=con.connection.prepareCall("{call getVendor(?)}");
      cstmt.setString(1,user_name);
+      
+//      callstmt = con.connection.prepareCall("{call getRatings(?)}");
      ResultSet rs=cstmt.executeQuery();          
-     if(rs.next()){
-     return new Vendor(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),new Area(rs.getInt(7),rs.getString(8)),rs.getString(9),rs.getString(10),rs.getBoolean(11));
+                while(rs.next()){
+                String UserName=rs.getString("UserName");
+                objVendor.setVendorName(rs.getString("VendorName"));
+//                objVendor.setEmailID(rs.getString("EmailID"));
+//                objVendor.setMobileNo("MobileNo");
+//                objVendor.setOwnerName("OwnerName");
+//                objVendor.setStatus(rs.getBoolean("Status"));
+                objVendor.setUserName(UserName); 
+//                callstmt.setString(1, UserName);
+//                ResultSet rs_rating = callstmt.executeQuery();
+//                while(rs_rating.next()){
+//                objVendor.setRating(rs_rating.getInt("Rating")); 
+//                } 
+                
+                }
+                rs.close();
+      }catch(SQLException ex){
+            ex.getMessage();
+        }
+     finally {
+            con.closeConnection();
+        }
+        return objVendor; 
      }
-     else{
-     return null;
-     }
-     }catch(SQLException ex){
-     return null;
-     }
-     }*/
 
     public ArrayList<Customer> searchCustomer(String criteria, String value) {
         //Author: Vivek Shukla
@@ -385,5 +403,54 @@ public class Administrator extends User {
             return null;
         }
 
+    }
+    public List<Vendor> getAllVendor(){
+        List<Vendor> vendorList = new ArrayList<Vendor>();
+        con = new DBConnection();
+        CallableStatement callstmt;
+        try {
+            cstmt = con.connection.prepareCall("{call getAllVendors()}");
+            ResultSet rs = cstmt.executeQuery();
+            callstmt = con.connection.prepareCall("{call getRatings(?)}");          
+              
+            while(rs.next()) {                
+                Vendor objVendor = new Vendor();
+                String UserName=rs.getString("UserName");
+                objVendor.setVendorName(rs.getString("VendorName"));
+                objVendor.setStatus(rs.getBoolean("Status"));
+                objVendor.setUserName(UserName); 
+                callstmt.setString(1, UserName);
+                ResultSet rs_rating = callstmt.executeQuery();
+                while(rs_rating.next()){
+                objVendor.setRating(rs_rating.getInt("Rating")); 
+                }
+                vendorList.add(objVendor);
+                rs_rating.close();
+            }
+                rs.close();
+               
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+
+            con.closeConnection();
+        }
+        return vendorList;        
+    }
+    public static void main(String args[]){
+        Administrator ad=new Administrator();
+//        List<Vendor> vl=new ArrayList<Vendor>();
+//        //vl=ad.searchVendor("Ahmedabad","Infocity");
+//        vl=ad.getAllVendor();
+//        
+        System.out.println(ad.viewVendorProfile("Sai").getUserName());
+//        System.out.println(v.getVendorName());
+//        System.out.println(v.isStatus());
+//        System.out.println(v.getRating()); 
+        //System.out.println(v.getUserName());
+      
+       
+        
+        
     }
 }

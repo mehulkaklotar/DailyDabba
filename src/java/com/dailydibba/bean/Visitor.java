@@ -279,6 +279,37 @@ public class Visitor {
         }
 
     }
+    public boolean insertVendor(String userName, int area, String vendorName,String mobileNo,String emailID, String lane, String ownerName, String landlineNumber,boolean flag,boolean status) {
+        con = new DBConnection();
+  
+        try {
+  
+            callableStatement = con.connection.prepareCall("{call insertVendor(?,?,?,?,?,?,?,?,?,?)}");
+            callableStatement.setString(1, userName);
+            callableStatement.setInt(2, area);
+            callableStatement.setString(3, vendorName);
+            callableStatement.setString(4, mobileNo);
+            callableStatement.setString(5,emailID );
+            callableStatement.setString(6,lane);
+            callableStatement.setString(7,ownerName );
+            callableStatement.setString(8,landlineNumber );
+            callableStatement.setBoolean(9,flag);
+            callableStatement.setBoolean(10,status);
+  
+            int row = callableStatement.executeUpdate();
+  
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception ex) {
+            return false;
+        } finally {
+            con.closeConnection();
+        }
+  
+    } 
 
     public boolean insertUser(String userName, String password, String usertype) {
         con = new DBConnection();

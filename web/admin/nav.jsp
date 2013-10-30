@@ -31,7 +31,7 @@
                     <li><a href="users.jsp">Users</a>
 
                     </li>
-                    <li><a href="vendors.jsp">Vendors</a>
+                     <li><a href="AdminController?action=getAllVendors">Vendors</a>
 
                     </li>
                     <li><a href="AdminController?action=getAllCity">City</a>

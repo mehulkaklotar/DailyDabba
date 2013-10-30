@@ -9,14 +9,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Daily Dibba</title>
+        <title>Daily Dabba</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
 
         <jsp:include page="include.jsp"></jsp:include>
-
-
         </head>
 
         <body class="home">
@@ -28,10 +26,10 @@
 
                     <!-- ******** LOGO START ******** -->
                     <div class="logo">
-                        <h2>Daily Dibba</h2>
+                        <h2>Daily Dabba</h2>
                         <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
                         <p>Eat Healthy, Live Healthy</p>
-                        <a href="index.html"></a> </div>
+                        <a href="index.jsp"></a> </div>
                     <!-- ******** LOGO END ******** -->
 
                     <!-- ******** NAVIGATION START ******** -->
@@ -79,7 +77,7 @@
 
             </header>
 
-            <article class="wrapper" style="margin-left: 40%"> 
+                <article class="wrapper" style="margin-left: 40%"> 
                 <div class="row">
                     <div class="span12">
                         <hr>
@@ -90,7 +88,7 @@
                     </div>
                 </div>
 
-                <form name="registrationForm" method="post" action="#" id="vendorRegister">
+                <form name="registrationForm" method="post" action="Controller?action=vendorRegistration" id="vendorRegister">
                     <div align="left" class="row">
                         <div>
                             <input type="text" style="width:auto;" placeholder="User Name" name="txtUsername" required="">
@@ -107,17 +105,21 @@
                         </div>
                         <br>
                         <div>
-                            <input type="text" style="width:auto;" placeholder="First Name" name="txtFirstname" >
-                            <input type="text" style="width:auto;" placeholder="Last Name" name="txtLastname">
+                            <input type="text" style="width:auto;" placeholder="Vendor Name" name="txtVendorName" >
                         </div>
-
+                        
+                        <br>
+                        <div>
+                            <input type="text" style="width:auto;" placeholder="OwnerName" name="txtOwnerName" >
+                        </div>
+                        
                         <br>
                         <div>
                             <input type="text" style="width:auto;" placeholder="Mobile Number" name="txtMobileNumber">
                         </div>
                         <br>
                         <div>
-                            <input type="text" style="width:auto;" placeholder="Alternate Number" name="txtAlternateNumber">
+                            <input type="text" style="width:auto;" placeholder="Landline Number" name="txtLandlineNumber">
                         </div>
                         <br>
                         <div>
@@ -130,12 +132,12 @@
                                 <option value="1">State
                                 </option>
                             </select>
-                            <select id="City" class ="selectStyle">
+                             <select id="City" class ="selectStyle">
                                 <option value="1">City
                                 </option>
                             </select>
                         </div>
-
+                       
                         <br>
                         <div>
                             <select id="Area" class ="selectStyle">
@@ -148,15 +150,15 @@
                         <div>
                             <input type="text" style="width:auto;" placeholder="Street Name" name="txtStreetName">
                             <input type="text" style="width:auto;" placeholder="Flat Number" name="txtFlatNumber" >
-
+                            
                         </div>
                         <br>
 
                         <br>
-                        <div>
+                        <!--<div>
                             <input type="text" style="width:auto;" placeholder="Pin Code" name="txtPincode">
-                        </div>
-
+                        </div>-->
+                        
                     </div>
                     <div class="row">
                         <div class="span6">

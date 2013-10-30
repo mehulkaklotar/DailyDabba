@@ -33,11 +33,11 @@
             <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
             <!--<script type="text/javascript">
                 var geocoder;
-        
+       
                 if (navigator.geolocation) {
-        
+       
                     navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
-        
+       
                 }
                 //Get the latitude and the longitude;
                 function successFunction(position) {
@@ -45,20 +45,20 @@
                     var lng = position.coords.longitude;
                     codeLatLng(lat, lng)
                 }
-        
+       
                 function errorFunction() {
                     alert("Geocoder failed");
                 }
-        
+       
                 function initialize() {
                     geocoder = new google.maps.Geocoder();
-        
-        
-        
+       
+       
+       
                 }
-        
+       
                 function codeLatLng(lat, lng) {
-        
+       
                     var latlng = new google.maps.LatLng(lat, lng);
                     geocoder.geocode({'latLng': latlng}, function(results, status) {
                         if (status == google.maps.GeocoderStatus.OK) {
@@ -69,35 +69,35 @@
                                 //find country name
                                 for (var i = 0; i < results[0].address_components.length; i++) {
                                     for (var b = 0; b < results[0].address_components[i].types.length; b++) {
-        
+       
                                         //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
-        
+       
                                         if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
                                             //this is the object you are looking for
                                             state = results[0].address_components[i];
-        
+       
                                             break;
                                         }
                                         if (results[0].address_components[i].types[b] == "locality") {
                                             //this is the object you are looking for
                                             city = results[0].address_components[i];
-        
+       
                                             break;
                                         }
                                         if (results[0].address_components[i].types[b] == "sublocality") {
                                             //this is the object you are looking for
                                             area = results[0].address_components[i];
-        
+       
                                             break;
                                         }
-        
-        
-        
+       
+       
+       
                                     }
                                 }
                                 //city data
                                 document.getElementById("txtSearch").value = area.short_name + "," + city.short_name;
-        
+       
                             } else {
                                 alert("No results found");
                             }
@@ -115,14 +115,14 @@
                 <div class="nav-bar">
                     <div class="nav-inside"> </div>
                 </div>
-                <div class="wrapper"> 
+                <div class="wrapper">
 
                     <!-- ******** LOGO START ******** -->
                     <div class="logo">
-                        <h2>Daily Dabba</h2>
+                        <h2>Daily Dibba</h2>
                         <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
                         <p>Eat Healthy, Live Healthy</p>
-                        <a href="index.html"></a> </div>
+                        <a href="index.jsp"></a> </div>
                     <!-- ******** LOGO END ******** -->
                 <%
                     List<Area> areaList = (List<Area>) request.getAttribute("areas");
@@ -141,9 +141,6 @@
                                 <input type="text" id="txtSearch" style="margin-top: 10px;" placeholder="Enter area,city" name="txtSearch"/>
                                 <div id="myContainer"></div>
                                 <script type="text/javascript">
-
-
-
                                     YAHOO.example.Data = {
                                         arrayStates: [
                                     <%= str%>
@@ -174,7 +171,6 @@
 
                         <div class="vendorlist" style="float: left" id="vendorList">
                             <!-- AJAX call to getVendor.js and geVendorList.jsp -->
-                            
                         </div>
 
                     </div>
@@ -185,7 +181,7 @@
 
                     <button class="nav-trigger">Navigation</button>
 
-                    <!-- ******** NAVIGATION END ******** --> 
+                    <!-- ******** NAVIGATION END ******** -->
                     <div class="timingBox">
                         <div class="span2" style="text-align:center;">
                             <h2><u>Timings</u></h2>
@@ -193,7 +189,7 @@
                     </div>
 
                     <div class="labelWelcome">
-                        <span>Welcome, <% if(session.getAttribute("UserName")!=null){ out.print(session.getAttribute("UserName")); %>&nbsp;<a href="Controller?action=logout">Logout</a> <% }else { out.print("Guest");} %></span>
+                        <span>Welcome, Guest</span>
                     </div>
                 </div>
 
@@ -238,7 +234,7 @@
                         <div class="slidePrev"><span></span></div>
                         <div class="slideNext"><span></span></div>
                     </div>
-                    <!-- ******** FULL WIDTH SLIDER END ******** --> 
+                    <!-- ******** FULL WIDTH SLIDER END ******** -->
 
             </header>
 
@@ -259,7 +255,7 @@
             </section>
             <!-- ******** REVIEWS END ******** -->
 
-            <article class="wrapper"> 
+            <article class="wrapper">
 
                 <!-- ******** HIGHLIGHT START ******** -->
                 <div class="row">
@@ -307,9 +303,9 @@
                   </div>
                 </div>-->
 
-                <!--******** BLOG START ******** 
+                <!--******** BLOG START ********
                              <div class="row blog">
-             
+            
                                      <div class="span4">
                                              <div class="padding center">
                                                      <p><img src="images/photo-dessert.png" alt="Dessert" class="round" /></p>
@@ -319,9 +315,9 @@
                                                      <p><a href="#" class="button">Read More</a></p>
                                              </div>
                                      </div>
-                                     
+                                    
                                      <hr class="line">
-             
+            
                                      <div class="span4">
                                              <div class="padding center">
                                                      <p><img src="images/photo-steak.png" alt="Steak" class="round" /></p>
@@ -331,9 +327,9 @@
                                                      <p><a href="#" class="button">Read More</a></p>
                                              </div>
                                      </div>
-             
+            
                                      <hr class="line">
-             
+            
                                      <div class="span4">
                                              <div class="padding center">
                                                      <p><img src="images/photo-tomatoes.png" alt="Tomatoes" class="round" /></p>
@@ -343,9 +339,9 @@
                                                      <p><a href="#" class="button">Read More</a></p>
                                              </div>
                                      </div>
-             
+            
                              </div>
-                <!-- ******** BLOG END ******** --> 
+                <!-- ******** BLOG END ******** -->
 
             </article>
 
@@ -354,4 +350,3 @@
         <button class="back-to-top">^</button>
     </body>
 </html>
-
