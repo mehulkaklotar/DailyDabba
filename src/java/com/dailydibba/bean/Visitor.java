@@ -311,17 +311,17 @@ public class Visitor {
   
     } 
 
-    public boolean insertUser(String userName, String password, String usertype) {
+     public boolean insertUser(String userName, String password) {
         con = new DBConnection();
 
         try {
 
-            callableStatement = con.connection.prepareCall("{call insertUser(?,?,?)}");
+            callableStatement = con.connection.prepareCall("{call insertUser(?,?)}");
             callableStatement.setString(1, userName);
             callableStatement.setString(2, password);
-            callableStatement.setString(3, usertype);
             int row = callableStatement.executeUpdate();
-            System.out.println("N" + row);
+            
+
             if (row == 1) {
                 return true;
             } else {
@@ -332,6 +332,58 @@ public class Visitor {
         } finally {
             con.closeConnection();
         }
+
+    }
+    public boolean insertUserRoles(String userName, String userType) {
+        con = new DBConnection();
+
+        try {
+
+callableStatement=con.connection.prepareCall("{call insertUserRoles(?,?)}");
+            callableStatement.setString(1, userName);
+            callableStatement.setString(2, userType);
+    int row = callableStatement.executeUpdate();
+            
+
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception ex) {
+            return false;
+        } finally {
+            con.closeConnection();
+        }
+
+    }
+    public List<City> getCity() {
+        List<City> cityList = new ArrayList<City>();
+        con = new DBConnection();
+        try {
+
+            callableStatement = con.connection.prepareCall("{call getAllCity()}");
+
+            ResultSet rs = callableStatement.executeQuery();
+
+            while (rs.next()) {
+                City city = new City(rs.getInt(1), rs.getString(2));
+                cityList.add(city);
+                //System.out.println(rs.getString(2));
+            }
+            rs.close();
+            //return cityList;
+
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+
+
+
+        }
+        return cityList;
+
 
     }
 

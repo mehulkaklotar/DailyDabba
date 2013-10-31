@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.dailydibba.model.*" %>
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
     <head>
@@ -13,9 +17,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
+        
+        <script>
+        function myFunction() {
+        var pass1 = document.getElementById("pass1").value;
+        var pass2 = document.getElementById("pass2").value;
+        if (pass1 != pass2) {
+            alert("Passwords Do not match");
+            document.getElementById("pass1").style.borderColor = "#E34234";
+            document.getElementById("pass2").style.borderColor = "#E34234";
+        }
+    }
+</script>
 
         <jsp:include page="include.jsp"></jsp:include>
         </head>
+        
 
         <body class="home">
             <header>
@@ -97,20 +114,20 @@
                         </div>
                         <br>
                         <div>
-                            <input type="text" style="width:auto;" placeholder="Password" name="txtPassword">
+                            <input type="password"  id="pass1" style="width:auto;" placeholder="Password" name="txtPassword">
                         </div>
                         <br>
                         <div>
-                            <input type="text" style="width:auto;" placeholder="Confirm Password" name="txtConfirmPassword">
+                            <input type="password" id="pass2" style="width:auto;" placeholder="Confirm Password" name="txtConfirmPassword">
                         </div>
                         <br>
                         <div>
-                            <input type="text" style="width:auto;" placeholder="Vendor Name" name="txtVendorName" >
+                            <input type="text" style="width:auto;" placeholder="Vendor Name" name="txtVendorname" >
                         </div>
+                        <br>
                         
-                        <br>
                         <div>
-                            <input type="text" style="width:auto;" placeholder="OwnerName" name="txtOwnerName" >
+                            <input type="text" style="width:auto;" placeholder="Owner Name" name="txtOwnername">
                         </div>
                         
                         <br>
@@ -123,46 +140,40 @@
                         </div>
                         <br>
                         <div>
-                            <input type="text" style="width:auto;" placeholder="Email ID" name="txtEmailID">
+                            <input type="email" style="width:auto;" placeholder="Email ID" name="txtEmailID">
                         </div>
                         <br>
                         <div>
                             <h3> Tiffin Center address </h3>
-                            <select id="State" class ="selectStyle">
-                                <option value="1">State
-                                </option>
-                            </select>
-                             <select id="City" class ="selectStyle">
-                                <option value="1">City
-                                </option>
+
+                            <select id="ddlCity" name="ddlCity" class ="selectStyle">
+                                <option>Select City</option>
+                                        <c:forEach items="${Cities}" var="city">
+                                          
+                                                    <option value="${city.cityID}" >${city.cityName}</option>
+                                            
+                                        </c:forEach>
+                                    </select>
+                        </div>
+                         <div id="areaDiv">
+                            <select id="listArea" class ="selectStyle">
+                              <option>Select Area</option>
+                          
                             </select>
                         </div>
-                       
-                        <br>
-                        <div>
-                            <select id="Area" class ="selectStyle">
-                                <option value="1">Area
-                                </option>
-                            </select>
+                        
+                          <div>
                             <input type="text" style="width:auto;" placeholder="Landmark" name="txtLandmark">
-                        </div>
-                        <br>
-                        <div>
                             <input type="text" style="width:auto;" placeholder="Street Name" name="txtStreetName">
                             <input type="text" style="width:auto;" placeholder="Flat Number" name="txtFlatNumber" >
                             
                         </div>
                         <br>
-
-                        <br>
-                        <!--<div>
-                            <input type="text" style="width:auto;" placeholder="Pin Code" name="txtPincode">
-                        </div>-->
                         
                     </div>
                     <div class="row">
                         <div class="span6">
-                            <input type="submit" value="Submit">
+                            <input type="submit" value="Submit" onclick="myFunction()">
                         </div>
                     </div>
                 </form>

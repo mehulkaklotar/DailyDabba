@@ -22,6 +22,7 @@
                     <li><a href="">Items</a>
                         <ul>
                             <li><a href="addItem.jsp">Add Item</a></li>
+                            <>
 
                         </ul>
                     </li>
