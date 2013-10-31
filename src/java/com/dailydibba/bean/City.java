@@ -1,17 +1,25 @@
-/*
- * 
- */
 package com.dailydibba.bean;
-
+import com.dailydibba.bean.Area;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-
+/**
+ *
+ * @author Ranu(201212076)
+ * 15/10/2013
+ */
 public class City {
-
     private int cityID;
     private String cityName;
-    private ArrayList<Area> areas = new ArrayList<Area>();
+    ArrayList<Area> areas= new ArrayList<Area>();
+     public City() {
+    }
 
-    public City() {
+    public City(int cityID,String cityName)
+    {
+        this.cityID=cityID;
+        this.cityName=cityName;
+
     }
 
     public int getCityID() {
@@ -39,4 +47,8 @@ public class City {
     }
 
     
+    
 }
+
+
+

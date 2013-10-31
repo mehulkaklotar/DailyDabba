@@ -19,7 +19,7 @@ public class Vendor extends User {
     private String ownerName;
     private String landlineNumber;
     private boolean flag;
-    private boolean staus;
+    private boolean status;
     private int rating;
     private List<Area> areas;
     DBConnection con;
@@ -121,12 +121,12 @@ public class Vendor extends User {
         this.flag = flag;
     }
 
-    public boolean isStaus() {
-        return staus;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setStaus(boolean staus) {
-        this.staus = staus;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public void getProfileDetails(){

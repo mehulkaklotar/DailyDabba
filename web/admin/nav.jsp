@@ -22,6 +22,7 @@
                     <li><a href="">Items</a>
                         <ul>
                             <li><a href="addItem.jsp">Add Item</a></li>
+                            <>
 
                         </ul>
                     </li>
@@ -31,7 +32,7 @@
                     <li><a href="users.jsp">Users</a>
 
                     </li>
-                    <li><a href="vendors.jsp">Vendors</a>
+                     <li><a href="AdminController?action=getAllVendors">Vendors</a>
 
                     </li>
                     <li><a href="AdminController?action=getAllCity">City</a>
