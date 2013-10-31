@@ -11,6 +11,7 @@
         <meta charset="UTF-8">
         <title>Daily Dibba</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
 
