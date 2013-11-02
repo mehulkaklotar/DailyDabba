@@ -30,74 +30,74 @@
                         <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
                         <li><a href="javascript:void(0)">Feedback</a></li>
                         <li><a href="javascript:void(0)">View Feedback</a></li>
-                        
+
                     </ul>
                 </div>
 
                 <!-- main content -->
                 <div class="container">
-                <div class="row-fluid">
-                    <div class="span12">
-                        <div class="w-box">
-                            <div class="w-box-header">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-inverse btn-mini delete_rows_dt" data-tableid="dt_gal" title="Edit">Delete</a>
-                                    <a href="#" class="btn btn-inverse btn-mini" title="View">Another Action</a>
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="w-box">
+                                <div class="w-box-header">
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-inverse btn-mini delete_rows_dt" data-tableid="dt_gal" title="Edit">Delete</a>
+                                        <a href="#" class="btn btn-inverse btn-mini" title="View">Another Action</a>
+                                    </div>
+                                </div>
+                                <div class="w-box-content">
+                                    <table class="table table-vam table-striped" id="dt_gal">
+                                        <thead>
+                                            <tr> 
+                                                <th class="table_checkbox" style="width:13px"><input type="checkbox" name="select_rows" class="select_rows" data-tableid="dt_gal" /></th>
+                                                <th>FeedBack No.</th>
+                                                <th>Vendor Name</th>
+                                                <th>Customer Name</th>
+                                                <th>Date</th>
+                                                <th>Suggestions</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr> 
+                                                <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
+                                                <td>1<br/></td>
+                                                <td>a</td>
+                                                <td>b</td>
+                                                <td>18/12/2012</td>
+                                                <td>asddaasf</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>                  
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="w-box-footer">
+                                    <div class="pagination pagination-centered">
+                                        <ul>
+                                            <li class="disabled"><a href="#">Prev</a></li>
+                                            <li class="active"><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">Next</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="w-box-content">
-                                <table class="table table-vam table-striped" id="dt_gal">
-                                    <thead>
-                                        <tr> 
-                                            <th class="table_checkbox" style="width:13px"><input type="checkbox" name="select_rows" class="select_rows" data-tableid="dt_gal" /></th>
-                                            <th>FeedBack No.</th>
-                                            <th>Vendor Name</th>
-                                            <th>Customer Name</th>
-                                            <th>Date</th>
-                                            <th>Suggestions</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr> 
-                                            <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
-                                            <td>1<br/></td>
-                                            <td>a</td>
-                                            <td>b</td>
-                                            <td>18/12/2012</td>
-                                            <td>asddaasf</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>                  
-                                    </tbody>
-                                </table>
-                            </div>
-            
-                            <div class="w-box-footer">
-                                <div class="pagination pagination-centered">
-                                    <ul>
-                                        <li class="disabled"><a href="#">Prev</a></li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">Next</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+
                         </div>
-                        
-                    </div>
                     </div>
                 </div>
             </div>
-           
-                
-                <div class="footer_space"></div>
-                </div> 
+
+
+            <div class="footer_space"></div>
+        </div> 
 
         <!-- footer --> 
     <jsp:include page="footer.jsp"></jsp:include>

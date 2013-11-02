@@ -12,7 +12,7 @@
     <c:forEach items="${vendorList}" var="vendor">
         <tr>
             <td>
-                <a href="Controller?action=getVendor&vendorUN=${vendor.userName}"><font color="#2fbbb2"><c:out value="${vendor.vendorName}"/></font></a>
+                <a href="Controller?action=getVendor&vendorUN=${vendor.userName}"><font size="3" color="#2fbbb2"><c:out value="${vendor.vendorName}"/></font></a>
                 <br/>
                 <font size="2">Rating : <c:out value="${vendor.rating}" /></font>
         </tr>

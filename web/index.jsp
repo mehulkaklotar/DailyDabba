@@ -143,7 +143,7 @@
                                 <script type="text/javascript">
                                     YAHOO.example.Data = {
                                         arrayStates: [
-                                    <%= str%>
+                                    <%= str %>
                                         ]
                                     };
                                     YAHOO.example.BasicLocal = function() {

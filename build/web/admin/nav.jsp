@@ -11,7 +11,7 @@
                 <ul class="clearfix" id="mobile-nav">
                     <li>
                         <a href="updatemenu.jsp">Menu</a>
-                        
+
                     </li>
                     <li><a href="orders.jsp">Orders</a>
                         <ul>
@@ -32,6 +32,7 @@
 
                     </li>
                     <li><a href="vendors.jsp">Vendors</a>
+                     <li><a href="AdminController?action=getAllVendors">Vendors</a>
 
                     </li>
                     <li><a href="AdminController?action=getAllCity">City</a>

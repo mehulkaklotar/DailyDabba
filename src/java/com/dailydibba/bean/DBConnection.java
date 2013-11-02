@@ -23,7 +23,7 @@ public class DBConnection {
     //Date and Time: 09-October-2013
     //Purpose: Data Layer Class to establish connection and execute //queries and procedures
     String username = "root";
-    String password = "root";
+    String password = "";
     String url = "jdbc:mysql://localhost/tiffinserviceportaldb";
     Connection connection = null;
     ResultSet resultSet = null;

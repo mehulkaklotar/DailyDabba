@@ -216,66 +216,103 @@
                             </div>
                         </div>
                         <table>
-                            <tr>
-                                <td>
-                                    Subji 1 :
-                                </td>
-                                <td>
-                                    <select>
-                                        <option>Panner Tikka Masala</option>
-                                        <option>Mix Vegetables</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Subji 2 :
-                                </td>
-                                <td>
-                                    <select>
-                                        <option>Panner Tikka Masala</option>
-                                        <option>Mix Vegetables</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Roti :
-                                </td>
-                                <td>
-                                    5 +  &nbsp; <input type="text" name="roti" placeholder="Extra Roti" style="width: 5em"/> &nbsp; Total :
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Dal :</label>
-                                </td>
-                                <td>
-                                    <label>Regular</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Rice :</label>
-                                </td>
-                                <td>
-                                    <label>Jira Rice</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Salad :</label>
-                                </td>
-                                <td>
-                                    <label>Available</label>
-                                </td>
-                            </tr>
+                            <c:if test="${description.tiffinName}">
+                                <tr>
+                                    <td>
+                                        Description : 
+                                    </td>
+                                    <td>
+                                        ${description.tiffinName}
+                                    </td>
+                                </tr>
+                            </c:if>
+                            <c:set var="count" value="${0}"/>
+                            <c:forEach items="${menu.menuItem}" var="list">
+                                <c:if test="${list.item.type.typeName eq 'Sabzi'}">
+                                    <c:set var="count" value="${count + list.cost}"/>
+                                    <tr>
+                                        <td>
+                                            Subji :
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <c:forEach items="${menu.menuItem}" var="list">
+                                                    <c:if test="${list.item.type.typeName eq 'Sabzi'}">
+                                                        <option>
+                                                            ${list.item.itemName} (${list.cost}) Rs.
+                                                        </option>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </c:if>
+                            </c:forEach>
+
+                            <c:forEach items="${menu.menuItem}" var="list">
+                                <c:if test="${list.item.type.typeName == 'Roti'}">
+                                    <tr>
+                                        <td>
+                                            ${list.item.itemName} :
+                                        </td>
+                                        <td>
+                                            ${list.quantity} (${list.cost}) Rs.
+                                        </td>
+                                    </tr>
+                                    <c:set var="count" value="${count + list.cost}"/>
+                                </c:if>
+                            </c:forEach>
+
+                            <c:forEach items="${menu.menuItem}" var="list">
+                                <c:if test="${list.item.type.typeName == 'Rice'}">
+                                    <tr>
+                                        <td>
+                                            Rice :
+                                        </td>
+                                        <td>
+                                            ${list.item.itemName} (${list.cost}) Rs.
+                                        </td>
+                                    </tr>
+                                    <c:set var="count" value="${count + list.cost}"/>
+                                </c:if>
+                            </c:forEach>
+
+                            <c:forEach items="${menu.menuItem}" var="list">
+                                <c:if test="${list.item.type.typeName == 'Dal'}">
+                                    <tr>
+                                        <td>
+                                            Dal :
+                                        </td>
+                                        <td>
+                                            ${list.item.itemName} (${list.cost}) Rs.
+                                        </td>
+                                    </tr>
+                                    <c:set var="count" value="${count + list.cost}"/>
+                                </c:if>
+                            </c:forEach>        
+
+
+                            <c:forEach items="${menu.menuItem}" var="list">
+                                <c:if test="${list.item.type.typeName == 'Salad'}">
+                                    <tr>
+                                        <td>
+                                            Salad :
+                                        </td>
+                                        <td>
+                                            Available (${list.cost}) Rs.
+                                        </td>
+                                    </tr>
+                                    <c:set var="count" value="${count + list.cost}"/>
+                                </c:if>
+                            </c:forEach>        
+
                             <tr>
                                 <td>
                                     <label>Total Prize of one tiffin :</label>
                                 </td>
-                                <td>
-                                    <label>50</label>
+                                <td id="cost">
+                                    <c:set var="count" value="${count + list.cost}"/>
+                                    <label>${count}</label>
                                 </td>
                             </tr>
                             <tr>

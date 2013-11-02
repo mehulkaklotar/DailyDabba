@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.dailydibba.model.*" %>
 <!doctype html>
 <html>
     <head>
@@ -13,21 +14,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
-        <script src="js/jquery.min.js"></script>
-<script>
-  $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
-</script>
-<script>
-    function validateForm()
-{
-var x=document.forms["registrationForm"]["fname"].value;
-if (x==null || x=="")
-  {
-  alert("First name must be filled out");
-  return false;
-  }
-}
-</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> <!-- or use local jquery -->
+        <script src="/js/jqBootstrapValidation.js"></script>
+        <script>
+            $(function() {
+                $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+            });
+        </script>
+        <script>
+            function validateForm()
+            {
+                var x = document.forms["registrationForm"]["fname"].value;
+                if (x == null || x == "")
+                {
+                    alert("First name must be filled out");
+                    return false;
+                }
+            }
+        </script>
 
 
         <jsp:include page="include.jsp"></jsp:include>
@@ -110,77 +114,64 @@ if (x==null || x=="")
 
                 <form name="registrationForm" method="post" action="Controller?action=customerRegistration" id="customerRegister">
                     <div align="left" class="row">
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="User Name" name="txtUsername" required="">
-                            <span class="required">*</span>
-                            <span class="required">Should be unique</span>
-                        </div>
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Password" name="txtPassword">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Confirm Password" name="txtConfirmPassword">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="First Name" name="txtFirstname" >
-                            <input type="text" style="width:auto;" placeholder="Last Name" name="txtLastname">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Occupation" name="txtOccupation">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Mobile Number"   name="txtMobileNumber">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Alternate Number" name="txtAlternateNumber">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="email" style="width:auto;" placeholder="Email ID" name="txtEmailID">
-                        </div>
-                        <br>
-                        <div>
-                            <select id="State" class ="selectStyle">
-                                <option value="1">State
-                                </option>
-                            </select>
-                             <select id="City" class ="selectStyle">
-                               
-                            </select>
-                        </div>
-                       
-                        <br>
-                        <div>
-                            <select id="Area" class ="selectStyle">
-                                <option value="1">Area
-                                </option>
-                            </select>
-                            
-                            <input type="text" style="width:auto;" placeholder="Landmark" name="txtLandmark">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Street Name" name="txtStreetName">
-                            <input type="text" style="width:auto;" placeholder="Flat Number" name="txtFlatNumber" >
-                            
-                        </div>
-                        <br>
+                        <table align="center" width="500px">
+                            <tr align="left">
+                            <div>
+                                <input type="text" style="width:auto;" placeholder="User Name" name="txtUsername" required="">
+                                <!-- <span class="required">*</span>
+                                 <span class="required">Should be unique</span> -->
+                            </div> 
+                            </tr>
 
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Pin Code" name="txtPincode">
-                        </div>
-                        
-                    </div>
-                    <div class="row">
+                            <br>
+                            <tr align="left">
+                            <div>
+                                <input type="text" style="width:auto;" placeholder="Password" name="txtPassword">
+                                <input type="text" style="width:auto;" placeholder="Confirm Password" name="txtConfirmPassword">
+                            </div>    
+                            </tr>
+
+                            <br>
+                            <div>
+                                <input type="text" style="width:auto;" placeholder="First Name" name="txtFirstname" >
+                                <input type="text" style="width:auto;" placeholder="Last Name" name="txtLastname">
+                            </div>
+                            <br>
+                            <div>
+                                <input type="text" style="width:auto;" placeholder="Mobile Number"   name="txtMobileNumber">
+                                <input type="text" style="width:auto;" placeholder="Alternate Number" name="txtAlternateNumber">
+                            </div>
+
+
+                            <br>
+                            <tr align=left"">
+                            <div>
+                                <input type="email" style="width:auto;" placeholder="Email ID" name="txtEmailID">
+                            </div>
+                            <br>
+                            <div>
+                                <select id="Area" class ="selectStyle">
+                                    <option value="1">Area
+                                    </option>
+                                </select>
+
+
+                            </div>
+                            <br>
+                            <div>
+                                <input type="text" style="width:auto;" placeholder="Flat Number" name="txtFlatNumber" >
+                                <input type="text" style="width:auto;" placeholder="Street Name" name="txtStreetName">
+                                <input type="text" style="width:auto;" placeholder="Landmark" name="txtLandmark">
+
+                            </div>
+
+
+                    </div>     
+                    </table>
+
+                    <div class="row" >
                         <div class="span6">
-                         
+
                             <input type="submit" value="Submit">
                         </div>
                     </div>

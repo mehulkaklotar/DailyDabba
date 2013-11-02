@@ -52,29 +52,29 @@
 
                         <div class="slide" style="height:300px;" > 
                             <img src="images/thali.JPG" />
-                           
+
                         </div>
 
                         <div class="slide" style="height:300px;"> 
                             <img src="images/thali1.jpg" />
-                           
+
                         </div>
 
                         <div class="slide" style="height:300px;"> 
                             <img src="images/thali2.jpg" />
-                            
+
                         </div>
 
                     </div>
-                    
-                    
+
+
                     <div class="timers"></div>
                     <div class="slidePrev"><span></span></div>
                     <div class="slideNext"><span></span></div>
                 </div> 
                 <div style="height:20px;background-color: #222;">
-                        
-                    </div>
+
+                </div>
                 <!-- ******** FULL WIDTH SLIDER END ******** -->
 
             </header>
