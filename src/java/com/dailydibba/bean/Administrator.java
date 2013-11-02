@@ -404,53 +404,5 @@ public class Administrator extends User {
         }
 
     }
-    public List<Vendor> getAllVendor(){
-        List<Vendor> vendorList = new ArrayList<Vendor>();
-        con = new DBConnection();
-        CallableStatement callstmt;
-        try {
-            cstmt = con.connection.prepareCall("{call getAllVendors()}");
-            ResultSet rs = cstmt.executeQuery();
-            callstmt = con.connection.prepareCall("{call getRatings(?)}");          
-              
-            while(rs.next()) {                
-                Vendor objVendor = new Vendor();
-                String UserName=rs.getString("UserName");
-                objVendor.setVendorName(rs.getString("VendorName"));
-                objVendor.setStatus(rs.getBoolean("Status"));
-                objVendor.setUserName(UserName); 
-                callstmt.setString(1, UserName);
-                ResultSet rs_rating = callstmt.executeQuery();
-                while(rs_rating.next()){
-                objVendor.setRating(rs_rating.getInt("Rating")); 
-                }
-                vendorList.add(objVendor);
-                rs_rating.close();
-            }
-                rs.close();
-               
-        } catch (Exception ex) {
-            ex.getMessage();
-        } finally {
-
-            con.closeConnection();
-        }
-        return vendorList;        
-    }
-    public static void main(String args[]){
-        Administrator ad=new Administrator();
-//        List<Vendor> vl=new ArrayList<Vendor>();
-//        //vl=ad.searchVendor("Ahmedabad","Infocity");
-//        vl=ad.getAllVendor();
-//        
-        System.out.println(ad.viewVendorProfile("Sai").getUserName());
-//        System.out.println(v.getVendorName());
-//        System.out.println(v.isStatus());
-//        System.out.println(v.getRating()); 
-        //System.out.println(v.getUserName());
-      
-       
-        
-        
-    }
+   
 }

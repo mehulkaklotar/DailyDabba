@@ -19,7 +19,7 @@ public class Vendor extends User {
     private String ownerName;
     private String landlineNumber;
     private boolean flag;
-    private boolean status;
+    private boolean staus;
     private int rating;
     private List<Area> areas;
     DBConnection con;
@@ -121,34 +121,14 @@ public class Vendor extends User {
         this.flag = flag;
     }
 
-
-    public boolean isStatus() {
-        return status;
+    public boolean isStaus() {
+        return staus;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setStaus(boolean staus) {
+        this.staus = staus;
     }
 
-    public void getProfileDetails(){
-        con=new DBConnection();
-        try {
-            callableStatement=con.connection.prepareCall("{call getVendor(?)}");
-            callableStatement.setString(1, userName);
-            ResultSet rs=callableStatement.executeQuery();
-            if(rs.next()){
-                vendorName=rs.getString("VendorName");
-                mobileNo=rs.getString("MobileNo");
-                ownerName=rs.getString("OwnerName");
-                emailID=rs.getString("EmailID");
-                lane=rs.getString("Lane");
-                ownerName=rs.getString("OwnerName");
-                landlineNumber=rs.getString("LandlineNo");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Vendor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     public ArrayList<Tiffin> getAllOrderForVendor(String vendor) {
         try {
             con = new DBConnection();
@@ -205,6 +185,7 @@ public class Vendor extends User {
 
     }
 
+
     public boolean blockCustomer(String username) {
         con = new DBConnection();
         try {
@@ -254,11 +235,14 @@ public class Vendor extends User {
             callableStatement.setString(1, vendor);
             ResultSet rs = callableStatement.executeQuery();
             Menu objMenu = new Menu();
+            
             while (rs.next()) {
-                
+                objMenu.setMenuID(rs.getInt("MenuID"));
+                objMenu.setTiffinName(rs.getString("TiffinDescription"));
                 MenuItem objMenuItem = new MenuItem();
                 
                 Item objItem = new Item();
+                objItem.setItemID(rs.getInt("ItemID"));
                 objItem.setItemName(rs.getString("ItemName"));
                 
                 ItemType objItemType = new ItemType();
@@ -317,6 +301,31 @@ public class Vendor extends User {
             return true;
         }catch(SQLException ex){
         return false;
+        }
+    }
+     
+      public void getProfileDetails(){
+        con=new DBConnection();
+        try {
+            callableStatement=con.connection.prepareCall("{call getVendor(?)}");
+            callableStatement.setString(1, userName);
+            ResultSet rs=callableStatement.executeQuery();
+            if(rs.next()){
+                vendorName=rs.getString("VendorName");
+                mobileNo=rs.getString("MobileNo");
+                ownerName=rs.getString("OwnerName");
+                emailID=rs.getString("EmailID");
+                lane=rs.getString("Lane");
+                ownerName=rs.getString("OwnerName");
+                landlineNumber=rs.getString("LandlineNo");
+                area=new Area();
+                area.setAreaID(rs.getInt("AreaID"));
+                area.setAreaName(rs.getString("AreaName"));
+                area.setCity(new City());
+                area.getCity().setCityID(rs.getInt("CityID"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Vendor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

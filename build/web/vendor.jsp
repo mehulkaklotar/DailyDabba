@@ -215,8 +215,8 @@
                                 <h3 style="text-align: center">Lunch </h3>
                             </div>
                         </div>
-                        <table>
-                            <c:if test="${description.tiffinName}">
+                        <table id="MenuTable">
+                            <c:if test="${menu.tiffinName}">
                                 <tr>
                                     <td>
                                         Description : 
@@ -228,6 +228,7 @@
                             </c:if>
                             <c:set var="count" value="${0}"/>
                             <c:forEach items="${menu.menuItem}" var="list">
+                                
                                 <c:if test="${list.item.type.typeName eq 'Sabzi'}">
                                     <c:set var="count" value="${count + list.cost}"/>
                                     <tr>
@@ -235,11 +236,12 @@
                                             Subji :
                                         </td>
                                         <td>
-                                            <select>
+                                            <c:set var="item" value="${item + 1}"/>
+                                            <select id="item${item}" class="sabzi">
                                                 <c:forEach items="${menu.menuItem}" var="list">
                                                     <c:if test="${list.item.type.typeName eq 'Sabzi'}">
-                                                        <option>
-                                                            ${list.item.itemName} (${list.cost}) Rs.
+                                                        <option id="${list.item.itemID}" value="${list.cost}" data-price="${list.cost}">
+                                                            ${list.item.itemName} Rs.${list.cost}
                                                         </option>
                                                     </c:if>
                                                 </c:forEach>
@@ -248,18 +250,17 @@
                                     </tr>
                                 </c:if>
                             </c:forEach>
-
+                                    
                             <c:forEach items="${menu.menuItem}" var="list">
                                 <c:if test="${list.item.type.typeName == 'Roti'}">
                                     <tr>
                                         <td>
                                             ${list.item.itemName} :
                                         </td>
-                                        <td>
-                                            ${list.quantity} (${list.cost}) Rs.
+                                        <td data-quantity="${list.quantity}">
+                                            # ${list.quantity} * Rs.${list.cost} &nbsp; <input type="text" placeholder="Extra" class="txtQuantityRoti" value="" style="width:45px;" />
                                         </td>
                                     </tr>
-                                    <c:set var="count" value="${count + list.cost}"/>
                                 </c:if>
                             </c:forEach>
 
@@ -273,7 +274,6 @@
                                             ${list.item.itemName} (${list.cost}) Rs.
                                         </td>
                                     </tr>
-                                    <c:set var="count" value="${count + list.cost}"/>
                                 </c:if>
                             </c:forEach>
 
@@ -287,7 +287,6 @@
                                             ${list.item.itemName} (${list.cost}) Rs.
                                         </td>
                                     </tr>
-                                    <c:set var="count" value="${count + list.cost}"/>
                                 </c:if>
                             </c:forEach>        
 
@@ -302,25 +301,24 @@
                                             Available (${list.cost}) Rs.
                                         </td>
                                     </tr>
-                                    <c:set var="count" value="${count + list.cost}"/>
                                 </c:if>
                             </c:forEach>        
 
-                            <tr>
-                                <td>
-                                    <label>Total Prize of one tiffin :</label>
-                                </td>
-                                <td id="cost">
-                                    <c:set var="count" value="${count + list.cost}"/>
-                                    <label>${count}</label>
-                                </td>
-                            </tr>
+                            
                             <tr>
                                 <td>
                                     <label>Enter total no of tiffins :</label>
                                 </td>
                                 <td>
-                                    <input type="text" name="tiffin" style="width: 5em"/>&nbsp; * 50 <span> = Total : </span>
+                                    <div style="float:left;">
+                                        <input type="text" class="txtTiffinQ" name="tiffin" style="width:40px;"/>
+                                    </div>
+                                    <div style="float:left;">
+                                        
+                                        <label id="cost" data-price="${count}" style="padding-top: 10px;">* ${count}</label>
+                                    </div>
+                                    
+                                    <div class="clearfix"></div>
                                 </td>
                             </tr>
                             <tr>
@@ -328,7 +326,7 @@
                                     <label>Grand total of all tiffins :</label>
                                 </td>
                                 <td>
-                                    <label style="float: left">500 rs. </label> &nbsp; <button class="btn btn-primary" type="button" style="float:right">Add to Cart</button>
+                                    <label id="totalcost" style="float: left">Rs. ${count} </label> &nbsp; <button class="btn btn-primary" type="button" style="float:right" onclick="addToCart()">Add to Cart</button>
                                 </td>
                             </tr>
                         </table>
