@@ -30,7 +30,7 @@
                         <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
                         <li><a href="javascript:void(0)">Item</a></li>
                         <li><a href="javascript:void(0)">Add Item...</a></li>
-                        
+
                     </ul>
                 </div>
 
@@ -47,7 +47,7 @@
                                             <input type="text" id="txtItemName" placeholder="Type here...">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="control-group">
                                         <div class="controls">
                                             <button type="submit" class="btn">Add</button>

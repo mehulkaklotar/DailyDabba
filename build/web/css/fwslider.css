@@ -17,17 +17,17 @@
 /* ------------------------------- 2. Slider Styles ------------------------------- */
 
 #fwslider {
-	overflow: hidden;
+    overflow: hidden;
     position: relative;
     width:100%;
-	line-height:100%;
+    line-height:100%;
 }
 
 
 #fwslider h4,
 #fwslider p,
 #fwslider img {
-	margin:0;
+    margin:0;
 }
 
 #fwslider .slider_container {
@@ -36,7 +36,7 @@
 #fwslider .slide {
     display: none;
     left:0;
-	line-height:100%;
+    line-height:100%;
     position: absolute;
     top:0;
     width:100%;
@@ -126,27 +126,27 @@
 }
 
 .inner #fwslider .slide_content_wrap { /* Slider Text Content Container Style */
-	display: none;
+    display: none;
 }
 
 #fwslider .title {  /* Slider Title Style */
     background:#2fbbb2;
-	border:1px solid #2fbbb2;
-	box-shadow: 0 0 5px rgba(0,0,0,0.2), inset 0 0 15px rgba(0,0,0,0.15);
+    border:1px solid #2fbbb2;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2), inset 0 0 15px rgba(0,0,0,0.15);
     color:#fff;
     float:right;
     font-family: "PT Serif", Georgia, "Times New Roman", Times, serif;
     font-size:30px;
     opacity: 0;
     padding:10px 30px;
-	text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
-	text-transform:uppercase;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+    text-transform:uppercase;
 }
 
 #fwslider .description { /* Slider Description Style */
     background:#fff;
-	border:1px solid #fff;
-	box-shadow: 0 0 5px rgba(0,0,0,0.2), inset 0 0 40px rgba(0,0,0,0.15);
+    border:1px solid #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2), inset 0 0 40px rgba(0,0,0,0.15);
     clear:both;
     color:#222;
     float:right;
@@ -154,14 +154,14 @@
     font-size:20px;
     opacity: 0;
     padding:10px 30px;
-	text-shadow: 0 1px 0 #fff;
-	text-transform:uppercase;
+    text-shadow: 0 1px 0 #fff;
+    text-transform:uppercase;
 }
 
 #fwslider .readmore { /* Slider Read More button Style */
     background:#222;
-	border:1px solid #222;
-	box-shadow: 0 0 5px rgba(0,0,0,0.2), inset 0 0 40px rgba(0,0,0,0.2);
+    border:1px solid #222;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2), inset 0 0 40px rgba(0,0,0,0.2);
     clear:both;
     color:#fff;
     float:right;
@@ -169,13 +169,13 @@
     font-size:20px;
     opacity: 0;
     padding:10px 30px;
-	text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
-	text-transform:uppercase;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+    text-transform:uppercase;
 }
 
 #fwslider .readmore:hover {
     color:#2fbbb2;
-	text-decoration:none;
+    text-decoration:none;
 }
 
 /* ------------------------------- 3. Media Query Max Width 1300, Min Width 720 ------------------------------- */

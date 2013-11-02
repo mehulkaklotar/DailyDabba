@@ -30,7 +30,7 @@
                         <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
                         <li><a href="javascript:void(0)">City</a></li>
                         <li><a href="javascript:void(0)">Add city</a></li>
-                        
+
                         <li><span></span></li>
                     </ul>
                 </div>
@@ -45,39 +45,39 @@
                                     <div class="control-group">
                                         <label class="control-label" for="lblItemName">City name:</label>
                                         <div class="controls">
-                                            <%
-                                             if(request.getAttribute("city")!=null)
-                                             {
-                                                 %>
-                                                 <input type="text" id="txtCityName" value="${city.cityName}" name="txtCityName" placeholder="Type here...">
-                                                 <%
-                                             }
-                                             else
-                                             {
-                                                 %>
-                                                 <input type="text" id="txtCityName" value="" name="txtCityName" placeholder="Type here...">
-                                                 <%
-                                               }
-                                            %>
-                                            
-                                        </div>
+                                        <%
+                                         if(request.getAttribute("city")!=null)
+                                         {
+                                        %>
+                                        <input type="text" id="txtCityName" value="${city.cityName}" name="txtCityName" placeholder="Type here...">
+                                        <%
+                                    }
+                                    else
+                                    {
+                                        %>
+                                        <input type="text" id="txtCityName" value="" name="txtCityName" placeholder="Type here...">
+                                        <%
+                                      }
+                                        %>
+
                                     </div>
-                                    
-                                    <div class="control-group">
-                                        <div class="controls">
-                                            <button type="submit" class="btn">Add</button>
-                                        </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" class="btn">Add</button>
                                     </div>
-                                </fieldset>
-                            </form>
-                        </div>
+                                </div>
+                            </fieldset>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="footer_space"></div>
-        </div> 
+        </div>
+        <div class="footer_space"></div>
+    </div> 
 
-        <!-- footer --> 
+    <!-- footer --> 
     <jsp:include page="footer.jsp"></jsp:include>
 
         <!-- Common JS -->

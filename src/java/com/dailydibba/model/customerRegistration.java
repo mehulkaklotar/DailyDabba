@@ -23,7 +23,7 @@ public class customerRegistration implements Action {
 
 
         Visitor objVisitor = new Visitor();
-        objVisitor.insertUser(req.getParameter("txtUsername"), req.getParameter("txtPassword"), "Customer");
+        objVisitor.insertUser(req.getParameter("txtUsername"), req.getParameter("txtPassword"));
 
         objVisitor.insertCustomer(req.getParameter("txtUsername"),1, req.getParameter("txtFirstname"), req.getParameter("txtLastname"), req.getParameter("txtFlatNumber")+","+req.getParameter("txtStreetName")+","+req.getParameter("txtLandmark"), req.getParameter("txtMobileNumber"), req.getParameter("txtEmailID"), false);
         // System.out.println(req.getParameter("txtuserName"));
