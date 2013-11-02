@@ -11,7 +11,7 @@
                 <ul class="clearfix" id="mobile-nav">
                     <li>
                         <a href="updatemenu.jsp">Menu</a>
-                        
+
                     </li>
                     <li><a href="orders.jsp">Orders</a>
                         <ul>
