@@ -9,30 +9,44 @@
             </div>
             <div id="fade-menu" class="pull-left">
                 <ul class="clearfix" id="mobile-nav">
+                    <%
+                        if (session.getAttribute("Role").equals("Vendor")) {
+                    %>
                     <li>
                         <a href="updatemenu.jsp">Menu</a>
 
                     </li>
+                    <% }%>
+                    <%
+                        if (session.getAttribute("Role").equals("Vendor") || session.getAttribute("Role").equals("Admin")) {
+                    %>
                     <li><a href="orders.jsp">Orders</a>
                         <ul>
+                            <%
+                                if (session.getAttribute("Role").equals("Vendor")) {
+                            %>
                             <li><a href="neworders.jsp">New Orders</a></li>
-
+                            <% }%>
                         </ul>
                     </li>
+                    <% } %>
                     <li><a href="">Items</a>
                         <ul>
                             <li><a href="addItem.jsp">Add Item</a></li>
 
                         </ul>
                     </li>
+                    <%
+                        if (session.getAttribute("Role").equals("Admin")) {
+                    %>
                     <li><a href="viewFeedback.jsp">Feedbacks</a>
-
+                    
                     </li>
                     <li><a href="users.jsp">Users</a>
 
                     </li>
                     <li><a href="vendors.jsp">Vendors</a>
-                     <li><a href="AdminController?action=getAllVendors">Vendors</a>
+                    <li><a href="AdminController?action=getAllVendors">Vendors</a>
 
                     </li>
                     <li><a href="AdminController?action=getAllCity">City</a>
@@ -47,12 +61,7 @@
 
                         </ul>
                     </li>
-                    <li><a href="state.jsp">State</a>
-                        <ul>
-                            <li><a href="addState.jsp">Add State</a></li>
-
-                        </ul>
-                    </li>
+                    <% } %>
                 </ul>
             </div>
         </div>

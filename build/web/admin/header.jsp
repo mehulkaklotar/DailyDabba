@@ -8,10 +8,12 @@
                 <nav class="nav-icons">
                     <ul>
                         <li><a href="index.jsp" class="ptip_s" title="Dashboard"><i class="icsw16-home"></i></a></li>
-
+                                <%
+                                    if (session.getAttribute("Role").equals("Admin")) {
+                                %>
                         <li><a href="suggestion.jsp" class="ptip_s" title="Suggestions"><i class="icsw16-mail"></i><span class="badge badge-info">6</span></a></li>
                         <li><a href="request.jsp" class="ptip_s" title="Requests"><i class="icsw16-speech-bubbles"></i><span class="badge badge-important">14</span></a></li>
-
+                        <% } %>
                         <li><a href="javascript:void(0)" class="ptip_s" title="Settings"><i class="icsw16-cog"></i></a></li>
                     </ul>
                 </nav>

@@ -145,17 +145,18 @@ public class Customer extends User{
         return vendorList;
     }
 
-    public boolean insertOrder(String customer, String deliveryaddress, int nooftiffin,int menuID, boolean status, Date orderdate){
+    public boolean insertOrder(String customer, String deliveryaddress, int nooftiffin,int menuID, boolean status, String orderdate,String orderID){
         con = new DBConnection();
         try {
 
-            callableStatement = con.connection.prepareCall("{call insertOrder(?,?,?,?,?,?)}");
+            callableStatement = con.connection.prepareCall("{call insertOrder(?,?,?,?,?,?,?)}");
             callableStatement.setString(1, customer);
             callableStatement.setString(2, deliveryaddress);
             callableStatement.setInt(3, nooftiffin);
             callableStatement.setInt(4, menuID);
             callableStatement.setBoolean(5, status);
-            callableStatement.setDate(6, orderdate);
+            callableStatement.setString(6, orderdate);
+            callableStatement.setString(7, orderID);
             int row = callableStatement.executeUpdate();
 
             if (row == 1) {
@@ -171,12 +172,12 @@ public class Customer extends User{
 
     }
     
-    public boolean insertOrderDetails(int orderID,int itemID,int qunatity){
+    public boolean insertOrderDetails(String orderID,int itemID,int qunatity){
         con = new DBConnection();
         try {
 
             callableStatement = con.connection.prepareCall("{call insertOrderDetails(?,?,?)}");
-            callableStatement.setInt(1, orderID);
+            callableStatement.setString(1, orderID);
             callableStatement.setInt(2, itemID);
             callableStatement.setInt(3, qunatity);
             int row = callableStatement.executeUpdate();
@@ -193,6 +194,63 @@ public class Customer extends User{
         }
 
     }
+    
+   public List<TiffinDetails> getOrderDetails(String orderID)
+   {
+       List<TiffinDetails> tiffindetails = new ArrayList<TiffinDetails>();
+        con = new DBConnection();
+        try {
+
+            callableStatement = con.connection.prepareCall("{call getOrderDetails(?)}");
+            callableStatement.setString(1, orderID);
+            ResultSet rs = callableStatement.executeQuery();
+            
+            while (rs.next()) {
+                
+                TiffinDetails objDetails = new TiffinDetails();
+                objDetails.setOrderID(rs.getString("OrderID"));
+                objDetails.setItemID(rs.getInt("ItemID"));
+                objDetails.setQuantity(rs.getInt("Quantity"));
+                
+                tiffindetails.add(objDetails);
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+
+            con.closeConnection();
+        }
+        return tiffindetails;
+   }
+   
+   
+   public Tiffin getOrder(String orderID){
+       Tiffin objTiffin = null;
+       con = new DBConnection();
+        try {
+
+            callableStatement = con.connection.prepareCall("{call getOrder(?)}");
+            callableStatement.setString(1, orderID);
+            ResultSet rs = callableStatement.executeQuery();
+            
+            if (rs.next()) {
+                objTiffin = new Tiffin();
+                objTiffin.setOrderID(rs.getInt("OrderID"));
+                objTiffin.setOrderDate(rs.getDate("Orderdate"));
+                objTiffin.setDeliveryAddress(rs.getString("DeliveryAddress"));
+                objTiffin.setNumberOfTiffin(rs.getInt("NoOfTiffin"));
+                objTiffin.setStatus(rs.getBoolean("Status"));
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+
+            con.closeConnection();
+        }
+        return objTiffin;
+   }
     
     public List<Tiffin> getOrderHistory(String customer){
         //Author: Prachi Deodhar
@@ -326,7 +384,7 @@ public class Customer extends User{
         }
     }
 
-    public boolean updateOrderDetails(int orderID, int itemID, int quantity) {
+    public boolean updateOrderDetails(String orderID, int itemID, int quantity) {
         //Author: Hiren Savalia
         //Date :  10-19-2013
         //Changed method's name to updateOrderDetails from modifyTiffin
@@ -334,9 +392,46 @@ public class Customer extends User{
         con = new DBConnection();
         try {
             callableStatement = con.connection.prepareCall("{call updateOrderDetails(?,?,?)}");
-            callableStatement.setInt(1, orderID);
+            callableStatement.setString(1, orderID);
             callableStatement.setInt(2, itemID);
             callableStatement.setInt(3, quantity);
+            int row = callableStatement.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception ex) {
+            return false;
+        } finally {
+            con.closeConnection();
+        }
+    }
+    
+    public boolean deleteOrder(String orderID){
+        con = new DBConnection();
+        try {
+            callableStatement = con.connection.prepareCall("{call deleteOrder(?)}");
+            callableStatement.setString(1, orderID);
+            int row = callableStatement.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception ex) {
+            return false;
+        } finally {
+            con.closeConnection();
+        }
+    }
+    
+    public boolean updateOrder(String orderID,String deliveryaddress){
+        con = new DBConnection();
+        try {
+            callableStatement = con.connection.prepareCall("{call updateOrder(?,?)}");
+            callableStatement.setString(1, orderID);
+            callableStatement.setString(2, deliveryaddress);
             int row = callableStatement.executeUpdate();
             if (row == 1) {
                 return true;

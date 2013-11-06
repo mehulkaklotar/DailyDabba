@@ -419,7 +419,7 @@ callableStatement=con.connection.prepareCall("{call insertUserRoles(?,?)}");
             
             callableStatement = con.connection.prepareCall("{call getItemCost(?,?)}");
             callableStatement.setInt(1, itemID);
-            callableStatement.setInt(1, menuID);
+            callableStatement.setInt(2, menuID);
             ResultSet rs = callableStatement.executeQuery();
                 
                 if (rs.next()) {

@@ -88,7 +88,20 @@
                     <div style="margin: auto">
                         <h2 class="center">Log In</h2>
                     </div>
-                    <form name="loginForm" method="post" action="Controller?action=login" id="login">
+                    <%
+                        if(request.getParameter("vendorUN")!=null)
+                        {
+                    %>
+                        <form name="loginForm" method="post" action="Controller?action=login&from=<%= request.getParameter("from") %>&vendorUN=<%= request.getParameter("vendorUN") %>" id="login">
+                    <%
+                        }
+                        else
+                        {
+                    %>
+                    <form name="loginForm" method="post" action="Controller?action=login&from=<%= request.getParameter("from") %>" id="login">
+                    <% 
+                        }
+                    %>
                         <div align="center">
                             <div>
                                 <span class="error"><% if(request.getAttribute("Message")!=null){ out.print(request.getAttribute("Message")); } %></span>
