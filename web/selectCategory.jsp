@@ -93,10 +93,10 @@
                 <form name="" method="post" action="" id="login">
                     <div align="center" class="row">
                         <div style="float: left;"> 
-                            <a href="customerRegistration.jsp"><image src="images/Customer.jpg" style="width: 70%; height: 70%" /> </a>
+                            <a href="dummycustomerRegistration.jsp"><image src="images/Customer.jpg" style="width: 70%; height: 70%" /> </a>
                         </div>
                         <div style="float: right; margin-right: 30px; margin-top: 50px">
-                            <a href="vendorRegistration.jsp"><image src="images/Vendor.png" style="width: 90%; height: 90%"/> </a>
+                            <a href="Controller?action=selectVendor"><image src="images/Vendor.png" style="width: 90%; height: 90%"/> </a>
                         </div>
                     </div>
                 </form>

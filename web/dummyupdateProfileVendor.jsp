@@ -4,6 +4,7 @@
     Author     : hp
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.dailydibba.bean.Vendor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,7 +17,7 @@
         <meta name="author" content="Marcin Banaszek">
 
         <jsp:include page="include.jsp"></jsp:include>
-
+        <script src="js/commonTask.js"></script>
 
         </head>
 
@@ -92,21 +93,21 @@
                         </div>
                     </div>
                 </div>
-
-                <form name="updateProfileVendorForm" method="post" action="#" id="updateProfileVendor">
+               
+                <form name="updateProfileVendorForm" method="post" action="Controller?action=updateProfileVendor" id="updateProfileVendor">
                     <div align="center" class="row">
-                    <%
+                         <%
                                
-                      Vendor vend=(Vendor)request.getAttribute("Vendor");
+                           Vendor vend=(Vendor)request.getAttribute("Vendor");
                        
-                    %>
-                    <table>
-                        <tbody>
+                         %>
+                        <table>
+                            <tbody>
                             <tr>
                                 <th>Username:</th>
                                 <td>
                                     <div>
-                                        <label id="lblUsername" name="lblUsername"><%=vend.getUserName()%></label>
+                                        <input readonly="readonly" type="text" id="txtUsername" name="txtUsername" value="<%=vend.getUserName()%>">
                                     </div>
                                 </td>
                             </tr>
@@ -120,76 +121,80 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <th>Owner Name:</th>
-                                <td>
-                                    <div>
-                                        <input type="text" style="width:auto;" placeholder="Last Name" name="txtOwnername" value="<%=vend.getOwnerName()%>">
+                        <tr>
+                            <th>Owner Name:</th>
+                            <td>
+                                <div>
+                                    <input type="text" style="width:auto;" placeholder="Last Name" name="txtOwnername" value="<%=vend.getOwnerName()%>">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Mobile Number:</th>
+                            <td>
+                                <div>
+                                    <input type="text" style="width:auto;" placeholder="Mobile Number" name="txtMobileNumber" value="<%=vend.getMobileNo()%>">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Email ID:</th>
+                            <td>
+                                <div>
+                                    <input type="text" style="width:auto;" placeholder="Email ID" name="txtEmailID" value="<%=vend.getEmailID()%>">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>City and Area:</th>
+                            <td>
+                                <div>
+                                    <select name="ddlCity" id="ddlCity" class="selectStyle">
+                                        <c:forEach items="${Cities}" var="city">
+                                            <option value="${city.cityID}" ${city.cityID == vend.area.city.cityID? 'selected' : ''}>${city.cityName}</option>
+                                        </c:forEach>
+                                    </select>
+                                                   
+                                  <div name="areaDiv" id="areaDiv">
+                                        <select id="ddlArea" name="ddlArea" class ="selectStyle">
+                                        <c:forEach items="${Areas}" var="area">
+                                            <option value="${area.areaID}" ${areaID == vend.area.areaID? 'selected' : ''}>${area.areaName}</option>
+                                        </c:forEach>
+                                    </select>
                                     </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Mobile Number:</th>
-                                <td>
-                                    <div>
-                                        <input type="text" style="width:auto;" placeholder="Mobile Number" name="txtMobileNumber" value="<%=vend.getMobileNo()%>">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Email ID:</th>
-                                <td>
-                                    <div>
-                                        <input type="text" style="width:auto;" placeholder="Email ID" name="txtEmailID" value="<%=vend.getEmailID()%>">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>City and Area:</th>
-                                <td>
-                                    <div>
-                                        <select id="City" class ="selectStyle">
-                                            <option value="1">City
-                                            </option>
-                                        </select>
+                               </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Address:</th>
+                            <td>    
+                                <div>
+                                    <textarea style="width:300px;" placeholder="Address" id="txtAdressVendor" name="txtAddressVendor"><%=vend.getLane()%></textarea>           
+                                </div>
+                            </td>
+                        </tr>
+                         <tr>
+                            <th>Landline Number:</th>
+                            <td>
+                                <div>
+                                    <input type="text" style="width:auto;" placeholder="Email ID" name="txtLandlineNumber" value="<%=vend.getLandlineNumber()%>">
+                                </div>
+                            </td>
+                        </tr>                          
 
-                                        <select id="Area" class ="selectStyle">
-                                            <option value="1">Area
-                                            </option>
-                                        </select>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Address:</th>
-                                <td>    
-                                    <div>
-                                        <textarea style="width:300px;" placeholder="Address" id="txtAdressVendor"><%=vend.getLane()%></textarea>           
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Landline Number:</th>
-                                <td>
-                                    <div>
-                                        <input type="text" style="width:auto;" placeholder="Email ID" name="txtLandlineNumber" value="<%=vend.getLandlineNumber()%>">
-                                    </div>
-                                </td>
-                            </tr>                          
-
-                            </div>
-                        <div class="row">
-                            <div class="span6">
-                                <td colspan="2">
-                                    <input type="submit" value="Update">
-                                </td>
-                            </div>
-                            </tbody>
+                    </div>
+                    <div class="row">
+                        <div class="span6">
+                            <td colspan="2">
+                                <input type="submit" value="Update">
+                            </td>
+                        </div>
+                    </tbody>
                     </table>
-                </div>
-            </form>
-            <button class="back-to-top">^</button>
-        </article>
+                    </div>
+                </form>
+                <button class="back-to-top">^</button>
+            </article>
 
 
         <jsp:include page="footer.jsp"></jsp:include>

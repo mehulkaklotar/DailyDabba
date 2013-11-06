@@ -21,15 +21,15 @@
                         if (session.getAttribute("Role").equals("Vendor") || session.getAttribute("Role").equals("Admin")) {
                     %>
                     <li><a href="orders.jsp">Orders</a>
+                        <%
+                            if (session.getAttribute("Role").equals("Vendor")) {
+                        %>
                         <ul>
-                            <%
-                                if (session.getAttribute("Role").equals("Vendor")) {
-                            %>
                             <li><a href="neworders.jsp">New Orders</a></li>
-                            <% }%>
                         </ul>
+                        <% }%>
                     </li>
-                    <% } %>
+                    <% }%>
                     <li><a href="">Items</a>
                         <ul>
                             <li><a href="addItem.jsp">Add Item</a></li>
@@ -40,7 +40,7 @@
                         if (session.getAttribute("Role").equals("Admin")) {
                     %>
                     <li><a href="viewFeedback.jsp">Feedbacks</a>
-                    
+
                     </li>
                     <li><a href="users.jsp">Users</a>
 
@@ -61,7 +61,7 @@
 
                         </ul>
                     </li>
-                    <% } %>
+                    <% }%>
                 </ul>
             </div>
         </div>

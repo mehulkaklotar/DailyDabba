@@ -19,7 +19,7 @@ public class Vendor extends User {
     private String ownerName;
     private String landlineNumber;
     private boolean flag;
-    private boolean staus;
+    private boolean status;
     private int rating;
     private List<Area> areas;
     DBConnection con;
@@ -121,12 +121,12 @@ public class Vendor extends User {
         this.flag = flag;
     }
 
-    public boolean isStaus() {
-        return staus;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setStaus(boolean staus) {
-        this.staus = staus;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public ArrayList<Tiffin> getAllOrderForVendor(String vendor) {
@@ -304,7 +304,7 @@ public class Vendor extends User {
         }
     }
      
-      public void getProfileDetails(){
+       public void getProfileDetails(){
         con=new DBConnection();
         try {
             callableStatement=con.connection.prepareCall("{call getVendor(?)}");
@@ -328,4 +328,30 @@ public class Vendor extends User {
             Logger.getLogger(Vendor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+   public boolean addItem(Item it){
+         con=new DBConnection();
+        try {
+            callableStatement=con.connection.prepareCall("{call getTypeID(?)}");
+            callableStatement.setString(1,it.getType().getTypeName());
+            ResultSet rs=callableStatement.executeQuery();
+            if(rs.next())
+                it.getType().setTypeID(rs.getInt("TypeID"));
+            con=new DBConnection();
+            callableStatement=con.connection.prepareCall("{call insertItemDetails(?,?,?)}");
+            callableStatement.setString(1, it.getItemName());
+            callableStatement.setInt(2, it.getType().getTypeID());
+            callableStatement.setString(3, userName);
+            int i=callableStatement.executeUpdate();
+            if(i>=1)
+                return true;
+            else
+                return false;
+            
+        } catch (SQLException ex) {
+            return false;
+        }
+         
+        
+     }
+
 }

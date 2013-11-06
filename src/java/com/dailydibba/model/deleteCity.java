@@ -20,10 +20,8 @@ public class deleteCity implements Action{
     public String execute(HttpServletRequest req, HttpServletResponse res) {
         Administrator objAdministrator = new Administrator();
         int cityid = Integer.parseInt(req.getParameter("cityId"));
-        City objCity = new City();
-        objCity = objAdministrator.getCity(cityid);
-        req.setAttribute("city", objCity);
-        return "admin/addCity.jsp";
+        objAdministrator.deleteCity(cityid);
+        return "AdminController?action=getAllCity";
     }
     
     

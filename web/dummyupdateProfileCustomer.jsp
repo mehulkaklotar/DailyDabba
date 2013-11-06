@@ -6,6 +6,7 @@
 
 <%@page import="com.dailydibba.bean.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,11 +16,10 @@
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> <!-- or use local jquery -->
-        <script src="/js/jqBootstrapValidation.js"></script>
+        
 
         <jsp:include page="include.jsp"></jsp:include>
-
-
+            <script src="js/commonTask.js"></script>
         </head>
 
         <body class="home">
@@ -95,10 +95,10 @@
                     </div>
                 </div>
 
-                <form name="updateProfileCustomer" method="post" action="" id="updateProfileCustomer">
+                <form name="updateProfileCustomer" method="post" action="Controller?action=updateProfile" id="updateProfileCustomer">
                     <div align="center" class="row">
                     <%
-                        Customer cust=(Customer)request.getAttribute("Customer");
+                        Customer cust = (Customer) request.getAttribute("Customer");
                     %>
                     <table align="center" width="500px">
                         <tbody>
@@ -106,7 +106,7 @@
                                 <th>Username:</th>
                                 <td>
                                     <div>
-                                        <label style="width:auto;" name="lblUsername" required="" ><%=cust.getUserName()%>"</label>
+                                        <input type="text" readonly="readonly" style="width:auto;" name="txtUsername" required="" value="<%=cust.getUserName()%>">
                                         <!-- <span class="required">*</span>
                                          <span class="required">Should be unique</span> -->
                                     </div>
@@ -117,7 +117,7 @@
                                 <th>First Name:</th>
                                 <td>
                                     <div>
-                                        <input type="text" style="width:auto;" placeholder="First Name" name="txtFirstname" value="<%=cust.getFirstName()%>" 
+                                        <input type="text" style="width:auto;" placeholder="First Name" name="txtFirstname" id="txtFirstname" value="<%=cust.getFirstName()%>" 
                                     </div>
                                 <td>   
                             </tr>
@@ -125,7 +125,7 @@
                                 <th>Last Name:</th>
                                 <td>
                                     <div>
-                                        <input type="text" style="width:auto;" placeholder="Last Name" name="txtLastname" value="<%=cust.getLastName()%>">
+                                        <input type="text" style="width:auto;" placeholder="Last Name" name="txtLastname" id="txtLastname" value="<%=cust.getLastName()%>">
                                     </div>
                                 </td>
                             </tr>
@@ -144,14 +144,31 @@
                                         <input type="email" style="width:auto;" placeholder="Email ID" name="txtEmailID" value="<%=cust.getEmailID()%>"> 
                                     </div>
                                 </td>
+                            </tr>
+                            
+                            <tr>
+                                <th>City:</th>
+                                <td>
+                                    <select id="ddlCity" name="ddlCity" class ="selectStyle">
+                                        <c:forEach items="${Cities}" var="city">
+                                          
+                                                    <option value="${city.cityID}" ${city.cityID == cust.area.city.cityID? 'selected' : ''}>${city.cityName}</option>
+                                            
+                                        </c:forEach>
+                                    </select>
+                                </td>
+                            </tr>
                             <tr>
                                 <th>Area</th>
                                 <td>
-                                    <div>
-                                        <select id="Area" class ="selectStyle">
-                                            <option value="1">Area
-                                            </option>
-                                        </select>
+                                    <div name="areaDiv" id="areaDiv">
+                                        <select id="ddlArea" name="ddlArea" class ="selectStyle">
+                                        <c:forEach items="${Areas}" var="area">
+                                          
+                                                    <option value="${area.areaID}" ${areaID == cust.area.areaID? 'selected' : ''}>${area.areaName}</option>
+                                            
+                                        </c:forEach>
+                                    </select>
                                     </div>
 
                                 </td>

@@ -24,7 +24,17 @@ public class getProfileDetailsVendor implements Action{
         vendor.setUserName(uname);
         vendor.getProfileDetails();
         req.setAttribute("Vendor", vendor);
-        return "/dummyupdateProfileVendor.jsp";
+        
+//        List<City> cities;
+//        Administrator admin=new Administrator();
+//        cities=admin.getAllCity();
+//        req.setAttribute("Cities", cities);
+//        
+//        List<Area> area;
+//        area=admin.getAllCityArea(vendor.getArea().getCity().getCityID());
+//        req.setAttribute("Areas", area);
+       
+        return "dummyupdateProfileVendor.jsp";
     }
     
 }

@@ -12,6 +12,6 @@
         <title>Update Profile Customer</title>
     </head>
     <body>
-        <jsp:forward page="/Controller?action=getProfileDetailsCustomer&uname=Prachi"></jsp:forward>
+        <jsp:forward page="/Controller?action=getProfileDetailsCustomer&uname=Hiren"></jsp:forward>
     </body>
 </html>

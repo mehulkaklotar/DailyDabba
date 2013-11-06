@@ -1,5 +1,10 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package com.dailydibba.bean;
-import com.dailydibba.bean.Area;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,14 +17,16 @@ public class City {
     private int cityID;
     private String cityName;
     ArrayList<Area> areas= new ArrayList<Area>();
-     public City() {
-    }
 
     public City(int cityID,String cityName)
     {
         this.cityID=cityID;
         this.cityName=cityName;
 
+    }
+
+    public City() {
+        //default constructor
     }
 
     public int getCityID() {

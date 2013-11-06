@@ -3,14 +3,14 @@
     Created on : 12 Oct, 2013, 1:41:39 AM
     Author     : kaklo
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
 
         <meta charset="UTF-8">
-        <title>Beoro Admin Template v1.2</title>
+        <title>Add Area</title>
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
@@ -30,7 +30,7 @@
                         <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
                         <li><a href="javascript:void(0)">Area</a></li>
                         <li><a href="javascript:void(0)">Add area</a></li>
-
+                        
                         <li><span></span></li>
                     </ul>
                 </div>
@@ -39,16 +39,52 @@
                 <div class="container">
                     <div class="row-fluid">
                         <div class="span12">
-                            <form class="form-horizontal">
+                        <%
+                        if(request.getAttribute("area")!=null)
+                        {
+                        %>
+                            <form class="form-horizontal" action="AdminController?action=updateArea" method="POST">
                                 <fieldset>
                                     <legend>Add area</legend>
                                     <div class="control-group">
                                         <label class="control-label" for="lblItemName">Area name:</label>
                                         <div class="controls">
-                                            <input type="text" id="txtItemName" placeholder="Type here...">
+                                            <input type="text" id="txtAreaName" name="txtAreaName" value="${area.areaName}">
+                                            <input type="hidden" id="txtAreaID" name="txtAreaID" value="${area.areaID}">
                                         </div>
                                     </div>
-
+                                    
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <button type="submit" class="btn">Update</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        <%     
+                        } 
+                        else
+                        {
+                        %>
+                        <form class="form-horizontal" action="AdminController?action=addArea" method="POST">
+                                <fieldset>
+                                    <legend>Add area</legend>
+                                    <div class="control-group">
+                                        <label class="control-label" for="lblItemName">Area name:</label>
+                                        <div class="controls">
+                                            <input type="text" id="txtAreaName" name="txtAreaName" placeholder="Type here...">
+                                        </div>
+                                        <label class="control-label" for="lblCityName">City name:</label>
+                                        <div class="controls">
+                                            <select id="cityList" name="cityList">
+                                                <option>-Select-</option>
+                                                 <c:forEach items="${cities}" var="city">
+                                                     <option value="${city.cityID}">${city.cityName}</option>
+                                                 </c:forEach>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="control-group">
                                         <div class="controls">
                                             <button type="submit" class="btn">Add</button>
@@ -56,6 +92,7 @@
                                     </div>
                                 </fieldset>
                             </form>
+                        <% } %>
                         </div>
                     </div>
                 </div>

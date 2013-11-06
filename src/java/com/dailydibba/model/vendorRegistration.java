@@ -9,7 +9,6 @@ import com.dailydibba.bean.City;
 import com.dailydibba.bean.Visitor;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,9 +22,10 @@ public class vendorRegistration implements Action {
     public String execute(HttpServletRequest req, HttpServletResponse res) {
        
         Visitor objVisitor = new Visitor();
+        objVisitor.insertUser(req.getParameter("txtUsername"), req.getParameter("txtPassword"));
         objVisitor.insertUserRoles(req.getParameter("txtUsername"),"Vendor");
         
-        objVisitor.insertVendor(req.getParameter("txtUsername"),1, req.getParameter("txtVendorname"), req.getParameter("txtMobileNumber"),req.getParameter("txtEmailID"), req.getParameter("txtFlatNumber")+","+req.getParameter("txtStreetName")+","+req.getParameter("txtLandmark"), req.getParameter("txtOwnername"), req.getParameter("txtLandlineNumber"),false, false);
+        objVisitor.insertVendor(req.getParameter("txtUsername"), 1, req.getParameter("txtVendorname"), req.getParameter("txtMobileNumber"),req.getParameter("txtEmailID"), req.getParameter("txtFlatNumber")+","+req.getParameter("txtStreetName")+","+req.getParameter("txtLandmark"), req.getParameter("txtOwnername"), req.getParameter("txtLandlineNumber"),false, false);
 
         // System.out.println(req.getParameter("txtuserName"));
 	

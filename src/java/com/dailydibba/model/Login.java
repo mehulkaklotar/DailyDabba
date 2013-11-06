@@ -14,8 +14,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import sun.org.mozilla.javascript.internal.regexp.SubString;
-
 /**
  *
  * @author kaklo
@@ -27,7 +25,10 @@ public class Login implements Action {
         HttpSession session = req.getSession();
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        String fromPage = req.getParameter("from").substring(12, req.getParameter("from").length());
+        String fromPage = "";
+        //if(!req.getParameter("from").equals(null)){
+          //  fromPage = req.getParameter("from").substring(12, req.getParameter("from").length());
+        //}
 
         Visitor objVisitor = new Visitor();
         User objUser = objVisitor.login(username);
@@ -58,12 +59,12 @@ public class Login implements Action {
             req.setAttribute("Message", "Successfully Logged in!!");
             session.setAttribute("UserName", username);
             session.setAttribute("Role", objUser.getUsertype().getRole());
-            return fromPage;
+            return "dummyindex.jsp";
         } else if (objUser.getPassword().equals(password) && objUser.getUsertype().getRole().equals("Admin")) {
             req.setAttribute("Message", "Successfully Logged in!!");
             session.setAttribute("UserName", username);
             session.setAttribute("Role", objUser.getUsertype().getRole());
-            return req.getParameter("from");
+            return "dummyindex.jsp";
         } else {
             req.setAttribute("Message", "Error Login!!");
             return "login.jsp";

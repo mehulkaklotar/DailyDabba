@@ -8,7 +8,19 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
-
+  
+        <script>
+            $(document).ready(function(){
+               $('#ddlType').change(function(){
+                   $.ajax({
+                       url:"AdminController?action=getItemOfType&typeID="+$('#ddlType').val()
+                   }).done(function(result){
+                       $('#divExistingItems').html(result);
+                       
+                   });
+               }); 
+            });
+        </script>
         <meta charset="UTF-8">
         <title>Beoro Admin Template v1.2</title>
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -30,7 +42,7 @@
                         <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
                         <li><a href="javascript:void(0)">Item</a></li>
                         <li><a href="javascript:void(0)">Add Item...</a></li>
-
+                        
                     </ul>
                 </div>
 
@@ -38,21 +50,56 @@
                 <div class="container">
                     <div class="row-fluid">
                         <div class="span12">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" method="post" action="AdminController?action=addItem&UserName=Sai">
                                 <fieldset>
-                                    <legend>Add Item</legend>
-                                    <div class="control-group">
-                                        <label class="control-label" for="lblItemName">Item name:</label>
-                                        <div class="controls">
-                                            <input type="text" id="txtItemName" placeholder="Type here...">
-                                        </div>
-                                    </div>
-
-                                    <div class="control-group">
-                                        <div class="controls">
-                                            <button type="submit" class="btn">Add</button>
-                                        </div>
-                                    </div>
+                                    <table>
+                                       
+                                        <tr>
+                                            <div class="control-group">
+                                                <th>
+                                                    <label class="control-label" for="lblTypeName">Type name:</label>
+                                                </th>
+                                            <td>
+                                                <div class="controls">
+                                                    <select name="ddlType" id="ddlType" class="selectStyle">
+                                                    <option value="Null">Select Type</option>
+                                                    <option value="Sabzi">Sabzi</option>
+                                                    <option value="Roti">Roti</option>
+                                                    <option value="Rice">Rice</option>
+                                                    <option value="Dal">Dal</option>
+                                                </select>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div id="divExistingItems" name="divExistingItems">
+                                                    ghjgjsdhgkshdk
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <div class="control-group">
+                                                <th>
+                                                    <label class="control-label" for="lblItemName">Item name:</label>
+                                                </th>
+                                                <td>
+                                                    <div class="controls">
+                                                        <input type="text" id="txtItemName" name="txtItemName" placeholder="Type here...">
+                                                    </div>
+                                                </td>
+                                            </div>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"> 
+                                                <div class="control-group">
+                                                    <div class="controls">
+                                                        <button type="submit" class="btn">Add</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </fieldset>
                             </form>
                         </div>

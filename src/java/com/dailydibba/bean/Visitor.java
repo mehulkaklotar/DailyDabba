@@ -279,50 +279,26 @@ public class Visitor {
         }
 
     }
-    public boolean insertVendor(String userName, int area, String vendorName,String mobileNo,String emailID, String lane, String ownerName, String landlineNumber,boolean flag,boolean status) {
+
+    public boolean insertVendor(String userName, int area, String vendorName, String mobileNo, String emailID, String lane, String ownerName, String landlineNumber, boolean flag, boolean status) {
         con = new DBConnection();
-  
+
         try {
-  
+
             callableStatement = con.connection.prepareCall("{call insertVendor(?,?,?,?,?,?,?,?,?,?)}");
             callableStatement.setString(1, userName);
             callableStatement.setInt(2, area);
             callableStatement.setString(3, vendorName);
             callableStatement.setString(4, mobileNo);
-            callableStatement.setString(5,emailID );
-            callableStatement.setString(6,lane);
-            callableStatement.setString(7,ownerName );
-            callableStatement.setString(8,landlineNumber );
-            callableStatement.setBoolean(9,flag);
-            callableStatement.setBoolean(10,status);
-  
+            callableStatement.setString(5, emailID);
+            callableStatement.setString(6, lane);
+            callableStatement.setString(7, ownerName);
+            callableStatement.setString(8, landlineNumber);
+            callableStatement.setBoolean(9, flag);
+            callableStatement.setBoolean(10, status);
+
             int row = callableStatement.executeUpdate();
-  
-            if (row == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception ex) {
-            return false;
-        } finally {
-            con.closeConnection();
-        }
-  
-    } 
 
-
-    public boolean insertUser(String userName, String password, String usertype) {
-        con = new DBConnection();
-
-        try {
-
-            callableStatement = con.connection.prepareCall("{call insertUser(?,?,?)}");
-            callableStatement.setString(1, userName);
-            callableStatement.setString(2, password);
-            callableStatement.setString(3, usertype);
-            int row = callableStatement.executeUpdate();
-            System.out.println("N" + row);
             if (row == 1) {
                 return true;
             } else {
@@ -335,16 +311,41 @@ public class Visitor {
         }
 
     }
+
+    public boolean insertUser(String userName, String password) {
+        con = new DBConnection();
+
+        try {
+
+            callableStatement = con.connection.prepareCall("{call insertUser(?,?)}");
+            callableStatement.setString(1, userName);
+            callableStatement.setString(2, password);
+            int row = callableStatement.executeUpdate();
+
+
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception ex) {
+            return false;
+        } finally {
+            con.closeConnection();
+        }
+
+    }
+
     public boolean insertUserRoles(String userName, String userType) {
         con = new DBConnection();
 
         try {
 
-callableStatement=con.connection.prepareCall("{call insertUserRoles(?,?)}");
+            callableStatement = con.connection.prepareCall("{call insertUserRoles(?,?)}");
             callableStatement.setString(1, userName);
             callableStatement.setString(2, userType);
-    int row = callableStatement.executeUpdate();
-            
+            int row = callableStatement.executeUpdate();
+
 
             if (row == 1) {
                 return true;
@@ -358,7 +359,11 @@ callableStatement=con.connection.prepareCall("{call insertUserRoles(?,?)}");
         }
 
     }
+
     public List<City> getCity() {
+        //Author: Nidhi Patel
+        //Date: 29-October-2013
+        //Description:
         List<City> cityList = new ArrayList<City>();
         con = new DBConnection();
         try {
@@ -385,25 +390,26 @@ callableStatement=con.connection.prepareCall("{call insertUserRoles(?,?)}");
         }
         return cityList;
 
+
     }
 
     public User login(String username) {
         con = new DBConnection();
         User objUser = new User();
         try {
-            
+
             callableStatement = con.connection.prepareCall("{call getUser(?)}");
             callableStatement.setString(1, username);
             ResultSet rsUser = callableStatement.executeQuery();
-                
-                if (rsUser.next()) {
-                  objUser.setUserName(rsUser.getString("UserName"));
-                  objUser.setPassword(rsUser.getString("Password"));
-                  UserRole objUserRole = new UserRole();
-                  objUserRole.setRole(rsUser.getString("Role"));
-                  objUser.setUsertype(objUserRole);
-                }
-            
+
+            if (rsUser.next()) {
+                objUser.setUserName(rsUser.getString("UserName"));
+                objUser.setPassword(rsUser.getString("Password"));
+                UserRole objUserRole = new UserRole();
+                objUserRole.setRole(rsUser.getString("Role"));
+                objUser.setUsertype(objUserRole);
+            }
+
         } catch (Exception e) {
             e.getMessage();
         } finally {
@@ -411,21 +417,21 @@ callableStatement=con.connection.prepareCall("{call insertUserRoles(?,?)}");
         }
         return objUser;
     }
-    
-    public int getRateOfItem(int itemID,int menuID){
+
+    public int getRateOfItem(int itemID, int menuID) {
         con = new DBConnection();
-        int rate=0;
+        int rate = 0;
         try {
-            
+
             callableStatement = con.connection.prepareCall("{call getItemCost(?,?)}");
             callableStatement.setInt(1, itemID);
             callableStatement.setInt(2, menuID);
             ResultSet rs = callableStatement.executeQuery();
-                
-                if (rs.next()) {
-                  rate = rs.getInt("Cost");
-                }
-            
+
+            if (rs.next()) {
+                rate = rs.getInt("Cost");
+            }
+
         } catch (Exception e) {
             e.getMessage();
         } finally {

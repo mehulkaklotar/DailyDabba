@@ -7,7 +7,11 @@
 package com.dailydibba.model;
 
 import com.dailydibba.action.Action;
+import com.dailydibba.bean.Administrator;
+import com.dailydibba.bean.Area;
+import com.dailydibba.bean.City;
 import com.dailydibba.bean.Customer;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,8 +27,18 @@ public class getProfileDetailsCustomer implements Action {
         Customer customer=new Customer();
         String uname=req.getParameter("uname");
         customer.setUserName(uname);
-        customer.getProfileDetails();;
+        customer.getProfileDetails();
         req.setAttribute("Customer", customer);
+        
+        List<City> cities;
+        Administrator admin=new Administrator();
+        cities=admin.getAllCity();
+        req.setAttribute("Cities", cities);
+        
+        List<Area> area;
+        area=admin.getAllCityArea(customer.getArea().getCity().getCityID());
+        req.setAttribute("Areas", area);
+       
         return "/dummyupdateProfileCustomer.jsp";
     }
     

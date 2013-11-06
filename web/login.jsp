@@ -88,23 +88,22 @@
                     <div style="margin: auto">
                         <h2 class="center">Log In</h2>
                     </div>
+                <%
+                    if (request.getParameter("vendorUN") != null) {
+                %>
+                <form name="loginForm" method="post" action="Controller?action=login&from=<%= request.getParameter("from")%>&vendorUN=<%= request.getParameter("vendorUN")%>" id="login">
                     <%
-                        if(request.getParameter("vendorUN")!=null)
-                        {
+                    } else {
                     %>
-                        <form name="loginForm" method="post" action="Controller?action=login&from=<%= request.getParameter("from") %>&vendorUN=<%= request.getParameter("vendorUN") %>" id="login">
-                    <%
-                        }
-                        else
-                        {
-                    %>
-                    <form name="loginForm" method="post" action="Controller?action=login&from=<%= request.getParameter("from") %>" id="login">
-                    <% 
-                        }
-                    %>
+                    <form name="loginForm" method="post" action="Controller?action=login&from=<%= request.getParameter("from")%>" id="login">
+                        <%
+                            }
+                        %>
                         <div align="center">
                             <div>
-                                <span class="error"><% if(request.getAttribute("Message")!=null){ out.print(request.getAttribute("Message")); } %></span>
+                                <span class="error"><% if (request.getAttribute("Message") != null) {
+                                        out.print(request.getAttribute("Message"));
+                                    }%></span>
                             </div>
                             <div>
                                 <input type="text" required name="username" placeholder="User Name"  style="width: 20%; height: 5%"></input> 
@@ -124,9 +123,9 @@
                         <div><span>Not a member yet?</span></div>
                         <input type="submit" name="" value="Sign Up" onclick="window.location.href = 'selectCategory.jsp'" style="margin-top: 10px;"></input>
                     </div>
-                </div>
-                <button class="back-to-top">^</button>
-            </article>
+            </div>
+            <button class="back-to-top">^</button>
+        </article>
 
         <jsp:include page="footer.jsp"></jsp:include>
 

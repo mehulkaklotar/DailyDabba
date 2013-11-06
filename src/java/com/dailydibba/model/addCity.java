@@ -23,7 +23,7 @@ public class addCity implements Action{
         objAdministrator.addCity(req.getParameter("txtCityName"));
         List<City> cities=objAdministrator.getAllCity();
         req.setAttribute("cities", cities);
-        return "admin/city.jsp";
+        return "city.jsp";
     }
     
 }

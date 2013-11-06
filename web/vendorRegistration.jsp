@@ -27,6 +27,10 @@
             alert("Passwords Do not match");
             document.getElementById("pass1").style.borderColor = "#E34234";
             document.getElementById("pass2").style.borderColor = "#E34234";
+            window.location.href = 'Controller?action=selectVendor'
+        }
+        else{
+            window.location.href = 'Controller?action=vendorRegistration'
         }
     }
 </script>
@@ -106,7 +110,7 @@
                     </div>
                 </div>
 
-                <form name="registrationForm" method="post" action="Controller?action=vendorRegistration" id="vendorRegister">
+                <form name="registrationForm" method="post" action="Controller?action=vendorRegistration" id="vendorRegister" >
                     <div align="left" class="row">
                         <div>
                             <input type="text" style="width:auto;" placeholder="User Name" name="txtUsername" required="">

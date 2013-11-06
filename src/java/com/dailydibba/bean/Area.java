@@ -15,6 +15,7 @@ public class Area {
     private String areaName;
     private City city;
 
+   
     public Area()
     {
      
@@ -24,6 +25,8 @@ public class Area {
         this.areaID = areaID;
         this.areaName = areaName;
     }
+
+   
 
    
 

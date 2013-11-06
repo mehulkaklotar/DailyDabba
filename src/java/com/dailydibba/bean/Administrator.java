@@ -14,7 +14,80 @@ public class Administrator extends User {
 
     DBConnection con;
     CallableStatement cstmt;
-    
+    public boolean updateCity(String city_name,int city_id) {
+        //Author: Vivek Shukla
+        //Date: 14-October-2013
+        //Description:
+        con = new DBConnection();
+        try {
+            cstmt = con.connection.prepareCall("{call updateCity(?,?)}");
+            cstmt.setString(1, city_name);
+            cstmt.setInt(2, city_id);
+            int row = cstmt.executeUpdate();
+            if(row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+
+    public boolean deleteCity(int city_id) {
+        //Author: Vivek Shukla
+        //Date: 14-October-2013
+        //Description:
+        con=new DBConnection();
+        try {
+            cstmt = con.connection.prepareCall("{call deleteCity(?)}");
+            cstmt.setInt(1, city_id);
+            int row = cstmt.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+
+    public boolean updateArea(String area_name, int area_id) {
+        //Author: Vivek Shukla
+        //Date: 14-October-2013
+        //Description:
+        con = new DBConnection();
+        try {
+            cstmt = con.connection.prepareCall("{call updateArea(?,?)}");
+            cstmt.setString(1, area_name);
+            cstmt.setInt(2, area_id);
+            int row = cstmt.executeUpdate();
+            if(row == 1) return true;
+            else return false;
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+
+    public boolean deleteArea(int area_id) {
+        //Author: Vivek Shukla
+        //Date: 14-October-2013
+        //Description:
+        con = new DBConnection();
+        try {
+            cstmt = con.connection.prepareCall("{call deleteArea(?)}");
+            cstmt.setInt(1, area_id);
+            int row = cstmt.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
     public List<Area> getAllArea()
     {
         List<Area> areaList = new ArrayList<Area>();
@@ -69,6 +142,64 @@ public class Administrator extends User {
             con.closeConnection();
         }
         return cityList;
+    }
+    /*public Area getArea(int area_id)
+    {
+        Area objArea = null;
+        con = new DBConnection();
+        try {
+
+            cstmt = con.connection.prepareCall("{call getArea(?)}");
+            cstmt.setInt(1, area_id);
+            ResultSet rs = cstmt.executeQuery();
+            
+            if (rs.next()) {  
+                objArea = new Area();
+                objArea.setAreaName(rs.getString("AreaName"));
+                objArea.setAreaID(rs.getInt("AreaID"));
+                //objArea.setCity();
+                City ct=new City();
+                ct.setCityID(rs.getInt("CityID"));
+                ct.setCityName(rs.getString("CityName"));
+                //ct.setCityName(rs.getString("CityName"));
+                objArea.setCity(ct);   
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+
+            con.closeConnection();
+        }
+        return objArea;
+    }*/
+    public Area getArea(int area_id)
+    {
+        Area objArea = null;
+        con = new DBConnection();
+        try {
+
+            cstmt = con.connection.prepareCall("{call getArea(?)}");
+            cstmt.setInt(1, area_id);
+            ResultSet rs = cstmt.executeQuery();
+            
+            if (rs.next()) {  
+                objArea = new Area();
+                objArea.setAreaName(rs.getString("AreaName"));
+                //objArea.setAreaID(rs.getInt("AreaID"));
+                City ct=new City();
+                //ct.setCityID(rs.getInt("CityID"));
+                ct.setCityName(rs.getString("CityName"));
+                objArea.setCity(ct);
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+
+            con.closeConnection();
+        }
+        return objArea;
     }
     
     public City getCity(int city_id)
@@ -190,24 +321,6 @@ public class Administrator extends User {
         }
     }
 
-    public boolean deleteCity(int city_id) {
-        //Author: Vivek Shukla
-        //Date: 14-October-2013
-        //Description:
-        try {
-            cstmt = con.connection.prepareCall("{call deleteCity(?)}");
-            cstmt.setInt(1, city_id);
-            int row = cstmt.executeUpdate();
-            if (row == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException ex) {
-            return false;
-        }
-    }
-
     public boolean addArea(String area_name, int city_id) {
         //Author: Vivek Shukla
         //Date: 14-October-2013
@@ -249,26 +362,7 @@ public class Administrator extends User {
             return false;
         }
     }
-
-    public boolean deleteArea(int area_id) {
-        //Author: Vivek Shukla
-        //Date: 14-October-2013
-        //Description:
-
-        try {
-            cstmt = con.connection.prepareCall("{call deleteArea(?)}");
-            cstmt.setInt(1, area_id);
-            int row = cstmt.executeUpdate();
-            if (row == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException ex) {
-            return false;
-        }
-    }
-
+    
     public ArrayList<Customer> viewCustomerReport() {
         //Author: Vivek Shukla
         //Date: 14-October-2013
@@ -404,5 +498,89 @@ public class Administrator extends User {
         }
 
     }
-   
+    public ArrayList<Area> getAllCityArea(int cityid){
+        con=new DBConnection();
+        try {
+            cstmt=con.connection.prepareCall("{call getAreaCityID(?)}");
+            cstmt.setInt(1, cityid);
+            ArrayList<Area> areas=new ArrayList<Area>();
+            ResultSet rs=cstmt.executeQuery();
+            while(rs.next()){
+                Area objArea = new Area();
+                objArea.setAreaID(rs.getInt("areaid"));
+                objArea.setAreaName(rs.getString("areaname"));
+                areas.add(objArea);
+            }
+            return areas;
+        } catch (SQLException ex) {
+            return null;
+        }
+        
+    }
+    public List<Vendor> getAllVendor(){
+        List<Vendor> vendorList = new ArrayList<Vendor>();
+        con = new DBConnection();
+        CallableStatement callstmt;
+        try {
+            cstmt = con.connection.prepareCall("{call getAllVendors()}");
+            ResultSet rs = cstmt.executeQuery();
+            callstmt = con.connection.prepareCall("{call getRatings(?)}");          
+              
+            while(rs.next()) {                
+                Vendor objVendor = new Vendor();
+                String UserName=rs.getString("UserName");
+                objVendor.setVendorName(rs.getString("VendorName"));
+                objVendor.setStatus(rs.getBoolean("Status"));
+                objVendor.setUserName(UserName); 
+                callstmt.setString(1, UserName);
+                ResultSet rs_rating = callstmt.executeQuery();
+                while(rs_rating.next()){
+                objVendor.setRating(rs_rating.getInt("Rating")); 
+                }
+                vendorList.add(objVendor);
+                rs_rating.close();
+            }
+                rs.close();
+               
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+
+            con.closeConnection();
+        }
+        return vendorList;        
+    }
+    
+     public List<Customer> getAllCustomer() {
+        List<Customer> customerList = new ArrayList<Customer>() {};
+        con = new DBConnection();
+        try {
+
+            cstmt = con.connection.prepareCall("{call getAllCustomer()}");
+            //cstmt.setString(1, UserName);
+            
+            ResultSet rs = cstmt.executeQuery();
+            
+            while (rs.next()) {
+                Customer objCustomer = new Customer();
+                objCustomer.setUserName(rs.getString("UserName"));
+                objCustomer.setFirstName(rs.getString("FirstName"));
+                objCustomer.setLastName(rs.getString("LastName"));
+                
+                
+                customerList.add(objCustomer);
+                
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+
+            con.closeConnection();
+        }
+        return customerList;
+        
+    }
+    
+
 }
