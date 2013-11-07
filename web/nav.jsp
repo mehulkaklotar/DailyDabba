@@ -20,7 +20,7 @@
           <li><a href="tabs.html">Tabs &amp; Accordion</a></li>
         </ul>-->
         </li>
-        <li><a href="login.jsp">Login</a></li>
+        <% if(session.getAttribute("UserName")==null){ %><li><a href="login.jsp">Login</a></li> <% } %>
         <% if(session.getAttribute("UserName")!=null){ %><li><a href="orderHistory.jsp">Order History</a></li> <% } %>
         <li><a href="contact.jsp">Contact Us</a></li>
     </ul>

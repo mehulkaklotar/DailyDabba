@@ -16,7 +16,22 @@
         <meta name="author" content="Marcin Banaszek">
 
         <jsp:include page="include.jsp"></jsp:include>
-
+            <style type="text/css">
+                .Cart{
+                    width: 555px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    background-color: #fff;
+                    text-align: left;
+                    border: 1px solid #e5e5e5;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    border-radius: 5px;
+                    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                }
+            </style>
 
         </head>
 
@@ -81,57 +96,96 @@
             </header>
 
             <article class="wrapper"> 
-                <div style="background-color: powderblue">
-                    <div style="float: left; padding-left: 10px; padding-top: 10px">
-                        <i class="icon-shopping-cart"></i>
-                    </div>
-                    <div>
-                        <h3 style="text-align: center">Your Tiffine Cart </h3>
-                    </div>
-                </div>
-                <table>
-                    <thead>
-                        <tr style="width: 10%">
-                            <td>
-                                Order ID
-                            </td>
-                            <td>
-                                Vendor
-                            </td>
-                            <td>
-                                # of Tiffin
-                            </td>
-                            <td>
-                                Cost per Tiffin (Rs.)
-                            </td>
-                            <td>
-                                Total Cost (Rs.)
-                            </td>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td>${tiffin.getOrderID()}</td>
-                    <td>${vendorUN}</td>
-                    <td>${tiffin.getNumberOfTiffin()}</td>
-                    <td>Rs. ${tiffinCost}</td>
-                    <td>Rs. ${tiffinCost* tiffin.getNumberOfTiffin()}</td>
-                </tr>
-            </table>
-            <a href="Controller?action=cancelOrder&orderID=${tiffin.getOrderID()}&vendorUN=${vendorUN}">Cancel Order?</a>
-            <a href="Controller?action=confimOrder&orderID=${tiffin.getOrderID()}">Confirm Order?</a>
 
-            <div style="background-color: powderblue">
-                    <div style="float: left; padding-left: 10px; padding-top: 10px">
-                        <i class="icon-globe"></i>
+                <ul class="breadcrumb">
+                    <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
+                    <li><a href="Controller?action=getVendor">Vendor</a> <span class="divider">/</span></li>
+                    <li class="active">Order Cart</li>
+                </ul>
+                <div style="height:500px;">
+                    <div id="AddressInfo" class="Cart" style="float: left;">
+                        <div style="background-color: powderblue">
+                            <div style="float: left; padding-left: 10px; padding-top: 10px">
+                                <i class="icon-road"></i>
+                            </div>
+                            <div>
+                                <h3 style="text-align: center;">Delivery Address</h3>
+                            </div>
+                        </div>
+                        <div  class="row" style="padding-left: 30px;width:45%;">
+                            <div>
+                                <select id="ddlArea">
+                                    <option id="0" value="0">Select Area</option>
+                                </select>
+                            </div>
+                            <div style="margin-top: 10px;">
+                                <select id="ddlCity">
+                                    <option id="0" value="0">Select City</option>
+                                </select>
+                            </div>
+                            <div style="margin-top: 10px;">
+                                <textarea  placeholder="Address" id="deliveryaddress" name="deliveryaddress"></textarea>
+                            </div>
+                        </div>
+
                     </div>
-                    <div>
-                        <h3 style="text-align: center"> Delivery Information </h3>
+                    <div id="cart" class="Cart" style="float: right;">
+                        <div style="background-color: powderblue">
+                            <div style="float: left; padding-left: 10px; padding-top: 10px">
+                                <i class="icon-shopping-cart"></i>
+                            </div>
+                            <div>
+                                <h3 style="text-align: center;">Cart</h3>
+                            </div>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr style="background-color: #e5e5e5;">
+                                <td>
+                                    Order ID
+                                </td>
+                                <td>
+                                    Vendor
+                                </td>
+                                <td>
+                                    # of Tiffin
+                                </td>
+                                <td>
+                                    Cost per Tiffin (Rs.)
+                                </td>
+                                <td>
+                                    Total Cost (Rs.)
+                                </td>
+                            </tr>
+                            <tr style="font-size: smaller;">
+                                <td>jsdhfh</td>
+                                <td>jsdhjh</td>
+                                <td>jdsfjh</td>
+                                <td>jsdfh</td>
+                                <td>jdsfhj</td>
+                            </tr>
+                            <tr style="color: #e5e5e5;">
+                                <td colspan="5">
+                                    <div><label class="alert">Items per tiffin : </label></div>
+                                    <div><label class="label-success span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Sabzi:</label> <span class="text-success"> #5 <i class="badge">Rs.4</i></span></div>
+                                    <div><label class="label-info span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Roti:</label> <span class="text-success"> #5 <i class="badge">Rs.4</i></span></div>
+                                    <div><label class="label-inverse span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Rice:</label> <span class="text-success"> #5 <i class="badge">Rs.4</i></span></div>
+                                    <div><label class="label-warning span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Dal:</label> <span class="text-success"> #5 <i class="badge">Rs.4</i></span></div>
+                                    <div><label class="label-important span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Others:</label> <span class="text-success"> #5 <i class="badge">Rs.4</i></span></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="row" style="padding-left:30px; ">
+                            <div style="width: 45%;">
+                                <a href="#" class="button"  style="float: left;">Back</a>
+                                <a href="orderconfirm.jsp#order" class="button" style="float: right;">Confirm Order</a>
+                            </div>
+                        </div>
                     </div>
-            </div>
-            
-            
-            
-        </article>
+                    <div style="clear: both;"></div>
+
+                </div>
+
+            </article>
 
         <jsp:include page="footer.jsp"></jsp:include>
 

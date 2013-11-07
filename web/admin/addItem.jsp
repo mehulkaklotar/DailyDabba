@@ -8,25 +8,28 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
-  
-        <script>
-            $(document).ready(function(){
-               $('#ddlType').change(function(){
-                   $.ajax({
-                       url:"AdminController?action=getItemOfType&typeID="+$('#ddlType').val()
-                   }).done(function(result){
-                       $('#divExistingItems').html(result);
-                       
-                   });
-               }); 
-            });
-        </script>
+
         <meta charset="UTF-8">
         <title>Beoro Admin Template v1.2</title>
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
+        <jsp:include page="commonJs.jsp"></jsp:include>
+        
+        <script>
+            $(document).ready(function() {
+                $('#ddlType').change(function() {
+                    alert("");
+                    $.ajax({
+                        url: "AdminController?action=getItemOfType&typeID=" + $('#ddlType').val()
+                    }).done(function(result) {
+                        $('#divExistingItems').html(result);
+
+                    });
+                });
+            });
+        </script>
         </head>
         <body class="bg_d">
             <!-- main wrapper (without footer) -->    
@@ -42,7 +45,7 @@
                         <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
                         <li><a href="javascript:void(0)">Item</a></li>
                         <li><a href="javascript:void(0)">Add Item...</a></li>
-                        
+
                     </ul>
                 </div>
 
@@ -53,32 +56,32 @@
                             <form class="form-horizontal" method="post" action="AdminController?action=addItem&UserName=Sai">
                                 <fieldset>
                                     <table>
-                                       
+
                                         <tr>
-                                            <div class="control-group">
-                                                <th>
-                                                    <label class="control-label" for="lblTypeName">Type name:</label>
-                                                </th>
+                                        <div class="control-group">
+                                            <th>
+                                                <label class="control-label" for="lblTypeName">Type name:</label>
+                                            </th>
                                             <td>
                                                 <div class="controls">
                                                     <select name="ddlType" id="ddlType" class="selectStyle">
-                                                    <option value="Null">Select Type</option>
-                                                    <option value="Sabzi">Sabzi</option>
-                                                    <option value="Roti">Roti</option>
-                                                    <option value="Rice">Rice</option>
-                                                    <option value="Dal">Dal</option>
-                                                </select>
+                                                        <option value="Null">Select Type</option>
+                                                        <option value="Sabzi">Sabzi</option>
+                                                        <option value="Roti">Roti</option>
+                                                        <option value="Rice">Rice</option>
+                                                        <option value="Dal">Dal</option>
+                                                    </select>
                                                 </div>
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                <div id="divExistingItems" name="divExistingItems">
-                                                    ghjgjsdhgkshdk
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div id="divExistingItems" name="divExistingItems">
+                                                        ghjgjsdhgkshdk
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
                                             <div class="control-group">
                                                 <th>
                                                     <label class="control-label" for="lblItemName">Item name:</label>
@@ -89,16 +92,16 @@
                                                     </div>
                                                 </td>
                                             </div>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"> 
-                                                <div class="control-group">
-                                                    <div class="controls">
-                                                        <button type="submit" class="btn">Add</button>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"> 
+                                                    <div class="control-group">
+                                                        <div class="controls">
+                                                            <button type="submit" class="btn">Add</button>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
                                     </table>
                                 </fieldset>
                             </form>
@@ -140,25 +143,25 @@
     <script src="js/pages/beoro_dashboard.js"></script>
 
     <script>
-        if ($(window).width() > '1280') {
-            $('body').append('<a href="javascript:void" class="fluid_lay" style="position:fixed;top:6px;right:10px;z-index:10000" title="fluid layout"><i class="splashy-arrow_state_grey_left"></i><i class="splashy-arrow_state_grey_right"></i></a>');
-            $('.fluid_lay').click(function() {
-                var url = window.location.href;
-                if (url.indexOf('?') > -1) {
-                    url += '&fluid=1'
-                } else {
-                    url += '?fluid=1'
-                }
-                window.location.href = url;
-            });
-            $(window).on('resize', function() {
-                if ($(window).width() > '1280') {
-                    $('.fluid_lay').show();
-                } else {
-                    $('.fluid_lay').hide();
-                }
-            })
-        }
+            if ($(window).width() > '1280') {
+                $('body').append('<a href="javascript:void" class="fluid_lay" style="position:fixed;top:6px;right:10px;z-index:10000" title="fluid layout"><i class="splashy-arrow_state_grey_left"></i><i class="splashy-arrow_state_grey_right"></i></a>');
+                $('.fluid_lay').click(function() {
+                    var url = window.location.href;
+                    if (url.indexOf('?') > -1) {
+                        url += '&fluid=1'
+                    } else {
+                        url += '?fluid=1'
+                    }
+                    window.location.href = url;
+                });
+                $(window).on('resize', function() {
+                    if ($(window).width() > '1280') {
+                        $('.fluid_lay').show();
+                    } else {
+                        $('.fluid_lay').hide();
+                    }
+                })
+            }
     </script>
     <script type="text/javascript">
 

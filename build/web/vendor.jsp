@@ -108,6 +108,10 @@
 
         <!-- two forms for VENDOR DETAILS starts here -->
         <article class="wrapper">
+            <ul class="breadcrumb">
+                    <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
+                    <lii class="active">Vendor</li>
+                </ul>
             <div style="height:1000px">
                 <div style="float: left">
                     <form class="vendor">
@@ -171,8 +175,8 @@
                                     Order :
                                 </td>
                                 <td>
-                                    <button class="btn btn-primary" type="button">Lunch</button>
-                                    <button class="btn btn-primary" type="button">Dinner</button>
+                                    <a href="#" class="button">Lunch</a>
+                                    <a href="#" class="button">Dinner</a>
                                 </td>
                             </tr>
                         </table>
@@ -198,7 +202,8 @@
                         </table>
 
                         <div style="margin-bottom: 10px">
-                            <button class="btn btn-large btn-block btn-primary" type="button" style="width: 70%; margin: auto" onclick="window.location='feedback.jsp?userName=${vendor.userName}'">Give your Feedback</button>
+                            <a href="feedback.jsp?userName=${vendor.userName}" class="button">Give Feedback For ${vendor.vendorName}</a>
+                            
                         </div>
 
 
@@ -395,13 +400,15 @@
                                 <h3 style="text-align: center">Place Order </h3>
                             </div>
                         </div> -->
-                        <div>
+                        <div class="center">
                             <% if(session.getAttribute("UserName")!= null) { 
                             %> 
-                            <button class="btn btn-large btn-block btn-primary" id="placeorder" type="button" style="width: 70%; margin: auto; margin-bottom: 10px;">Click to place Order !!</button> 
+                            <a href="#" class="button" id="placeorder">Order</a>
+                            
                             <% } else {
                             %>
-                            <button class="btn btn-large btn-block btn-primary" onclick="window.location.href='login.jsp?from=${pageContext.request.requestURI}&vendorUN=<%= request.getParameter("vendorUN") %>'" type="button" style="width: 70%; margin: auto; margin-bottom: 10px;">Login to order !!</button>     
+                            <a href="login.jsp?from=${pageContext.request.requestURI}&vendorUN=<%= request.getParameter("vendorUN") %>"  class="button">Login to Order</a>
+                            
                             <%    
                             } %>
                         </div>
