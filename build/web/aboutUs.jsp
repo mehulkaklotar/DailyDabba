@@ -44,8 +44,16 @@
                     <!-- ******** NAVIGATION END ******** --> 
 
                     <div class="labelWelcome">
-                        <span>Welcome, Guest</span>
-                    </div>
+                        <span>Welcome, 
+                        <% if (session.getAttribute("UserName") != null) {
+                                out.print(session.getAttribute("UserName"));
+                        %> <a href='Controller?action=logout'>Logout</a> 
+                        <%
+                        } else {
+                        %> Guest
+                        <% }
+                        %>
+                    </span>
                 </div>
                 <!-- ******** FULL WIDTH SLIDER START ******** -->
                 <div id="fwslider">

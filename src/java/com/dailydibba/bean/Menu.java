@@ -14,7 +14,7 @@ import java.sql.Date;
  */
 public class Menu {
     protected int menuID;
-    protected String vendorUserName;
+    protected Vendor vendor;
     protected Date uploadDateTime;
     protected String tiffinName;
     ArrayList<MenuItem> menuItem = new ArrayList<MenuItem>();
@@ -24,12 +24,12 @@ public class Menu {
 
 
 
-    public Menu(int menuID,String vendorUserName,Date uploadDateTime,String tiffinName)
+    public Menu(int menuID,Vendor vendor,Date uploadDateTime,String tiffinName)
     {
         //Author: Nidhi Patel
         //Date: 13-October-2013
         this.menuID=menuID;
-        this.vendorUserName=vendorUserName;
+        this.vendor=vendor;
         this.uploadDateTime=uploadDateTime;
         this.tiffinName=tiffinName;
     }
@@ -54,16 +54,12 @@ public class Menu {
         this.menuID = menuID;
     }
 
-    public String getVendorUserName() {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
-        return vendorUserName;
+    public Vendor getVendor() {
+        return vendor;
     }
 
-    public void setVendorUserName(String vendorUserName) {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
-        this.vendorUserName = vendorUserName;
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
     }
 
     public Date getUploadDateTime() {

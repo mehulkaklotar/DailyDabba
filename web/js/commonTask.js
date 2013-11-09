@@ -234,3 +234,31 @@ $(document).ready(function() {
 
 });
 
+function confirmorder()
+{
+    
+        if($('#ddlArea option:selected').val()!=0){
+            var area = $('#ddlArea option:selected').val();
+        }else{
+            alert("Select Area");
+            return false;
+        }
+        if($('#ddlCity option:selected').val()!=0){
+            var city = $('#ddlCity option:selected').val();
+        }else{
+            alert("Select City");
+            return false;
+        }
+        if($('#deliveryaddress').val() != null){
+            var deliveryaddress = $('#deliveryaddress').val();
+        }else{
+            alert("No value for address");
+            return false;
+        }
+        
+        var orderID = $('#orderID').val();
+        var vendorUN = $('#vendorUN').val();
+        var tiffincost = $('#tiffincost').val();
+        window.location.href="Controller?action=confirmOrder&orderID="+orderID+"&area="+area+"&city="+city+"&deliveryaddress="+deliveryaddress+"&vendor="+vendorUN+"&tiffincost="+tiffincost;
+}
+

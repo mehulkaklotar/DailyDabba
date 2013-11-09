@@ -68,7 +68,16 @@
                     <!-- ******** NAVIGATION END ******** --> 
 
                     <div class="labelWelcome">
-                        <span>Welcome, Guest</span>
+                        <span>Welcome, 
+                        <% if (session.getAttribute("UserName") != null) {
+                                out.print(session.getAttribute("UserName"));
+                        %> <a href='Controller?action=logout'>Logout</a> 
+                        <%
+                        } else {
+                        %> Guest
+                        <% }
+                        %>
+                    </span>
                     </div>
                 </div>
                 <!-- ******** FULL WIDTH SLIDER START ******** -->
@@ -123,10 +132,10 @@
                     </div>
                     <div id="ordersummery" class="Cart">
 
-                        <label class="label" style="margin-top: 10px;">Order ID:</label><span>&nbsp;6556465</span> <br/>
-                        <label class="label" style="margin-top: 10px;">Vendor:</label><span>&nbsp;6556465 (+91-767676565)</span> <br/>
-                        <label class="label" style="margin-top: 10px;">No Of Tiffins:</label><span>&nbsp;6556465</span> <br/>
-                        <label class="label" style="margin-top: 10px;">Total Cost:</label><span>&nbsp;6556465</span> <br/>
+                        <label class="label" style="margin-top: 10px;">Order ID:</label><span>&nbsp;${tiffin.getOrderID()}</span> <br/>
+                        <label class="label" style="margin-top: 10px;">Vendor:</label><span>&nbsp;${vendor.vendorName} (${vendor.mobileNo})</span> <br/>
+                        <label class="label" style="margin-top: 10px;">No Of Tiffins:</label><span>&nbsp;${tiffin.getNumberOfTiffin()}</span> <br/>
+                        <label class="label" style="margin-top: 10px;">Total Cost:</label><span>&nbsp;Rs. ${tiffinCost* tiffin.getNumberOfTiffin()}</span> <br/>
                         <label class="alert-success text-center" style="margin-top: 10px;">Your tiffin will be delivered between 12 p.m. to 2 p.m.  </label>
                     </div>
                     <div style="margin:10px 0 0 0;">

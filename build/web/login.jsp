@@ -110,7 +110,7 @@
                             </div>
 
                             <div>
-                                <input type="text" required name="password" placeholder="Password"  style="width: 20%; height: 5%"></input>
+                                <input type="password" required name="password" placeholder="Password"  style="width: 20%; height: 5%"></input>
                             </div>
                         </div>
                         <div align="center">

@@ -1,7 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
     <head>
+        <script src="js/../bootstrap/js/bootstrap.js"></script>
+        <script src="js/../bootstrap/js/bootstrap.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="js/../bootstrap/css/bootstrap-responsive.css" />
+        <link type="text/css" rel="stylesheet" href="js/../bootstrap/css/bootstrap-responsive.min.css" />
+        <link type="text/css" rel="stylesheet" href="js/../bootstrap/css/bootstrap.css" />
+        <link type="text/css" rel="stylesheet" href="js/../bootstrap/css/bootstrap.min.css"/>
+
         <meta charset="UTF-8">
         <title>Daily Dibba</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +45,16 @@
                     <!-- ******** NAVIGATION END ******** --> 
 
                     <div class="labelWelcome">
-                        <span>Welcome, Guest</span>
+                        <span>Welcome, 
+                        <% if (session.getAttribute("UserName") != null) {
+                                out.print(session.getAttribute("UserName"));
+                        %> <a href='Controller?action=logout'>Logout</a> 
+                        <%
+                        } else {
+                        %> Guest
+                        <% }
+                        %>
+                    </span>
                     </div>
                 </div>
                 <!-- ******** FULL WIDTH SLIDER START ******** -->
@@ -74,101 +91,54 @@
             </header>
 
             <article class="wrapper"> 
-                <div>
-                    <h2 class="center">Order History</h2>
-                    <div class="message">
-                        <div id="alert"></div>
-                    </div>
-                </div>
-                <table class="table">
-                    <thead style="color: white; background-color: rgb(47, 187, 178)">
+                <div style="height: 500px;">
+                    <ul class="breadcrumb">
+                        <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
+                        <li class="active">Order History</li>
+                    </ul>
+                    <table class="table">
+                        <thead style="color: white; background-color: rgb(47, 187, 178)">
+                            <tr style="text-align: center">
+                                <td>
+                                    No
+                                </td>
+                                <td title="Click on vendor name to give Feedback">
+                                    Vendor Name
+                                </td>
+                                <td>
+                                    Date
+                                </td>
+                                <td>
+                                    Total Tiffins
+                                </td>
+                                <td>
+                                    Total Cost (Rs.)
+                                </td>
+                            </tr>
+                        </thead>
+                        <c:set var="i" value="${0}"/>
+                    <c:forEach items="${history}" var="h">
+                        <c:set var="i" value="${i + 1}"/>
                         <tr style="text-align: center">
                             <td>
-                                No
-                            </td>
-                            <td title="Click on vendor name to give Feedback">
-                                Vendor Name
+                                ${i}
                             </td>
                             <td>
-                                Date
+                                <a  href="Controller?action=getVendor&vendorUN=${h.menu.vendor.getUserName()}">${h.menu.vendor.getVendorName()}</a>
                             </td>
                             <td>
-                                Total Tiffins
+                                ${h.getOrderDate()}
                             </td>
                             <td>
-                                Total Cost (Rs.)
+                                ${h.getNumberOfTiffin()}
+                            </td>
+                            <td>
+                                ${h.getTotalcost() * h.getNumberOfTiffin()}
                             </td>
                         </tr>
-                    </thead>
-                    <tr style="text-align: center">
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            <a  href="vendor.jsp">Sai Tiffin</a>
-                        </td>
-                        <td>
-                            10-14-2013
-                        </td>
-                        <td>
-                            4
-                        </td>
-                        <td>
-                            200
-                        </td>
-                    </tr>
-                    <tr style="text-align: center">
-                        <td>
-                            2
-                        </td>
-                        <td>
-                            Matarani Tiffin
-                        </td>
-                        <td>
-                            10-14-2013
-                        </td>
-                        <td>
-                            4
-                        </td>
-                        <td>
-                            200
-                        </td>
-                    </tr>
-                    <tr style="text-align: center">
-                        <td>
-                            3
-                        </td>
-                        <td>
-                            Sai Sagar Tiffin
-                        </td>
-                        <td>
-                            10-14-2013
-                        </td>
-                        <td>
-                            4
-                        </td>
-                        <td>
-                            200
-                        </td>
-                    </tr>
-                    <tr style="text-align: center">
-                        <td>
-                            4
-                        </td>
-                        <td>
-                            Jay Raj Tiffin
-                        </td>
-                        <td>
-                            10-14-2013
-                        </td>
-                        <td>
-                            4
-                        </td>
-                        <td>
-                            200
-                        </td>
-                    </tr>
-                </table>
+                        </c:forEach>
+                    </table>
+                </div>
             </article>
 
         <jsp:include page="footer.jsp"></jsp:include>

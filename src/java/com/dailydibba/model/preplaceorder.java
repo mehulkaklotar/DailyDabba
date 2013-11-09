@@ -70,13 +70,13 @@ public class preplaceorder implements Action {
                 Iterator it = tiffindetails.iterator();
                 while (it.hasNext()) {
                     objDetails = (TiffinDetails) it.next();
-                    if (Integer.parseInt(sabzi.get(i)) == objDetails.getItemID()) {
+                    if (Integer.parseInt(sabzi.get(i)) == objDetails.getItem().getItemID()) {
                         int q = objDetails.getQuantity() + 1;
                         objCustomer.updateOrderDetails(orderID, menuID, q);
-                        tiffincost += objVisitor.getRateOfItem(objDetails.getItemID(), menuID);
+                        tiffincost += objVisitor.getRateOfItem(objDetails.getItem().getItemID(), menuID);
                     } else {
                         objCustomer.insertOrderDetails(orderID, Integer.parseInt(sabzi.get(i)), 1);
-                        tiffincost += objVisitor.getRateOfItem(objDetails.getItemID(), menuID);
+                        tiffincost += objVisitor.getRateOfItem(objDetails.getItem().getItemID(), menuID);
                     }
                 }
             } else {
@@ -92,27 +92,22 @@ public class preplaceorder implements Action {
         tiffincost += objVisitor.getRateOfItem(dal, menuID);
         
         objCustomer.insertOrderDetails(orderID, roti, rotiQuantity);
-        tiffincost += objVisitor.getRateOfItem(roti, menuID);
+        tiffincost += objVisitor.getRateOfItem(roti, menuID)*rotiQuantity;
         
         if (salad != 0) {
             objCustomer.insertOrderDetails(orderID, salad, 1);
             tiffincost += objVisitor.getRateOfItem(salad, menuID);
         }
 
-        String vendor = req.getParameter("vendorUN");
         
         req.setAttribute("orderID", orderID);
         req.setAttribute("tiffinCost", tiffincost);
-        req.setAttribute("vendorUN", vendor);
         
         objCustomer = new Customer();
         Tiffin objTiffin = new Tiffin();
         objTiffin = objCustomer.getOrder(orderID);
         
-        tiffindetails = objCustomer.getOrderDetails(orderID);
-        
         req.setAttribute("tiffin", objTiffin);
-        req.setAttribute("tiffindetails", tiffindetails);
 
         return "placeorder.jsp";
 

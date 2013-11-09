@@ -162,7 +162,7 @@ ol li {
 }
 
 ul li {
-    background:url(../images/bullet.gif) no-repeat left 6px;
+    /*background:url(../images/bullet.gif) no-repeat left 6px;*/
     padding-left: 20px;
 }
 

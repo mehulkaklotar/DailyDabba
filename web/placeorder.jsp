@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="js/../bootstrap/js/bootstrap.js"></script>
 <script src="js/../bootstrap/js/bootstrap.min.js"></script>
 <link type="text/css" rel="stylesheet" href="js/../bootstrap/css/bootstrap-responsive.css" />
@@ -16,6 +17,7 @@
         <meta name="author" content="Marcin Banaszek">
 
         <jsp:include page="include.jsp"></jsp:include>
+            <script src="js/commonTask.js"></script>
             <style type="text/css">
                 .Cart{
                     width: 555px;
@@ -59,7 +61,16 @@
                     <!-- ******** NAVIGATION END ******** --> 
 
                     <div class="labelWelcome">
-                        <span>Welcome, Guest</span>
+                        <span>Welcome, 
+                        <% if (session.getAttribute("UserName") != null) {
+                                out.print(session.getAttribute("UserName"));
+                        %> <a href='Controller?action=logout'>Logout</a> 
+                        <%
+                        } else {
+                        %> Guest
+                        <% }
+                        %>
+                    </span>
                     </div>
                 </div>
                 <!-- ******** FULL WIDTH SLIDER START ******** -->
@@ -99,7 +110,7 @@
 
                 <ul class="breadcrumb">
                     <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
-                    <li><a href="Controller?action=getVendor">Vendor</a> <span class="divider">/</span></li>
+                    <li><a href="Controller?action=getVendor&vendorUN=${tiffin.menu.getVendorUserName()}">Vendor</a> <span class="divider">/</span></li>
                     <li class="active">Order Cart</li>
                 </ul>
                 <div style="height:500px;">
@@ -113,14 +124,19 @@
                             </div>
                         </div>
                         <div  class="row" style="padding-left: 30px;width:45%;">
-                            <div>
-                                <select id="ddlArea">
-                                    <option id="0" value="0">Select Area</option>
-                                </select>
-                            </div>
+                        <% if(request.getAttribute("Alert")!=null) { %><label class="alert-error">${Alert}</label> <% } %>
+                            
                             <div style="margin-top: 10px;">
                                 <select id="ddlCity">
                                     <option id="0" value="0">Select City</option>
+                                    <option id="1" value="2">Ahmedabad</option>
+                                </select>
+                            </div>
+                            <div>
+                                <select id="ddlArea">
+                                    <option id="0" value="0">Select Area</option>
+                                    <option id="1" value="11">Inforcity</option>
+                                    <option id="2" value="12">Vastrapure</option>
                                 </select>
                             </div>
                             <div style="margin-top: 10px;">
@@ -157,35 +173,59 @@
                                 </td>
                             </tr>
                             <tr style="font-size: smaller;">
-                                <td>jsdhfh</td>
-                                <td>jsdhjh</td>
-                                <td>jdsfjh</td>
-                                <td>jsdfh</td>
-                                <td>jdsfhj</td>
-                            </tr>
-                            <tr style="color: #e5e5e5;">
-                                <td colspan="5">
-                                    <div><label class="alert">Items per tiffin : </label></div>
-                                    <div><label class="label-success span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Sabzi:</label> <span class="text-success"> #5 <i class="badge">Rs.4</i></span></div>
-                                    <div><label class="label-info span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Roti:</label> <span class="text-success"> #5 <i class="badge">Rs.4</i></span></div>
-                                    <div><label class="label-inverse span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Rice:</label> <span class="text-success"> #5 <i class="badge">Rs.4</i></span></div>
-                                    <div><label class="label-warning span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Dal:</label> <span class="text-success"> #5 <i class="badge">Rs.4</i></span></div>
-                                    <div><label class="label-important span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Others:</label> <span class="text-success"> #5 <i class="badge">Rs.4</i></span></div>
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="row" style="padding-left:30px; ">
-                            <div style="width: 45%;">
-                                <a href="#" class="button"  style="float: left;">Back</a>
-                                <a href="orderconfirm.jsp#order" class="button" style="float: right;">Confirm Order</a>
-                            </div>
+                                <td>${tiffin.getOrderID()}</td>
+                            <td>${tiffin.menu.getVendorUserName()}</td>
+                            <td>${tiffin.getNumberOfTiffin()}</td>
+                            <td>Rs. ${tiffinCost}</td>
+                            <td>Rs. ${tiffinCost* tiffin.getNumberOfTiffin()}</td>
+                        </tr>
+                        <tr style="color: #e5e5e5;">
+                            <td colspan="5">
+
+                                <div><label class="alert">Items per tiffin : </label></div>
+                                <c:forEach items="${tiffin.getTiffindetails()}" var="t">
+                                    <c:if test="${t.item.type.typeName eq 'Sabzi'}">
+                                        <div><label class="label-success span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Sabzi:</label><span class="text-info"> ${t.item.itemName} </span><span class="text-success"> #${t.quantity} <i class="badge">Rs.${t.cost * t.quantity}</i></span></div>
+                                    </c:if>
+                                </c:forEach>
+                                <c:forEach items="${tiffin.getTiffindetails()}" var="t">
+                                    <c:if test="${t.item.type.typeName eq 'Roti'}">
+                                        <div><label class="label-info span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Roti:</label> <span class="text-info"> ${t.item.itemName} </span> <span class="text-success"> #${t.quantity} <i class="badge">Rs.${t.cost * t.quantity}</i></span></div>
+                                    </c:if>
+                                </c:forEach>        
+                                <c:forEach items="${tiffin.getTiffindetails()}" var="t">
+                                    <c:if test="${t.item.type.typeName eq 'Rice'}">
+                                        <div><label class="label-inverse span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Rice:</label> <span class="text-info"> ${t.item.itemName} </span> <span class="text-success"> #${t.quantity} <i class="badge">Rs.${t.cost}</i></span></div>
+                                    </c:if>
+                                </c:forEach> 
+                                <c:forEach items="${tiffin.getTiffindetails()}" var="t">
+                                    <c:if test="${t.item.type.typeName eq 'Dal'}">
+                                        <div><label class="label-warning span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Dal:</label> <span class="text-info"> ${t.item.itemName} </span> <span class="text-success"> #${t.quantity} <i class="badge">Rs.${t.cost}</i></span></div>
+                                    </c:if>
+                                </c:forEach>         
+                                <c:forEach items="${tiffin.getTiffindetails()}" var="t">
+                                    <c:if test="${t.item.type.typeName eq 'Salad'}">
+                                        <div><label class="label-important span1" style="padding-top: 3px;">&nbsp;&nbsp;&nbsp; Salad:</label> <span class="text-info"> ${t.item.itemName} </span> <span class="text-success"> #${t.quantity} <i class="badge">Rs.${t.cost}</i></span></div>
+                                    </c:if>
+                                </c:forEach> 
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="hidden" id="orderID" value="${tiffin.getOrderID()}" />
+                    <input type="hidden" id="vendorUN" value="${tiffin.menu.getVendorUserName()}" />
+                    <input type="hidden" id="tiffincost" value="${tiffinCost}" />
+                    <div class="row" style="padding-left:30px; ">
+                        <div style="width: 45%;">
+                            <a href="Controller?action=cancelOrder&orderID=${tiffin.getOrderID()}&vendorUN=${tiffin.menu.getVendorUserName()}" class="button"  style="float: left;">Back</a>
+                            <a href="javascript:confirmorder();" id="confirmorder" class="button" style="float: right;">Confirm Order</a>
                         </div>
                     </div>
-                    <div style="clear: both;"></div>
-
                 </div>
+                <div style="clear: both;"></div>
 
-            </article>
+            </div>
+
+        </article>
 
         <jsp:include page="footer.jsp"></jsp:include>
 

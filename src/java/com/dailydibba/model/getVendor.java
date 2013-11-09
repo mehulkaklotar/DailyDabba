@@ -29,7 +29,6 @@ public class getVendor implements Action {
         
         //Vendor menu
         Menu objMenu = objVendor.getVendorMenu(vendorUN);
-        objMenu.setVendorUserName(vendorUN);
         
         // Get the details of feedback of that vendor
         List<Feedback> feedbackList = objVisitor.getFeedbackForVendor(vendorUN);

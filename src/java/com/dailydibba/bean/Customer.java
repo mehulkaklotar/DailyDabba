@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer extends User{
+public class Customer extends User {
+
     private String firstName;
     private String lastName;
     private String lane;
@@ -15,7 +16,6 @@ public class Customer extends User{
     private String mobileNo;
     private String emailID;
     private boolean status;
-    
     DBConnection con;
     CallableStatement callableStatement = null;
 
@@ -29,7 +29,7 @@ public class Customer extends User{
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
+
     public Area getArea() {
         //Author: Prachi Deodhar
         //Date:13- October-2013
@@ -52,7 +52,7 @@ public class Customer extends User{
     }
 
     public void setEmailID(String emailID) {
-         //Author: Prachi Deodhar
+        //Author: Prachi Deodhar
         //Date:13- October-2013
         //To set value of email id
         this.emailID = emailID;
@@ -66,7 +66,7 @@ public class Customer extends User{
     }
 
     public void setFirstName(String firstName) {
-         //Author: Prachi Deodhar
+        //Author: Prachi Deodhar
         //Date:13- October-2013
         //To set value of first name
         this.firstName = firstName;
@@ -80,7 +80,7 @@ public class Customer extends User{
     }
 
     public void setLane(String lane) {
-         //Author: Prachi Deodhar
+        //Author: Prachi Deodhar
         //Date:13- October-2013
         //To set value of lane
         this.lane = lane;
@@ -94,7 +94,7 @@ public class Customer extends User{
     }
 
     public void setLastName(String lastName) {
-         //Author: Prachi Deodhar
+        //Author: Prachi Deodhar
         //Date:13- October-2013
         //To set value of last name
         this.lastName = lastName;
@@ -108,7 +108,7 @@ public class Customer extends User{
     }
 
     public void setMobileNo(String mobileNo) {
-         //Author: Prachi Deodhar
+        //Author: Prachi Deodhar
         //Date:13- October-2013
         //To set value of mobile no.
         this.mobileNo = mobileNo;
@@ -123,16 +123,16 @@ public class Customer extends User{
             callableStatement.setString(1, city);
             callableStatement.setString(2, area);
             ResultSet rs = callableStatement.executeQuery();
-            
+
             while (rs.next()) {
                 Vendor objVendor = new Vendor();
                 objVendor.setVendorName(rs.getString("VendorName"));
                 objVendor.setUserName("UserName");
-                
+
                 Area objArea = new Area();
                 objArea.setAreaName(rs.getString("AreaName"));
                 objVendor.setArea(objArea);
-                
+
                 vendorList.add(objVendor);
             }
             rs.close();
@@ -145,7 +145,7 @@ public class Customer extends User{
         return vendorList;
     }
 
-    public boolean insertOrder(String customer, String deliveryaddress, int nooftiffin,int menuID, boolean status, String orderdate,String orderID){
+    public boolean insertOrder(String customer, String deliveryaddress, int nooftiffin, int menuID, boolean status, String orderdate, String orderID) {
         con = new DBConnection();
         try {
 
@@ -171,8 +171,8 @@ public class Customer extends User{
         }
 
     }
-    
-    public boolean insertOrderDetails(String orderID,int itemID,int qunatity){
+
+    public boolean insertOrderDetails(String orderID, int itemID, int qunatity) {
         con = new DBConnection();
         try {
 
@@ -194,24 +194,29 @@ public class Customer extends User{
         }
 
     }
-    
-   public List<TiffinDetails> getOrderDetails(String orderID)
-   {
-       List<TiffinDetails> tiffindetails = new ArrayList<TiffinDetails>();
+
+    public List<TiffinDetails> getOrderDetails(String orderID) {
+        List<TiffinDetails> tiffindetails = new ArrayList<TiffinDetails>();
         con = new DBConnection();
         try {
 
             callableStatement = con.connection.prepareCall("{call getOrderDetails(?)}");
             callableStatement.setString(1, orderID);
             ResultSet rs = callableStatement.executeQuery();
-            
+
             while (rs.next()) {
-                
+
                 TiffinDetails objDetails = new TiffinDetails();
-                objDetails.setOrderID(rs.getString("OrderID"));
-                objDetails.setItemID(rs.getInt("ItemID"));
+                Tiffin objTiffin = new Tiffin();
+                objTiffin.setOrderID(rs.getString("OrderID"));
+                objDetails.setOrder(objTiffin);
+                Item objItem = new Item();
+                objItem.setItemID(rs.getInt("ItemID"));
+                objItem.setItemName(rs.getString("ItemName"));
+                objDetails.setItem(objItem);
                 objDetails.setQuantity(rs.getInt("Quantity"));
-                
+                objDetails.setCost(rs.getInt("Cost"));
+
                 tiffindetails.add(objDetails);
             }
             rs.close();
@@ -222,25 +227,55 @@ public class Customer extends User{
             con.closeConnection();
         }
         return tiffindetails;
-   }
-   
-   
-   public Tiffin getOrder(String orderID){
-       Tiffin objTiffin = null;
-       con = new DBConnection();
+    }
+
+    public Tiffin getOrder(String orderID) {
+        Tiffin objTiffin = null;
+        con = new DBConnection();
         try {
 
             callableStatement = con.connection.prepareCall("{call getOrder(?)}");
             callableStatement.setString(1, orderID);
             ResultSet rs = callableStatement.executeQuery();
-            
+
             if (rs.next()) {
                 objTiffin = new Tiffin();
-                objTiffin.setOrderID(rs.getInt("OrderID"));
+                objTiffin.setOrderID(rs.getString("OrderID"));
                 objTiffin.setOrderDate(rs.getDate("Orderdate"));
                 objTiffin.setDeliveryAddress(rs.getString("DeliveryAddress"));
                 objTiffin.setNumberOfTiffin(rs.getInt("NoOfTiffin"));
                 objTiffin.setStatus(rs.getBoolean("Status"));
+                objTiffin.setUserNameCustomer(rs.getString("Customer"));
+                Menu objMenu = new Menu();
+                Vendor objVendor = new Vendor();
+                objVendor.setUserName(rs.getString("Vendor"));
+                objMenu.setVendor(objVendor);
+                objTiffin.setMenu(objMenu);
+
+                List<TiffinDetails> tiffindetails = new ArrayList<TiffinDetails>();
+                
+                callableStatement = con.connection.prepareCall("{call getOrderDetails(?)}");
+                callableStatement.setString(1, orderID);
+                ResultSet rsdetails = callableStatement.executeQuery();
+                while(rsdetails.next())
+                {
+                    TiffinDetails objDetails = new TiffinDetails();
+                    objDetails.setOrder(objTiffin);
+                    Item objItem = new Item();
+                    objItem.setItemName(rsdetails.getString("ItemName"));
+                    objItem.setItemID(rsdetails.getInt("ItemID"));
+                    ItemType objItemType = new ItemType();
+                    objItemType.setTypeName(rsdetails.getString("TypeName"));
+                    objItem.setType(objItemType);
+                    objDetails.setItem(objItem);
+                    objDetails.setCost(rsdetails.getInt("Cost"));
+                    objDetails.setQuantity(rsdetails.getInt("Quantity"));
+                    
+                    tiffindetails.add(objDetails);
+                }
+                
+                objTiffin.setTiffindetails(tiffindetails);
+
             }
             rs.close();
         } catch (Exception ex) {
@@ -250,9 +285,9 @@ public class Customer extends User{
             con.closeConnection();
         }
         return objTiffin;
-   }
-    
-    public List<Tiffin> getOrderHistory(String customer){
+    }
+
+    public List<Tiffin> getOrderHistory(String customer) {
         //Author: Prachi Deodhar
         //Date:13- October-2013
         //Report on the current month's order
@@ -263,17 +298,24 @@ public class Customer extends User{
             callableStatement = con.connection.prepareCall("{call getOrderHistory(?)}");
             callableStatement.setString(1, customer);
             ResultSet rs = callableStatement.executeQuery();
-            
+
             while (rs.next()) {
                 Tiffin objTiffin = new Tiffin();
-                objTiffin.setOrderID(rs.getInt("OrderID"));
+                objTiffin.setOrderID(rs.getString("OrderID"));
                 objTiffin.setOrderDate(rs.getDate("Orderdate"));
                 objTiffin.setDeliveryAddress(rs.getString("DeliveryAddress"));
                 objTiffin.setNumberOfTiffin(rs.getInt("NoOfTiffin"));
                 objTiffin.setStatus(rs.getBoolean("Status"));
-                
+                objTiffin.setTotalcost(rs.getInt("Total"));
+                Menu objMenu = new Menu();
+                Vendor objVendor = new Vendor();
+                objVendor.setVendorName(rs.getString("VendorName"));
+                objVendor.setUserName(rs.getString("Vendor"));
+                objMenu.setVendor(objVendor);
+                objTiffin.setMenu(objMenu);
+
                 tiffinList.add(objTiffin);
-                
+
             }
             rs.close();
         } catch (Exception ex) {
@@ -284,12 +326,12 @@ public class Customer extends User{
         }
         return tiffinList;
     }
-    
-    public boolean insertFeedback(String customer,String vendor,Date date,String message,int rating){
+
+    public boolean insertFeedback(String customer, String vendor, Date date, String message, int rating) {
         //Author: Prachi Deodhar
         //Date:13- October-2013
         //Called when user gives feedback
-         con = new DBConnection();
+        con = new DBConnection();
         try {
 
             callableStatement = con.connection.prepareCall("{call insertFeedback(?,?,?,?,?)}");
@@ -311,8 +353,8 @@ public class Customer extends User{
             con.closeConnection();
         }
     }
-    
-      // Methods' prtotype by Prachi and body by Hiren
+
+    // Methods' prtotype by Prachi and body by Hiren
     public boolean updateCustomerProfile() {
         //Author: Hiren Savalia
         //Date :  10-19-2013
@@ -407,8 +449,8 @@ public class Customer extends User{
             con.closeConnection();
         }
     }
-    
-    public boolean deleteOrder(String orderID){
+
+    public boolean deleteOrder(String orderID) {
         con = new DBConnection();
         try {
             callableStatement = con.connection.prepareCall("{call deleteOrder(?)}");
@@ -425,8 +467,8 @@ public class Customer extends User{
             con.closeConnection();
         }
     }
-    
-    public boolean updateOrder(String orderID,String deliveryaddress){
+
+    public boolean updateOrder(String orderID, String deliveryaddress) {
         con = new DBConnection();
         try {
             callableStatement = con.connection.prepareCall("{call updateOrder(?,?)}");
@@ -444,25 +486,61 @@ public class Customer extends User{
             con.closeConnection();
         }
     }
-    
-    public void getProfileDetails(){
-       try{
-        con=new DBConnection();
-        callableStatement=con.connection.prepareCall("{call getCustomer(?)}");
-        callableStatement.setString(1, userName);
-        ResultSet rs=callableStatement.executeQuery();
-        if(rs.next()){
-            int areaID=rs.getInt(2);
-            String areaName=rs.getString(3);
-            area=new Area(areaID,areaName);
-            firstName=rs.getString(4);
-            lastName=rs.getString(5);
-            lane=rs.getString(6);
-            mobileNo=rs.getString(7);
-            emailID=rs.getString(8);
+
+    public void getProfileDetails() {
+        try {
+            con = new DBConnection();
+            callableStatement = con.connection.prepareCall("{call getCustomer(?)}");
+            callableStatement.setString(1, userName);
+            ResultSet rs = callableStatement.executeQuery();
+            if (rs.next()) {
+                int areaID = rs.getInt(2);
+                String areaName = rs.getString(3);
+                area = new Area(areaID, areaName);
+                firstName = rs.getString(4);
+                lastName = rs.getString(5);
+                lane = rs.getString(6);
+                mobileNo = rs.getString(7);
+                emailID = rs.getString(8);
+            }
+        } catch (SQLException exc) {
+            System.out.println(exc.toString());
         }
-       }catch(SQLException exc){
-           System.out.println(exc.toString());
-       }
     }
-}    
+    
+    public List<VendorArea> getVendorArea(String vendor) {
+        //Author: Prachi Deodhar
+        //Date:13- October-2013
+        //Report on the current month's order
+        List<VendorArea> vendorarea = new ArrayList<VendorArea>();
+        con = new DBConnection();
+        try {
+
+            callableStatement = con.connection.prepareCall("{call getVendorArea(?)}");
+            callableStatement.setString(1, vendor);
+            ResultSet rs = callableStatement.executeQuery();
+
+            while (rs.next()) {
+                
+                VendorArea objVendorArea = new VendorArea();
+                Vendor objVendor = new Vendor();
+                objVendor.setUserName(rs.getString("UserName"));
+                Area objArea = new Area();
+                objArea.setAreaID(rs.getInt("AreaID"));
+                objVendorArea.setVendor(objVendor);
+                objVendorArea.setArea(objArea);
+                
+                vendorarea.add(objVendorArea);
+                
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+
+            con.closeConnection();
+        }
+        return vendorarea;
+    }
+    
+}

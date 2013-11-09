@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /*
  * To change this template, choose Tools | Templates
@@ -21,21 +22,30 @@ import java.util.ArrayList;
  */
 public class Tiffin {
     
-    private int orderID;
+    private String orderID;
     private String userNameCustomer;
     private String deliveryAddress;
     private int numberOfTiffin;
-    private int menuID;
+    private Menu menu;
     private boolean status;
     private Date orderDate;
+    private int totalcost;
     private ArrayList<MenuItem> menuItem = new ArrayList<MenuItem>();
-
+    private List<TiffinDetails> tiffindetails = new ArrayList<TiffinDetails>();
 
 
      public Tiffin()
     {
         //Author: Nidhi Patel
         //Date: 13-October-2013
+    }
+
+    public int getTotalcost() {
+        return totalcost;
+    }
+
+    public void setTotalcost(int totalcost) {
+        this.totalcost = totalcost;
     }
 
     public boolean isStatus() {
@@ -54,13 +64,13 @@ public class Tiffin {
         this.orderDate = orderDate;
     }
      
-    public int getOrderID() {
+    public String getOrderID() {
         //Author: Nidhi Patel
         //Date: 13-October-2013
         return orderID;
     }
 
-    public void setOrderID(int orderID) {
+    public void setOrderID(String orderID) {
         //Author: Nidhi Patel
         //Date: 13-October-2013
         this.orderID = orderID;
@@ -102,17 +112,14 @@ public class Tiffin {
         this.numberOfTiffin = numberOfTiffin;
     }
 
-    public int getMenuID() {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
-        return menuID;
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setMenuID(int menuID) {
-        //Author: Nidhi Patel
-        //Date: 13-October-2013
-        this.menuID = menuID;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
+
 
     public ArrayList<MenuItem> getMenuItem() {
         //Author: Nidhi Patel
@@ -134,5 +141,15 @@ public class Tiffin {
 
        return menuItem;
     }
+
+    public List<TiffinDetails> getTiffindetails() {
+        return tiffindetails;
+    }
+
+    public void setTiffindetails(List<TiffinDetails> tiffindetails) {
+        this.tiffindetails = tiffindetails;
+    }
+    
+    
 
 }

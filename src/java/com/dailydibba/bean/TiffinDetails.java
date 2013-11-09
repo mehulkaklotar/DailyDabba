@@ -10,24 +10,25 @@ package com.dailydibba.bean;
  */
 public class TiffinDetails {
     
-    private String orderID;
-    private int itemID;
+    private Tiffin order;
+    private Item item;
     private int quantity;
+    private int cost;
 
-    public String getOrderID() {
-        return orderID;
+    public Tiffin getOrder() {
+        return order;
     }
 
-    public void setOrderID(String orderID) {
-        this.orderID = orderID;
+    public void setOrder(Tiffin order) {
+        this.order = order;
     }
 
-    public int getItemID() {
-        return itemID;
+    public Item getItem() {
+        return item;
     }
 
-    public void setItemID(int itemID) {
-        this.itemID = itemID;
+    public void setItem(Item item) {
+        this.item = item;
     }
     
     public int getQuantity() {
@@ -37,5 +38,12 @@ public class TiffinDetails {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
 }
