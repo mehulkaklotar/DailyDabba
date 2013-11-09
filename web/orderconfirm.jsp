@@ -117,7 +117,7 @@
 
                 <ul class="breadcrumb">
                     <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
-                    <li><a href="Controller?action=getVendor">Vendor</a> <span class="divider">/</span></li>
+                    <li><a href="Controller?action=getVendor&vendorUN=${vendor.getUserName()}">Vendor</a> <span class="divider">/</span></li>
                     <li class="active">Cart</li>
                     <li class="active">Order Summery</li>
                 </ul>
@@ -139,7 +139,7 @@
                         <label class="alert-success text-center" style="margin-top: 10px;">Your tiffin will be delivered between 12 p.m. to 2 p.m.  </label>
                     </div>
                     <div style="margin:10px 0 0 0;">
-                        <a href="#" class="button"> < Order more?</a>
+                        <a href="Controller?action=getVendor&vendorUN=${vendor.getUserName()}" class="button"> < Order more?</a>
                     </div>
                 </div>
 

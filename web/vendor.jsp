@@ -220,6 +220,7 @@
 
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane fade active in" id="Lunch">
+                                <label class="alert-error" id ="error"></label>
                                 <table id="MenuTable">
                                     <c:if test="${menu.tiffinName}">
                                         <tr>

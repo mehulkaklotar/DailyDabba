@@ -110,7 +110,7 @@
 
                 <ul class="breadcrumb">
                     <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
-                    <li><a href="Controller?action=getVendor&vendorUN=${tiffin.menu.getVendorUserName()}">Vendor</a> <span class="divider">/</span></li>
+                    <li><a href="Controller?action=getVendor&vendorUN=${tiffin.menu.vendor.getUserName()}">Vendor</a> <span class="divider">/</span></li>
                     <li class="active">Order Cart</li>
                 </ul>
                 <div style="height:500px;">
@@ -125,7 +125,10 @@
                         </div>
                         <div  class="row" style="padding-left: 30px;width:45%;">
                         <% if(request.getAttribute("Alert")!=null) { %><label class="alert-error">${Alert}</label> <% } %>
-                            
+                            <label id="alert" class="alert-error"></label>
+                            <label id="a" class="alert-error"></label>
+                            <label id="c" class="alert-error"></label>
+                            <label id="add" class="alert-error"></label>
                             <div style="margin-top: 10px;">
                                 <select id="ddlCity">
                                     <option id="0" value="0">Select City</option>
@@ -174,7 +177,7 @@
                             </tr>
                             <tr style="font-size: smaller;">
                                 <td>${tiffin.getOrderID()}</td>
-                            <td>${tiffin.menu.getVendorUserName()}</td>
+                            <td>${tiffin.menu.vendor.getUserName()}</td>
                             <td>${tiffin.getNumberOfTiffin()}</td>
                             <td>Rs. ${tiffinCost}</td>
                             <td>Rs. ${tiffinCost* tiffin.getNumberOfTiffin()}</td>
@@ -212,11 +215,11 @@
                         </tr>
                     </table>
                     <input type="hidden" id="orderID" value="${tiffin.getOrderID()}" />
-                    <input type="hidden" id="vendorUN" value="${tiffin.menu.getVendorUserName()}" />
+                    <input type="hidden" id="vendorUN" value="${tiffin.menu.vendor.getUserName()}" />
                     <input type="hidden" id="tiffincost" value="${tiffinCost}" />
                     <div class="row" style="padding-left:30px; ">
                         <div style="width: 45%;">
-                            <a href="Controller?action=cancelOrder&orderID=${tiffin.getOrderID()}&vendorUN=${tiffin.menu.getVendorUserName()}" class="button"  style="float: left;">Back</a>
+                            <a href="Controller?action=cancelOrder&orderID=${tiffin.getOrderID()}&vendorUN=${tiffin.menu.vendor.getUserName()}" class="button"  style="float: left;">Back</a>
                             <a href="javascript:confirmorder();" id="confirmorder" class="button" style="float: right;">Confirm Order</a>
                         </div>
                     </div>

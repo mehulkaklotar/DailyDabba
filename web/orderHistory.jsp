@@ -91,7 +91,7 @@
             </header>
 
             <article class="wrapper"> 
-                <div style="height: 500px;">
+                <div style="height: auto;">
                     <ul class="breadcrumb">
                         <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
                         <li class="active">Order History</li>
