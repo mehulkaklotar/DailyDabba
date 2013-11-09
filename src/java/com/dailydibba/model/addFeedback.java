@@ -38,14 +38,16 @@ public class addFeedback implements Action {
         rating = objVisitor.getRatings(vendorUN);
         
         //Vendor menu
-        Menu objMenu = objVendor.getVendorMenu(vendorUN);
+        Menu objMenuLunch = objVendor.getVendorMenuLunch(vendorUN);
+        Menu objMenuDinner = objVendor.getVendorMenuDinner(vendorUN);
         
         // Get the details of feedback of that vendor
         List<Feedback> feedbackList = objVisitor.getFeedbackForVendor(vendorUN);
         req.setAttribute("feedback", feedbackList);
         req.setAttribute("vendor", objVendor);
         req.setAttribute("rating", rating);
-        req.setAttribute("menu", objMenu);
+        req.setAttribute("menuLunch", objMenuLunch);
+        req.setAttribute("menuDinner", objMenuDinner);
         // Go to vendor.jsp
         return "vendor.jsp";
     }

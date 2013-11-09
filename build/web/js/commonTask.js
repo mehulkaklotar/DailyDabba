@@ -52,25 +52,27 @@ $(document).ready(function() {
         });
     });
 
-    $('.sabzi').change(function() {
+
+    //Lunch
+    $('.sabziLunch').change(function() {
 
         var sum = 0;
 
-        $('.sabzi option:selected').each(function() {
+        $('.sabziLunch option:selected').each(function() {
             var q = parseFloat($(this).data('price'));
             sum += q;
         });
 
-        $('.sum').each(function() {
+        $('.sumLunch').each(function() {
             var p = parseFloat($(this).find('td').data('price'));
             sum += p;
         });
 
-        $('.sumRoti').each(function() {
+        $('.sumRotiLunch').each(function() {
             var q = parseFloat($(this).find('td').eq(1).data('quantity'));
-            if ($('.txtQuantityRoti').val() > 0)
+            if ($('.txtQuantityRotiLunch').val() > 0)
             {
-                q = q + parseFloat($('.txtQuantityRoti').val());
+                q = q + parseFloat($('.txtQuantityRotiLunch').val());
             }
             var p = parseFloat($(this).find('td').data('price'));
             var mul;
@@ -78,40 +80,40 @@ $(document).ready(function() {
             sum += mul;
         });
 
-        $('#cost').text("* Rs." + sum);
-        $('#cost').attr("data-price", sum);
-        if ($('.txtTiffinQ').val() > 0)
+        $('#costLunch').text("* Rs." + sum);
+        $('#costLunch').attr("data-price", sum);
+        if ($('.txtTiffinQLunch').val() > 0)
         {
-            var totalcost = parseFloat($('#cost').attr("data-price")) * parseFloat($('.txtTiffinQ').val());
-            $('#totalcost').text("Rs. " + totalcost);
+            var totalcost = parseFloat($('#costLunch').attr("data-price")) * parseFloat($('.txtTiffinQLunch').val());
+            $('#totalcostLunch').text("Rs. " + totalcost);
         }
         else
         {
-            $('#totalcost').text("Rs. " + sum);
+            $('#totalcostLunch').text("Rs. " + sum);
         }
 
 
     });
 
-    $('.txtQuantityRoti').change(function() {
+    $('.txtQuantityRotiLunch').change(function() {
         var sum = 0;
         var q = parseFloat($(this).val());
 
-        $('.sabzi option:selected').each(function() {
+        $('.sabziLunch option:selected').each(function() {
             var q = parseFloat($(this).data('price'));
             sum += q;
         });
 
-        $('.sum').each(function() {
+        $('.sumLunch').each(function() {
             var p = parseFloat($(this).find('td').data('price'));
             sum += p;
         });
 
-        $('.sumRoti').each(function() {
+        $('.sumRotiLunch').each(function() {
             var q = parseFloat($(this).find('td').eq(1).data('quantity'));
-            if ($('.txtQuantityRoti').val() > 0)
+            if ($('.txtQuantityRotiLunch').val() > 0)
             {
-                q = q + parseFloat($('.txtQuantityRoti').val());
+                q = q + parseFloat($('.txtQuantityRotiLunch').val());
             }
             var p = parseFloat($(this).find('td').data('price'));
             var mul;
@@ -120,38 +122,38 @@ $(document).ready(function() {
         });
 
 
-        $('#cost').text("* Rs." + sum);
-        $('#cost').attr("data-price", sum);
-        if ($('.txtTiffinQ').val() > 0)
+        $('#costLunch').text("* Rs." + sum);
+        $('#costLunch').attr("data-price", sum);
+        if ($('.txtTiffinQLunch').val() > 0)
         {
-            var totalcost = parseFloat($('#cost').attr("data-price")) * parseFloat($('.txtTiffinQ').val());
-            $('#totalcost').text("Rs. " + totalcost);
+            var totalcost = parseFloat($('#costLunch').attr("data-price")) * parseFloat($('.txtTiffinQLunch').val());
+            $('#totalcostLunch').text("Rs. " + totalcost);
         }
         else
         {
-            $('#totalcost').text("Rs. " + sum);
+            $('#totalcostLunch').text("Rs. " + sum);
         }
     });
 
-    $('.txtTiffinQ').change(function() {
+    $('.txtTiffinQLunch').change(function() {
 
         var sum = 0;
 
-        $('.sabzi option:selected').each(function() {
+        $('.sabziLunch option:selected').each(function() {
             var q = parseFloat($(this).data('price'));
             sum += q;
         });
 
-        $('.sum').each(function() {
+        $('.sumLunch').each(function() {
             var p = parseFloat($(this).find('td').data('price'));
             sum += p;
         });
 
-        $('.sumRoti').each(function() {
+        $('.sumRotiLunch').each(function() {
             var q = parseFloat($(this).find('td').eq(1).data('quantity'));
-            if ($('.txtQuantityRoti').val() > 0)
+            if ($('.txtQuantityRotiLunch').val() > 0)
             {
-                q = q + parseFloat($('.txtQuantityRoti').val());
+                q = q + parseFloat($('.txtQuantityRotiLunch').val());
             }
             var p = parseFloat($(this).find('td').data('price'));
             var mul;
@@ -159,49 +161,49 @@ $(document).ready(function() {
             sum += mul;
         });
 
-        $('#cost').text("* Rs." + sum);
-        $('#cost').attr("data-price", sum);
-        if ($('.txtTiffinQ').val() > 0)
+        $('#costLunch').text("* Rs." + sum);
+        $('#costLunch').attr("data-price", sum);
+        if ($('.txtTiffinQLunch').val() > 0)
         {
-            var totalcost = parseFloat($('#cost').attr("data-price")) * parseFloat($('.txtTiffinQ').val());
-            $('#totalcost').text("Rs. " + totalcost);
+            var totalcost = parseFloat($('#costLunch').attr("data-price")) * parseFloat($('.txtTiffinQLunch').val());
+            $('#totalcostLunch').text("Rs. " + totalcost);
         }
         else
         {
-            $('#totalcost').text("Rs. " + sum);
+            $('#totalcostLunch').text("Rs. " + sum);
         }
     });
 
-    $('#placeorder').click(function() {
+    $('#placeorderLunch').click(function() {
 
         var sabzi = [];
         var c = 0;
-        $('.sabzi option:selected').each(function() {
+        $('.sabziLunch option:selected').each(function() {
             sabzi[c] = parseFloat($(this).val());
             c++;
         });
 
-        if ($('.txtQuantityRoti').val() > 0)
+        if ($('.txtQuantityRotiLunch').val() > 0)
         {
-            var rotiQuantity = parseFloat($('.sumRoti').find('td').eq(1).data('quantity')) + parseFloat($('.txtQuantityRoti').val());
+            var rotiQuantity = parseFloat($('.sumRotiLunch').find('td').eq(1).data('quantity')) + parseFloat($('.txtQuantityRotiLunch').val());
         }
         else
         {
-            var rotiQuantity = parseFloat($('.sumRoti').find('td').eq(1).data('quantity'));
+            var rotiQuantity = parseFloat($('.sumRotiLunch').find('td').eq(1).data('quantity'));
         }
 
-        if ($('#saladID').val() > 0)
+        if ($('#saladIDLunch').val() > 0)
         {
-            var salad = $('#saladID').val();
+            var salad = $('#saladIDLunch').val();
         }
         else
         {
             var salad = 0;
         }
 
-        if ($('#txtTiffinQ').val() > 0)
+        if ($('#txtTiffinQLunch').val() > 0)
         {
-            var tiffin = $('#txtTiffinQ').val();
+            var tiffin = $('#txtTiffinQLunch').val();
         }
         else
         {
@@ -213,7 +215,7 @@ $(document).ready(function() {
         {
             if (sabzi[i] == 0)
             {
-                $("#error").html("Please select a sabzi");
+                $("#errorLunch").html("Please select a sabzi");
                 b = false;
                 break;
             }
@@ -224,7 +226,7 @@ $(document).ready(function() {
         }
 
         if (b == true) {
-            window.location.href = "Controller?action=preplaceorder&sabzi=" + sabzi + "&roti=" + $('#rotiID').val() + "&rotiQuantity=" + rotiQuantity + "&rice=" + $('#riceID').val() + "&dal=" + $('#dalID').val() + "&salad=" + salad + "&menuID=" + $('#MenuID').val() + "&tiffin=" + tiffin + "&vendorUN=" + $('#VendorUN').val();
+            window.location.href = "Controller?action=preplaceorder&sabzi=" + sabzi + "&roti=" + $('#rotiIDLunch').val() + "&rotiQuantity=" + rotiQuantity + "&rice=" + $('#riceIDLunch').val() + "&dal=" + $('#dalIDLunch').val() + "&salad=" + salad + "&menuID=" + $('#MenuIDLunch').val() + "&tiffin=" + tiffin + "&vendorUN=" + $('#VendorUN').val();
         } else {
             return;
         }
@@ -243,7 +245,200 @@ $(document).ready(function() {
          });*/
 
     });
+    
+    
+    //Dinner
+    $('.sabziDinner').change(function() {
 
+        var sum = 0;
+
+        $('.sabziDinner option:selected').each(function() {
+            var q = parseFloat($(this).data('price'));
+            sum += q;
+        });
+
+        $('.sumDinner').each(function() {
+            var p = parseFloat($(this).find('td').data('price'));
+            sum += p;
+        });
+
+        $('.sumRotiDinner').each(function() {
+            var q = parseFloat($(this).find('td').eq(1).data('quantity'));
+            if ($('.txtQuantityRotiDinner').val() > 0)
+            {
+                q = q + parseFloat($('.txtQuantityRotiDinner').val());
+            }
+            var p = parseFloat($(this).find('td').data('price'));
+            var mul;
+            mul = p * q;
+            sum += mul;
+        });
+
+        $('#costDinner').text("* Rs." + sum);
+        $('#costDinner').attr("data-price", sum);
+        if ($('.txtTiffinQDinner').val() > 0)
+        {
+            var totalcost = parseFloat($('#costDinner').attr("data-price")) * parseFloat($('.txtTiffinQDinner').val());
+            $('#totalcostDinner').text("Rs. " + totalcost);
+        }
+        else
+        {
+            $('#totalcostDinner').text("Rs. " + sum);
+        }
+
+
+    });
+
+    $('.txtQuantityRotiDinner').change(function() {
+        var sum = 0;
+        var q = parseFloat($(this).val());
+
+        $('.sabziDinner option:selected').each(function() {
+            var q = parseFloat($(this).data('price'));
+            sum += q;
+        });
+
+        $('.sumDinner').each(function() {
+            var p = parseFloat($(this).find('td').data('price'));
+            sum += p;
+        });
+
+        $('.sumRotiDinner').each(function() {
+            var q = parseFloat($(this).find('td').eq(1).data('quantity'));
+            if ($('.txtQuantityRotiDinner').val() > 0)
+            {
+                q = q + parseFloat($('.txtQuantityRotiDinner').val());
+            }
+            var p = parseFloat($(this).find('td').data('price'));
+            var mul;
+            mul = p * q;
+            sum += mul;
+        });
+
+
+        $('#costDinner').text("* Rs." + sum);
+        $('#costDinner').attr("data-price", sum);
+        if ($('.txtTiffinQDinner').val() > 0)
+        {
+            var totalcost = parseFloat($('#costDinner').attr("data-price")) * parseFloat($('.txtTiffinQDinner').val());
+            $('#totalcostDinner').text("Rs. " + totalcost);
+        }
+        else
+        {
+            $('#totalcostDinner').text("Rs. " + sum);
+        }
+    });
+
+    $('.txtTiffinQDinner').change(function() {
+
+        var sum = 0;
+
+        $('.sabziDinner option:selected').each(function() {
+            var q = parseFloat($(this).data('price'));
+            sum += q;
+        });
+
+        $('.sumDinner').each(function() {
+            var p = parseFloat($(this).find('td').data('price'));
+            sum += p;
+        });
+
+        $('.sumRotiDinner').each(function() {
+            var q = parseFloat($(this).find('td').eq(1).data('quantity'));
+            if ($('.txtQuantityRotiDinner').val() > 0)
+            {
+                q = q + parseFloat($('.txtQuantityRotiDinner').val());
+            }
+            var p = parseFloat($(this).find('td').data('price'));
+            var mul;
+            mul = p * q;
+            sum += mul;
+        });
+
+        $('#costDinner').text("* Rs." + sum);
+        $('#costDinner').attr("data-price", sum);
+        if ($('.txtTiffinQDinner').val() > 0)
+        {
+            var totalcost = parseFloat($('#costDinner').attr("data-price")) * parseFloat($('.txtTiffinQDinner').val());
+            $('#totalcostDinner').text("Rs. " + totalcost);
+        }
+        else
+        {
+            $('#totalcostDinner').text("Rs. " + sum);
+        }
+    });
+
+    $('#placeorderDinner').click(function() {
+
+        var sabzi = [];
+        var c = 0;
+        $('.sabziDinner option:selected').each(function() {
+            sabzi[c] = parseFloat($(this).val());
+            c++;
+        });
+
+        if ($('.txtQuantityRotiDinner').val() > 0)
+        {
+            var rotiQuantity = parseFloat($('.sumRotiDinner').find('td').eq(1).data('quantity')) + parseFloat($('.txtQuantityRotiDinner').val());
+        }
+        else
+        {
+            var rotiQuantity = parseFloat($('.sumRotiDinner').find('td').eq(1).data('quantity'));
+        }
+
+        if ($('#saladIDDinner').val() > 0)
+        {
+            var salad = $('#saladIDDinner').val();
+        }
+        else
+        {
+            var salad = 0;
+        }
+
+        if ($('#txtTiffinQDinner').val() > 0)
+        {
+            var tiffin = $('#txtTiffinQDinner').val();
+        }
+        else
+        {
+            var tiffin = 1;
+        }
+
+        var b = new Boolean(true);
+        for (var i = 0; i < c; i++)
+        {
+            if (sabzi[i] == 0)
+            {
+                $("#errorDinner").html("Please select a sabzi");
+                b = false;
+                break;
+            }
+            else
+            {
+                b = true;
+            }
+        }
+
+        if (b == true) {
+            window.location.href = "Controller?action=preplaceorder&sabzi=" + sabzi + "&roti=" + $('#rotiIDDinner').val() + "&rotiQuantity=" + rotiQuantity + "&rice=" + $('#riceIDDinner').val() + "&dal=" + $('#dalIDDinner').val() + "&salad=" + salad + "&menuID=" + $('#MenuIDDinner').val() + "&tiffin=" + tiffin + "&vendorUN=" + $('#VendorUN').val();
+        } else {
+            return;
+        }
+
+
+        /*$.post("Controller?action=preplaceorder", {
+         sabzi: sabzi,
+         roti: $('#rotiID').val(),
+         rotiQuantity: rotiQuantity,
+         rice: $('#riceID').val(),
+         dal: $('#dalID').val(),
+         salad: salad,
+         menuID: $('#MenuID').val(),
+         tiffin: tiffin,
+         vendorUN: $('#VendorUN').val()
+         });*/
+
+    });
 });
 
 function confirmorder()

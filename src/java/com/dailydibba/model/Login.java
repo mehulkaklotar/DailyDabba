@@ -14,6 +14,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author kaklo
@@ -27,7 +28,7 @@ public class Login implements Action {
         String password = req.getParameter("password");
         String fromPage = "";
         //if(!req.getParameter("from").equals(null)){
-          //  fromPage = req.getParameter("from").substring(12, req.getParameter("from").length());
+        //  fromPage = req.getParameter("from").substring(12, req.getParameter("from").length());
         //}
 
         Visitor objVisitor = new Visitor();
@@ -44,14 +45,16 @@ public class Login implements Action {
                 int rating = objVisitor.getRatings(vendorUN);
 
                 //Vendor menu
-                Menu objMenu = objVendor.getVendorMenu(vendorUN);
+                Menu objMenuLunch = objVendor.getVendorMenuLunch(vendorUN);
+                Menu objMenuDinner = objVendor.getVendorMenuDinner(vendorUN);
 
                 // Get the details of feedback of that vendor
                 List<Feedback> feedbackList = objVisitor.getFeedbackForVendor(vendorUN);
                 req.setAttribute("feedback", feedbackList);
                 req.setAttribute("vendor", objVendor);
                 req.setAttribute("rating", rating);
-                req.setAttribute("menu", objMenu);
+                req.setAttribute("menuLunch", objMenuLunch);
+                req.setAttribute("menuDinner", objMenuDinner);
             }
             return fromPage;
         } else if (objUser.getPassword().equals(password) && objUser.getUsertype().getRole().equals("Vendor")) {

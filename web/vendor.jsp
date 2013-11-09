@@ -73,65 +73,65 @@
                         <% }
                         %>
                     </span>
-                    </div>
                 </div>
-                <!-- ******** FULL WIDTH SLIDER START ******** -->
-                <div id="fwslider">
-                    <div class="slider_container">
+            </div>
+            <!-- ******** FULL WIDTH SLIDER START ******** -->
+            <div id="fwslider">
+                <div class="slider_container">
 
-                        <div class="slide" style="height:300px;" > 
-                            <img src="images/thali.JPG" />
-
-                        </div>
-
-                        <div class="slide" style="height:300px;"> 
-                            <img src="images/thali1.jpg" />
-
-                        </div>
-
-                        <div class="slide" style="height:300px;"> 
-                            <img src="images/thali2.jpg" />
-
-                        </div>
+                    <div class="slide" style="height:300px;" > 
+                        <img src="images/thali.JPG" />
 
                     </div>
 
+                    <div class="slide" style="height:300px;"> 
+                        <img src="images/thali1.jpg" />
 
-                    <div class="timers"></div>
-                    <div class="slidePrev"><span></span></div>
-                    <div class="slideNext"><span></span></div>
-                </div> 
-                <div style="height:20px;background-color: #222;">
+                    </div>
+
+                    <div class="slide" style="height:300px;"> 
+                        <img src="images/thali2.jpg" />
+
+                    </div>
 
                 </div>
-                <!-- ******** FULL WIDTH SLIDER END ******** -->
-
-            </header>
 
 
-            <!-- two forms for VENDOR DETAILS starts here -->
-            <article class="wrapper">
-                <ul class="breadcrumb">
-                    <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
-                    <lii class="active">Vendor</li>
-                </ul>
-                <div style="height:1000px">
-                    <div style="float: left">
-                        <form class="vendor">
-                            <div style="background-color: powderblue">
-                                <div style="float: left; padding-left: 10px; padding-top: 10px">
-                                    <i class="icon-user"></i>
-                                </div>
-                                <div>
-                                    <h3 style="text-align: center;">Vendor Details </h3>
-                                </div>
+                <div class="timers"></div>
+                <div class="slidePrev"><span></span></div>
+                <div class="slideNext"><span></span></div>
+            </div> 
+            <div style="height:20px;background-color: #222;">
+
+            </div>
+            <!-- ******** FULL WIDTH SLIDER END ******** -->
+
+        </header>
+
+
+        <!-- two forms for VENDOR DETAILS starts here -->
+        <article class="wrapper">
+            <ul class="breadcrumb">
+                <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
+                <lii class="active">Vendor</li>
+            </ul>
+            <div style="height:1000px;">
+                <div style="float: left">
+                    <form class="vendor">
+                        <div style="background-color: powderblue">
+                            <div style="float: left; padding-left: 10px; padding-top: 10px">
+                                <i class="icon-user"></i>
                             </div>
-                            <table>
-                                <tr>
-                                    <td style="width: 30%">
-                                        Vendor Name : 
-                                    </td>
-                                    <td>
+                            <div>
+                                <h3 style="text-align: center;">Vendor Details </h3>
+                            </div>
+                        </div>
+                        <table>
+                            <tr>
+                                <td style="width: 30%">
+                                    Vendor Name : 
+                                </td>
+                                <td>
                                     ${vendor.vendorName}
                                 </td>
                             </tr>
@@ -173,7 +173,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            
+
                         </table>
                         <div style="background-color: powderblue">
                             <div style="float: left; padding-left: 10px; padding-top: 10px">
@@ -220,23 +220,23 @@
 
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane fade active in" id="Lunch">
-                                <label class="alert-error" id ="error"></label>
+                                <label class="alert-error" id ="errorLunch"></label>
                                 <table id="MenuTable">
-                                    <c:if test="${menu.tiffinName}">
+                                    <c:if test="${menuLunch.tiffinName}">
                                         <tr>
                                             <td>
                                                 Description : 
                                             </td>
                                             <td>
-                                                ${menu.tiffinName}
+                                                ${menuLunch.tiffinName}
                                             </td>
                                         </tr>
                                     </c:if>
                                     <c:set var="count" value="${0}"/>
                                     <c:set var="item" value="${0}"/>
-                                    <input type="hidden" id="MenuID" value="${menu.menuID}" />
+                                    <input type="hidden" id="MenuIDLunch" value="${menuLunch.menuID}" />
                                     <input type="hidden" id="VendorUN" value="${vendor.userName}" />
-                                    <c:forEach items="${menu.menuItem}" var="list">
+                                    <c:forEach items="${menuLunch.menuItem}" var="list">
 
                                         <c:if test="${list.item.type.typeName eq 'Sabzi'}">
                                             <tr>
@@ -245,9 +245,9 @@
                                                 </td>
                                                 <td>
                                                     <c:set var="item" value="${item + 1}"/>
-                                                    <select id="item${item}" class="sabzi">
+                                                    <select id="item${item}" class="sabziLunch">
                                                         <option id="0" value="0" data-price="0">Select</option>
-                                                        <c:forEach items="${menu.menuItem}" var="list">
+                                                        <c:forEach items="${menuLunch.menuItem}" var="list">
                                                             <c:if test="${list.item.type.typeName eq 'Sabzi'}">
                                                                 <option id="${list.item.itemID}" value="${list.item.itemID}" data-price="${list.cost}">
                                                                     ${list.item.itemName} Rs.${list.cost}
@@ -260,25 +260,25 @@
                                         </c:if>
                                     </c:forEach>
 
-                                    <c:forEach items="${menu.menuItem}" var="list">
+                                    <c:forEach items="${menuLunch.menuItem}" var="list">
                                         <c:if test="${list.item.type.typeName == 'Roti'}">
                                             <c:set var="count" value="${count + (list.cost * list.quantity)}"/>
-                                            <tr class="sumRoti">
+                                            <tr class="sumRotiLunch">
                                                 <td data-price="${list.cost}">
                                                     ${list.item.itemName} :
                                                 </td>
                                                 <td data-quantity="${list.quantity}">
-                                                    # ${list.quantity} * Rs.${list.cost} &nbsp; <input type="text" placeholder="Extra" class="txtQuantityRoti" value="" style="width:45px;" />
+                                                    # ${list.quantity} * Rs.${list.cost} &nbsp; <input type="text" placeholder="Extra" class="txtQuantityRotiLunch" value="" style="width:45px;" />
                                                 </td>
                                             </tr>
-                                            <input type="hidden" id="rotiID" value="${list.item.itemID}" />
+                                            <input type="hidden" id="rotiIDLunch" value="${list.item.itemID}" />
                                         </c:if>
                                     </c:forEach>
 
-                                    <c:forEach items="${menu.menuItem}" var="list">
+                                    <c:forEach items="${menuLunch.menuItem}" var="list">
                                         <c:if test="${list.item.type.typeName == 'Rice'}">
                                             <c:set var="count" value="${count + list.cost}"/>
-                                            <tr class="sum">
+                                            <tr class="sumLunch">
                                                 <td data-price="${list.cost}">
                                                     Rice :
                                                 </td>
@@ -286,14 +286,14 @@
                                                     ${list.item.itemName} (${list.cost}) Rs.
                                                 </td>
                                             </tr>
-                                            <input type="hidden" id="riceID" value="${list.item.itemID}" />
+                                            <input type="hidden" id="riceIDLunch" value="${list.item.itemID}" />
                                         </c:if>
                                     </c:forEach>
 
-                                    <c:forEach items="${menu.menuItem}" var="list">
+                                    <c:forEach items="${menuLunch.menuItem}" var="list">
                                         <c:if test="${list.item.type.typeName == 'Dal'}">
                                             <c:set var="count" value="${count + list.cost}"/>
-                                            <tr class="sum">
+                                            <tr class="sumLunch">
                                                 <td data-price="${list.cost}">
                                                     Dal :
                                                 </td>
@@ -301,7 +301,7 @@
                                                     ${list.item.itemName} (${list.cost}) Rs.
                                                 </td>
                                             </tr>
-                                            <input type="hidden" id="dalID" value="${list.item.itemID}" />
+                                            <input type="hidden" id="dalIDLunch" value="${list.item.itemID}" />
                                         </c:if>
                                     </c:forEach>        
 
@@ -309,7 +309,7 @@
                                     <c:forEach items="${menu.menuItem}" var="list">
                                         <c:if test="${list.item.type.typeName == 'Salad'}">
                                             <c:set var="count" value="${count + list.cost}"/>
-                                            <tr class="sum" data-id ="${list.item.itemID}">
+                                            <tr class="sumLunch" data-id ="${list.item.itemID}">
                                                 <td data-price="${list.cost}">
                                                     Salad :
                                                 </td>
@@ -317,7 +317,7 @@
                                                     Available (${list.cost}) Rs.
                                                 </td>
                                             </tr>
-                                            <input type="hidden" id="saladID" value="${list.item.itemID}" />
+                                            <input type="hidden" id="saladIDLunch" value="${list.item.itemID}" />
                                         </c:if>
                                     </c:forEach>        
 
@@ -328,11 +328,11 @@
                                         </td>
                                         <td>
                                             <div style="float:left;">
-                                                <input type="text" id="txtTiffinQ" class="txtTiffinQ" name="tiffin" style="width:40px;"/>
+                                                <input type="text" id="txtTiffinQLunch" class="txtTiffinQLunch" name="tiffin" style="width:40px;"/>
                                             </div>
                                             <div style="float:left;">
 
-                                                <label id="cost" data-price="${count}" style="padding-top: 10px;">* ${count}</label>
+                                                <label id="costLunch" data-price="${count}" style="padding-top: 10px;">* ${count}</label>
                                             </div>
 
                                             <div class="clearfix"></div>
@@ -343,7 +343,7 @@
                                             <label>Grand total of all tiffins :</label>
                                         </td>
                                         <td>
-                                            <label id="totalcost" style="float: left">Rs. ${count} </label> &nbsp; 
+                                            <label id="totalcostLunch" style="float: left">Rs. ${count} </label> &nbsp; 
                                         </td>
                                     </tr>
                                 </table>
@@ -351,18 +351,156 @@
                                 <div class="center">
                                     <% if (session.getAttribute("UserName") != null) {
                                     %> 
-                                    <a href="#" class="button" id="placeorder">Order</a>
+                                    <a href="#" class="button" style="margin-bottom: 10px;" id="placeorderLunch">Order</a>
 
                                     <% } else {
                                     %>
-                                    <a href="login.jsp?from=${pageContext.request.requestURI}&vendorUN=<%= request.getParameter("vendorUN")%>"  class="button">Login to Order</a>
+                                    <a href="login.jsp?from=${pageContext.request.requestURI}&vendorUN=<%= request.getParameter("vendorUN")%>"  class="button" style="margin-bottom: 10px;">Login to Order</a>
 
                                     <%
-                                }%>
+                                        }%>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="Dinner">
-                                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                                <label class="alert-error" id ="errorDinner"></label>
+                                <table id="MenuTable">
+                                    <c:if test="${menuDinner.tiffinName}">
+                                        <tr>
+                                            <td>
+                                                Description : 
+                                            </td>
+                                            <td>
+                                                ${menuDinner.tiffinName}
+                                            </td>
+                                        </tr>
+                                    </c:if>
+                                    <c:set var="count" value="${0}"/>
+                                    <c:set var="item" value="${0}"/>
+                                    <input type="hidden" id="MenuIDDinner" value="${menuDinner.menuID}" />
+                                    <c:forEach items="${menuDinner.menuItem}" var="list">
+
+                                        <c:if test="${list.item.type.typeName eq 'Sabzi'}">
+                                            <tr>
+                                                <td>
+                                                    Subji :
+                                                </td>
+                                                <td>
+                                                    <c:set var="item" value="${item + 1}"/>
+                                                    <select id="item${item}" class="sabziDinner">
+                                                        <option id="0" value="0" data-price="0">Select</option>
+                                                        <c:forEach items="${menuDinner.menuItem}" var="list">
+                                                            <c:if test="${list.item.type.typeName eq 'Sabzi'}">
+                                                                <option id="${list.item.itemID}" value="${list.item.itemID}" data-price="${list.cost}">
+                                                                    ${list.item.itemName} Rs.${list.cost}
+                                                                </option>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        </c:if>
+                                    </c:forEach>
+
+                                    <c:forEach items="${menuDinner.menuItem}" var="list">
+                                        <c:if test="${list.item.type.typeName == 'Roti'}">
+                                            <c:set var="count" value="${count + (list.cost * list.quantity)}"/>
+                                            <tr class="sumRotiDinner">
+                                                <td data-price="${list.cost}">
+                                                    ${list.item.itemName} :
+                                                </td>
+                                                <td data-quantity="${list.quantity}">
+                                                    # ${list.quantity} * Rs.${list.cost} &nbsp; <input type="text" placeholder="Extra" class="txtQuantityRotiDinner" value="" style="width:45px;" />
+                                                </td>
+                                            </tr>
+                                            <input type="hidden" id="rotiIDDinner" value="${list.item.itemID}" />
+                                        </c:if>
+                                    </c:forEach>
+
+                                    <c:forEach items="${menuDinner.menuItem}" var="list">
+                                        <c:if test="${list.item.type.typeName == 'Rice'}">
+                                            <c:set var="count" value="${count + list.cost}"/>
+                                            <tr class="sumDinner">
+                                                <td data-price="${list.cost}">
+                                                    Rice :
+                                                </td>
+                                                <td>
+                                                    ${list.item.itemName} (${list.cost}) Rs.
+                                                </td>
+                                            </tr>
+                                            <input type="hidden" id="riceIDDinner" value="${list.item.itemID}" />
+                                        </c:if>
+                                    </c:forEach>
+
+                                    <c:forEach items="${menuDinner.menuItem}" var="list">
+                                        <c:if test="${list.item.type.typeName == 'Dal'}">
+                                            <c:set var="count" value="${count + list.cost}"/>
+                                            <tr class="sumDinner">
+                                                <td data-price="${list.cost}">
+                                                    Dal :
+                                                </td>
+                                                <td>
+                                                    ${list.item.itemName} (${list.cost}) Rs.
+                                                </td>
+                                            </tr>
+                                            <input type="hidden" id="dalIDDinner" value="${list.item.itemID}" />
+                                        </c:if>
+                                    </c:forEach>        
+
+
+                                    <c:forEach items="${menu.menuItem}" var="list">
+                                        <c:if test="${list.item.type.typeName == 'Salad'}">
+                                            <c:set var="count" value="${count + list.cost}"/>
+                                            <tr class="sumDinner" data-id ="${list.item.itemID}">
+                                                <td data-price="${list.cost}">
+                                                    Salad :
+                                                </td>
+                                                <td>
+                                                    Available (${list.cost}) Rs.
+                                                </td>
+                                            </tr>
+                                            <input type="hidden" id="saladIDDinner" value="${list.item.itemID}" />
+                                        </c:if>
+                                    </c:forEach>        
+
+
+                                    <tr>
+                                        <td>
+                                            <label>Enter total no of tiffins :</label>
+                                        </td>
+                                        <td>
+                                            <div style="float:left;">
+                                                <input type="text" id="txtTiffinQDinner" class="txtTiffinQDinner" name="tiffin" style="width:40px;"/>
+                                            </div>
+                                            <div style="float:left;">
+
+                                                <label id="costDinner" data-price="${count}" style="padding-top: 10px;">* ${count}</label>
+                                            </div>
+
+                                            <div class="clearfix"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Grand total of all tiffins :</label>
+                                        </td>
+                                        <td>
+                                            <label id="totalcostDinner" style="float: left">Rs. ${count} </label> &nbsp; 
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <div class="center">
+                                    <% if (session.getAttribute("UserName") != null) {
+                                    %> 
+                                    <a href="#" class="button" style="margin-bottom: 5px;" id="placeorderDinner">Order</a>
+
+                                    <% } else {
+                                    %>
+                                    <a href="login.jsp?from=${pageContext.request.requestURI}&vendorUN=<%= request.getParameter("vendorUN")%>"  class="button" style="margin-bottom: 10px;">Login to Order</a>
+
+                                    <%
+                                        }%>
+                                </div>
                             </div>
                         </div>
 

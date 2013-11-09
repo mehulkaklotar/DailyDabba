@@ -12,6 +12,6 @@
         <title>Customer Registration</title>
     </head>
     <body>
-        <jsp:forward page="/Controller?action=customerRegistration"></jsp:forward>
+        <jsp:forward page="Controller?action=customerRegistration"></jsp:forward>
     </body>
 </html>

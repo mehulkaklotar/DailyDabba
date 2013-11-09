@@ -227,11 +227,81 @@ public class Vendor extends User {
         }
     }
      
-     public Menu getVendorMenu(String vendor){
-         try {
+     public Menu getVendorMenu(String vendor) {
+        try {
             con = new DBConnection();
             ArrayList<MenuItem> menuList = new ArrayList<MenuItem>();
             callableStatement = con.connection.prepareCall("{call getVendorMenu(?)}");
+            callableStatement.setString(1, vendor);
+            ResultSet rs = callableStatement.executeQuery();
+            Menu objMenu = new Menu();
+
+            while (rs.next()) {
+                objMenu.setMenuID(rs.getInt("MenuID"));
+                objMenu.setTiffinName(rs.getString("TiffinDescription"));
+                MenuItem objMenuItem = new MenuItem();
+
+                Item objItem = new Item();
+                objItem.setItemID(rs.getInt("ItemID"));
+                objItem.setItemName(rs.getString("ItemName"));
+
+                ItemType objItemType = new ItemType();
+                objItemType.setTypeName(rs.getString("TypeName"));
+                objItem.setType(objItemType);
+
+                objMenuItem.setItem(objItem);
+                objMenuItem.setCost(rs.getDouble("Cost"));
+                objMenuItem.setQuantity(rs.getInt("Quantity"));
+                menuList.add(objMenuItem);
+            }
+            objMenu.setMenuItem(menuList);
+            return objMenu;
+        } catch (SQLException ex) {
+            return null;
+
+        }
+    }
+     
+     public Menu getVendorMenuLunch(String vendor){
+         try {
+            con = new DBConnection();
+            ArrayList<MenuItem> menuList = new ArrayList<MenuItem>();
+            callableStatement = con.connection.prepareCall("{call getVendorMenuLunch(?)}");
+            callableStatement.setString(1, vendor);
+            ResultSet rs = callableStatement.executeQuery();
+            Menu objMenu = new Menu();
+            
+            while (rs.next()) {
+                objMenu.setMenuID(rs.getInt("MenuID"));
+                objMenu.setTiffinName(rs.getString("TiffinDescription"));
+                MenuItem objMenuItem = new MenuItem();
+                
+                Item objItem = new Item();
+                objItem.setItemID(rs.getInt("ItemID"));
+                objItem.setItemName(rs.getString("ItemName"));
+                
+                ItemType objItemType = new ItemType();
+                objItemType.setTypeName(rs.getString("TypeName"));
+                objItem.setType(objItemType);
+                
+                objMenuItem.setItem(objItem);
+                objMenuItem.setCost(rs.getDouble("Cost"));
+                objMenuItem.setQuantity(rs.getInt("Quantity"));
+                menuList.add(objMenuItem);
+            }
+            objMenu.setMenuItem(menuList);
+            return objMenu;
+        } catch (SQLException ex) {
+            return null;
+
+        }
+    }
+     
+     public Menu getVendorMenuDinner(String vendor){
+         try {
+            con = new DBConnection();
+            ArrayList<MenuItem> menuList = new ArrayList<MenuItem>();
+            callableStatement = con.connection.prepareCall("{call getVendorMenuDinner(?)}");
             callableStatement.setString(1, vendor);
             ResultSet rs = callableStatement.executeQuery();
             Menu objMenu = new Menu();
