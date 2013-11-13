@@ -5,6 +5,8 @@
 package com.dailydibba.model;
 
 import com.dailydibba.action.Action;
+import com.dailydibba.bean.Administrator;
+import com.dailydibba.bean.Area;
 import com.dailydibba.bean.Feedback;
 import com.dailydibba.bean.Menu;
 import com.dailydibba.bean.User;
@@ -26,17 +28,17 @@ public class Login implements Action {
         HttpSession session = req.getSession();
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        String fromPage = "";
-        //if(!req.getParameter("from").equals(null)){
-        //  fromPage = req.getParameter("from").substring(12, req.getParameter("from").length());
-        //}
 
         Visitor objVisitor = new Visitor();
         User objUser = objVisitor.login(username);
         if (objUser.getPassword().equals(password) && objUser.getUsertype().getRole().equals("Customer")) {
+            String fromPage = "";
+            fromPage = req.getParameter("from").substring(12, req.getParameter("from").length());
             req.setAttribute("Message", "Successfully Logged in!!");
             session.setAttribute("UserName", username);
             session.setAttribute("Role", objUser.getUsertype().getRole());
+            
+            
             if (fromPage.equals("vendor.jsp")) {
                 String vendorUN = req.getParameter("vendorUN");
                 objVisitor = new Visitor();
@@ -56,17 +58,23 @@ public class Login implements Action {
                 req.setAttribute("menuLunch", objMenuLunch);
                 req.setAttribute("menuDinner", objMenuDinner);
             }
+            if (fromPage.equals("index.jsp")) {
+                Administrator objAdministrator = new Administrator();
+                List<Area> areas = objAdministrator.getAllArea();
+                req.setAttribute("areas", areas);
+            }
             return fromPage;
         } else if (objUser.getPassword().equals(password) && objUser.getUsertype().getRole().equals("Vendor")) {
             req.setAttribute("Message", "Successfully Logged in!!");
             session.setAttribute("UserName", username);
             session.setAttribute("Role", objUser.getUsertype().getRole());
-            return "dummyindex.jsp";
+            return "admin/dummyindex.jsp";
+            //return "admin/AdminController?action=getAdminIndex";
         } else if (objUser.getPassword().equals(password) && objUser.getUsertype().getRole().equals("Admin")) {
             req.setAttribute("Message", "Successfully Logged in!!");
             session.setAttribute("UserName", username);
             session.setAttribute("Role", objUser.getUsertype().getRole());
-            return "dummyindex.jsp";
+            return "admin/dummyindex.jsp";
         } else {
             req.setAttribute("Message", "Error Login!!");
             return "login.jsp";

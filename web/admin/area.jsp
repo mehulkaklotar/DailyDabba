@@ -73,7 +73,7 @@
                                                     <td>
                                                         <div class="btn-group">
                                                             <a href="AdminController?action=editArea&areaId=<c:out value="${area.areaID}"></c:out>" class="btn btn-mini" title="Edit"><i class="icon-pencil"></i></a>
-                                                            <a href="AdminController?action=viewArea&areaId=<c:out value="${area.areaID}"></c:out>" class="btn btn-mini" title="View"><i class="icon-eye-open"></i></a>-->
+                                                        <%--<a href="AdminController?action=viewArea&areaId=<c:out value="${area.areaID}"></c:out>" class="btn btn-mini" title="View"><i class="icon-eye-open"></i></a>--%>
                                                             <a href="AdminController?action=deleteArea&areaId=<c:out value="${area.areaID}"></c:out>" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
                                                     </div>
                                                 </td>

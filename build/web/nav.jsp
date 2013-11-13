@@ -19,9 +19,12 @@
           <li><a href="videos.html">Videos</a></li>
           <li><a href="tabs.html">Tabs &amp; Accordion</a></li>
         </ul>-->
-        </li>
-        <% if(session.getAttribute("UserName")==null){ %><li><a href="login.jsp">Login</a></li> <% } %>
-        <% if(session.getAttribute("UserName")!=null){ %><li><a href="Controller?action=getOrderHistory">Order History</a></li> <% } %>
+
+        <% if (session.getAttribute("UserName") == null) {%><li><a href="login.jsp?from=${pageContext.request.requestURI}">Login</a></li> <% }%>
+            <% if (session.getAttribute("UserName") != null) {%>
+        <li><a href="Controller?action=getOrderHistory">Order History</a></li>
+        <li><a href="">Update Profile</a></li>
+            <% }%>
         <li><a href="contact.jsp">Contact Us</a></li>
     </ul>
 </nav>

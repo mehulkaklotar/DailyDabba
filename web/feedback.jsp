@@ -1,4 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if (session.getAttribute("UserName") == null) {
+%>
+<jsp:forward page="login.jsp?from=${pageContext.request.requestURI}"></jsp:forward>
+<%            }
+%>
 <!doctype html>
 
 <script src="js/../bootstrap/js/bootstrap.js"></script>
@@ -56,53 +62,53 @@
                         <% }
                         %>
                     </span>
-                    </div>
                 </div>
-                <!-- ******** FULL WIDTH SLIDER START ******** -->
-                <div id="fwslider">
-                    <div class="slider_container">
+            </div>
+            <!-- ******** FULL WIDTH SLIDER START ******** -->
+            <div id="fwslider">
+                <div class="slider_container">
 
-                        <div class="slide" style="height:300px;" > 
-                            <img src="images/thali.JPG" />
-
-                        </div>
-
-                        <div class="slide" style="height:300px;"> 
-                            <img src="images/thali1.jpg" />
-
-                        </div>
-
-                        <div class="slide" style="height:300px;"> 
-                            <img src="images/thali2.jpg" />
-
-                        </div>
+                    <div class="slide" style="height:300px;" > 
+                        <img src="images/thali.JPG" />
 
                     </div>
 
+                    <div class="slide" style="height:300px;"> 
+                        <img src="images/thali1.jpg" />
 
-                    <div class="timers"></div>
-                    <div class="slidePrev"><span></span></div>
-                    <div class="slideNext"><span></span></div>
-                </div> 
-                <div style="height:20px;background-color: #222;">
-
-                </div>
-                <!-- ******** FULL WIDTH SLIDER END ******** -->
-
-            </header>
-
-            <article class="wrapper"> 
-                <div style="margin: auto">
-                    <h2 class="center">Feedback</h2>
-                    <div class="message">
-                        <div id="alert"></div>
                     </div>
+
+                    <div class="slide" style="height:300px;"> 
+                        <img src="images/thali2.jpg" />
+
+                    </div>
+
                 </div>
-                <hr></hr>
-                <form name="contactform" method="post" action="" id="reservation">
-                    <div align="center" class="row">
-                        <div>
-                            <label> Vendor Name :  ${param['userName']} </label> 
+
+
+                <div class="timers"></div>
+                <div class="slidePrev"><span></span></div>
+                <div class="slideNext"><span></span></div>
+            </div> 
+            <div style="height:20px;background-color: #222;">
+
+            </div>
+            <!-- ******** FULL WIDTH SLIDER END ******** -->
+
+        </header>
+
+        <article class="wrapper"> 
+            <div style="margin: auto">
+                <h2 class="center">Feedback</h2>
+                <div class="message">
+                    <div id="alert"></div>
+                </div>
+            </div>
+            <hr></hr>
+            <form name="contactform" method="post" action="" id="reservation">
+                <div align="center" class="row">
+                    <div>
+                        <label> Vendor Name :  ${param['userName']} </label> 
                     </div>
                     <br></br>
                     <div>

@@ -4,14 +4,16 @@
     Author     : PRACHI
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<table>
+    <tr>
+        <th>Item Name</th>
+        <th>Type Name</th>
+    </tr>
+    <c:forEach items="${ItemList}" var="item">
+        <tr>
+            <td>${item.itemName}</td> 
+            <td>${item.type.typeName}</td>
+        </tr>
+    </c:forEach>
+</table>

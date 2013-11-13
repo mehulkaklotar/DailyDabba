@@ -14,8 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
-
-        <jsp:include page="include.jsp"></jsp:include>
+       
 
             <!-- Yahoo autocomplete widget -->
             <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/fonts/fonts-min.css" />
@@ -25,7 +24,7 @@
             <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/datasource/datasource-min.js"></script>
             <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/autocomplete/autocomplete-min.js"></script>
 
-
+            <jsp:include page="include.jsp"></jsp:include>
 
             <script src="js/commonTask.js"></script>
 
@@ -116,10 +115,11 @@
 
                     <!-- ******** LOGO START ******** -->
                     <div class="logo">
-                        <h2>Daily Dibba</h2>
+                        <h2>Daily Dabba</h2>
                         <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
                         <p>Eat Healthy, Live Healthy</p>
-                        <a href="index.jsp"></a> </div>
+                        <a href="index.jsp"></a> 
+                    </div>
                     <!-- ******** LOGO END ******** -->
                 <%
                     List<Area> areaList = (List<Area>) request.getAttribute("areas");
@@ -168,7 +168,7 @@
                         <div class="vendorlist" style="float: left" id="vendorList">
                             <!-- AJAX call to getVendor.js and geVendorList.jsp -->
                         </div>
-
+                        <div style="clear: both;"></div>
                     </div>
                 </div>
                 <!-- ******** NAVIGATION START ******** -->
@@ -184,11 +184,11 @@
                         </div>
                     </div>
 
-                    <div class="labelWelcome">
+                    <div id ="labelWelcome" class="labelWelcome">
                         <span>Welcome, 
                         <% if (session.getAttribute("UserName") != null) {
                                 out.print(session.getAttribute("UserName"));
-                        %> <a href='Controller?action=logout'>Logout</a> 
+                                %> <a href="Controller?action=logout" >Logout</a> 
                         <%
                         } else {
                         %> Guest
@@ -204,7 +204,7 @@
                     <div class="slide"> <img src="images/tiffin.PNG" />
                         <div class="slide_content">
                             <div class="slide_content_wrap">
-                                <h4 class="title">Know You Daily Tiffin</h4>
+                                <h4 class="title">Know Your Daily Tiffin</h4>
                                 <p class="description">with too many options</p>
                             </div>
                         </div>
@@ -213,7 +213,7 @@
                         <div class="slide"> <img src="images/thali.JPG" />
                             <div class="slide_content">
                                 <div class="slide_content_wrap">
-                                    <h4 class="title">Know You Daily Tiffin</h4>
+                                    <h4 class="title">Know Your Daily Tiffin</h4>
                                     <p class="description">with too many options</p>
                                 </div>
                             </div>

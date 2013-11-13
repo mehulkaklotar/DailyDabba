@@ -55,91 +55,147 @@
                         <% }
                         %>
                     </span>
-                    </div>
                 </div>
-                <!-- ******** FULL WIDTH SLIDER START ******** -->
-                <div id="fwslider">
-                    <div class="slider_container">
+            </div>
+            <!-- ******** FULL WIDTH SLIDER START ******** -->
+            <div id="fwslider">
+                <div class="slider_container">
 
-                        <div class="slide" style="height:300px;" > 
-                            <img src="images/thali.JPG" />
-
-                        </div>
-
-                        <div class="slide" style="height:300px;"> 
-                            <img src="images/thali1.jpg" />
-
-                        </div>
-
-                        <div class="slide" style="height:300px;"> 
-                            <img src="images/thali2.jpg" />
-
-                        </div>
+                    <div class="slide" style="height:300px;" > 
+                        <img src="images/thali.JPG" />
 
                     </div>
 
+                    <div class="slide" style="height:300px;"> 
+                        <img src="images/thali1.jpg" />
 
-                    <div class="timers"></div>
-                    <div class="slidePrev"><span></span></div>
-                    <div class="slideNext"><span></span></div>
-                </div> 
-                <div style="height:20px;background-color: #222;">
+                    </div>
+
+                    <div class="slide" style="height:300px;"> 
+                        <img src="images/thali2.jpg" />
+
+                    </div>
 
                 </div>
-                <!-- ******** FULL WIDTH SLIDER END ******** -->
 
-            </header>
 
-            <article class="wrapper"> 
-                <div style="height: auto;">
-                    <ul class="breadcrumb">
-                        <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
-                        <li class="active">Order History</li>
-                    </ul>
-                    <table class="table">
-                        <thead style="color: white; background-color: rgb(47, 187, 178)">
-                            <tr style="text-align: center">
-                                <td>
-                                    No
-                                </td>
-                                <td title="Click on vendor name to give Feedback">
-                                    Vendor Name
-                                </td>
-                                <td>
-                                    Date
-                                </td>
-                                <td>
-                                    Total Tiffins
-                                </td>
-                                <td>
-                                    Total Cost (Rs.)
-                                </td>
-                            </tr>
-                        </thead>
-                        <c:set var="i" value="${0}"/>
-                    <c:forEach items="${history}" var="h">
-                        <c:set var="i" value="${i + 1}"/>
+                <div class="timers"></div>
+                <div class="slidePrev"><span></span></div>
+                <div class="slideNext"><span></span></div>
+            </div> 
+            <div style="height:20px;background-color: #222;">
+
+            </div>
+            <!-- ******** FULL WIDTH SLIDER END ******** -->
+
+        </header>
+
+        <article class="wrapper"> 
+            <div style="height: auto;">
+                <ul class="breadcrumb">
+                    <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
+                    <li class="active">Order History</li>
+                </ul>
+                <table class="table">
+                    <thead style="color: white; background-color: rgb(47, 187, 178)">
                         <tr style="text-align: center">
                             <td>
-                                ${i}
+                                No
+                            </td>
+                            <td title="Click on vendor name to give Feedback">
+                                Vendor Name
                             </td>
                             <td>
-                                <a  href="Controller?action=getVendor&vendorUN=${h.menu.vendor.getUserName()}">${h.menu.vendor.getVendorName()}</a>
+                                Date
                             </td>
                             <td>
-                                ${h.getOrderDate()}
+                                Total Tiffins
                             </td>
                             <td>
-                                ${h.getNumberOfTiffin()}
+                                Total Cost (Rs.)
                             </td>
                             <td>
-                                ${h.getTotalcost() * h.getNumberOfTiffin()}
+
                             </td>
                         </tr>
-                        </c:forEach>
-                    </table>
-                </div>
-            </article>
+                    </thead>
+                    <c:choose>
+                        <c:when test="${!empty history}">
+                            <c:set var="i" value="${0}"/>
+                            <c:forEach items="${history}" var="h">
+                                <c:set var="i" value="${i + 1}"/>
+                                <tr style="text-align: center">
+                                    <td>
+                                        ${i}
+                                    </td>
+                                    <td>
+                                        <a  href="Controller?action=getVendor&vendorUN=${h.menu.vendor.getUserName()}">${h.menu.vendor.getVendorName()}</a>
+                                    </td>
+                                    <td>
+                                        ${h.getOrderDate()}
+                                    </td>
+                                    <td>
+                                        ${h.getNumberOfTiffin()}
+                                    </td>
+                                    <td>
+                                        ${h.getTotalcost() * h.getNumberOfTiffin()}
+                                    </td>
+                                    <td>
+                                        <a  href="Controller?action=cancelOrder&orderID=${h.getOrderID()}&from=${pageContext.request.requestURI}">Cancel Order?</a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <tr style="text-align: center">
+                                <td colspan="6">No Orders</td>
+                            </tr>
+                        </c:otherwise>
+                    </c:choose>
+                </table>
+                <jsp:useBean id="now" class="java.util.Date"/>
+                <script>
+                    $(function() {
+                        var server = $(".sDate").attr("value");
+                        var sarr = server.split(" ");
+
+                        var sDate = sarr[0]; // server Date
+                        var sTime = sarr[1]; // server Time
+
+                        var sD = sDate.split("-"); // split date
+                        var sDY = sD[0]; // Year
+                        var sDM = sD[1]; // Month
+                        var sDD = sD[2]; // Date
+
+                        var sT = sTime.split(":"); // split time
+                        var sTH = sT[0]; // Hour
+                        var sTM = sT[1]; // Minute
+                        var sTS = sT[2]; // Second
+
+                        if (sTH < 7) { // if system time is not greater than 9 AM then don't show the Lunch menu)
+                            var label = $("<label>").text("Sorry.You can not update Lunch Menu. Time range is 7 AM to 9 AM.").addClass('myLabel1');
+                            $('.row-fluid').before(label);
+                            $('.lunchBox').hide();
+                        } else if (sTH >= 9) {
+                            var label = $("<label>").text("Sorry.You can not update Lunch Menu. Time range is 7 AM to 9 AM.").addClass('myLabel1');
+                            $('.row-fluid').before(label);
+                            $('.lunchBox').hide();
+                        }
+
+                        if (sTH < 14) { // if system time is greater than 14 PM (i.e 2 PM)  then don't show the Dinner menu
+                            var label = $("<label>").text("Sorry.You can not update Dinner Menu. Time range is 2 PM to 4 PM.").addClass('myLabel2');
+                            $('.row-fluid').append(label);
+                            $('.dinnerBox').hide();
+                        } else if (sTH >= 16) {
+                            var label = $("<label>").text("Sorry.You can not update Dinner Menu. Time range is 2 PM to 4 PM.").addClass('myLabel2');
+                            $('.row-fluid').append(label);
+                            $('.dinnerBox').hide();
+                        }
+                    });
+                </script>
+                <span id="sDate" value="${now}" class="sDate"></span>
+            </div>
+        </article>
 
         <jsp:include page="footer.jsp"></jsp:include>
 

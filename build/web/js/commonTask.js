@@ -43,7 +43,7 @@ function getAreaCityList() {
 
 
 $(document).ready(function() {
-
+    
     $('#ddlCity').change(function() {
         $.ajax({
             url: "Controller?action=getAllCityArea&cityID=" + $('#ddlCity').val(),
@@ -245,8 +245,8 @@ $(document).ready(function() {
          });*/
 
     });
-    
-    
+
+
     //Dinner
     $('.sabziDinner').change(function() {
 
@@ -446,11 +446,11 @@ function confirmorder()
     var a = new Boolean(true);
     var c = new Boolean(true);
     var add = new Boolean(true);
-    
-    if($('#ddlArea option:selected').val() == 0 && $('#ddlCity option:selected').val() == 0 && $.trim($('#deliveryaddress').val()).length==0){
+
+    if ($('#ddlArea option:selected').val() == 0 && $('#ddlCity option:selected').val() == 0 && $.trim($('#deliveryaddress').val()).length == 0) {
         $('#alert').html("please provide address details");
     }
-    
+
     if ($('#ddlArea option:selected').val() != 0) {
         var area = $('#ddlArea option:selected').val();
     } else {
@@ -471,7 +471,7 @@ function confirmorder()
         c = false;
         return;
     }
-    if ($.trim($('#deliveryaddress').val()).length!=0) {
+    if ($.trim($('#deliveryaddress').val()).length != 0) {
         var deliveryaddress = $('#deliveryaddress').val();
     } else {
         $('#a').html("");

@@ -14,6 +14,7 @@ import com.dailydibba.bean.Customer;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -25,8 +26,8 @@ public class getProfileDetailsCustomer implements Action {
     public String execute(HttpServletRequest req, HttpServletResponse res) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Customer customer=new Customer();
-        String uname=req.getParameter("uname");
-        customer.setUserName(uname);
+        HttpSession session=req.getSession();
+        customer.setUserName(session.getAttribute("UserName").toString());
         customer.getProfileDetails();
         req.setAttribute("Customer", customer);
         

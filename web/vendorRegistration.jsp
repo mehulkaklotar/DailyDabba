@@ -12,32 +12,188 @@
 <!doctype html>
 <html>
     <head>
+        <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" />
+        <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css" />
         <meta charset="UTF-8">
         <title>Daily Dabba</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
-        
-        <script>
-        function myFunction() {
-            
-        var pass1 = document.getElementById("pass1").value;
-        var pass2 = document.getElementById("pass2").value;
-        if (pass1 != pass2) {
-            alert("Passwords Do not match");
-            document.getElementById("pass1").style.borderColor = "#E34234";
-            document.getElementById("pass2").style.borderColor = "#E34234";
-            window.location.href = 'Controller?action=selectVendor'
-        }
-        else{
-            window.location.href = 'Controller?action=vendorRegistration'
-        }
-    }
-</script>
-
         <jsp:include page="include.jsp"></jsp:include>
+            <script>
+
+                $(document).ready(function() {
+                    var b = new Boolean(true);
+                    $('#ddlCityVendor').change(function() {
+                        $.ajax({
+                            url: "Controller?action=getAllAreaByCity&cityID=" + $('#ddlCityVendor').val(),
+                        }).done(function(result) {
+                            $('#areaDiv').html(result);
+                        });
+                    });
+
+                });
+
+                function checkUsername() {
+                    if ($('#txtUsername').val() == "") {
+                        $('#usernameunique').html("Username Can't be empty");
+                        b = false;
+                        return;
+                    }
+                    else if ($('#txtUsername').val() != "") {
+                        var pattern = /^[A-Za-z0-9_]{9,30}$/;
+                        if (!pattern.test($('#txtUsername').val())) {
+                            $('#usernameunique').html("Invalid UserName");
+                            b = false;
+                        }
+                        else {
+                            $.ajax({
+                                url: "Controller?action=checkUsername&username=" + $('#txtUsername').val(),
+                            }).done(function(result) {
+                                $('#usernameunique').html(result);
+                                b = true;
+                            });
+                        }
+                    }
+                }
+
+                function checkPassword() {
+                    if ($('#password').val() == "") {
+                        $('#alertPassword').html("password Can't be empty");
+                        b = false;
+                        return;
+                    }
+                    else if ($('#password').val() != "") {
+                        var pattern = /^[A-Za-z0-9!@#$%^&*()_]{6,20}$/;
+                        if (!pattern.test($('#password').val())) {
+                            $('#alertPassword').html("Invalid Password");
+                            b = false;
+                        }
+                        else {
+                            $('#alertPassword').html("Perfect!!!!");
+                            b = true;
+                            return true;
+                        }
+                    }
+                }
+
+                function comparepassword() {
+                    var pass2 = $('#confirmpassword').val();
+                    var pass1 = $('#password').val();
+                    if (pass1 != pass2) {
+                        $('#alertPassword').html("password do not match");
+                        b = false;
+                        return;
+                    }
+                    else {
+                        $('#alertPassword').html("Perfect!!");
+                        b = true;
+                        return true;
+                    }
+                }
+
+                function checkemail() {
+                    if ($('#txtEmailID').val() != "") {
+                        var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/i;
+                        if (!pattern.test($('#txtEmailID').val())) {
+                            $('#alertEmail').html("Invalid Email");
+                            b = false;
+                        }
+                        else {
+                            $('#alertEmail').html("Gr8!!");
+                            b = true;
+                            return true;
+                        }
+                    }
+                }
+
+                function checkmobile() {
+                    if ($('#txtMobileNumber').val() != "") {
+                        var pattern = /^\d{10}$/;
+                        if (!pattern.test($('#txtMobileNumber').val())) {
+                            $('#alertMobile').html("Invalid Mobile");
+                            b = false;
+                        }
+                        else {
+                            $('#alertMobile').html("Yoo!!");
+                            b = true;
+                            return true;
+                        }
+                    }
+                }
+
+                function vendorRegister() {
+                    
+                    if (b == false) {
+                        $('#alertRegisterVendor').attr("style", "color: #C60F13;margin: 20px 0 0 20px;");
+                        $('#alertRegisterVendor').html("Please provide correct details !!!");
+                    } else {
+                        var pass2 = $('#confirmpassword').val();
+                        var pass1 = $('#password').val();
+                        if (pass1 != pass2) {
+                            $('#alertPassword').html("password do not match");
+                            b = false;
+                            return;
+                        }
+                        else {
+                            if (b != false) {
+                                $.post("Controller?action=vendorRegistration", {
+                                    username: $('#txtUsername').val(),
+                                    password: $('#password').val(),
+                                    vendorname: $('#txtVendorname').val(),
+                                    ownername: $('#txtVendorname').val(),
+                                    mobileno: $('#txtMobileNumber').val(),
+                                    landlineno: $('#txtLandlineNumber').val(),
+                                    emailID: $('#txtEmailID').val(),
+                                    city: $('#ddlCityVendor').val(),
+                                    area: $('#ddlArea').val(),
+                                    landmark: $('#txtLandmark').val(),
+                                    street: $('#txtStreetName').val(),
+                                    flat: $('#txtFlatNumber').val(),
+                                },
+                                        function(response) {
+                                            alert(response);
+                                            if ($.trim(response) == 'success') {
+                                                alert("if");
+                                                setTimeout("verification()", 2000);
+                                            } else {
+                                                alert("else");
+                                                alertMessage("error", "Invalid Usename and password!!!");
+                                            }
+                                        });
+                            }
+                            else {
+                                $('#alertRegisterVendor').attr("style", "color: #C60F13;margin: 20px 0 0 20px;");
+                                $('#alertRegisterVendor').html("Please provide correct details !!!");
+                            }
+                        }
+                    }
+                }
+
+                function verification() {
+                    window.location.href = "verification.jsp";
+                }
+
+            </script>
+            <style>
+                .vendorregistration {
+                    width: auto;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    background-color: #fff;
+                    text-align: left;
+                    border: 1px solid #e5e5e5;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    border-radius: 5px;
+                    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                }
+            </style>
+
         </head>
-        
+
 
         <body class="home">
             <header>
@@ -99,91 +255,90 @@
 
             </header>
 
-                <article class="wrapper" style="margin-left: 40%"> 
-                <div class="row">
-                    <div class="span12">
-                        <hr>
-                        <h2>Vendor Registration</h2>
-                        <div class="message">
-                            <div id="alert"></div>
-                        </div>
-                    </div>
-                </div>
+            <article class="wrapper"> 
+                <ul class="breadcrumb">
+                    <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
+                    <li><a href="selectCategory.jsp">Select Registration</a> <span class="divider">/</span></li>
+                    <lii class="active">Vendor Registration</li>
+                </ul>
 
-                <form name="registrationForm" method="post" action="Controller?action=vendorRegistration" id="vendorRegister" >
-                    <div align="left" class="row">
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="User Name" name="txtUsername" required="">
-                            <span class="required">*</span>
-                            <span class="required">Should be unique</span>
+                <div class="vendorregistration">
+                    <div style="margin-left: 20px;">
+                        <div style="padding-top: 20px;padding-bottom: 10px;">
+                            <span id="alertRegisterVendor" class="alert" style="display: none;color: #C60F13;"></span>
                         </div>
-                        <br>
-                        <div>
-                            <input type="password"  id="pass1" style="width:auto;" placeholder="Password" name="txtPassword">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="password" id="pass2" style="width:auto;" placeholder="Confirm Password" name="txtConfirmPassword">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Vendor Name" name="txtVendorname" >
-                        </div>
-                        <br>
-                        
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Owner Name" name="txtOwnername">
-                        </div>
-                        
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Mobile Number" name="txtMobileNumber">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="text" style="width:auto;" placeholder="Landline Number" name="txtLandlineNumber">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="email" style="width:auto;" placeholder="Email ID" name="txtEmailID">
-                        </div>
-                        <br>
-                        <div>
-                            <h3> Tiffin Center address </h3>
 
-                            <select id="ddlCity" name="ddlCity" class ="selectStyle">
-                                <option>Select City</option>
-                                        <c:forEach items="${Cities}" var="city">
-                                          
-                                                    <option value="${city.cityID}" >${city.cityName}</option>
-                                            
-                                        </c:forEach>
-                                    </select>
-                        </div>
-                         <div id="areaDiv">
-                            <select id="listArea" class ="selectStyle">
-                              <option>Select Area</option>
-                          
+                        <!--<form name="registrationForm" method="post" action="" id="vendorRegister" > -->
+                        <div align="left" class="row">
+                            <div>
+                                <input type="text" onkeyup="checkUsername();" style="width:auto;" placeholder="User Name" id="txtUsername" name="txtUsername" required="">
+                                <span class="required">*</span>
+                                <span id="usernameunique" class="alert">Should be unique</span>
+                                <span style="margin-left: 25px;" class="alert-info">alphabets and numbers, no special characters, min 9 and max 30 </span>
+                            </div>
+                            <br>
+                            <div>
+                                <input type="password" onkeyup="checkPassword();" required  id="password" style="width:auto;" placeholder="Password" name="txtPassword">
+                                <input type="password" onkeyup="comparepassword();" required id="confirmpassword" style="width:auto;" placeholder="Confirm Password" name="txtConfirmPassword">
+                                <span id="alertPassword" class="alert">Password should match</span>
+                                <span style="margin-left: 25px;" class="alert-info">special characters and min length 6 max 20 charters. </span>
+                            </div>
+                            <br>
+                            <div>
+                                <input type="text" id="txtVendorname" style="width:auto;" placeholder="Vendor Name" name="txtVendorname" >
+                                <input type="text" id="txtOwnername" style="width:auto;" placeholder="Owner Name" name="txtOwnername">
+                            </div>
+
+                            <br>
+                            <div>
+                                <input type="text" onkeyup="checkmobile();" id="txtMobileNumber" style="width:auto;" placeholder="Mobile Number" name="txtMobileNumber">
+                                <input type="text" id="txtLandlineNumber" style="width:auto;" placeholder="Landline Number" name="txtLandlineNumber">
+                                <span id="alertMobile" class="alert">Valid mobile no only</span>
+                            </div>
+                            <br>
+                            <div>
+                                <input type="email" onkeyup="checkemail();" id="txtEmailID" style="width:auto;" placeholder="Email ID" name="txtEmailID">
+                                <span id="alertEmail" class="alert">Valid Email Address only</span>
+                            </div>
+                            <br>
+                            <div>
+                                <h3> Tiffin Center address </h3>
+
+                                <select id="ddlCityVendor" name="ddlCityVendor" class ="selectStyle">
+                                    <option>Select City</option>
+                                <c:forEach items="${Cities}" var="city">
+
+                                    <option value="${city.cityID}" >${city.cityName}</option>
+
+                                </c:forEach>
                             </select>
                         </div>
-                        
-                          <div>
-                            <input type="text" style="width:auto;" placeholder="Landmark" name="txtLandmark">
-                            <input type="text" style="width:auto;" placeholder="Street Name" name="txtStreetName">
-                            <input type="text" style="width:auto;" placeholder="Flat Number" name="txtFlatNumber" >
-                            
+                        <div id="areaDiv">
+                            <select id="ddlArea" class ="selectStyle">
+                                <option>Select Area</option>
+
+                            </select>
+                        </div>
+
+                        <div>
+                            <input type="text" style="width:auto;" id="txtLandmark" placeholder="Landmark" name="txtLandmark">
+                            <input type="text" style="width:auto;" id="txtStreetName" placeholder="Street Name" name="txtStreetName">
+                            <input type="text" style="width:auto;" id="txtFlatNumber" placeholder="Flat Number" name="txtFlatNumber" >
+
                         </div>
                         <br>
-                        
+
                     </div>
                     <div class="row">
                         <div class="span6">
-                            <input type="submit" value="Submit" onclick="myFunction()">
+                            <input type="submit" value="Submit" onclick="vendorRegister()">
                         </div>
                     </div>
-                </form>
-                <button class="back-to-top">^</button>
-            </article>
+                </div>
+            </div>
+            <!-- </form> -->
+            <button class="back-to-top">^</button>
+        </article>
 
 
         <jsp:include page="footer.jsp"></jsp:include>

@@ -77,7 +77,7 @@
                                             <tr>
                                                 <td colspan="2">
                                                     <div id="divExistingItems" name="divExistingItems">
-                                                        ghjgjsdhgkshdk
+                                                       
                                                     </div>
                                                 </td>
                                             </tr>

@@ -13,6 +13,7 @@ import com.dailydibba.bean.Vendor;
 import java.sql.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -25,6 +26,7 @@ public class uploadUpdateMenu implements Action {
         if(req.getParameter("btnUpdateMenulunch").equals("lunch")){
            int n=Integer.parseInt(req.getParameter("noOfSabzi"));
            Menu m=new Menu();
+           m.setIsLunch(true);
            MenuItem mi=new MenuItem();
            int ItemID,quantity;
            double cost;
@@ -61,8 +63,9 @@ public class uploadUpdateMenu implements Action {
            mi=new MenuItem(it,cost,1);
            m.getMenuItem().add(mi);
            
+           HttpSession session=req.getSession();
            Vendor v=new Vendor();
-           v.setUserName("Sai");
+           v.setUserName((String) session.getAttribute("UserName"));
            
            if(Boolean.parseBoolean(req.getParameter("salad"))){
             ItemID=v.getItemOfType("Salad").get(0).getItemID();
@@ -118,6 +121,7 @@ public class uploadUpdateMenu implements Action {
             int n=Integer.parseInt(req.getParameter("noOfSabzi"));
            Menu m=new Menu();
            MenuItem mi=new MenuItem();
+           m.setIsLunch(false);
            int ItemID,quantity;
            double cost;
            for(int i=1;i<=n;i++){
@@ -153,8 +157,9 @@ public class uploadUpdateMenu implements Action {
            mi=new MenuItem(it,cost,1);
            m.getMenuItem().add(mi);
            
+           HttpSession session=req.getSession();
            Vendor v=new Vendor();
-           v.setUserName("Sai");
+           v.setUserName(session.getAttribute("UserName").toString());
            
            if(Boolean.parseBoolean(req.getParameter("salad"))){
             ItemID=v.getItemOfType("Salad").get(0).getItemID();
@@ -207,7 +212,7 @@ public class uploadUpdateMenu implements Action {
                 req.setAttribute("result", "Unsuccesful");
            }
         }
-        return "/admin/successfulUpdationofMenu.jsp";
+        return "successfulUpdationofMenu.jsp";
     }
 
 }

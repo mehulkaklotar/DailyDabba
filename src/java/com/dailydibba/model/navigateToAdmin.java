@@ -16,7 +16,7 @@ public class navigateToAdmin implements Action{
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {
-        return "admin/dummyindex.jsp";
+        return "dummyindex.jsp";
     }
     
 }

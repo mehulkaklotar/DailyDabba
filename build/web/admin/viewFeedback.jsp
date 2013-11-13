@@ -15,6 +15,8 @@
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
+        <jsp:include page="commonJs.jsp"></jsp:include>
+        
         </head>
         <body class="bg_d">
             <!-- main wrapper (without footer) -->    

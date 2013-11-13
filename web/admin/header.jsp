@@ -1,13 +1,19 @@
+ <%
+            response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+            response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+            response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
+            response.setHeader("Pragma","no-cache"); //HTTP 1.0 backward compatibility
+        %>
 <header>
     <div class="container">
         <div class="row">
             <div class="span3">
-                <div class="main-logo"><a href="index.jsp"><img src="img/beoro_logo.png" alt="Beoro Admin"></a></div>
+                <div class="main-logo"><a href="index.jsp"><img src="admin/img/beoro_logo.png" alt="Beoro Admin"></a></div>
             </div>
             <div class="span5">
                 <nav class="nav-icons">
                     <ul>
-                        <li><a href="index.jsp" class="ptip_s" title="Dashboard"><i class="icsw16-home"></i></a></li>
+                        
                                 <%
                                     if (session.getAttribute("Role").equals("Admin")) {
                                 %>
@@ -21,7 +27,7 @@
             <div class="span4">
                 <div class="user-box">
                     <div class="user-box-inner">
-                        <img src="img/avatars/avatar.png" alt="" class="user-avatar img-avatar">
+                        <img src="admin/img/avatars/avatar.png" alt="" class="user-avatar img-avatar">
                         <div class="user-info">
                             Welcome, <strong><a href="profile.jsp">Jonathan</a></strong>
                             <ul class="unstyled">

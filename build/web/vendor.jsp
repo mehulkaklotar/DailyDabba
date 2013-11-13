@@ -115,7 +115,7 @@
                 <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
                 <lii class="active">Vendor</li>
             </ul>
-            <div style="height:1000px;">
+            <div>
                 <div style="float: left">
                     <form class="vendor">
                         <div style="background-color: powderblue">
@@ -197,12 +197,18 @@
                         </table>
 
                         <div style="margin-bottom: 10px">
+
+                            <% if (session.getAttribute("UserName") != null) {
+                            %> 
                             <a href="feedback.jsp?userName=${vendor.userName}" class="button">Give Feedback For ${vendor.vendorName}</a>
 
+                            <% } else {
+                            %>
+                            <a href="login.jsp?from=${pageContext.request.requestURI}&vendorUN=${vendor.userName}"  class="button" style="margin-bottom: 10px;">Login</a>
+
+                            <%                                }
+                            %>
                         </div>
-
-
-
                     </form>
                 </div>
                 <div style="float: right">
@@ -508,7 +514,9 @@
 
                     </form>
                 </div>
+
             </div>
+            <div style="clear: both"></div>
         </article>
         <!-- two forms for VENDOR DETAILS endss here -->
 

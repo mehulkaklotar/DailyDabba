@@ -439,4 +439,27 @@ public class Visitor {
         }
         return rate;
     }
+    
+    public boolean checkUsername(String username){
+        con = new DBConnection();
+        try {
+
+            callableStatement = con.connection.prepareCall("{call checkUsername(?)}");
+            callableStatement.setString(1, username);
+            ResultSet rs = callableStatement.executeQuery();
+
+            if (rs.next()) {
+                return false;
+            }
+            else{
+                return true;
+            }
+
+        } catch (Exception e) {
+            e.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return false;
+    }
 }

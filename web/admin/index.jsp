@@ -13,9 +13,10 @@
         <meta charset="UTF-8">
         <title>DailyDabba</title>
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-        <link rel="icon" type="image/ico" href="favicon.ico">
+        <link rel="icon" type="admin/image/ico" href="favicon.ico">
         <!-- common stylesheets -->
-        <jsp:include page="commonStyle.jsp"></jsp:include>
+        <jsp:include page="AdminCommonStyle.jsp"></jsp:include>
+        <jsp:include page="AdmincommonJs.jsp"></jsp:include>
         </head>
         <body class="bg_d">
             <!-- main wrapper (without footer) -->    

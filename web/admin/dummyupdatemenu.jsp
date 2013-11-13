@@ -14,6 +14,7 @@
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
+            <script src="js/jquery.min.js"></script>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <script type="text/javascript">
             function controlVisibility() {
@@ -228,8 +229,52 @@
                         + costOfsabzi2 + '&sabzi3=' + sabzi3 + '&costOfsabzi3=' + costOfsabzi3 + '&sabzi4=' + sabzi4 + '&costOfsabzi4=' + costOfsabzi4 +
                         '&dal=' + dal + '&costOfdal=' + costOfdal + '&roti=' + roti + '&costOfroti=' + costOfroti + '&qtyOfroti=' + qtyOfroti + '&rice=' + rice + '&costOfrice=' + costOfrice +
                         '&salad=' + salad + '&pickle=' + pickle + '&papad=' + papad + '&buttermilk=' + buttermilk + '&curd=' + curd + '&desc=' + description;
-                //alert(url);
+                // alert(url);
                 window.location.href = url;
+            }
+            function changeCostLunch(e) {
+                if (e.value === "") {
+                    e.value = 0;
+                }
+
+                var noOfSabzi = document.getElementById("ddlNoOFSabzilunch").value;
+
+                var sum = parseInt(0);
+                for (i = 1; i <= noOfSabzi; i++) {
+                    //alert("Called");
+                    sum += parseInt(document.getElementById("txtcostOfsabzilunch" + i).value);
+
+                }
+                //alert(sum);
+                sum += parseInt(document.getElementById("txtDalPrizelunch").value);
+                //alert(sum);
+                sum += parseInt((parseInt(document.getElementById("txtRotiPricelunch").value) * parseInt(document.getElementById("txtRotiQuantitylunch").value)));
+                //alert(sum);
+                sum += parseInt(document.getElementById("txtRicePricelunch").value);
+                //alert(sum);
+                document.getElementById("txtTotalCostLunch").value = sum;
+            }
+            function changeCostDinner(e) {
+                if (e.value === "") {
+                    e.value = 0;
+                }
+
+                var noOfSabzi = document.getElementById("ddlNoOFSabzidinner").value;
+
+                var sum = parseInt(0);
+                for (i = 1; i <= noOfSabzi; i++) {
+                    //alert("Called");
+                    sum += parseInt(document.getElementById("txtcostOfSabzidinner" + i).value);
+
+                }
+                //alert(sum);
+                sum += parseInt(document.getElementById("txtDalPrizedinner").value);
+                //alert(sum);
+                sum += parseInt((parseInt(document.getElementById("txtRotiPricedinner").value) * parseInt(document.getElementById("txtRotiQtydinner").value)));
+                //alert(sum);
+                sum += parseInt(document.getElementById("txtRicePricedinner").value);
+                //alert(sum);
+                document.getElementById("txtTotalCostDinner").value = sum;
             }
         </script>
     </head>
@@ -252,58 +297,116 @@
                     </ul>
                 </div>
 
-                <!-- main content -->
-                <div class="container">
-                    <div class="row-fluid">
-                        <div class="span6">
-                            <div class="w-box">
-                                <div class="w-box-header">
-                                    <h4>Lunch</h4>
-                                </div>
-                                <div class="w-box-content">
-                                    <form id="validate_field_types">
-                                        <div class="formSep">
-                                            <div class="w-box w-box-blue">
-                                                <table>
+                <style>
+                    .myLabel1{
+                        font-weight: bold;
+                        font-size: 20px;
+                        width: 30%;
+                        float: left;
+                        margin-top: 20%;
+                    }
+
+                    .myLabel2{
+                        font-weight: bold;
+                        font-size: 20px;
+                        width: 30%;
+                        float: right;
+                        margin-top: 20%;
+                    }
+                </style>
+                <script>
+            $(function() {
+                var server = $(".sDate").attr("value");
+                var sarr = server.split(" ");
+
+                var sDate = sarr[0]; // server Date
+                var sTime = sarr[1]; // server Time
+
+                var sD = sDate.split("-"); // split date
+                var sDY = sD[0]; // Year
+                var sDM = sD[1]; // Month
+                var sDD = sD[2]; // Date
+
+                var sT = sTime.split(":"); // split time
+                var sTH = sT[0]; // Hour
+                var sTM = sT[1]; // Minute
+                var sTS = sT[2]; // Second
+
+                if (sTH < 7) { // if system time is not greater than 9 AM then don't show the Lunch menu)
+                    var label = $("<label>").text("Sorry.You can not update Lunch Menu. Time range is 7 AM to 9 AM.").addClass('myLabel1');
+                    $('.row-fluid').before(label);
+                    $('.lunchBox').hide();
+                } else if (sTH >= 9) {
+                    var label = $("<label>").text("Sorry.You can not update Lunch Menu. Time range is 7 AM to 9 AM.").addClass('myLabel1');
+                    $('.row-fluid').before(label);
+                    $('.lunchBox').hide();
+                }
+
+                if (sTH < 14) { // if system time is greater than 14 PM (i.e 2 PM)  then don't show the Dinner menu
+                    var label = $("<label>").text("Sorry.You can not update Dinner Menu. Time range is 2 PM to 4 PM.").addClass('myLabel2');
+                    $('.row-fluid').append(label);
+                    $('.dinnerBox').hide();
+                } else if (sTH >= 16) {
+                    var label = $("<label>").text("Sorry.You can not update Dinner Menu. Time range is 2 PM to 4 PM.").addClass('myLabel2');
+                    $('.row-fluid').append(label);
+                    $('.dinnerBox').hide();
+                }
+            });
+                </script>
+                <span id="sDate" value="${date}" class="sDate"></span>
+
+            <!-- main content -->
+            <div class="container">
+                <div class="row-fluid">
+                    <div class="lunchBox" style="float:left;width:49%;">
+                        <div class="w-box">
+                            <div class="w-box-header">
+                                <h4>Lunch</h4>
+                            </div>
+                            <div class="w-box-content">
+                                <form id="validate_field_types">
+                                    <div class="formSep">
+                                        <div class="w-box w-box-blue">
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>
+                                                            Tiffin Description:
+                                                        </th>
+                                                        <td>
+                                                            <input id="txttiffinDescriptionlunch" name="txttiffinDescriptionlunch" type="text">
+                                                        </td> 
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="w-box-header">
+                                                Sabzi
+                                            </div>
+                                            <div class="w-box-content cnt_a">
+                                                <table id="table-stacking-simple" class="table stackable">
+
                                                     <tbody>
+
                                                         <tr>
-                                                            <th>
-                                                                Tiffin Description:
-                                                            </th>
+                                                            <td>Number of subzi offered :</td>
                                                             <td>
-                                                                <input id="txttiffinDescriptionlunch" name="txttiffinDescriptionlunch" type="text">
-                                                            </td> 
+                                                                <select name="ddlNoOFSabzilunch" id="ddlNoOFSabzilunch" class="span12" onchange="ddlsabzitypelunchchange()">
+                                                                    <option id="1">1</option>
+                                                                    <option id="2">2</option>
+                                                                    <option id="3">3</option>
+                                                                    <option id="4">4</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Select Sabzi:</th>
+                                                            <th>Cost of each Sabzi</th>
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <div class="w-box-header">
-                                                    Sabzi
-                                                </div>
-                                                <div class="w-box-content cnt_a">
-                                                    <table id="table-stacking-simple" class="table stackable">
-
-                                                        <tbody>
-
-                                                            <tr>
-                                                                <td>Number of subzi offered :</td>
-                                                                <td>
-                                                                    <select name="ddlNoOFSabzilunch" id="ddlNoOFSabzilunch" class="span12" onchange="ddlsabzitypelunchchange()">
-                                                                        <option id="1">1</option>
-                                                                        <option id="2">2</option>
-                                                                        <option id="3">3</option>
-                                                                        <option id="4">4</option>
-                                                                    </select>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Select Sabzi:</th>
-                                                                <th>Cost of each Sabzi</th>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <table>
-                                                        <tbody>
-                                                            <tr>
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
                                                             <c:forEach begin="1" end="4" var="i">
 
                                                         <select  name="ddlsabzilunch${i}" id="ddlsabzilunch${i}" >
@@ -312,7 +415,7 @@
                                                             </c:forEach>
                                                         </select>
 
-                                                        <input type="text" name="txtcostOfsabzilunch${i}" id="txtcostOfsabzilunch${i}" >
+                                                        <input type="text" name="txtcostOfsabzilunch${i}" id="txtcostOfsabzilunch${i}" value="0" onchange="changeCostLunch(this)">
 
                                                         <br/>
 
@@ -347,7 +450,7 @@
                                                         <tr>
                                                             <td>Price :</td>
                                                             <td>
-                                                                <input value="" placeholder="Rs." class="span2" type="text" name="txtDalPrizelunch" id="txtDalPrizelunch" />
+                                                                <input value="0" placeholder="Rs." class="span2" type="text" name="txtDalPrizelunch" id="txtDalPrizelunch" onchange="changeCostLunch(this)"/>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -382,10 +485,10 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <input value="" placeholder="Rs." class="span2" type="text" name="txtRotiPricelunch" id="txtRotiPricelunch" />
+                                                                <input value="0" placeholder="Rs." class="span2" type="text" name="txtRotiPricelunch" id="txtRotiPricelunch" onchange="changeCostLunch(this)"/>
                                                             </td>
                                                             <td>
-                                                                <input value="" class="span2" type="text" name="txtRotiQuantitylunch" id="txtRotiQuantitylunch" />
+                                                                <input value="0" class="span2" type="text" name="txtRotiQuantitylunch" id="txtRotiQuantitylunch" onchange="changeCostLunch(this)"/>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -417,16 +520,22 @@
                                                         <tr>
                                                             <td>Price :</td>
                                                             <td>
-                                                                <input value="" placeholder="Rs." class="span2" type="text" name="txtRicePricelunch" id="txtRicePricelunch" />
+                                                                <input value="0" placeholder="Rs." class="span2" type="text" name="txtRicePricelunch" id="txtRicePricelunch" onchange="changeCostLunch(this)"/>
                                                             </td>
                                                         </tr>
+
                                                     </tbody>
                                                 </table>
 
                                             </div>
                                         </div>
                                     </div>
-
+                                    <table>
+                                        <tr>
+                                            <td>Total Cost:</td>
+                                            <td><input value="0" placeholder="Rs." readonly="readonly"  type="text" name="txtTotalCostLunch" id="txtTotalCostLunch" /></td>
+                                        </tr>
+                                    </table>
                                     <div class="formSep">
                                         <label class="req">Checkbox</label>
                                         <label class="checkbox">
@@ -464,7 +573,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="span6">
+                    <div class="dinnerBox" style="float:right;width:49%;">
                         <div class="w-box">
                             <div class="w-box-header">
                                 <h4>Dinner</h4>
@@ -521,7 +630,7 @@
                                                             </c:forEach>
                                                         </select>
 
-                                                        <input type="text" name="txtcostOfsabzidinner${i}" id="txtcostOfSabzidinner${i}" >
+                                                        <input type="text" name="txtcostOfsabzidinner${i}" id="txtcostOfSabzidinner${i}" value="0" onchange="changeCostDinner(this)">
 
                                                         <br/>
 
@@ -556,7 +665,7 @@
                                                         <tr>
                                                             <td>Price :</td>
                                                             <td>
-                                                                <input value="" placeholder="Rs." class="span2" type="text" name="txtDalPrizedinner" id="txtDalPrizedinner" />
+                                                                <input value="0" placeholder="Rs." class="span2" type="text" name="txtDalPrizedinner" id="txtDalPrizedinner" onchange="changeCostDinner(this)"/>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -591,10 +700,10 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <input value="" placeholder="Rs." class="span2" type="text" name="txtRotiPricedinner" id="txtRotiPricedinner" />
+                                                                <input value="0" placeholder="Rs." class="span2" type="text" name="txtRotiPricedinner" id="txtRotiPricedinner" onchange="changeCostDinner(this)"/>
                                                             </td>
                                                             <td>
-                                                                <input value="" class="span2" type="text" name="txtRotiQtydinner" id="txtRotiQtydinner" />
+                                                                <input value="0" class="span2" type="text" name="txtRotiQtydinner" id="txtRotiQtydinner" onchange="changeCostDinner(this)" />
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -627,16 +736,22 @@
                                                         <tr>
                                                             <td>Price :</td>
                                                             <td>
-                                                                <input value="" placeholder="Rs." class="span2" type="text" name="txtRicePricedinner" id="txtRicePricedinner" />
+                                                                <input value="0" placeholder="Rs." class="span2" type="text" name="txtRicePricedinner" id="txtRicePricedinner" onchange="changeCostDinner(this)"/>
                                                             </td>
                                                         </tr>
+
                                                     </tbody>
                                                 </table>
 
                                             </div>
                                         </div>
                                     </div>
-
+                                    <table>
+                                        <tr>
+                                            <td>Total Cost:</td>
+                                            <td><input value="0" placeholder="Rs." readonly="readonly" type="text" name="txtTotalCostDinner" id="txtTotalCostDinner" /></td>
+                                        </tr>
+                                    </table>
                                     <div class="formSep">
                                         <label class="req">Checkbox</label>
                                         <label class="checkbox">

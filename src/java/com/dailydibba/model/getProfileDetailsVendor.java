@@ -10,6 +10,7 @@ import com.dailydibba.action.Action;
 import com.dailydibba.bean.Vendor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,9 +20,9 @@ public class getProfileDetailsVendor implements Action{
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {
-        String uname=req.getParameter("uname");
+        HttpSession session=req.getSession();
         Vendor vendor=new Vendor();
-        vendor.setUserName(uname);
+        vendor.setUserName(session.getAttribute("UserName").toString());
         vendor.getProfileDetails();
         req.setAttribute("Vendor", vendor);
         

@@ -4,7 +4,12 @@
 <link type="text/css" rel="stylesheet" href="js/../bootstrap/css/bootstrap-responsive.min.css" />
 <link type="text/css" rel="stylesheet" href="js/../bootstrap/css/bootstrap.css" />
 <link type="text/css" rel="stylesheet" href="js/../bootstrap/css/bootstrap.min.css"/>
-
+<%
+    if(session.getAttribute("UserName")!=null)
+    {
+        response.sendRedirect("Controller?action=getIndex");
+    }
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
@@ -14,7 +19,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
-
+<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" />
+        <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css" />
         <jsp:include page="include.jsp"></jsp:include>
 
 
@@ -88,7 +94,14 @@
                     <div style="margin: auto">
                         <h2 class="center">Log In</h2>
                     </div>
+
                 <%
+                    if (request.getParameter("Message") != null) {
+                    
+                %>
+                <span class="alert">${Message}</span>
+                <%
+                }
                     if (request.getParameter("vendorUN") != null) {
                 %>
                 <form name="loginForm" method="post" action="Controller?action=login&from=<%= request.getParameter("from")%>&vendorUN=<%= request.getParameter("vendorUN")%>" id="login">

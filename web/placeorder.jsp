@@ -219,7 +219,7 @@
                     <input type="hidden" id="tiffincost" value="${tiffinCost}" />
                     <div class="row" style="padding-left:30px; ">
                         <div style="width: 45%;">
-                            <a href="Controller?action=cancelOrder&orderID=${tiffin.getOrderID()}&vendorUN=${tiffin.menu.vendor.getUserName()}" class="button"  style="float: left;">Back</a>
+                            <a href="Controller?action=cancelOrder&orderID=${tiffin.getOrderID()}&vendorUN=${tiffin.menu.vendor.getUserName()}&from=${pageContext.request.requestURI}" class="button"  style="float: left;">Back</a>
                             <a href="javascript:confirmorder();" id="confirmorder" class="button" style="float: right;">Confirm Order</a>
                         </div>
                     </div>

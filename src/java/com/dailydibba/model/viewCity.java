@@ -17,7 +17,7 @@ public class viewCity implements Action{
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {
         
-        return "admin/city.jsp";
+        return "city.jsp";
     }
     
 }
