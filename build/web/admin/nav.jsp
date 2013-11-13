@@ -20,12 +20,13 @@
                     <%
                         if (session.getAttribute("Role").equals("Vendor") || session.getAttribute("Role").equals("Admin")) {
                     %>
-                    <li><a href="/DailyDibba/admin/orders.jsp">Orders</a>
+                    <li><a href="/DailyDibba/admin/AdminController?action=getAllOrdersForVendor">Orders</a>
                         <%
                             if (session.getAttribute("Role").equals("Vendor")) {
                         %>
                         <ul>
-                            <li><a href="/DailyDibba/admin/neworders.jsp">New Orders</a></li>
+                            <li><a href="/DailyDibba/admin/AdminController?action=getVendorLunchList">Lunch Orders<span class="badge badge-info">6</span></a></li>
+                            <li><a href="/DailyDibba/admin/AdminController?action=getVendorDinnerList">Dinner Orders<span class="badge badge-info">6</span></a></li>
                         </ul>
                         <% }%>
                     </li>
@@ -54,21 +55,21 @@
 
                         </ul>
                     </li>
-                    <li><a href="AdminController?action=getAllArea">Area</a>
+                    <li><a href="/DailyDibba/admin/AdminController?action=getAllArea">Area</a>
                         <ul>
-                            <li><a href="AdminController?action=getAllCityArea">Add Area</a></li>
+                            <li><a href="/DailyDibba/admin/AdminController?action=getAllCityArea">Add Area</a></li>
 
                         </ul>
                     </li>
                     <li><a href="#">Reports</a>
                         <ul>
-                            <li><a href="AdminController?action=getAllVendors">Vendors</a></li>
-                            <li><a href="AdminController?action=getAllUsers">Customers</a></li>
-                            <li><a href="AdminController?action=getAllOrder">Orders</a></li>
-                            <li><a href="AdminController?action=getTodayAllLunch">Today's All Lunch</a>
+                            <li><a href="/DailyDibba/admin/AdminController?action=getAllVendors">Vendors</a></li>
+                            <li><a href="/DailyDibba/admin/AdminController?action=getAllUsers">Customers</a></li>
+                            <li><a href="/DailyDibba/admin/AdminController?action=getAllOrder">Orders</a></li>
+                            <li><a href="/DailyDibba/admin/AdminController?action=getTodayAllLunch">Today's All Lunch</a>
                             </li>
-                            <li><a href="AdminController?action=getTodayAllDinner">Today's All Dinner</a>
-                            <li><a href="AdminController?action=getAllFeedback">Feedbacks</a>
+                            <li><a href="/DailyDibba/admin/AdminController?action=getTodayAllDinner">Today's All Dinner</a>
+                            <li><a href="/DailyDibba/admin/AdminController?action=getAllFeedback">Feedbacks</a>
                         </ul>
                     </li>
                     <% }%>

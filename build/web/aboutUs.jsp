@@ -29,7 +29,7 @@
 
                     <!-- ******** LOGO START ******** -->
                     <div class="logo">
-                        <h2>Daily Dibba</h2>
+                        <h2>Daily Dabba</h2>
                         <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
                         <p>Eat Healthy, Live Healthy</p>
                         <a href="index.html"></a> </div>
@@ -94,20 +94,23 @@
                 <div class="row">
                     <div class="span12">
                         <h1 class="center">About Us</h1>
-                        <blockquote>Passion is people. People who love what they do and take your enjoyment personally. Passion is what to expect from the people who take your order and the people who craft your meal.</blockquote>
-                        <p class="center">- John &amp; Jane Smith, The Owners</p>
+                        <blockquote>There is no sincerer love than the love for food. </blockquote>
+                        <p class="center">~George Bernard Shaw </p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="span6">
                         <div class="padding">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis egestas ligula, non commodo nulla porta quis. Nullam quis nulla augue, rutrum facilisis erat. Sed dictum rutrum felis, at ullamcorper purus malesuada ac. Curabitur eu augue vel urna molestie porttitor nec et augue. Maecenas porttitor tincidunt tortor id sagittis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce auctor elementum sem at ullamcorper. Aenean a dui quis metus ultrices blandit non eget metus. Integer ultrices iaculis luctus. Aliquam tempus enim id metus commodo porttitor non ac tortor.</p>
+                            <p>“Daily Dabba”, has originated from simple idea to let people working in offices, students away from home choose and pick their lunch and dinner daily with ample choice of menus and cooks. We also aim to provide tiffin service providers a way to earn and showcase their cooking talent.</p>
                         </div>
                     </div>
                     <div class="span6">
                         <div class="padding">
-                            <p>Curabitur consectetur odio eget neque venenatis sagittis. Donec quis enim velit, non tincidunt tortor. Morbi ac elit lorem, ut ornare diam. Sed quam magna, euismod ut tempor quis, suscipit at tellus. Vivamus scelerisque metus non elit convallis rutrum. Vivamus eget purus orci, non imperdiet ipsum. Morbi faucibus fermentum libero, sit amet dapibus risus pretium in. Phasellus a elit id ligula elementum luctus a at felis. Fusce varius ultricies interdum. In urna sem, tincidunt vitae vehicula interdum, ultricies a nibh. Ut ac risus vitae nunc eleifend varius. Ut pretium, neque in sodales viverra, nisl nisi tincidunt diam, nec tempor eros mauris.</p>
+                            <p>Since we ourselves are host elites, hence we can relate to the problem faced by people like us in terms of food. Our target customers are people who need healthy home cooked food to be delivered at their doorstep. We wish to keep them away from unhealthy fast food.
+We believe that every individual has different taste so we strive to ensure that our customers have plethora of options from where they can select their tiffin.
+So find out what the tiffin service providers have to offer you & enjoy! 
+</p>
                         </div>
                     </div>
                 </div>
@@ -117,112 +120,7 @@
                 </div>
                 <!-- ******** CONTENT END ******** -->
 
-                <!-- ******** STAFF START ******** -->
-                <div class="row blog">
-
-                    <div class="span12">
-                        <h2 class="center">Our Friendly Staff</h2>
-                    </div>
-
-                    <div class="span4">
-                        <div class="padding center">
-                            <p><img src="images/photo-staff1.jpg" alt="Staff" class="round" /></p>
-                            <h3>John &amp; Jane Smith</h3>
-                            <h6>Owners</h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae mauris erat. Nulla facilisi. Vivamus consectetur rutrum massa eu euismod. Sed eget cursus tellus.</p>
-                            <p>
-                                <a href="http://facebook.com/" target="_blank"><img src="images/icon-green-facebook.png" alt="Facebook" /></a>
-                                <a href="http://twitter.com/" target="_blank"><img src="images/icon-green-twitter.png" alt="Twitter" /></a>
-                                <a href="http://linkedin.com/" target="_blank"><img src="images/icon-green-linkedin.png" alt="LinkedIn" /></a>
-                            </p>
-                        </div>
-                    </div>
-
-                    <hr class="line">
-
-                    <div class="span4">
-                        <div class="padding center">
-                            <p><img src="images/photo-staff2.jpg" alt="Staff" class="round" /></p>
-                            <h3>Margareth Williams</h3>
-                            <h6>Restaurant Manager</h6>
-                            <p>Fusce a feugiat elit. Nunc sit amet velit purus, sit amet vestibulum nibh. Donec enim orci, sagittis at blandit nec, sollicitudin id metus. Ut urna risus, pharetra at sagittis eget.</p>
-                            <p>
-                                <a href="http://facebook.com/" target="_blank"><img src="images/icon-green-facebook.png" alt="Facebook" /></a>
-                                <a href="http://twitter.com/" target="_blank"><img src="images/icon-green-twitter.png" alt="Twitter" /></a>
-                                <a href="http://linkedin.com/" target="_blank"><img src="images/icon-green-linkedin.png" alt="LinkedIn" /></a>
-                            </p>
-                        </div>
-                    </div>
-
-                    <hr class="line">
-
-                    <div class="span4">
-                        <div class="padding center">
-                            <p><img src="images/photo-staff3.jpg" alt="Staff" class="round" /></p>
-                            <h3>Mark Johnson</h3>
-                            <h6>Chef</h6>
-                            <p>Aliquam erat volutpat. Vestibulum egestas suscipit libero, a rutrum sem euismod et. Nulla facilisi. Duis bibendum ullamcorper purus eget lobortis. Aliquam laoreet tincidunt.</p>
-                            <p>
-                                <a href="http://facebook.com/" target="_blank"><img src="images/icon-green-facebook.png" alt="Facebook" /></a>
-                                <a href="http://twitter.com/" target="_blank"><img src="images/icon-green-twitter.png" alt="Twitter" /></a>
-                                <a href="http://linkedin.com/" target="_blank"><img src="images/icon-green-linkedin.png" alt="LinkedIn" /></a>
-                            </p>
-                        </div>
-                    </div>
-
-                    <hr class="line">
-
-                </div>
-                <div class="row blog">
-
-                    <div class="span4">
-                        <div class="padding center">
-                            <p><img src="images/photo-staff4.jpg" alt="Staff" class="round" /></p>
-                            <h3>Adam Borris</h3>
-                            <h6>Cook</h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae mauris erat. Nulla facilisi. Vivamus consectetur rutrum massa eu euismod. Sed eget cursus tellus.</p>
-                            <p>
-                                <a href="http://facebook.com/" target="_blank"><img src="images/icon-green-facebook.png" alt="Facebook" /></a>
-                                <a href="http://twitter.com/" target="_blank"><img src="images/icon-green-twitter.png" alt="Twitter" /></a>
-                                <a href="http://linkedin.com/" target="_blank"><img src="images/icon-green-linkedin.png" alt="LinkedIn" /></a>
-                            </p>
-                        </div>
-                    </div>
-
-                    <hr class="line">
-
-                    <div class="span4">
-                        <div class="padding center">
-                            <p><img src="images/photo-staff5.jpg" alt="Staff" class="round" /></p>
-                            <h3>Julie Montgomery</h3>
-                            <h6>Floor Manager</h6>
-                            <p>Fusce a feugiat elit. Nunc sit amet velit purus, sit amet vestibulum nibh. Donec enim orci, sagittis at blandit nec, sollicitudin id metus. Ut urna risus, pharetra at sagittis eget.</p>
-                            <p>
-                                <a href="http://facebook.com/" target="_blank"><img src="images/icon-green-facebook.png" alt="Facebook" /></a>
-                                <a href="http://twitter.com/" target="_blank"><img src="images/icon-green-twitter.png" alt="Twitter" /></a>
-                                <a href="http://linkedin.com/" target="_blank"><img src="images/icon-green-linkedin.png" alt="LinkedIn" /></a>
-                            </p>
-                        </div>
-                    </div>
-
-                    <hr class="line">
-
-                    <div class="span4">
-                        <div class="padding center">
-                            <p><img src="images/photo-staff6.jpg" alt="Staff" class="round" /></p>
-                            <h3>Martha Cox</h3>
-                            <h6>Waitress</h6>
-                            <p>Aliquam erat volutpat. Vestibulum egestas suscipit libero, a rutrum sem euismod et. Nulla facilisi. Duis bibendum ullamcorper purus eget lobortis. Aliquam laoreet tincidunt.</p>
-                            <p>
-                                <a href="http://facebook.com/" target="_blank"><img src="images/icon-green-facebook.png" alt="Facebook" /></a>
-                                <a href="http://twitter.com/" target="_blank"><img src="images/icon-green-twitter.png" alt="Twitter" /></a>
-                                <a href="http://linkedin.com/" target="_blank"><img src="images/icon-green-linkedin.png" alt="LinkedIn" /></a>
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- ******** STAFF END ******** -->
+                
             </article>
 
         <jsp:include page="footer.jsp"></jsp:include>

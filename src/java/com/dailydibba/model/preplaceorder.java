@@ -5,12 +5,14 @@
 package com.dailydibba.model;
 
 import com.dailydibba.action.Action;
+import com.dailydibba.bean.City;
 import com.dailydibba.bean.Customer;
 import com.dailydibba.bean.Tiffin;
 import com.dailydibba.bean.TiffinDetails;
 import com.dailydibba.bean.Visitor;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
@@ -108,6 +110,11 @@ public class preplaceorder implements Action {
         objTiffin = objCustomer.getOrder(orderID);
         
         req.setAttribute("tiffin", objTiffin);
+        
+        List<City> cities=new ArrayList<City>();
+        Visitor visitor=new Visitor();
+        cities=visitor.getCity();
+        req.setAttribute("Cities", cities);
 
         return "placeorder.jsp";
 

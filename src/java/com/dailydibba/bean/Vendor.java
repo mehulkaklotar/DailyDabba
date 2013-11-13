@@ -4,10 +4,11 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 
 public class Vendor extends User {
 
@@ -46,8 +47,6 @@ public class Vendor extends User {
     public void setRating(int rating) {
         this.rating = rating;
     }
-    
-    
 
     public List<Area> getAreas() {
         return areas;
@@ -185,7 +184,6 @@ public class Vendor extends User {
 
     }
 
-
     public boolean blockCustomer(String username) {
         con = new DBConnection();
         try {
@@ -208,16 +206,16 @@ public class Vendor extends User {
 
     }
 
-     public ArrayList<Item> getItemOfType(String typeName){
-         try {
+    public ArrayList<Item> getItemOfType(String typeName) {
+        try {
             con = new DBConnection();
             ArrayList<Item> itemList = new ArrayList<Item>();
             callableStatement = con.connection.prepareCall("{call getItemDetailsTypeName_UserName(?,?)}");
             callableStatement.setString(1, typeName);
-            callableStatement.setString(2,userName);
+            callableStatement.setString(2, userName);
             ResultSet rs = callableStatement.executeQuery();
             while (rs.next()) {
-                Item item=new Item(rs.getInt(1), rs.getString(2), new ItemType(rs.getInt(3), rs.getString(4)));
+                Item item = new Item(rs.getInt(1), rs.getString(2), new ItemType(rs.getInt(3), rs.getString(4)));
                 itemList.add(item);
             }
             return itemList;
@@ -226,8 +224,8 @@ public class Vendor extends User {
 
         }
     }
-     
-     public Menu getVendorMenu(String vendor) {
+
+    public Menu getVendorMenu(String vendor) {
         try {
             con = new DBConnection();
             ArrayList<MenuItem> menuList = new ArrayList<MenuItem>();
@@ -261,29 +259,29 @@ public class Vendor extends User {
 
         }
     }
-     
-     public Menu getVendorMenuLunch(String vendor){
-         try {
+
+    public Menu getVendorMenuLunch(String vendor) {
+        try {
             con = new DBConnection();
             ArrayList<MenuItem> menuList = new ArrayList<MenuItem>();
             callableStatement = con.connection.prepareCall("{call getVendorMenuLunch(?)}");
             callableStatement.setString(1, vendor);
             ResultSet rs = callableStatement.executeQuery();
             Menu objMenu = new Menu();
-            
+
             while (rs.next()) {
                 objMenu.setMenuID(rs.getInt("MenuID"));
                 objMenu.setTiffinName(rs.getString("TiffinDescription"));
                 MenuItem objMenuItem = new MenuItem();
-                
+
                 Item objItem = new Item();
                 objItem.setItemID(rs.getInt("ItemID"));
                 objItem.setItemName(rs.getString("ItemName"));
-                
+
                 ItemType objItemType = new ItemType();
                 objItemType.setTypeName(rs.getString("TypeName"));
                 objItem.setType(objItemType);
-                
+
                 objMenuItem.setItem(objItem);
                 objMenuItem.setCost(rs.getDouble("Cost"));
                 objMenuItem.setQuantity(rs.getInt("Quantity"));
@@ -296,29 +294,29 @@ public class Vendor extends User {
 
         }
     }
-     
-     public Menu getVendorMenuDinner(String vendor){
-         try {
+
+    public Menu getVendorMenuDinner(String vendor) {
+        try {
             con = new DBConnection();
             ArrayList<MenuItem> menuList = new ArrayList<MenuItem>();
             callableStatement = con.connection.prepareCall("{call getVendorMenuDinner(?)}");
             callableStatement.setString(1, vendor);
             ResultSet rs = callableStatement.executeQuery();
             Menu objMenu = new Menu();
-            
+
             while (rs.next()) {
                 objMenu.setMenuID(rs.getInt("MenuID"));
                 objMenu.setTiffinName(rs.getString("TiffinDescription"));
                 MenuItem objMenuItem = new MenuItem();
-                
+
                 Item objItem = new Item();
                 objItem.setItemID(rs.getInt("ItemID"));
                 objItem.setItemName(rs.getString("ItemName"));
-                
+
                 ItemType objItemType = new ItemType();
                 objItemType.setTypeName(rs.getString("TypeName"));
                 objItem.setType(objItemType);
-                
+
                 objMenuItem.setItem(objItem);
                 objMenuItem.setCost(rs.getDouble("Cost"));
                 objMenuItem.setQuantity(rs.getInt("Quantity"));
@@ -331,64 +329,63 @@ public class Vendor extends User {
 
         }
     }
-    
-     
-     public boolean updateMenu(Menu m){
-    
+
+    public boolean updateMenu(Menu m) {
+
         //Author: Prachi Deodhar
         //Date: 13-October-2013
         //For updating menu for lunch and dinner daily
-        try{
-            con=new DBConnection();
-            callableStatement=con.connection.prepareCall("{call insertmenu(?,?,?)}");
+        try {
+            con = new DBConnection();
+            callableStatement = con.connection.prepareCall("{call insertmenu(?,?,?)}");
             callableStatement.setString(1, userName);
             callableStatement.setDate(2, m.getUploadDateTime());
-            callableStatement.setString(3,m.getTiffinName());
-            int i=callableStatement.executeUpdate();
-            if(i>0){
-                con=new DBConnection();
-                callableStatement=con.connection.prepareCall("{call  getmaxmenuid()}");
-                ResultSet rs=callableStatement.executeQuery();
+            callableStatement.setString(3, m.getTiffinName());
+            int i = callableStatement.executeUpdate();
+            if (i > 0) {
+                con = new DBConnection();
+                callableStatement = con.connection.prepareCall("{call  getmaxmenuid()}");
+                ResultSet rs = callableStatement.executeQuery();
                 rs.next();
-                int menuID=rs.getInt(1);
+                int menuID = rs.getInt(1);
 
-                for (MenuItem mi : m.getMenuItem()){
-                    con=new DBConnection();
-                    callableStatement=con.connection.prepareCall("{call  insertMenuItem(?,?,?,?)}");
+                for (MenuItem mi : m.getMenuItem()) {
+                    con = new DBConnection();
+                    callableStatement = con.connection.prepareCall("{call  insertMenuItem(?,?,?,?)}");
                     callableStatement.setInt(1, menuID);
-                    int itemId=mi.getItem().getItemID();
+                    int itemId = mi.getItem().getItemID();
                     callableStatement.setInt(2, itemId);
-                    callableStatement.setInt(3, (int)mi.getCost());
+                    callableStatement.setInt(3, (int) mi.getCost());
                     callableStatement.setInt(4, mi.getQuantity());
-                    i=callableStatement.executeUpdate();
-                    if(i<1){
+                    i = callableStatement.executeUpdate();
+                    if (i < 1) {
                         return false;
                     }
-                }  
-         }else{
+                }
+            } else {
                 return false;
             }
             return true;
-        }catch(SQLException ex){
-        return false;
+        } catch (SQLException ex) {
+            return false;
         }
     }
-     
-       public void getProfileDetails(){
-        con=new DBConnection();
+
+    public void getProfileDetails() {
+        con = new DBConnection();
         try {
-            callableStatement=con.connection.prepareCall("{call getVendor(?)}");
+            callableStatement = con.connection.prepareCall("{call getVendor(?)}");
             callableStatement.setString(1, userName);
-            ResultSet rs=callableStatement.executeQuery();
-            if(rs.next()){
-                vendorName=rs.getString("VendorName");
-                mobileNo=rs.getString("MobileNo");
-                ownerName=rs.getString("OwnerName");
-                emailID=rs.getString("EmailID");
-                lane=rs.getString("Lane");
-                ownerName=rs.getString("OwnerName");
-                landlineNumber=rs.getString("LandlineNo");
-                area=new Area();
+            ResultSet rs = callableStatement.executeQuery();
+            if (rs.next()) {
+                vendorName = rs.getString("VendorName");
+                mobileNo = rs.getString("MobileNo");
+                ownerName = rs.getString("OwnerName");
+                emailID = rs.getString("EmailID");
+                lane = rs.getString("Lane");
+                ownerName = rs.getString("OwnerName");
+                landlineNumber = rs.getString("LandlineNo");
+                area = new Area();
                 area.setAreaID(rs.getInt("AreaID"));
                 area.setAreaName(rs.getString("AreaName"));
                 area.setCity(new City());
@@ -398,30 +395,187 @@ public class Vendor extends User {
             Logger.getLogger(Vendor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-   public boolean addItem(Item it){
-         con=new DBConnection();
+
+    public boolean addItem(Item it) {
+        con = new DBConnection();
         try {
-            callableStatement=con.connection.prepareCall("{call getTypeID(?)}");
-            callableStatement.setString(1,it.getType().getTypeName());
-            ResultSet rs=callableStatement.executeQuery();
-            if(rs.next())
+            callableStatement = con.connection.prepareCall("{call getTypeID(?)}");
+            callableStatement.setString(1, it.getType().getTypeName());
+            ResultSet rs = callableStatement.executeQuery();
+            if (rs.next()) {
                 it.getType().setTypeID(rs.getInt("TypeID"));
-            con=new DBConnection();
-            callableStatement=con.connection.prepareCall("{call insertItemDetails(?,?,?)}");
+            }
+            con = new DBConnection();
+            callableStatement = con.connection.prepareCall("{call insertItemDetails(?,?,?)}");
             callableStatement.setString(1, it.getItemName());
             callableStatement.setInt(2, it.getType().getTypeID());
             callableStatement.setString(3, userName);
-            int i=callableStatement.executeUpdate();
-            if(i>=1)
+            int i = callableStatement.executeUpdate();
+            if (i >= 1) {
                 return true;
-            else
+            } else {
                 return false;
-            
+            }
+
         } catch (SQLException ex) {
             return false;
         }
-         
-        
-     }
 
+
+    }
+
+    public ArrayList getVendorLunchList(String vendor) {
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+
+            callableStatement = con.connection.prepareCall("{call getVendorLunchList (?)}");
+            callableStatement.setString(1, vendor);
+            ResultSet rs = callableStatement.executeQuery();
+            while (rs.next()) {
+                Map objMap = new HashMap();
+                objMap.put("OrderID", rs.getString("OrderID"));
+                objMap.put("DeliveryAddress", rs.getString("DeliveryAddress"));
+                objMap.put("MenuID", rs.getInt("MenuID"));
+                objMap.put("NoOfTiffin", rs.getInt("NoOfTiffin"));
+                objMap.put("Status", rs.getInt("Status"));
+                //objMap.put("ItemName", rs.getString("ItemName"));
+                //objMap.put("TypeName", rs.getString("TypeName"));
+                objMap.put("Vendor", rs.getString("Vendor"));
+                objMap.put("Customer", rs.getString("Customer"));
+                objMap.put("Total", rs.getString("Total"));
+                //objMap.put("Cost", rs.getInt("Cost"));
+                //objMap.put("Quantity", rs.getInt("Quantity"));
+                list.add(objMap);
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return list;
+    }
+
+    public ArrayList getVendorLunchOrder(String id) {
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+            callableStatement = con.connection.prepareCall("{call getOrderDetails (?)}");
+            callableStatement.setString(1, id);
+            ResultSet rs = callableStatement.executeQuery();
+            while (rs.next()) {
+                Map objMap = new HashMap();
+                //objMap.put("OrderID", rs.getString("OrderID"));
+                //objMap.put("MenuID", rs.getInt("MenuID"));
+                //objMap.put("NoOfTiffin", rs.getInt("NoOfTiffin"));
+                //objMap.put("Status", rs.getInt("Status"));
+                objMap.put("ItemName", rs.getString("ItemName"));
+                objMap.put("TypeName", rs.getString("TypeName"));
+                //objMap.put("Vendor", rs.getString("Vendor"));
+                //objMap.put("Customer", rs.getString("Customer"));
+                objMap.put("Cost", rs.getInt("Cost"));
+                objMap.put("Quantity", rs.getInt("Quantity"));
+                list.add(objMap);
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return list;
+    }
+
+    public ArrayList getVendorDinnerList(String vendor) {
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+
+            callableStatement = con.connection.prepareCall("{call getVendorDinnerList (?)}");
+            callableStatement.setString(1, vendor);
+            ResultSet rs = callableStatement.executeQuery();
+            while (rs.next()) {
+                Map objMap = new HashMap();
+                objMap.put("OrderID", rs.getString("OrderID"));
+                objMap.put("DeliveryAddress", rs.getString("DeliveryAddress"));
+                objMap.put("MenuID", rs.getInt("MenuID"));
+                objMap.put("NoOfTiffin", rs.getInt("NoOfTiffin"));
+                objMap.put("Status", rs.getInt("Status"));
+                //objMap.put("ItemName", rs.getString("ItemName"));
+                //objMap.put("TypeName", rs.getString("TypeName"));
+                objMap.put("Vendor", rs.getString("Vendor"));
+                objMap.put("Customer", rs.getString("Customer"));
+                objMap.put("Total", rs.getString("Total"));
+                //objMap.put("Cost", rs.getInt("Cost"));
+                //objMap.put("Quantity", rs.getInt("Quantity"));
+                list.add(objMap);
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return list;
+    }
+
+    public ArrayList getVendorDinnerOrder(String id) {
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+            callableStatement = con.connection.prepareCall("{call getOrderDetails (?)}");
+            callableStatement.setString(1, id);
+            ResultSet rs = callableStatement.executeQuery();
+            while (rs.next()) {
+                Map objMap = new HashMap();
+                //objMap.put("OrderID", rs.getString("OrderID"));
+                //objMap.put("MenuID", rs.getInt("MenuID"));
+                //objMap.put("NoOfTiffin", rs.getInt("NoOfTiffin"));
+                //objMap.put("Status", rs.getInt("Status"));
+                objMap.put("ItemName", rs.getString("ItemName"));
+                objMap.put("TypeName", rs.getString("TypeName"));
+                //objMap.put("Vendor", rs.getString("Vendor"));
+                //objMap.put("Customer", rs.getString("Customer"));
+                objMap.put("Cost", rs.getInt("Cost"));
+                objMap.put("Quantity", rs.getInt("Quantity"));
+                list.add(objMap);
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return list;
+    }
+    
+     public ArrayList getAllOrdersForVendor(String vendor) {
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+            callableStatement = con.connection.prepareCall("{call getAllOrdersForVendor (?)}");
+            callableStatement.setString(1, vendor);
+            ResultSet rs = callableStatement.executeQuery();
+            while (rs.next()) {
+                Map objMap = new HashMap();
+                objMap.put("Vendor", rs.getString("Vendor"));
+                objMap.put("Customer", rs.getString("Customer"));
+                objMap.put("DeliveryAddress", rs.getString("DeliveryAddress"));
+                //objMap.put("Status", rs.getInt("Status"));
+                objMap.put("NoOfTiffin", rs.getInt("NoOfTiffin"));
+                objMap.put("OrderDate", rs.getDate("OrderDate"));
+                //objMap.put("Vendor", rs.getString("Vendor"));
+                //objMap.put("Customer", rs.getString("Customer"));
+                objMap.put("OrderID", rs.getString("OrderID"));
+                list.add(objMap);
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return list;
+    }
 }

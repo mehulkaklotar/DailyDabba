@@ -17,6 +17,19 @@
         <meta name="author" content="Marcin Banaszek">
 
         <jsp:include page="include.jsp"></jsp:include>
+        <script>
+            $(document).ready(function() {
+                    var b = new Boolean(true);
+                    $('#ddlCityVendor').change(function() {
+                        $.ajax({
+                            url: "Controller?action=getAllAreaByCity&cityID=" + $('#ddlCityVendor').val(),
+                        }).done(function(result) {
+                            $('#areaDiv').html(result);
+                        });
+                    });
+
+                });
+        </script>
             <script src="js/commonTask.js"></script>
             <style type="text/css">
                 .Cart{
@@ -71,112 +84,115 @@
                         <% }
                         %>
                     </span>
-                    </div>
                 </div>
-                <!-- ******** FULL WIDTH SLIDER START ******** -->
-                <div id="fwslider">
-                    <div class="slider_container">
+            </div>
+            <!-- ******** FULL WIDTH SLIDER START ******** -->
+            <div id="fwslider">
+                <div class="slider_container">
 
-                        <div class="slide" style="height:300px;" > 
-                            <img src="images/thali.JPG" />
-
-                        </div>
-
-                        <div class="slide" style="height:300px;"> 
-                            <img src="images/thali1.jpg" />
-
-                        </div>
-
-                        <div class="slide" style="height:300px;"> 
-                            <img src="images/thali2.jpg" />
-
-                        </div>
+                    <div class="slide" style="height:300px;" > 
+                        <img src="images/thali.JPG" />
 
                     </div>
 
+                    <div class="slide" style="height:300px;"> 
+                        <img src="images/thali1.jpg" />
 
-                    <div class="timers"></div>
-                    <div class="slidePrev"><span></span></div>
-                    <div class="slideNext"><span></span></div>
-                </div> 
-                <div style="height:20px;background-color: #222;">
+                    </div>
+
+                    <div class="slide" style="height:300px;"> 
+                        <img src="images/thali2.jpg" />
+
+                    </div>
 
                 </div>
-                <!-- ******** FULL WIDTH SLIDER END ******** -->
 
-            </header>
 
-            <article class="wrapper"> 
+                <div class="timers"></div>
+                <div class="slidePrev"><span></span></div>
+                <div class="slideNext"><span></span></div>
+            </div> 
+            <div style="height:20px;background-color: #222;">
 
-                <ul class="breadcrumb">
-                    <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
-                    <li><a href="Controller?action=getVendor&vendorUN=${tiffin.menu.vendor.getUserName()}">Vendor</a> <span class="divider">/</span></li>
-                    <li class="active">Order Cart</li>
-                </ul>
-                <div style="height:500px;">
-                    <div id="AddressInfo" class="Cart" style="float: left;">
-                        <div style="background-color: powderblue">
-                            <div style="float: left; padding-left: 10px; padding-top: 10px">
-                                <i class="icon-road"></i>
-                            </div>
-                            <div>
-                                <h3 style="text-align: center;">Delivery Address</h3>
-                            </div>
+            </div>
+            <!-- ******** FULL WIDTH SLIDER END ******** -->
+
+        </header>
+
+        <article class="wrapper"> 
+
+            <ul class="breadcrumb">
+                <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
+                <li><a href="Controller?action=getVendor&vendorUN=${tiffin.menu.vendor.getUserName()}">Vendor</a> <span class="divider">/</span></li>
+                <li class="active">Order Cart</li>
+            </ul>
+            <div style="height:500px;">
+                <div id="AddressInfo" class="Cart" style="float: left;">
+                    <div style="background-color: powderblue">
+                        <div style="float: left; padding-left: 10px; padding-top: 10px">
+                            <i class="icon-road"></i>
                         </div>
-                        <div  class="row" style="padding-left: 30px;width:45%;">
-                        <% if(request.getAttribute("Alert")!=null) { %><label class="alert-error">${Alert}</label> <% } %>
-                            <label id="alert" class="alert-error"></label>
-                            <label id="a" class="alert-error"></label>
-                            <label id="c" class="alert-error"></label>
-                            <label id="add" class="alert-error"></label>
-                            <div style="margin-top: 10px;">
-                                <select id="ddlCity">
-                                    <option id="0" value="0">Select City</option>
-                                    <option id="1" value="2">Ahmedabad</option>
-                                </select>
-                            </div>
-                            <div>
-                                <select id="ddlArea">
-                                    <option id="0" value="0">Select Area</option>
-                                    <option id="1" value="11">Inforcity</option>
-                                    <option id="2" value="12">Vastrapure</option>
-                                </select>
-                            </div>
-                            <div style="margin-top: 10px;">
-                                <textarea  placeholder="Address" id="deliveryaddress" name="deliveryaddress"></textarea>
-                            </div>
+                        <div>
+                            <h3 style="text-align: center;">Delivery Address</h3>
                         </div>
-
                     </div>
-                    <div id="cart" class="Cart" style="float: right;">
-                        <div style="background-color: powderblue">
-                            <div style="float: left; padding-left: 10px; padding-top: 10px">
-                                <i class="icon-shopping-cart"></i>
-                            </div>
-                            <div>
-                                <h3 style="text-align: center;">Cart</h3>
-                            </div>
+                    <div  class="row" style="padding-left: 30px;width:45%;">
+                        <% if (request.getAttribute("Alert") != null) {%><label class="alert-error">${Alert}</label> <% }%>
+                        <label id="alert" class="alert-error"></label>
+                        <label id="a" class="alert-error"></label>
+                        <label id="c" class="alert-error"></label>
+                        <label id="add" class="alert-error"></label>
+                        <div style="margin-top: 10px;">
+                            <select id="ddlCityVendor" name="ddlCityVendor" class ="selectStyle">
+                                <option>Select City</option>
+                                <c:forEach items="${Cities}" var="city">
+
+                                    <option value="${city.cityID}" >${city.cityName}</option>
+
+                                </c:forEach>
+                            </select>
                         </div>
-                        <table class="table table-bordered">
-                            <tr style="background-color: #e5e5e5;">
-                                <td>
-                                    Order ID
-                                </td>
-                                <td>
-                                    Vendor
-                                </td>
-                                <td>
-                                    # of Tiffin
-                                </td>
-                                <td>
-                                    Cost per Tiffin (Rs.)
-                                </td>
-                                <td>
-                                    Total Cost (Rs.)
-                                </td>
-                            </tr>
-                            <tr style="font-size: smaller;">
-                                <td>${tiffin.getOrderID()}</td>
+                        <div id="areaDiv">
+                            <select id="ddlArea" class ="selectStyle">
+                                <option>Select Area</option>
+
+                            </select>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <textarea  placeholder="Address" id="deliveryaddress" name="deliveryaddress"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="cart" class="Cart" style="float: right;">
+                    <div style="background-color: powderblue">
+                        <div style="float: left; padding-left: 10px; padding-top: 10px">
+                            <i class="icon-shopping-cart"></i>
+                        </div>
+                        <div>
+                            <h3 style="text-align: center;">Cart</h3>
+                        </div>
+                    </div>
+                    <table class="table table-bordered">
+                        <tr style="background-color: #e5e5e5;">
+                            <td>
+                                Order ID
+                            </td>
+                            <td>
+                                Vendor
+                            </td>
+                            <td>
+                                # of Tiffin
+                            </td>
+                            <td>
+                                Cost per Tiffin (Rs.)
+                            </td>
+                            <td>
+                                Total Cost (Rs.)
+                            </td>
+                        </tr>
+                        <tr style="font-size: smaller;">
+                            <td>${tiffin.getOrderID()}</td>
                             <td>${tiffin.menu.vendor.getUserName()}</td>
                             <td>${tiffin.getNumberOfTiffin()}</td>
                             <td>Rs. ${tiffinCost}</td>
