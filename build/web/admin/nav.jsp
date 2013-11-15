@@ -40,10 +40,10 @@
                     <%
                         if (session.getAttribute("Role").equals("Admin")) {
                     %>
-                    <li><a href="/DailyDibba/admin/viewFeedback.jsp">Feedbacks</a>
+                    <li><a href="/DailyDibba/admin/AdminController?action=getFeedbackList">Feedbacks</a>
 
                     </li>
-                    <li><a href="/DailyDibba/admin/users.jsp">Users</a>
+                    <li><a href="/DailyDibba/admin/AdminController?action=getCustomerList">Customers</a>
 
                     </li>
                     <li><a href="/DailyDibba/admin/AdminController?action=getAllVendors">Vendors</a>

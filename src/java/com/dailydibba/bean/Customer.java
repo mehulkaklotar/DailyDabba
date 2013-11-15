@@ -487,26 +487,35 @@ public class Customer extends User {
         }
     }
 
-    public void getProfileDetails() {
-        try {
-            con = new DBConnection();
-            callableStatement = con.connection.prepareCall("{call getCustomer(?)}");
-            callableStatement.setString(1, userName);
-            ResultSet rs = callableStatement.executeQuery();
-            if (rs.next()) {
-                int areaID = rs.getInt(2);
-                String areaName = rs.getString(3);
-                area = new Area(areaID, areaName);
-                firstName = rs.getString(4);
-                lastName = rs.getString(5);
-                lane = rs.getString(6);
-                mobileNo = rs.getString(7);
-                emailID = rs.getString(8);
-            }
-        } catch (SQLException exc) {
-            System.out.println(exc.toString());
+     public void getProfileDetails(){
+       try{
+        con=new DBConnection();
+        callableStatement=con.connection.prepareCall("{call getCustomer(?)}");
+        callableStatement.setString(1, userName);
+        ResultSet rs=callableStatement.executeQuery();
+        if(rs.next()){
+            int areaID=rs.getInt("areaid");
+            String areaName=rs.getString("areaname");
+            int cityid=rs.getInt("cityid");
+            String cityname=rs.getString("cityname");
+            area=new Area();
+            area.setAreaID(areaID);
+            area.setAreaName(areaName);
+            City city=new City();
+            city.setCityID(cityid);
+            city.setCityName(cityname);
+            area.setCity(city);
+            firstName=rs.getString("firstname");
+            lastName=rs.getString("lastname");
+            lane=rs.getString("lane");
+            mobileNo=rs.getString("mobileno");
+            emailID=rs.getString("emailID");
         }
+       }catch(SQLException exc){
+           System.out.println(exc.toString());
+       }
     }
+
     
     public List<VendorArea> getVendorArea(String vendor) {
         //Author: Prachi Deodhar

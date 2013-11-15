@@ -590,7 +590,7 @@ public class Administrator extends User {
         return customerList;
 
     }
-    
+
     // Reports
     public ArrayList<Customer> getAllCustomers() {
         con = new DBConnection();
@@ -647,7 +647,7 @@ public class Administrator extends User {
         }
         return list;
     }
-    
+
     public ArrayList getAllFeedback() {
         con = new DBConnection();
         ArrayList list = new ArrayList();
@@ -661,6 +661,7 @@ public class Administrator extends User {
                 objMap.put("Message", rs.getString("Message"));
                 objMap.put("Date", rs.getDate("Date"));
                 objMap.put("Rating", rs.getString("Rating"));
+                objMap.put("ID", rs.getInt("FeedbackID"));
                 list.add(objMap);
             }
             rs.close();
@@ -717,7 +718,7 @@ public class Administrator extends User {
         }
         return list;
     }
-    
+
     public ArrayList getVendorMenuLunch(String vendor) {
         con = new DBConnection();
         ArrayList list = new ArrayList();
@@ -772,5 +773,43 @@ public class Administrator extends User {
             con.closeConnection();
         }
         return list;
+    }
+
+    public ArrayList getSuggestion() {
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+            stmt = con.connection.prepareCall("{call getSuggestions()}");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Map objMap = new HashMap();
+                objMap.put("Suggestion", rs.getString("Suggestion"));
+                objMap.put("DateOfSuggestion", rs.getDate("DateOfSuggestion"));
+                objMap.put("SuggestionID", rs.getInt("SuggestionID"));
+                list.add(objMap);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return list;
+    }
+
+    public boolean deleteFeedback(int id) {
+        con = new DBConnection();
+        try {
+            cstmt = con.connection.prepareCall("{call deleteFeedback(?)}");
+            cstmt.setInt(1, id);
+            int row = cstmt.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            return false;
+        }
+
     }
 }

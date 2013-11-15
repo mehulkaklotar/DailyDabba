@@ -5,18 +5,20 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
 
         <meta charset="UTF-8">
-        <title>Beoro Admin Template v1.2</title>
+        <title>Daily Dabba</title>
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-        <link rel="icon" type="image/ico" href="favicon.ico">
+        <link rel="icon" type="image/ico" href="favicon.png">
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
-        <jsp:include page="commonJs.jsp"></jsp:include>
-        
+        <jsp:include page="commonJs.jsp"></jsp:include>\
+        <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
+
         </head>
         <body class="bg_d">
             <!-- main wrapper (without footer) -->    
@@ -43,65 +45,53 @@
                             <div class="w-box">
                                 <div class="w-box-header">
                                     <div class="btn-group">
-                                        <a href="#" class="btn btn-inverse btn-mini delete_rows_dt" data-tableid="dt_gal" title="Edit">Delete</a>
-                                        <a href="#" class="btn btn-inverse btn-mini" title="View">Another Action</a>
+                                        <label>Feedbacks</label>
                                     </div>
                                 </div>
-                                <div class="w-box-content">
+                                <div class="w-box-content" style="padding: 10px;">
                                     <table class="table table-vam table-striped" id="dt_gal">
                                         <thead>
-                                            <tr> 
-                                                <th class="table_checkbox" style="width:13px"><input type="checkbox" name="select_rows" class="select_rows" data-tableid="dt_gal" /></th>
+                                            <tr>
                                                 <th>FeedBack No.</th>
                                                 <th>Vendor Name</th>
                                                 <th>Customer Name</th>
                                                 <th>Date</th>
-                                                <th>Suggestions</th>
+                                                <th>Rating</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr> 
-                                                <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
-                                                <td>1<br/></td>
-                                                <td>a</td>
-                                                <td>b</td>
-                                                <td>18/12/2012</td>
-                                                <td>asddaasf</td>
+                                        <c:forEach items="${feedback}" var="feedbacks">
+                                            <tr>
+                                                
+                                                <td>${feedbacks.Customer}</td>
+                                                <td>${feedbacks.Vendor}</td>
+                                                <td>${feedbacks.Message}</td>
+                                                <td>${feedbacks.Date}</td>
+                                                <td>${feedbacks.Rating}</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
+                                                       <a href="AdminController?action=deleteFeedback&id=${feedbacks.ID}" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
                                                     </div>
                                                 </td>
-                                            </tr>                  
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="w-box-footer">
-                                    <div class="pagination pagination-centered">
-                                        <ul>
-                                            <li class="disabled"><a href="#">Prev</a></li>
-                                            <li class="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">Next</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                            </tr>
+                                        </c:forEach>       
+                                    </tbody>
+                                </table>
                             </div>
 
                         </div>
+
                     </div>
                 </div>
             </div>
+        </div>
 
 
-            <div class="footer_space"></div>
-        </div> 
+        <div class="footer_space"></div>
+    </div> 
 
-        <!-- footer --> 
+    <!-- footer --> 
     <jsp:include page="footer.jsp"></jsp:include>
 
         <!-- Common JS -->
@@ -167,6 +157,64 @@
             s.parentNode.insertBefore(ga, s);
         })();
 
+    </script>
+    
+    <!-- Jquery data tables -->
+
+    <script type="text/javascript" src="data-tables/jquery.dataTables.js"></script><!-- For Tables -->
+    <script type="text/javascript" src="data-tables/DT_bootstrap.js"></script><!-- For Tables -->
+    <script>
+
+        // begin tblEvent table
+        $('#dt_gal').dataTable({
+            "aoColumns": [{
+                    "bSortable": true
+                }, {
+                    "bSortable": true
+                }, {
+                    "bSortable": true
+                }, {
+                    "bSortable": true
+                }, {
+                    "bSortable": true
+                },null],
+            "aLengthMenu": [[5, 15, 20, -1], [5, 15, 20, "All"] // change per page values here
+            ],
+            // set the initial value
+            "iDisplayLength": 5,
+            "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+            "sPaginationType": "bootstrap",
+            "oLanguage": {
+                "sLengthMenu": "_MENU_ records per page",
+                "oPaginate": {
+                    "sPrevious": "Prev",
+                    "sNext": "Next"
+                }
+            },
+            "aoColumnDefs": [{
+                    'bSortable': false,
+                    'aTargets': [0]
+                }]
+        });
+
+        jQuery('#dt_gal .group-checkable').change(function() {
+            var set = jQuery(this).attr("data-set");
+            var checked = jQuery(this).is(":checked");
+            jQuery(set).each(function() {
+                if (checked) {
+                    $(this).attr("checked", true);
+                } else {
+                    $(this).attr("checked", false);
+                }
+            });
+            jQuery.uniform.update(set);
+        });
+
+        jQuery('#dt_gal .dataTables_filter input').addClass("m-wrap medium");
+        // modify table search input
+        jQuery('#dt_gal .dataTables_length select').addClass("m-wrap small");
+        // modify table per page dropdown
+        //jQuery('#tblEvent .dataTables_length select').select2(); // initialize select2 dropdown
     </script>
 </body>
 

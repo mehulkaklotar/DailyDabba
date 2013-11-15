@@ -107,15 +107,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                         <c:forEach items="${vendorList}" var="vendor">
+                                         <c:forEach items="${customers}" var="customer">
                                         <tr>
                                             <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
                                             
-                                            <td><a href="../Controller?action=getVendor&vendorUN=${vendor.getVendorName()}"> <c:out value="${vendor.vendorName}"/></a><br/>Rating:<c:out value="${vendor.rating}"/></td>
+                                            <td><a href="#"<c:out value="${customer.fisrtName}"/></a></td>
                                             
                                             <td>   
                                                 <c:choose>
-                                                    <c:when test="${vendor.status == true}" >
+                                                    <c:when test="${customer.status == true}" >
                                                         Active
                                                     </c:when>
                                                     <c:otherwise>

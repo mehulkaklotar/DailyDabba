@@ -17,10 +17,11 @@
                                 <%
                                     if (session.getAttribute("Role").equals("Admin")) {
                                 %>
-                        <li><a href="suggestion.jsp" class="ptip_s" title="Suggestions"><i class="icsw16-mail"></i><span class="badge badge-info">6</span></a></li>
+                        <li><a href="/DailyDibba/admin/AdminController?action=getSuggestions" class="ptip_s" title="Suggestions"><i class="icsw16-mail"></i><span class="badge badge-info">6</span></a></li>
                         <li><a href="request.jsp" class="ptip_s" title="Requests"><i class="icsw16-speech-bubbles"></i><span class="badge badge-important">14</span></a></li>
-                                    <% }%>
-                        <li><a href="javascript:void(0)" class="ptip_s" title="Profile settings"><i class="icsw16-cog"></i></a></li>
+                                    <% } %>
+                        <li><a href="#" class="ptip_s" title="settings"><i class="icsw16-cog"></i></a></li>
+                        
                     </ul>
                 </nav>
             </div>
@@ -29,7 +30,12 @@
                     <div class="user-box-inner">
                         <img src="admin/img/avatars/avatar.png" alt="" class="user-avatar img-avatar">
                         <div class="user-info">
-                            Welcome, <strong><a href="profile.jsp">Jonathan</a></strong>
+                            Welcome, <strong>
+                                <a href="<%
+                                    if (!session.getAttribute("Role").equals("Admin")) {
+                                %>/DailyDibba/admin/updateProfileVendor.jsp 
+                                <% } else { %>
+                                # <% } %>"><%= session.getAttribute("UserName") %></a></strong>
                             <ul class="unstyled">
                                 <li>&middot;</li>
                                 <li><a href="Controller?action=logout">Logout</a></li>

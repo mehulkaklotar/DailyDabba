@@ -152,23 +152,19 @@ public class Vendor extends User {
 
         }
     }
-
-    public boolean updateProfile() {
+public boolean updateProfile() {
         con = new DBConnection();
         try {
 
-            callableStatement = con.connection.prepareCall("{call getUpdateProfile(?,?,?,?,?,?,?,?,?,?)}");
+            callableStatement = con.connection.prepareCall("{call UpdateVendor(?,?,?,?,?,?,?,?)}");
             callableStatement.setString(1, userName);
-            callableStatement.setString(2, password);
             callableStatement.setString(3, vendorName);
             callableStatement.setString(4, mobileNo);
             callableStatement.setString(5, emailID);
             callableStatement.setString(6, lane);
-            callableStatement.setInt(7, area.getAreaID());
-            callableStatement.setString(8, ownerName);
-            callableStatement.setString(9, landlineNumber);
-            callableStatement.setBoolean(0, flag);
-            callableStatement.registerOutParameter(2, java.sql.Types.INTEGER);
+            callableStatement.setInt(2, area.getAreaID());
+            callableStatement.setString(7, ownerName);
+            callableStatement.setString(8, landlineNumber);
             int row = callableStatement.executeUpdate();
 
             if (row == 1) {
@@ -183,6 +179,8 @@ public class Vendor extends User {
         }
 
     }
+
+    
 
     public boolean blockCustomer(String username) {
         con = new DBConnection();
@@ -337,10 +335,11 @@ public class Vendor extends User {
         //For updating menu for lunch and dinner daily
         try {
             con = new DBConnection();
-            callableStatement = con.connection.prepareCall("{call insertmenu(?,?,?)}");
+            callableStatement = con.connection.prepareCall("{call insertmenu(?,?,?,?)}");
             callableStatement.setString(1, userName);
             callableStatement.setDate(2, m.getUploadDateTime());
             callableStatement.setString(3, m.getTiffinName());
+            callableStatement.setBoolean(4, m.isIsLunch());
             int i = callableStatement.executeUpdate();
             if (i > 0) {
                 con = new DBConnection();
