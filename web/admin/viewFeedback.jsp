@@ -49,9 +49,9 @@
                                     <table class="table table-vam table-striped" id="dt_gal">
                                         <thead>
                                             <tr>
-                                                <th>FeedBack No.</th>
-                                                <th>Vendor Name</th>
-                                                <th>Customer Name</th>
+                                                <th>Customer</th>
+                                                <th>Vendor</th>
+                                                <th>Feedback</th>
                                                 <th>Date</th>
                                                 <th>Rating</th>
                                                 <th>Actions</th>
