@@ -63,7 +63,7 @@
                     </li>
                     <li><a href="#">Reports</a>
                         <ul>
-                            <li><a href="/DailyDibba/admin/AdminController?action=getAllVendors">Vendors</a></li>
+                            <li><a href="/DailyDibba/admin/AdminController?action=getVendorReport">Vendors</a></li>
                             <li><a href="/DailyDibba/admin/AdminController?action=getAllUsers">Customers</a></li>
                             <li><a href="/DailyDibba/admin/AdminController?action=getAllOrder">Orders</a></li>
                             <li><a href="/DailyDibba/admin/AdminController?action=getTodayAllLunch">Today's All Lunch</a>

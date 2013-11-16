@@ -9,16 +9,14 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
-
         <meta charset="UTF-8">
         <title>Daily Dabba</title>
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-        <link rel="icon" type="image/ico" href="favicon.png">
+        <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
-        <jsp:include page="commonJs.jsp"></jsp:include>\
+        
         <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
-
         </head>
         <body class="bg_d">
             <!-- main wrapper (without footer) -->    
@@ -34,7 +32,6 @@
                         <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
                         <li><a href="javascript:void(0)">Feedback</a></li>
                         <li><a href="javascript:void(0)">View Feedback</a></li>
-
                     </ul>
                 </div>
 
@@ -79,15 +76,11 @@
                                     </tbody>
                                 </table>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
-
         <div class="footer_space"></div>
     </div> 
 
