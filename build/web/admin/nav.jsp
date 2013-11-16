@@ -1,12 +1,7 @@
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <div class="pull-right top-search">
-                <form action="#" >
-                    <input type="text" name="q" id="q-main">
-                    <button class="btn"><i class="icon-search"></i></button>
-                </form>
-            </div>
+            
             <div id="fade-menu" class="pull-left">
                 <ul class="clearfix" id="mobile-nav">
                     <%
@@ -36,6 +31,9 @@
                             <li><a href="/DailyDibba/admin/addItem.jsp">Add Item</a></li>
 
                         </ul>
+                    </li>
+                    <li><a href="/DailyDibba/admin/AdminController?action=getAllType">Item Type</a>
+                        
                     </li>
                     <%
                         if (session.getAttribute("Role").equals("Admin")) {

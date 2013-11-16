@@ -16,18 +16,15 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author HR
  */
-public class getSuggestions implements Action {
+public class getBlockRequest implements Action {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {
         
         Administrator objAdministrator = new Administrator();
-        ArrayList objArrayList = objAdministrator.getSuggestion();
-        req.setAttribute("sug", objArrayList);
-        
-        objAdministrator.updateSuggestionStatus();
-        
-        return "showSuggestions.jsp";
+        ArrayList objArrayList = objAdministrator.getAllBlockHits();
+        req.setAttribute("block", objArrayList);
+        return "request.jsp";
     }
     
 }

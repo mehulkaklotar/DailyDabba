@@ -801,4 +801,149 @@ public class Administrator extends User {
         }
 
     }
+
+    public boolean updateSuggestionStatus() {
+        con = new DBConnection();
+        try {
+            cstmt = con.connection.prepareCall("{call updateSuggestionStatus()}");
+            int row = cstmt.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            return false;
+        }
+
+    }
+
+    public boolean changePassword(String username, String password) {
+        con = new DBConnection();
+        try {
+            cstmt = con.connection.prepareCall("{call changePassword(?,?)}");
+            cstmt.setString(1, username);
+            cstmt.setString(2, password);
+            int row = cstmt.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            return false;
+        }
+
+    }
+
+    public User getUser(String username) {
+        con = new DBConnection();
+        User objUser = null;
+        try {
+
+            cstmt = con.connection.prepareCall("{call getUser(?)}");
+            cstmt.setString(1, username);
+            ResultSet rsUser = cstmt.executeQuery();
+
+            if (rsUser.next()) {
+                objUser = new User();
+                objUser.setUserName(rsUser.getString("UserName"));
+                objUser.setPassword(rsUser.getString("Password"));
+                UserRole objUserRole = new UserRole();
+                objUserRole.setRole(rsUser.getString("Role"));
+                objUser.setUsertype(objUserRole);
+            }
+
+        } catch (Exception e) {
+            e.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return objUser;
+    }
+
+    public ArrayList getAllBlockHits() {
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+            stmt = con.connection.prepareCall("{call getAllBlockHits ()}");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Map objMap = new HashMap();
+                objMap.put("UserName", rs.getString("UserName"));
+                objMap.put("VendorName", rs.getString("VendorName"));
+                objMap.put("NoOfHits", rs.getString("NoOfHits"));
+                objMap.put("Status", rs.getString("Status"));
+                list.add(objMap);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return list;
+    }
+
+    public boolean blockHitVendor(String vendor) {
+        con = new DBConnection();
+        try {
+            cstmt = con.connection.prepareCall("{call updateVendorStatusBlock(?)}");
+            cstmt.setString(1, vendor);
+            int row = cstmt.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+
+    public boolean unblockHitVendor(String vendor) {
+        con = new DBConnection();
+        try {
+            cstmt = con.connection.prepareCall("{call updateVendorStatusUnblock(?)}");
+            cstmt.setString(1, vendor);
+            int row = cstmt.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+    
+    public List<ItemType> getAllItemType() {
+        List<ItemType> typeList = new ArrayList<ItemType>();
+        con = new DBConnection();
+        try {
+
+            cstmt = con.connection.prepareCall("{call  getAllItemType()}");
+            ResultSet rs = cstmt.executeQuery();
+
+            while (rs.next()) {
+
+                ItemType objItemType = new ItemType();
+                objItemType.setTypeName(rs.getString("TypeName"));
+                objItemType.setTypeID(rs.getInt("TypeID"));
+
+                typeList.add(objItemType);
+
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+
+            con.closeConnection();
+        }
+        return typeList;
+    }
+
+    
 }

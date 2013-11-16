@@ -1,10 +1,7 @@
-<%-- 
-    Document   : orders
-    Created on : 12 Oct, 2013, 1:41:39 AM
-    Author     : kaklo
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
@@ -15,6 +12,9 @@
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
+        <jsp:include page="commonJs.jsp"></jsp:include>
+            <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
+
         </head>
         <body class="bg_d">
             <!-- main wrapper (without footer) -->    
@@ -28,10 +28,9 @@
                 <div class="container">
                     <ul id="breadcrumbs">
                         <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Request</a></li>
-                        <li><a href="javascript:void(0)">View request</a></li>
+                        <li><a href="javascript:void(0)">Home</a></li>
+                        <li><a href="javascript:void(0)">Vendor Block Hit List</a></li>
 
-                        <li><span></span></li>
                     </ul>
                 </div>
 
@@ -42,193 +41,59 @@
                             <div class="w-box">
                                 <div class="w-box-header">
                                     <div class="btn-group">
-                                        <a href="#" class="btn btn-inverse btn-mini delete_rows_dt" data-tableid="dt_gal" title="Edit">Delete</a>
-                                        <a href="#" class="btn btn-inverse btn-mini" title="View">Another Action</a>
+                                        <label>Orders</label>
                                     </div>
                                 </div>
-                                <div class="w-box-content">
+                                <div class="w-box-content" style="padding:10px;">
                                     <table class="table table-vam table-striped" id="dt_gal">
                                         <thead>
                                             <tr>
-                                                <th class="table_checkbox" style="width:13px"><input type="checkbox" name="select_rows" class="select_rows" data-tableid="dt_gal" /></th>
-
-                                                <th>Request</th>
-                                                <th>Name</th>
-                                                <th>Date</th>
-                                                <th>Actions</th>
+                                                <th>User Name</th>
+                                                <th>Vendor Name</th> 
+                                                <th>No of Block Hits</th>
+                                                <th>Block</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <c:forEach items="${block}" var="b">
                                             <tr>
-                                                <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
+                                                <td>${b.UserName}</td>
+                                                <td>${b.VendorName}</td>
+                                                <td style="width: 15%">${b.NoOfHits}</td>
+                                                <c:choose>
+                                                    <c:when test="${b.Status=='1'}">
+                                                        <td style="width: 15%">
+                                                            <div class="btn-group">
+                                                                 <a href="AdminController?action=blockHitVendor&name=${b.UserName}" class="btn btn-mini" title="Click to block this Vendor"><i class="icon-remove"></i></a>
+                                                            </div>
+                                                        </td>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <td style="width: 15%">
+                                                            <div class="btn-group">
+                                                                <a href="AdminController?action=unblockHitVendor&name=${b.UserName}" class="btn btn-mini" title="Click to unblock this Vendor"><i class="icon-ok"></i></a>
+                                                            </div>
+                                                        </td>   
+                                                    </c:otherwise>
+                                                </c:choose>
 
-                                                <td>Lorem ipsum dolor sit<br/></td>
-                                                <td>a</td>
-                                                <td>18/12/2012</td>
-                                                <td>
-                                                    <div class="btn-group">
 
-                                                        <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                    </div>
-                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
-
-                                                <td>Lorem ipsum dolor sit<br/></td>
-                                                <td>b</td>
-                                                <td>16/12/2012</td>
-                                                <td>
-                                                    <div class="btn-group">
-
-                                                        <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
-
-                                                <td>Lorem ipsum dolor sit<br/></td>
-                                                <td>c</td>
-                                                <td>14/12/2012</td>
-                                                <td>
-                                                    <div class="btn-group">
-
-                                                        <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
-
-                                                <td>Lorem ipsum dolor sit<br/></td>
-                                                <td>d</td>
-                                                <td>9/12/2012</td>
-                                                <td>
-                                                    <div class="btn-group">
-
-                                                        <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
-
-                                                <td>Lorem ipsum dolor sit<br/></td>
-                                                <td>e</td>
-                                                <td>23/12/2012</td>
-                                                <td>
-                                                    <div class="btn-group">
-
-                                                        <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
-
-                                                <td>Lorem ipsum dolor sit<br/></td>
-                                                <td>f</td>
-                                                <td>21/12/2012</td>
-                                                <td>
-                                                    <div class="btn-group">
-
-                                                        <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
-
-                                                <td>Lorem ipsum dolor sit<br/></td>
-                                                <td>g</td>
-                                                <td>22/12/2012</td>
-                                                <td>
-                                                    <div class="btn-group">
-
-                                                        <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
-
-                                                <td>Lorem ipsum dolor sit<br/></td>
-                                                <td>h</td>
-                                                <td>23/12/2012</td>
-                                                <td>
-                                                    <div class="btn-group">
-
-                                                        <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
-
-                                                <td>Lorem ipsum dolor sit<br/></td>
-                                                <td>i</td>
-                                                <td>14/12/2012</td>
-                                                <td>
-                                                    <div class="btn-group">
-
-                                                        <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
-
-                                                <td>Lorem ipsum dolor sit<br/></td>
-                                                <td>j</td>
-                                                <td>24/12/2012</td>
-                                                <td>
-                                                    <div class="btn-group">
-
-                                                        <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
-
-                                                <td>Lorem ipsum dolor sit<br/></td>
-                                                <td>k</td>
-                                                <td>26/12/2012</td>
-                                                <td>
-                                                    <div class="btn-group">
-
-                                                        <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="w-box-footer">
-                                    <div class="pagination pagination-centered">
-                                        <ul>
-                                            <li class="disabled"><a href="#">Prev</a></li>
-                                            <li class="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">Next</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="footer_space"></div>
-        </div> 
+        </div>
 
-        <!-- footer --> 
+
+        <div class="footer_space"></div>
+    </div> 
+
+    <!-- footer --> 
     <jsp:include page="footer.jsp"></jsp:include>
 
         <!-- Common JS -->
@@ -295,7 +160,63 @@
         })();
 
     </script>
+    <!-- Jquery data tables -->
+
+    <script type="text/javascript" src="data-tables/jquery.dataTables.js"></script><!-- For Tables -->
+    <script type="text/javascript" src="data-tables/DT_bootstrap.js"></script><!-- For Tables -->
+    <script>
+
+        // begin tblEvent table
+        $('#dt_gal').dataTable({
+            "aoColumns": [{
+                    "bSortable": true
+                }, {
+                    "bSortable": true
+                }, {
+                    "bSortable": true
+                }, {
+                    "bSortable": false
+                }],
+            "aLengthMenu": [[5, 15, 20, -1], [5, 15, 20, "All"] // change per page values here
+            ],
+            // set the initial value
+            "iDisplayLength": 5,
+            "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+            "sPaginationType": "bootstrap",
+            "oLanguage": {
+                "sLengthMenu": "_MENU_ records per page",
+                "oPaginate": {
+                    "sPrevious": "Prev",
+                    "sNext": "Next"
+                }
+            },
+            "aoColumnDefs": [{
+                    'bSortable': false,
+                    'aTargets': [0]
+                }]
+        });
+
+        jQuery('#dt_gal .group-checkable').change(function() {
+            var set = jQuery(this).attr("data-set");
+            var checked = jQuery(this).is(":checked");
+            jQuery(set).each(function() {
+                if (checked) {
+                    $(this).attr("checked", true);
+                } else {
+                    $(this).attr("checked", false);
+                }
+            });
+            jQuery.uniform.update(set);
+        });
+
+        jQuery('#dt_gal .dataTables_filter input').addClass("m-wrap medium");
+        // modify table search input
+        jQuery('#dt_gal .dataTables_length select').addClass("m-wrap small");
+        // modify table per page dropdown
+        //jQuery('#tblEvent .dataTables_length select').select2(); // initialize select2 dropdown
+    </script>
 </body>
 
 
 </html>
+

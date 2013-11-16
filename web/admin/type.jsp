@@ -1,7 +1,7 @@
 <%-- 
-    Document   : viewFeedback
-    Created on : 13 Oct, 2013, 3:05:19 PM
-    Author     : Kiran
+    Document   : orders
+    Created on : 12 Oct, 2013, 1:41:39 AM
+    Author     : kaklo
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,13 +9,15 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
+
         <meta charset="UTF-8">
-        <title>Daily Dabba</title>
+        <title>Beoro Admin Template v1.2</title>
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
-        
+        <jsp:include page="commonJs.jsp"></jsp:include>
+
         <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
         </head>
         <body class="bg_d">
@@ -30,8 +32,9 @@
                 <div class="container">
                     <ul id="breadcrumbs">
                         <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Feedback</a></li>
-                        <li><a href="javascript:void(0)">View Feedback</a></li>
+                        <li><a href="javascript:void(0)">Item Type</a></li>
+
+                        <li><span>View Item Types...</span></li>
                     </ul>
                 </div>
 
@@ -42,41 +45,34 @@
                             <div class="w-box">
                                 <div class="w-box-header">
                                     <div class="btn-group">
-                                        <label>Feedbacks</label>
+                                        <label>Item Type</label>
                                     </div>
                                 </div>
-                                <div class="w-box-content" style="padding: 10px;">
+                                <div class="w-box-content" style="padding:10px;">
                                     <table class="table table-vam table-striped" id="dt_gal">
                                         <thead>
                                             <tr>
-                                                <th>Customer</th>
-                                                <th>Vendor</th>
-                                                <th>Feedback</th>
-                                                <th>Date</th>
-                                                <th>Rating</th>
-                                                <th>Actions</th>
+
+
+                                                <th>Name</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${feedback}" var="feedbacks">
+                                        <c:forEach items="${types}" var="type">
                                             <tr>
-                                                
-                                                <td>${feedbacks.Customer}</td>
-                                                <td>${feedbacks.Vendor}</td>
-                                                <td>${feedbacks.Message}</td>
-                                                <td>${feedbacks.Date}</td>
-                                                <td>${feedbacks.Rating}</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                       <a href="AdminController?action=deleteFeedback&id=${feedbacks.ID}" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>       
+
+
+                                                <td><c:out value="${type.typeName}"></c:out></td>
+
+                                                </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
+
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -86,9 +82,6 @@
 
     <!-- footer --> 
     <jsp:include page="footer.jsp"></jsp:include>
-
-        <!-- Common JS -->
-    <jsp:include page="commonJs.jsp"></jsp:include>
 
     <!-- Dashboard JS -->
     <!-- jQuery UI -->
@@ -151,7 +144,7 @@
         })();
 
     </script>
-    
+
     <!-- Jquery data tables -->
 
     <script type="text/javascript" src="data-tables/jquery.dataTables.js"></script><!-- For Tables -->
@@ -162,15 +155,7 @@
         $('#dt_gal').dataTable({
             "aoColumns": [{
                     "bSortable": true
-                }, {
-                    "bSortable": true
-                }, {
-                    "bSortable": true
-                }, {
-                    "bSortable": true
-                }, {
-                    "bSortable": true
-                },null],
+                }],
             "aLengthMenu": [[5, 15, 20, -1], [5, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
@@ -213,4 +198,3 @@
 
 
 </html>
-

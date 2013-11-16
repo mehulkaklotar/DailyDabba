@@ -16,6 +16,8 @@
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
+        <jsp:include page="commonJs.jsp"></jsp:include>
+        <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
     </head>
     <body class="bg_d">
     <!-- main wrapper (without footer) -->    
@@ -42,26 +44,22 @@
                     <div class="span12">
                         <div class="w-box">
                             <div class="w-box-header">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-inverse btn-mini delete_rows_dt" data-tableid="dt_gal" title="Edit">Delete</a>
-                                    <a href="#" class="btn btn-inverse btn-mini" title="View">Another Action</a>
+                                    <div class="btn-group">
+                                        <label>Area</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="w-box-content">
+                            <div class="w-box-content" style="padding:10px;">
                                     <table class="table table-vam table-striped" id="dt_gal">
                                         <thead>
                                             <tr>
-                                                <th class="table_checkbox" style="width:13px"><input type="checkbox" name="select_rows" class="select_rows" data-tableid="dt_gal" /></th>
-
-                                                <th>Area Name</th>
-                                                <th>City Name</th>
-                                                <th>Actions</th>
+                                                <th width="40%">Area Name</th>
+                                                <th width="40%">City Name</th>
+                                                <th width="15%">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody
                                         <c:forEach items="${areas}" var="area">
                                             <tr>
-                                                <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
                                                 <td><c:out value="${area.areaName}"></c:out></td>
                                                 <td><c:out value="${area.city.cityName}"></c:out></td>
                                                     <td>
@@ -76,21 +74,7 @@
                                     </tbody>
                                 </table>
                             </div>
-            
-                            <div class="w-box-footer">
-                                <div class="pagination pagination-centered">
-                                    <ul>
-                                        <li class="disabled"><a href="#">Prev</a></li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">Next</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
+                        </div>  
                     </div>
                     </div>
                 </div>
@@ -101,8 +85,6 @@
     <!-- footer --> 
         <jsp:include page="footer.jsp"></jsp:include>
         
-    <!-- Common JS -->
-        <jsp:include page="commonJs.jsp"></jsp:include>
 
     <!-- Dashboard JS -->
         <!-- jQuery UI -->
@@ -162,6 +144,57 @@
   })();
 
 </script>
+<!-- Jquery data tables -->
+
+    <script type="text/javascript" src="data-tables/jquery.dataTables.js"></script><!-- For Tables -->
+    <script type="text/javascript" src="data-tables/DT_bootstrap.js"></script><!-- For Tables -->
+    <script>
+
+        // begin tblEvent table
+        $('#dt_gal').dataTable({
+            "aoColumns": [{
+                    "bSortable": true
+                },{
+                    "bSortable": true
+                },null],
+            "aLengthMenu": [[5, 15, 20, -1], [5, 15, 20, "All"] // change per page values here
+            ],
+            // set the initial value
+            "iDisplayLength": 5,
+            "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+            "sPaginationType": "bootstrap",
+            "oLanguage": {
+                "sLengthMenu": "_MENU_ records per page",
+                "oPaginate": {
+                    "sPrevious": "Prev",
+                    "sNext": "Next"
+                }
+            },
+            "aoColumnDefs": [{
+                    'bSortable': false,
+                    'aTargets': [0]
+                }]
+        });
+
+        jQuery('#dt_gal .group-checkable').change(function() {
+            var set = jQuery(this).attr("data-set");
+            var checked = jQuery(this).is(":checked");
+            jQuery(set).each(function() {
+                if (checked) {
+                    $(this).attr("checked", true);
+                } else {
+                    $(this).attr("checked", false);
+                }
+            });
+            jQuery.uniform.update(set);
+        });
+
+        jQuery('#dt_gal .dataTables_filter input').addClass("m-wrap medium");
+        // modify table search input
+        jQuery('#dt_gal .dataTables_length select').addClass("m-wrap small");
+        // modify table per page dropdown
+        //jQuery('#tblEvent .dataTables_length select').select2(); // initialize select2 dropdown
+    </script>
     </body>
 
 

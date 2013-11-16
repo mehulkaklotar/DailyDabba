@@ -8,8 +8,20 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script src="js/../bootstrap/js/bootstrap.js"></script>
+<script src="js/../bootstrap/js/bootstrap.min.js"></script>
+<script src="js/../bootstrap/js/jqBootstrapValidation.js"></script>
+<link type="text/css" rel="stylesheet" href="js/../bootstrap/css/bootstrap-responsive.css" />
+<link type="text/css" rel="stylesheet" href="js/../bootstrap/css/bootstrap-responsive.min.css" />
+<link type="text/css" rel="stylesheet" href="js/../bootstrap/css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="js/../bootstrap/css/bootstrap.min.css"/>
+
 <html>
     <head>
+        <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" />
+        <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+
         <meta charset="UTF-8">
         <title>Daily Dibba</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +29,67 @@
         <meta name="author" content="Marcin Banaszek">
 
         <jsp:include page="include.jsp"></jsp:include>
+            <script>
+                var b = new Boolean(true);
+                function checkemail() {
+                    if ($('#email').val() != "") {
+                        var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                        if (!pattern.test($('#email').val())) {
+                            $('#alertEmail').html("Invalid Email");
+                            b = false;
+                        }
+                        else {
+                            $('#alertEmail').html("Gr8!!");
+                            b = true;
+                            return true;
+                        }
+                    }
+                }
 
+                function checkmobile() {
+                    if ($('#txtPhnNum').val() != "") {
+                        var pattern = /^[789]\d{9}$/;
+                        if (!pattern.test($('#txtPhnNum').val())) {
+                            $('#alertMobile1').html("Invalid Mobile");
+                            b = false;
+                        }
+                        else {
+                            $('#alertMobile1').html("Yoo!!");
+                            b = true;
+                            return true;
+                        }
+                    }
+                }
+                function checkrequired() {
+                    if ($('#txtPhnNum').val() === "" && $('#email').val() === "")
+                    {
+                        $('#alertForgetPassword').html("Please enter either your mobile number or your EmailID");
+                        b = false;
+                    }
+                    else {
+
+                        b = true;
+                        return true;
+                    }
+                }
+
+            </script>
+            <style>
+                .forgetpassword {
+                    width: auto;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    background-color: #fff;
+                    text-align: left;
+                    border: 1px solid #e5e5e5;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    border-radius: 5px;
+                    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                }
+            </style>
 
         </head>
 
@@ -80,31 +152,36 @@
                 <!-- ******** FULL WIDTH SLIDER END ******** -->
 
             </header>
-
             <article class="wrapper"> 
-                <div class="row" align="center">
-                    <div class="span12">
-                        <hr>
-                        <h2 class="left">Forget Password</h2>
-                    </div>
-                </div>
 
-                <form name="" method="post" action="" id="">
-                    <div class="center">
-                        <div style="margin-bottom: 10px;">
-                            <input type="text" style="width:auto;" placeholder="Your Phone Number" name="txtPhnNum" required>
+                <div class="forgetpassword">
+                    <div style="margin-left: 20px;">
+                        <div style="padding-top: 20px;padding-bottom: 10px;">
+                            <span id="alertForgetPassword" class="alert-danger"></span>
                         </div>
-                        <div>
-                            <input type="email" style="width:auto;" placeholder="Your email" name="email" required>
+                        <div align="left" class="row">
+                            <br></br>
+                            <div>
+                                <input type="text" style="width:auto;" onkeyup="checkmobile();" placeholder="Your Phone Number" name="txtPhnNum" id="txtPhnNum" required>
+                                <span id="alertMobile1" class="alert">Valid mobile no only</span>
+                                <span style="margin-left: 25px;" class="alert-info">Enter 10 digit number only </span>
+                            </div>
+                            <div>
+                                <input type="email" style="width:auto;" onkeyup="checkemail();" placeholder="Your email" name="email" id="email" required>
+                                <span id="alertEmail" class="alert">Valid Email Address only</span>
+
+                            </div>
+                            <div style="margin-top: 10px">
+                                <div align="center" style="margin-top: 10px;">
+                                    <button class="btn btn-primary" type="submit" onclick="checkrequired();">Change it!!</button>
+
+                                </div>
+                            </div>
 
                         </div>
                     </div>
-                    <div align="center" style="margin-top: 10px;">
-                        <input type="submit" value="Change It !">
-                    </div>
-                </form>
-                <button class="back-to-top">^</button>
             </article>
+
 
         <jsp:include page="footer.jsp"></jsp:include>
 

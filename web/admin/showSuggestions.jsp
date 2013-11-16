@@ -48,8 +48,8 @@
                                     <table class="table table-vam table-striped" id="dt_gal">
                                         <thead>
                                             <tr>
-                                                <th width="70%">Suggestion</th>
-                                                <th width="5%">Date</th>
+                                                <th width="65%">Suggestion</th>
+                                                <th width="10%">Date</th>
                                                 <th width="10%">Name</th>
                                                 <th width="15%">Email</th>
                                             </tr>

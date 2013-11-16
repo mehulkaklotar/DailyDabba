@@ -16,18 +16,19 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author HR
  */
-public class getSuggestions implements Action {
+public class blockHitVendor implements Action {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {
         
+        String vendor = req.getParameter("name");
         Administrator objAdministrator = new Administrator();
-        ArrayList objArrayList = objAdministrator.getSuggestion();
-        req.setAttribute("sug", objArrayList);
+        Boolean flag = objAdministrator.blockHitVendor(vendor);
         
-        objAdministrator.updateSuggestionStatus();
+        ArrayList objArrayList = objAdministrator.getAllBlockHits();
         
-        return "showSuggestions.jsp";
+        req.setAttribute("block", objArrayList);
+        return "request.jsp";
     }
     
 }
