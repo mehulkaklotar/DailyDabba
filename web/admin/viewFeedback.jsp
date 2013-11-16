@@ -15,8 +15,11 @@
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
-        
-        <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
+
+            <!-- Common JS -->
+        <jsp:include page="commonJs.jsp"></jsp:include>
+
+            <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
         </head>
         <body class="bg_d">
             <!-- main wrapper (without footer) -->    
@@ -60,7 +63,7 @@
                                         <tbody>
                                         <c:forEach items="${feedback}" var="feedbacks">
                                             <tr>
-                                                
+
                                                 <td>${feedbacks.Customer}</td>
                                                 <td>${feedbacks.Vendor}</td>
                                                 <td>${feedbacks.Message}</td>
@@ -68,7 +71,7 @@
                                                 <td>${feedbacks.Rating}</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                       <a href="AdminController?action=deleteFeedback&id=${feedbacks.ID}" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
+                                                        <a href="AdminController?action=deleteFeedback&id=${feedbacks.ID}" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -86,9 +89,6 @@
 
     <!-- footer --> 
     <jsp:include page="footer.jsp"></jsp:include>
-
-        <!-- Common JS -->
-    <jsp:include page="commonJs.jsp"></jsp:include>
 
     <!-- Dashboard JS -->
     <!-- jQuery UI -->
@@ -151,7 +151,7 @@
         })();
 
     </script>
-    
+
     <!-- Jquery data tables -->
 
     <script type="text/javascript" src="data-tables/jquery.dataTables.js"></script><!-- For Tables -->
@@ -170,7 +170,7 @@
                     "bSortable": true
                 }, {
                     "bSortable": true
-                },null],
+                }, null],
             "aLengthMenu": [[5, 15, 20, -1], [5, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
