@@ -22,8 +22,7 @@ public class getAllVendors implements Action {
     public String execute(HttpServletRequest req, HttpServletResponse res) {
         Administrator objAdministrator = new Administrator();
         ArrayList<Vendor> vendors = objAdministrator.getAllVendors();
-        req.setAttribute("vendor", vendors);
+        req.setAttribute("vendors", vendors);        
         return "vendors.jsp";
-    }
-    
+    }    
 }
