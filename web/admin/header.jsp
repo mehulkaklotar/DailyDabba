@@ -38,7 +38,7 @@
                                 # <% } %>"><%= session.getAttribute("UserName") %></a></strong>
                             <ul class="unstyled">
                                 <li>&middot;</li>
-                                <li><a href="Controller?action=logout">Logout</a></li>
+                                <li><a href="../Controller?action=logout">Logout</a></li>
                             </ul>
                         </div>
                     </div>

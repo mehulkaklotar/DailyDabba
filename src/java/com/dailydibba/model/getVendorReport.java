@@ -8,7 +8,6 @@ package com.dailydibba.model;
 
 import com.dailydibba.action.Action;
 import com.dailydibba.bean.Administrator;
-import com.dailydibba.bean.Customer;
 import com.dailydibba.bean.Vendor;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
@@ -18,13 +17,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author akyp
  */
-public class getCustomerList implements Action {
+public class getVendorReport implements Action {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {
         Administrator objAdministrator = new Administrator();
-        ArrayList<Customer> customers = objAdministrator.getAllCustomers();
-        req.setAttribute("customers",customers );
-        return "customers.jsp";
-    }    
+        ArrayList<Vendor> vendors = objAdministrator.getAllVendors();
+        req.setAttribute("vendor", vendors);        
+        return "vendorReport.jsp";
+    }
+    
 }
