@@ -501,6 +501,7 @@ public class Administrator extends User {
             ResultSet rs = cstmt.executeQuery();
             while (rs.next()) {
                 Vendor objVendor = new Vendor();
+                objVendor.setUserName(rs.getString("UserName"));
                 objVendor.setVendorName(rs.getString("VendorName"));
                 Area objArea = new Area(); // Creating area object
                 objArea.setAreaName(rs.getString("AreaName")); //setting areaname of vendor

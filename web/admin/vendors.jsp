@@ -62,7 +62,7 @@
                                     <tbody>
                                          <c:forEach items="${vendors}" var="vendor">
                                         <tr>                             
-                                            <td><a href="../Controller?action=getVendor&vendorUN=${vendor.getVendorName()}"><c:out value="${vendor.vendorName}"/></a><br/> Rating:<c:out value="${vendor.rating}"/></td>                                            
+                                            <td><a href="AdminController?action=getVendorProfile&uname=${vendor.getUserName()}"><c:out value="${vendor.vendorName}"/></a><br/> Rating:<c:out value="${vendor.rating}"/></td>                                            
                                             <td>   
                                                 <c:choose>
                                                     <c:when test="${vendor.status == true}" >

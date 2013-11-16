@@ -494,8 +494,8 @@ public class Customer extends User {
         callableStatement.setString(1, userName);
         ResultSet rs=callableStatement.executeQuery();
         if(rs.next()){
-            int areaID=rs.getInt("areaid");
-            String areaName=rs.getString("areaname");
+            int areaID=rs.getInt("AreaID");
+            String areaName=rs.getString("AreaName");
             int cityid=rs.getInt("cityid");
             String cityname=rs.getString("cityname");
             area=new Area();
@@ -505,11 +505,11 @@ public class Customer extends User {
             city.setCityID(cityid);
             city.setCityName(cityname);
             area.setCity(city);
-            firstName=rs.getString("firstname");
-            lastName=rs.getString("lastname");
-            lane=rs.getString("lane");
-            mobileNo=rs.getString("mobileno");
-            emailID=rs.getString("emailID");
+            firstName=rs.getString("FirstName");
+            lastName=rs.getString("LastName");
+            lane=rs.getString("Lane");
+            mobileNo=rs.getString("MobileNo");
+            emailID=rs.getString("EmailID");
         }
        }catch(SQLException exc){
            System.out.println(exc.toString());

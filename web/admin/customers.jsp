@@ -20,7 +20,6 @@
         <script> src="js.commonTask.js"</script>
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
-        <jsp:include page="commonJs.jsp"></jsp:include>
         <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
     </head>
     <body class="bg_d">
@@ -62,7 +61,7 @@
                                     <tbody>
                                          <c:forEach items="${customers}" var="customer">
                                         <tr>                                            
-                                            <td><a href="#"><c:out value="${customer.firstName}"/></a></td>                                            
+                                            <td><a href="AdminController?action=getCustomerProfile&uname=${customer.getUserName()}"><c:out value="${customer.firstName}"/></a></td>                                            
                                             <td>   
                                                 <c:choose>
                                                     <c:when test="${customer.status == true}" >

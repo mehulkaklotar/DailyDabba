@@ -389,6 +389,7 @@ public boolean updateProfile() {
                 area.setAreaName(rs.getString("AreaName"));
                 area.setCity(new City());
                 area.getCity().setCityID(rs.getInt("CityID"));
+                area.getCity().setCityName(rs.getString("CityName"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Vendor.class.getName()).log(Level.SEVERE, null, ex);
