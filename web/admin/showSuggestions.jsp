@@ -41,24 +41,26 @@
                             <div class="w-box">
                                 <div class="w-box-header">
                                     <div class="btn-group">
-                                        <label>Orders</label>
+                                        <label>Suggestions</label>
                                     </div>
                                 </div>
                                 <div class="w-box-content" style="padding:10px;">
                                     <table class="table table-vam table-striped" id="dt_gal">
                                         <thead>
                                             <tr>
-                                                <th>SuggestionID</th>
-                                                <th>Suggestion</th>
-                                                <th>Date Of Suggestion</th>
+                                                <th width="70%">Suggestion</th>
+                                                <th width="5%">Date</th>
+                                                <th width="10%">Name</th>
+                                                <th width="15%">Email</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <c:forEach items="${sug}" var="o">
                                             <tr>
-                                                <td>${o.SuggestionID}</td>
                                                 <td>${o.Suggestion}</td>
                                                 <td>${o.DateOfSuggestion}</td>
+                                                <td>${o.name}</td>
+                                                <td>${o.emailID}</td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
@@ -154,7 +156,13 @@
         $('#dt_gal').dataTable({
             "aoColumns": [{
                     "bSortable": true
-                }, null, null],
+                }, {
+                    "bSortable": true
+                }, {
+                    "bSortable": true
+                },{
+                    "bSortable": true
+                }],
             "aLengthMenu": [[5, 15, 20, -1], [5, 15, 20, "All"] // change per page values here
             ],
             // set the initial value

@@ -108,6 +108,9 @@ public class Administrator extends User {
                 Area objArea = new Area();
                 objArea.setAreaID(rs.getInt("AreaID"));
                 objArea.setAreaName(rs.getString("AreaName"));
+                City c = new City();
+                c.setCityName(rs.getString("CityName"));
+                objArea.setCity(c);
 
                 areaList.add(objArea);
 
@@ -148,50 +151,18 @@ public class Administrator extends User {
         }
         return cityList;
     }
-    /*public Area getArea(int area_id)
-     {
-     Area objArea = null;
-     con = new DBConnection();
-     try {
-
-     cstmt = con.connection.prepareCall("{call getArea(?)}");
-     cstmt.setInt(1, area_id);
-     ResultSet rs = cstmt.executeQuery();
-            
-     if (rs.next()) {  
-     objArea = new Area();
-     objArea.setAreaName(rs.getString("AreaName"));
-     objArea.setAreaID(rs.getInt("AreaID"));
-     //objArea.setCity();
-     City ct=new City();
-     ct.setCityID(rs.getInt("CityID"));
-     ct.setCityName(rs.getString("CityName"));
-     //ct.setCityName(rs.getString("CityName"));
-     objArea.setCity(ct);   
-     }
-     rs.close();
-     } catch (Exception ex) {
-     ex.getMessage();
-     } finally {
-
-     con.closeConnection();
-     }
-     return objArea;
-     }*/
 
     public Area getArea(int area_id) {
         Area objArea = null;
         con = new DBConnection();
         try {
-
             cstmt = con.connection.prepareCall("{call getArea(?)}");
             cstmt.setInt(1, area_id);
             ResultSet rs = cstmt.executeQuery();
-
             if (rs.next()) {
                 objArea = new Area();
                 objArea.setAreaName(rs.getString("AreaName"));
-                //objArea.setAreaID(rs.getInt("AreaID"));
+                objArea.setAreaID(rs.getInt("AreaID"));
                 City ct = new City();
                 //ct.setCityID(rs.getInt("CityID"));
                 ct.setCityName(rs.getString("CityName"));
@@ -201,7 +172,6 @@ public class Administrator extends User {
         } catch (Exception ex) {
             ex.getMessage();
         } finally {
-
             con.closeConnection();
         }
         return objArea;
@@ -782,10 +752,12 @@ public class Administrator extends User {
             stmt = con.connection.prepareCall("{call getSuggestions()}");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+
                 Map objMap = new HashMap();
                 objMap.put("Suggestion", rs.getString("Suggestion"));
                 objMap.put("DateOfSuggestion", rs.getDate("DateOfSuggestion"));
-                objMap.put("SuggestionID", rs.getInt("SuggestionID"));
+                objMap.put("emailID", rs.getString("emailID"));
+                objMap.put("name", rs.getString("name"));
                 list.add(objMap);
             }
 
@@ -794,6 +766,23 @@ public class Administrator extends User {
             return null;
         }
         return list;
+    }
+
+    public int getUnreadSuggestionCount() {
+        con = new DBConnection();
+        int count = 0;
+        ArrayList list = new ArrayList();
+        try {
+            stmt = con.connection.prepareCall("{call getUnreadSuggestionCount()}");
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt("count");
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return count;
     }
 
     public boolean deleteFeedback(int id) {

@@ -14,17 +14,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
-       
 
-            <!-- Yahoo autocomplete widget -->
-            <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/fonts/fonts-min.css" />
-            <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/autocomplete/assets/skins/sam/autocomplete.css" />
-            <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
-            <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/animation/animation-min.js"></script>
-            <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/datasource/datasource-min.js"></script>
-            <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/autocomplete/autocomplete-min.js"></script>
 
-            <jsp:include page="include.jsp"></jsp:include>
+        <!-- Yahoo autocomplete widget -->
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/fonts/fonts-min.css" />
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/autocomplete/assets/skins/sam/autocomplete.css" />
+        <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+        <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/animation/animation-min.js"></script>
+        <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/datasource/datasource-min.js"></script>
+        <script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/autocomplete/autocomplete-min.js"></script>
+
+        <jsp:include page="include.jsp"></jsp:include>
 
             <script src="js/commonTask.js"></script>
 
@@ -167,6 +167,17 @@
                         </div>
                         <div class="vendorlist" style="float: left" id="vendorList">
                             <!-- AJAX call to getVendor.js and geVendorList.jsp -->
+                            <center>
+                                <div style="color: #2fbbb2;">
+                                    <img src="images/uparrow.png" height="100" width="100" style="border: none;"/><br>
+                                    <b><font style="font-size: xx-large">Search</font></b><br>
+                                    <b><font style="font-size: xx-large;">here</font></b><br><br><br>
+                                    <b><font style="font-size: x-large;">Thinking</font></b><br>
+                                    <b><font style="font-size: x-large;">what</font></b><br>
+                                    <b><font style="font-size: x-large;">to</font></b><br>
+                                    <b><font style="font-size: x-large;">eat?</font></b>
+                                </div>
+                            </center>
                         </div>
                         <div style="clear: both;"></div>
                     </div>
@@ -178,17 +189,13 @@
                     <button class="nav-trigger">Navigation</button>
 
                     <!-- ******** NAVIGATION END ******** -->
-                    <div class="timingBox">
-                        <div class="span2" style="text-align:center;">
-                            <h2><u>Timings</u></h2>
-                        </div>
-                    </div>
+
 
                     <div id ="labelWelcome" class="labelWelcome">
                         <span>Welcome, 
                         <% if (session.getAttribute("UserName") != null) {
                                 out.print(session.getAttribute("UserName"));
-                                %> <a href="Controller?action=logout" >Logout</a> 
+                        %> <a href="Controller?action=logout" >Logout</a> 
                         <%
                         } else {
                         %> Guest
@@ -249,11 +256,11 @@
                 <div class="carousel" data-transition="slide">
                     <div>
                         <blockquote>Great seasonal and regional TIFFINS with a creative twist. Direct to your doorstep.</blockquote>
-                        <p>- Tiffin Service Portal, DA-IICT</p>
+                        <p>- SWE Team 4, DA-IICT</p>
                     </div>
                     <div>
-                        <blockquote>This is nice and quite, ideal for people who miss homely food. We always have set menus which are fantastic value.</blockquote>
-                        <p>- Tiffin Service Portal, DA-IICT</p>
+                        <blockquote>Nice and quite, ideal for people who miss home food. Menus always have fantastic value.</blockquote>
+                        <p>- SWE Team 4, DA-IICT</p>
                     </div>
                 </div>
             </div>

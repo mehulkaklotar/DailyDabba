@@ -53,27 +53,20 @@
                                             <tr>
                                                 <th class="table_checkbox" style="width:13px"><input type="checkbox" name="select_rows" class="select_rows" data-tableid="dt_gal" /></th>
 
-                                                <th>Name</th>
+                                                <th>Area Name</th>
+                                                <th>City Name</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody
-                                        <div class="controls">
-                                            <select id="cityList" name="cityList">
-                                                <option>-Select-</option>
-                                                 <c:forEach items="${cities}" var="city">
-                                                     <option value="${city.cityID}">${city.cityName}</option>
-                                                 </c:forEach>
-                                            </select>
-                                        </div>
                                         <c:forEach items="${areas}" var="area">
                                             <tr>
                                                 <td><input type="checkbox" name="row_sel" class="row_sel" /></td>
                                                 <td><c:out value="${area.areaName}"></c:out></td>
+                                                <td><c:out value="${area.city.cityName}"></c:out></td>
                                                     <td>
                                                         <div class="btn-group">
                                                             <a href="AdminController?action=editArea&areaId=<c:out value="${area.areaID}"></c:out>" class="btn btn-mini" title="Edit"><i class="icon-pencil"></i></a>
-                                                        <%--<a href="AdminController?action=viewArea&areaId=<c:out value="${area.areaID}"></c:out>" class="btn btn-mini" title="View"><i class="icon-eye-open"></i></a>--%>
                                                             <a href="AdminController?action=deleteArea&areaId=<c:out value="${area.areaID}"></c:out>" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
                                                     </div>
                                                 </td>

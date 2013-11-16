@@ -13,12 +13,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author kaklo
  */
-public class getAdminIndex implements Action{
+public class getUnreadSuggestionCount implements Action{
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {
-        
-        return "index.jsp";
+        Administrator objAdministrator = new Administrator();
+        int count = objAdministrator.getUnreadSuggestionCount();
+        req.setAttribute("unreadSuggestionCount", count);
+        return "suggestioncount.jsp";
     }
     
 }

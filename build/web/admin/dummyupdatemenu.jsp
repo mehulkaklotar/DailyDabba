@@ -314,7 +314,7 @@
                         margin-top: 20%;
                     }
                 </style>
-             <!--   <script>
+            <script>
             $(function() {
                 var server = $(".sDate").attr("value");
                 var sarr = server.split(" ");
@@ -352,7 +352,7 @@
                     $('.dinnerBox').hide();
                 }
             });
-                </script>-->
+                </script>
                 <span id="sDate" value="${date}" class="sDate"></span>
 
             <!-- main content -->

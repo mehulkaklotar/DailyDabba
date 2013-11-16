@@ -97,17 +97,19 @@
 
             </header>
             <!-- ******** RESERVATION START ******** -->
-            <form name="contactform" method="post" action="" id="">
+            <form name="contactform" method="post" action="Controller?action=insertSuggestion" id="">
+                
                 <div align="center" class="row">
                     <h2 class="center">Your Suggestion</h2>
+                    <% if(request.getParameter("Message")!=null){ %><label class="alert-info">${Message}</label> <% } %>
                     <div>
-                        <input type="text" style="width:200px;" placeholder="Your Name" name="name">
+                        <input type="text" style="width:200px;" placeholder="Your Name" id="name" name="name">
                     </div>
                     <div style="margin-top: 10px;">
-                        <input type="text" style="width:200px;" placeholder="Your E-Mail ID" name="email">
+                        <input type="text" style="width:200px;" placeholder="Your E-Mail ID" id="email" name="email">
                     </div>
                     <div style="margin-top: 10px;">
-                        <textarea style="width: 500px;" placeholder="Message" name="message"></textarea>
+                        <textarea style="width: 500px;" required placeholder="Message" id="message" name="message"></textarea>
                     </div>
                 </div>
                 <div class="row">

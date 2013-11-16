@@ -63,15 +63,17 @@ public class Visitor {
         return vendorList; // returned vendorList
     }
 
-    public boolean insertSuggestion(String suggestion, Date DateOfSuggestion) {
+    public boolean insertSuggestion(String suggestion, String email, String name,int status) {
         //Author: Hiren Savalia & Mehul Kaklotar
         //Description: insertSuggestion called when user wants to insert any suggestion
         con = new DBConnection();
         try {
 
-            callableStatement = con.connection.prepareCall("{call insertSuggestion(?,?)}"); // procedure called
+            callableStatement = con.connection.prepareCall("{call insertSuggestion(?,?,?,?)}"); // procedure called
             callableStatement.setString(1, suggestion);
-            callableStatement.setDate(2, DateOfSuggestion);
+            callableStatement.setString(2, email);
+            callableStatement.setString(3, name);
+            callableStatement.setInt(4, status);
             int row = callableStatement.executeUpdate();
 
             if (row == 1) {
@@ -395,7 +397,7 @@ public class Visitor {
 
     public User login(String username) {
         con = new DBConnection();
-        User objUser = new User();
+        User objUser = null;
         try {
 
             callableStatement = con.connection.prepareCall("{call getUser(?)}");
@@ -403,6 +405,7 @@ public class Visitor {
             ResultSet rsUser = callableStatement.executeQuery();
 
             if (rsUser.next()) {
+                objUser = new User();
                 objUser.setUserName(rsUser.getString("UserName"));
                 objUser.setPassword(rsUser.getString("Password"));
                 UserRole objUserRole = new UserRole();

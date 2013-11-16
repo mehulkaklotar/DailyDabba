@@ -5,7 +5,7 @@
 package com.dailydibba.model;
 
 import com.dailydibba.action.Action;
-import com.dailydibba.bean.Administrator;
+import com.dailydibba.bean.Visitor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,12 +13,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author kaklo
  */
-public class getAdminIndex implements Action{
+public class insertSuggestion implements Action{
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {
         
-        return "index.jsp";
+        Visitor objVisitor = new Visitor();
+        objVisitor.insertSuggestion(req.getParameter("message"), req.getParameter("email"), req.getParameter("name"), 1);
+        
+        req.setAttribute("Message", "Thanks for your suggestion. We will try to improve.");
+        return "contact.jsp";
     }
     
 }
