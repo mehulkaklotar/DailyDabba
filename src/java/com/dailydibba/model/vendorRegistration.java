@@ -50,12 +50,12 @@ public class vendorRegistration implements Action {
         SMSSender.smsSender("akypvs", "156424", "91"+req.getParameter("mobileno"),"www.dailydabba.co.in \n Verification Code : "+code, "WebSMS", "0");
         
         //send mail
-        sendmail(code,req.getParameter("emailID"));
+        sendmail(req.getParameter("emailID"),req.getParameter("username"));
         
         return "vendorsuccess.jsp";
     }
     
-    public void sendmail(String code,String email) {
+    public void sendmail(String email,String username) {
         try {
             String host = "smtp.gmail.com";
             String from = "mehul.kaklotar@gmail.com";//your gmail account
@@ -86,7 +86,7 @@ public class vendorRegistration implements Action {
                 message.addRecipient(Message.RecipientType.TO, toAddress[i]);
             }
             message.setSubject("Activate Your Account");//set subject of mail
-            message.setContent("www.dailydabba.co.in \n Verification Code : " + code, "text/html");//set mail content
+            message.setContent("www.dailydabba.co.in \n <br/> Activate your account following this link <a href='localhost:8084/DailyDibba/activateVendor.jsp?username='"+username+"'>Click here</a>", "text/html");//set mail content
             Transport transport = session.getTransport("smtp");
             transport.connect(host, from, pass);
             transport.sendMessage(message, message.getAllRecipients());

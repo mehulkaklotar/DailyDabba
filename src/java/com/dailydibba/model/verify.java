@@ -27,6 +27,7 @@ public class verify implements Action{
             Administrator objAdministrator=new Administrator();
             objAdministrator.updateCustomerStatus(user);
             req.setAttribute("Message", "Succesfully registered!!!");
+            req.setAttribute("from", "/DailyDibba/index.jsp");
             return "login.jsp";
         }else{
             req.setAttribute("Message", "Code you entered is incorrect");

@@ -90,17 +90,16 @@
                         </div>
                     </div>
                 </div>
+                <label class="center alert">Verify your account by your registered mobile no or check the email you provided for registration.</label>
             <% if(request.getAttribute("Message")!=null) { %><span class="alert-block">${Message}</span> <% } %>
             
-            <form name="VerificationForm" method="post" action="Controller?action=verify" id="verification">
+            <form name="VerificationForm" method="post" action="Controller?action=verify&from=index.jsp" id="verification">
                 <input type="hidden" value="<%= request.getParameter("username") %>" name="username" id="username"/>
                     <div align="center" class="row">
                         <div>
                             <input type="text" style="width:auto;" placeholder="Verification Code" name="verificationCode">
                         </div>
-                        <p> Enter the verification code you received on registered contact number </p>
-                        <br></br>
-
+                        
                         <div class="row">
                             <div class="span12 center">
                                 <input type="submit" value="Verify">

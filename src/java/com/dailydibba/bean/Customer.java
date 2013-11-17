@@ -253,12 +253,11 @@ public class Customer extends User {
                 objTiffin.setMenu(objMenu);
 
                 List<TiffinDetails> tiffindetails = new ArrayList<TiffinDetails>();
-                
+
                 callableStatement = con.connection.prepareCall("{call getOrderDetails(?)}");
                 callableStatement.setString(1, orderID);
                 ResultSet rsdetails = callableStatement.executeQuery();
-                while(rsdetails.next())
-                {
+                while (rsdetails.next()) {
                     TiffinDetails objDetails = new TiffinDetails();
                     objDetails.setOrder(objTiffin);
                     Item objItem = new Item();
@@ -270,10 +269,10 @@ public class Customer extends User {
                     objDetails.setItem(objItem);
                     objDetails.setCost(rsdetails.getInt("Cost"));
                     objDetails.setQuantity(rsdetails.getInt("Quantity"));
-                    
+
                     tiffindetails.add(objDetails);
                 }
-                
+
                 objTiffin.setTiffindetails(tiffindetails);
 
             }
@@ -487,36 +486,35 @@ public class Customer extends User {
         }
     }
 
-     public void getProfileDetails(){
-       try{
-        con=new DBConnection();
-        callableStatement=con.connection.prepareCall("{call getCustomer(?)}");
-        callableStatement.setString(1, userName);
-        ResultSet rs=callableStatement.executeQuery();
-        if(rs.next()){
-            int areaID=rs.getInt("AreaID");
-            String areaName=rs.getString("AreaName");
-            int cityid=rs.getInt("cityid");
-            String cityname=rs.getString("cityname");
-            area=new Area();
-            area.setAreaID(areaID);
-            area.setAreaName(areaName);
-            City city=new City();
-            city.setCityID(cityid);
-            city.setCityName(cityname);
-            area.setCity(city);
-            firstName=rs.getString("FirstName");
-            lastName=rs.getString("LastName");
-            lane=rs.getString("Lane");
-            mobileNo=rs.getString("MobileNo");
-            emailID=rs.getString("EmailID");
+    public void getProfileDetails() {
+        try {
+            con = new DBConnection();
+            callableStatement = con.connection.prepareCall("{call getCustomer(?)}");
+            callableStatement.setString(1, userName);
+            ResultSet rs = callableStatement.executeQuery();
+            if (rs.next()) {
+                int areaID = rs.getInt("AreaID");
+                String areaName = rs.getString("AreaName");
+                int cityid = rs.getInt("cityid");
+                String cityname = rs.getString("cityname");
+                area = new Area();
+                area.setAreaID(areaID);
+                area.setAreaName(areaName);
+                City city = new City();
+                city.setCityID(cityid);
+                city.setCityName(cityname);
+                area.setCity(city);
+                firstName = rs.getString("FirstName");
+                lastName = rs.getString("LastName");
+                lane = rs.getString("Lane");
+                mobileNo = rs.getString("MobileNo");
+                emailID = rs.getString("EmailID");
+            }
+        } catch (SQLException exc) {
+            System.out.println(exc.toString());
         }
-       }catch(SQLException exc){
-           System.out.println(exc.toString());
-       }
     }
 
-    
     public List<VendorArea> getVendorArea(String vendor) {
         //Author: Prachi Deodhar
         //Date:13- October-2013
@@ -530,7 +528,7 @@ public class Customer extends User {
             ResultSet rs = callableStatement.executeQuery();
 
             while (rs.next()) {
-                
+
                 VendorArea objVendorArea = new VendorArea();
                 Vendor objVendor = new Vendor();
                 objVendor.setUserName(rs.getString("UserName"));
@@ -538,9 +536,9 @@ public class Customer extends User {
                 objArea.setAreaID(rs.getInt("AreaID"));
                 objVendorArea.setVendor(objVendor);
                 objVendorArea.setArea(objArea);
-                
+
                 vendorarea.add(objVendorArea);
-                
+
             }
             rs.close();
         } catch (Exception ex) {
@@ -551,5 +549,29 @@ public class Customer extends User {
         }
         return vendorarea;
     }
-    
+
+    public Customer getCustomerStatus(String username) {
+        Customer objCustomer = null;
+        con = new DBConnection();
+        try {
+
+            callableStatement = con.connection.prepareCall("{call getCustomerStatus(?)}");
+            callableStatement.setString(1, username);
+
+            ResultSet rs = callableStatement.executeQuery();
+
+            if (rs.next()) {
+                objCustomer = new Customer();
+                objCustomer.setStatus(rs.getBoolean("Status"));
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+
+            con.closeConnection();
+        }
+        return objCustomer;
+
+    }
 }

@@ -152,7 +152,8 @@ public class Vendor extends User {
 
         }
     }
-public boolean updateProfile() {
+
+    public boolean updateProfile() {
         con = new DBConnection();
         try {
 
@@ -179,8 +180,6 @@ public boolean updateProfile() {
         }
 
     }
-
-    
 
     public boolean blockCustomer(String username) {
         con = new DBConnection();
@@ -549,8 +548,8 @@ public boolean updateProfile() {
         }
         return list;
     }
-    
-     public ArrayList getAllOrdersForVendor(String vendor) {
+
+    public ArrayList getAllOrdersForVendor(String vendor) {
         con = new DBConnection();
         ArrayList list = new ArrayList();
         try {
@@ -577,5 +576,30 @@ public boolean updateProfile() {
             con.closeConnection();
         }
         return list;
+    }
+
+    public Vendor getVendorStatus(String username) {
+        Vendor objVendor = null;
+        con = new DBConnection();
+        try {
+
+            callableStatement = con.connection.prepareCall("{call getVendorStatus(?)}");
+            callableStatement.setString(1, username);
+
+            ResultSet rs = callableStatement.executeQuery();
+
+            if (rs.next()) {
+                objVendor = new Vendor();
+                objVendor.setStatus(rs.getBoolean("Status"));
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+
+            con.closeConnection();
+        }
+        return objVendor;
+
     }
 }
