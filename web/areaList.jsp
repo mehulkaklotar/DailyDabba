@@ -16,7 +16,7 @@
         </select>
     </c:when>
     <c:otherwise>
-        <select id="Area" class ="selectStyle">
+        <select id="ddlArea" class ="selectStyle">
             <option value="0">Select Area</option>
         </select>
     </c:otherwise>

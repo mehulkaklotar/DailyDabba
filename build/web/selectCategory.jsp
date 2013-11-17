@@ -15,7 +15,19 @@
         <meta name="author" content="Marcin Banaszek">
 
         <jsp:include page="include.jsp"></jsp:include>
-
+            <style>
+                .logo1 {
+                    background:#2fbbb2;
+                    border:1px solid #2fbbb2;
+                    box-shadow: 0 0 5px rgba(0,0,0,0.2), inset 0 0 40px rgba(0,0,0,0.15);
+                    left: 0;
+                    text-align: center;
+                    top: 0px;
+                    width: 300px;
+                    z-index: 2000;
+                    color: #fff;
+                }
+            </style>
 
         </head>
 
@@ -79,27 +91,34 @@
 
             </header>
 
-            <article class="wrapper"> 
+                <article class="wrapper" style="height: 400px;"> 
                 <div class="row">
                     <div class="span12">
                         <hr>
-                        <h2 class="center">Select Category Form</h2>
+                        <h2 class="center">Sign Up As</h2>
                         <div class="message">
                             <div id="alert"></div>
                         </div>
                     </div>
                 </div>
 
+
                 <form name="" method="post" action="" id="login">
                     <div align="center" class="row">
-                        <div style="float: left;"> 
-                            <a href="dummycustomerRegistration.jsp"><image src="images/Customer.jpg" style="width: 70%; height: 70%" /> </a>
-                        </div>
-                        <div style="float: right; margin-right: 30px; margin-top: 50px">
-                            <a href="Controller?action=selectVendor"><image src="images/Vendor.png" style="width: 90%; height: 90%"/> </a>
-                        </div>
+                        <a href="Controller?action=selectCustomer">
+                            <div class="logo1"  style="float: left; margin-left: 175px">
+                                <h2 style="color: #fff;">Customer</h2>
+
+                            </div>
+                        </a>
+                        <a href="Controller?action=selectVendor">
+                            <div class="logo1" style="float: right; margin-right: 175px ">
+                                <h2 style="color: #fff;">Vendor</h2>
+                            </div>
+                        </a>
                     </div>
                 </form>
+
                 <button class="back-to-top">^</button>
             </article>
 

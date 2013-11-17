@@ -11,7 +11,6 @@ import com.dailydibba.bean.Administrator;
 import com.dailydibba.bean.Area;
 import com.dailydibba.bean.City;
 import com.dailydibba.bean.Customer;
-import com.dailydibba.bean.Vendor;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

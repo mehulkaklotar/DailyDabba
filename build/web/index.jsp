@@ -274,36 +274,32 @@
                 <div class="span3">
                     <div class="padding center">
                         <p><img src="images/icon-food.png" alt="Excellent Food" /></p>
-                        <h3>Excellent Food</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel elit augue, accumsan.</p>
-                        <p><a href="#" class="button">Read More</a></p>
+                        <h3>Edible gift</h3>
+                        <p>homemade gourment presents for everyone</p>
                     </div>
                 </div>
                 <hr class="line">
                 <div class="span3">
                     <div class="padding center">
                         <p><img src="images/icon-wine.png" alt="Fantastic Wine" /></p>
-                        <h3>Fantastic Wine</h3>
-                        <p>Aenean fringilla nunc eget massa bibendum elementum. Suspendisse vitae metus vitae neque rhoncus lacinia ut at.</p>
-                        <p><a href="#" class="button">Read More</a></p>
+                        <h3>Healthy </h3>
+                        <p>Lighter choices for a guilt free mealtime</p>
                     </div>
                 </div>
                 <hr class="line">
                 <div class="span3">
                     <div class="padding center">
                         <p><img src="images/icon-staff.png" alt="Friendly Staff" /></p>
-                        <h3>Friendly Staff</h3>
-                        <p>Donec elit ligula, tincidunt at molestie id, vulputate vel sem. Mauris pellentesque arcu vitae lacus.</p>
-                        <p><a href="#" class="button">Read More</a></p>
+                        <h3>Quick & easy</h3>
+                        <p>Delicious food at your door step</p>
                     </div>
                 </div>
                 <hr class="line">
                 <div class="span3">
                     <div class="padding center">
                         <p><img src="images/icon-location.png" alt="Great Location" /></p>
-                        <h3>Great Location</h3>
-                        <p>Duis varius, tellus sit amet sagittis semper, felis urna fermentum urna, eu volutpat nibh leo vel dui.</p>
-                        <p><a href="#" class="button">Read More</a></p>
+                        <h3>Array of menus</h3>
+                        <p>Range of dishes to choose from</p>
                     </div>
                 </div>
             </div>

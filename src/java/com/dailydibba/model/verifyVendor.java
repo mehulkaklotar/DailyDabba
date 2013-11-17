@@ -14,18 +14,17 @@ import javax.servlet.http.HttpSession;
  *
  * @author kaklo
  */
-public class verify implements Action{
-
-    @Override
+public class verifyVendor implements Action{
+    
+     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {
         HttpSession session = req.getSession();
         String code = session.getAttribute("code").toString();
         String enterredCode = req.getParameter("verificationCode");
         String user = req.getParameter("username");
-        
         if(code.equals(enterredCode)){
             Administrator objAdministrator=new Administrator();
-            objAdministrator.updateCustomerStatus(user);
+            objAdministrator.updateVendorStatus(user);
             req.setAttribute("Message", "Succesfully registered!!!");
             return "login.jsp";
         }else{
@@ -33,5 +32,5 @@ public class verify implements Action{
             return "verification.jsp";
         }
     }
-    
+   
 }

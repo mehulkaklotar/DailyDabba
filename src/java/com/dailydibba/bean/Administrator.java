@@ -946,5 +946,37 @@ public class Administrator extends User {
         return typeList;
     }
 
+    public boolean updateCustomerStatus(String username) {
+        con = new DBConnection();
+        try {
+            cstmt = con.connection.prepareCall("{call updateCustomerStatus(?)}");
+            cstmt.setString(1, username);
+            int row = cstmt.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
     
+    public boolean updateVendorStatus(String username) {
+        con = new DBConnection();
+        try {
+            cstmt = con.connection.prepareCall("{call  updateVendorStatusUnblock(?)}");
+            cstmt.setString(1, username);
+            int row = cstmt.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
 }

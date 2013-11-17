@@ -41,7 +41,7 @@
                         return;
                     }
                     else if ($('#txtUsername').val() != "") {
-                        var pattern = /^[A-Za-z0-9_]{9,30}$/;
+                        var pattern = /^[A-Za-z0-9_]{3,30}$/;
                         if (!pattern.test($('#txtUsername').val())) {
                             $('#usernameunique').html("Invalid UserName");
                             b = false;
@@ -152,12 +152,9 @@
                                     flat: $('#txtFlatNumber').val(),
                                 },
                                         function(response) {
-                                            alert(response);
                                             if ($.trim(response) == 'success') {
-                                                alert("if");
                                                 setTimeout("verification()", 2000);
                                             } else {
-                                                alert("else");
                                                 alertMessage("error", "Invalid Usename and password!!!");
                                             }
                                         });
@@ -171,7 +168,7 @@
                 }
 
                 function verification() {
-                    window.location.href = "verification.jsp";
+                    window.location.href = "verificationVendor.jsp?username="+$('#txtUsername').val();
                 }
 
             </script>
@@ -274,7 +271,7 @@
                                 <input type="text" onkeyup="checkUsername();" style="width:auto;" placeholder="User Name" id="txtUsername" name="txtUsername" required="">
                                 <span class="required">*</span>
                                 <span id="usernameunique" class="alert">Should be unique</span>
-                                <span style="margin-left: 25px;" class="alert-info">alphabets and numbers, no special characters, min 9 and max 30 </span>
+                                <span style="margin-left: 25px;" class="alert-info">alphabets and numbers, no special characters, min 3 and max 30 </span>
                             </div>
                             <br>
                             <div>

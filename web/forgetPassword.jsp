@@ -153,6 +153,10 @@
 
             </header>
             <article class="wrapper"> 
+                <ul class="breadcrumb">
+                <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
+                <lii class="active">forgot password</li>
+            </ul>
 
                 <div class="forgetpassword">
                     <div style="margin-left: 20px;">

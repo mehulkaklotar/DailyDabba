@@ -91,7 +91,9 @@
                     </div>
                 </div>
             <% if(request.getAttribute("Message")!=null) { %><span class="alert-block">${Message}</span> <% } %>
-                <form name="VerificationForm" method="post" action="Controller?action=verify" id="verification">
+            
+            <form name="VerificationForm" method="post" action="Controller?action=verify" id="verification">
+                <input type="hidden" value="<%= request.getParameter("username") %>" name="username" id="username"/>
                     <div align="center" class="row">
                         <div>
                             <input type="text" style="width:auto;" placeholder="Verification Code" name="verificationCode">
@@ -101,7 +103,7 @@
 
                         <div class="row">
                             <div class="span12 center">
-                                <input type="submit" value="Register">
+                                <input type="submit" value="Verify">
                             </div>
                         </div>
                 </form>

@@ -3,6 +3,8 @@
     Created on : Oct 12, 2013, 1:59:49 AM
     Author     : HR
 --%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
@@ -37,6 +39,54 @@
                     box-shadow: 0 1px 2px rgba(0,0,0,.05);
                 }
             </style>
+            <script>
+            $(function() {
+                var server = $(".sDate").attr("value");
+                var sarr = server.split(" ");
+
+                var sDate = sarr[0]; // server Date
+                var sTime = sarr[1]; // server Time
+
+                var sD = sDate.split("-"); // split date
+                var sDY = sD[0]; // Year
+                var sDM = sD[1]; // Month
+                var sDD = sD[2]; // Date
+
+                var sT = sTime.split(":"); // split time
+                var sTH = sT[0]; // Hour
+                var sTM = sT[1]; // Minute
+                var sTS = sT[2]; // Second
+
+                if (sTH < 9) { // if system time is not greater than 9 AM then don't show the Lunch menu)
+                    var label = $("<label>").text("You can not order now. Orders will be accepted from 9 AM to 11 AM").addClass('alert');
+                    $('#Lunch').before(label);
+                    /*$('#lblLunch').text("You can not order now. Orders will be accepted from 9 AM to 11 AM");*/
+                    $('#Lunch').hide();
+                } else if (sTH >= 11) {
+                    var label = $("<label>").text("You can not order now. Orders will be accepted from 9 AM to 11 AM").addClass('alert');
+                    $('#Lunch').before(label);
+                    /*$('#lblLunch').text("You can not order now. Orders will be accepted from 9 AM to 11 AM");*/
+                    $('#Lunch').hide();
+                }
+
+                if (sTH < 14) { // if system time is greater than 14 PM (i.e 2 PM)  then don't show the Dinner menu
+                    var label = $("<label>").text("You can not order now. Orders will be accepted from 2 PM to 4 PM").addClass('alert');
+                    $('#Dinner').append(label);
+                    $('#Dinner').hide();
+                } else if (sTH >= 16) {
+                    var label = $("<label>").text("You can not order now. Orders will be accepted from 2 PM to 4 PM").addClass('alert');
+                    $('#Dinner').append(label);
+                    $('#Dinner').hide();
+                }
+            });
+                </script>
+                <%
+                    Date date = new Date();
+                    String sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        
+                %>
+                <span id="sDate" value="<%= sd %>" class="sDate"></span>
+
         </head>
 
         <body class="home">
@@ -226,6 +276,7 @@
 
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane fade active in" id="Lunch">
+                                
                                 <c:choose>
                                     <c:when test="${!empty menuLunch} ">
                                         <label class="alert-error" id ="errorLunch"></label>
@@ -376,6 +427,7 @@
 
                             </div>
                             <div class="tab-pane fade" id="Dinner">
+                                
                                 <c:choose>
                                     <c:when test="${!empty menuDinner} ">
                                         <label class="alert-error" id ="errorDinner"></label>

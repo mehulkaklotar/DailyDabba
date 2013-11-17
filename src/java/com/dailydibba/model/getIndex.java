@@ -23,6 +23,9 @@ public class getIndex implements Action{
     public String execute(HttpServletRequest req, HttpServletResponse res) {
         Administrator objAdministrator = new Administrator();
         List<Area> areas= objAdministrator.getAllArea();
+        List<City> cities= objAdministrator.getAllCity();
+        
+        
         /*String[] areaArray = new String[areas.size()];
         Iterator it = areas.iterator();
         int i = 0;

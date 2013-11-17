@@ -15,11 +15,11 @@ import javax.servlet.http.HttpSession;
  *
  * @author kaklo
  */
-public class changePassword implements Action {
+public class changePasswordCustomer implements Action {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {
-
+        
         HttpSession session = req.getSession();
         String username = session.getAttribute("UserName").toString();
 
@@ -30,10 +30,10 @@ public class changePassword implements Action {
         if (req.getParameter("txtOldPassword").equals(objUser.getPassword()) && objUser != null) {
             objAdministrator.changePassword(username, req.getParameter("txtNewPassword"));
             req.setAttribute("error", "Updated");
-        }else{
+        } else {
             req.setAttribute("error", "Old password doesn't match");
         }
 
-        return "changePassword.jsp";
+        return "vendorsuccess.jsp";
     }
 }

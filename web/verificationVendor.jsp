@@ -1,7 +1,7 @@
 <%-- 
-    Document   : selectCategory
-    Created on : 13 Oct, 2013, 3:05:19 PM
-    Author     : Kiran
+    Document   : verification
+    Created on : 14 Oct, 2013, 10:20:01 PM
+    Author     : sony
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,21 +13,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
-
+<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" />
+        <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css" />
         <jsp:include page="include.jsp"></jsp:include>
-            <style>
-                .logo1 {
-                    background:#2fbbb2;
-                    border:1px solid #2fbbb2;
-                    box-shadow: 0 0 5px rgba(0,0,0,0.2), inset 0 0 40px rgba(0,0,0,0.15);
-                    left: 0;
-                    text-align: center;
-                    top: 0px;
-                    width: 300px;
-                    z-index: 2000;
-                    color: #fff;
-                }
-            </style>
+
 
         </head>
 
@@ -91,34 +80,32 @@
 
             </header>
 
-                <article class="wrapper" style="height: 400px;"> 
+            <article class="wrapper"> 
                 <div class="row">
                     <div class="span12">
                         <hr>
-                        <h2 class="center">Sign Up As</h2>
+                        <h2 class="center">Verification</h2>
                         <div class="message">
                             <div id="alert"></div>
                         </div>
                     </div>
                 </div>
-
-
-                <form name="" method="post" action="" id="login">
+            <% if(request.getAttribute("Message")!=null) { %><span class="alert-block">${Message}</span> <% } %>
+            <form name="VerificationForm" method="post" action="Controller?action=verifyVendor" id="verification">
+                <input type="hidden" value="<%= request.getParameter("username") %>" name="username" id="username"/>
                     <div align="center" class="row">
-                        <a href="Controller?action=selectCustomer">
-                            <div class="logo1"  style="float: left; margin-left: 175px">
-                                <h2 style="color: #fff;">Customer</h2>
+                        <div>
+                            <input type="text" style="width:auto;" placeholder="Verification Code" name="verificationCode">
+                        </div>
+                        <p> Enter the verification code you received on registered contact number </p>
+                        <br></br>
 
+                        <div class="row">
+                            <div class="span12 center">
+                                <input type="submit" value="Register">
                             </div>
-                        </a>
-                        <a href="Controller?action=selectVendor">
-                            <div class="logo1" style="float: right; margin-right: 175px ">
-                                <h2 style="color: #fff;">Vendor</h2>
-                            </div>
-                        </a>
-                    </div>
+                        </div>
                 </form>
-
                 <button class="back-to-top">^</button>
             </article>
 
@@ -127,3 +114,4 @@
         <button class="back-to-top">^</button>
     </body>
 </html>
+
