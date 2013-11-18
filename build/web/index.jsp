@@ -1,3 +1,4 @@
+<%@page import="com.dailydibba.bean.Vendor"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.dailydibba.bean.City"%>
 <%@page import="java.util.ArrayList"%>
@@ -16,6 +17,7 @@
         <meta name="author" content="Marcin Banaszek">
 
 
+
         <!-- Yahoo autocomplete widget -->
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/fonts/fonts-min.css" />
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/autocomplete/assets/skins/sam/autocomplete.css" />
@@ -27,7 +29,17 @@
         <jsp:include page="include.jsp"></jsp:include>
 
             <script src="js/commonTask.js"></script>
+            <script language="javascript" type="text/javascript">
+                jQuery(function($) {
+                    var input = $('#myInput');
+                    input.on('keydown', function() {
+                        var key = event.keyCode || event.charCode;
 
+                        if (key == 8 || key == 46)
+                            return false;
+                    });
+                });
+            </script> 
 
             <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
             <!--<script type="text/javascript">
@@ -129,13 +141,27 @@
                         Area objArea = (Area) it.next();
                         str += "'" + objArea.getAreaName() + "',";
                     }
+                    
+                    List<City> cityList = (List<City>) request.getAttribute("cities");
+                    it = cityList.iterator();
+                    while (it.hasNext()) {
+                        City objCity = (City) it.next();
+                        str += "'" + objCity.getCityName() + "',";
+                    }
+                    
+                    List<Vendor> vendorList = (List<Vendor>) request.getAttribute("vendors");
+                    it = vendorList.iterator();
+                    while (it.hasNext()) {
+                        Vendor objVendor = (Vendor) it.next();
+                        str += "'" + objVendor.getVendorName() + "',";
+                    }
 
                 %>
                 <div class="searchBox">
                     <div class="span3">
                         <div>
                             <div style="float: left;width: 220px;">
-                                <input type="text" id="txtSearch" style="margin-top: 10px;" placeholder="Enter area,city" name="txtSearch"/>
+                                <input type="text" id="txtSearch" style="margin-top: 10px;" placeholder="To Search type here" name="txtSearch"/>
                                 <div id="myContainer"></div>
                                 <script type="text/javascript">
                                     YAHOO.example.Data = {
@@ -172,10 +198,10 @@
                                     <img src="images/uparrow.png" height="100" width="100" style="border: none;"/><br>
                                     <b><font style="font-size: xx-large">Search</font></b><br>
                                     <b><font style="font-size: xx-large;">here</font></b><br><br><br>
-                                    <b><font style="font-size: x-large;">Thinking</font></b><br>
-                                    <b><font style="font-size: x-large;">what</font></b><br>
-                                    <b><font style="font-size: x-large;">to</font></b><br>
-                                    <b><font style="font-size: x-large;">eat?</font></b>
+                                    <b><font style="font-size: x-large;">Hungry</font></b><br>
+                                    <b><font style="font-size: x-large;">kya?</font></b><br>
+                                    <b><font style="font-size: x-large;">Want</font></b><br>
+                                    <b><font style="font-size: x-large;">tiffin?</font></b>
                                 </div>
                             </center>
                         </div>
@@ -275,7 +301,7 @@
                     <div class="padding center">
                         <p><img src="images/icon-food.png" alt="Excellent Food" /></p>
                         <h3>Edible gift</h3>
-                        <p>homemade gourment presents for everyone</p>
+                        <p>homemade gourmet presents for everyone</p>
                     </div>
                 </div>
                 <hr class="line">

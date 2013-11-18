@@ -250,6 +250,7 @@ public class Customer extends User {
                 Vendor objVendor = new Vendor();
                 objVendor.setUserName(rs.getString("Vendor"));
                 objMenu.setVendor(objVendor);
+                objMenu.setIsLunch(rs.getBoolean("IsLunch"));
                 objTiffin.setMenu(objMenu);
 
                 List<TiffinDetails> tiffindetails = new ArrayList<TiffinDetails>();

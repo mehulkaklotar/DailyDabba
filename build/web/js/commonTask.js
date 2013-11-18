@@ -200,6 +200,42 @@ $(document).ready(function() {
         {
             var salad = 0;
         }
+       
+        if ($('#curdIDLunch').val() > 0)
+        {
+            var curd = $('#curdIDLunch').val();
+        }
+        else
+        {
+            var curd = 0;
+        }
+        
+        if ($('#buttermilkIDLunch').val() > 0)
+        {
+            var buttermilk = $('#buttermilkIDLunch').val();
+        }
+        else
+        {
+            var buttermilk = 0;
+        }
+        
+        if ($('#papadIDLunch').val() > 0)
+        {
+            var papad = $('#papadIDLunch').val();
+        }
+        else
+        {
+            var papad = 0;
+        }
+        
+        if ($('#pickleIDLunch').val() > 0)
+        {
+            var pickle = $('#pickleIDLunch').val();
+        }
+        else
+        {
+            var pickle = 0;
+        }
 
         if ($('#txtTiffinQLunch').val() > 0)
         {
@@ -226,7 +262,7 @@ $(document).ready(function() {
         }
 
         if (b == true) {
-            window.location.href = "Controller?action=preplaceorder&sabzi=" + sabzi + "&roti=" + $('#rotiIDLunch').val() + "&rotiQuantity=" + rotiQuantity + "&rice=" + $('#riceIDLunch').val() + "&dal=" + $('#dalIDLunch').val() + "&salad=" + salad + "&menuID=" + $('#MenuIDLunch').val() + "&tiffin=" + tiffin + "&vendorUN=" + $('#VendorUN').val();
+            window.location.href = "Controller?action=preplaceorder&sabzi=" + sabzi + "&roti=" + $('#rotiIDLunch').val() + "&rotiQuantity=" + rotiQuantity + "&rice=" + $('#riceIDLunch').val() + "&dal=" + $('#dalIDLunch').val() + "&salad=" + salad + "&curd=" + curd + "&buttermilk=" + buttermilk + "&papad=" + papad + "&pickle=" + pickle  + "&menuID=" + $('#MenuIDLunch').val() + "&tiffin=" + tiffin + "&vendorUN=" + $('#VendorUN').val();
         } else {
             return;
         }
@@ -394,6 +430,42 @@ $(document).ready(function() {
         {
             var salad = 0;
         }
+        
+        if ($('#curdIDDinner').val() > 0)
+        {
+            var curd = $('#curdIDDinner').val();
+        }
+        else
+        {
+            var curd = 0;
+        }
+        
+        if ($('#buttermilkIDDinner').val() > 0)
+        {
+            var buttermilk = $('#buttermilkIDDinner').val();
+        }
+        else
+        {
+            var buttermilk = 0;
+        }
+        
+        if ($('#papadIDDinner').val() > 0)
+        {
+            var papad = $('#papadIDDinner').val();
+        }
+        else
+        {
+            var papad = 0;
+        }
+        
+        if ($('#pickleIDDinner').val() > 0)
+        {
+            var pickle = $('#pickleIDDinner').val();
+        }
+        else
+        {
+            var pickle = 0;
+        }
 
         if ($('#txtTiffinQDinner').val() > 0)
         {
@@ -418,9 +490,9 @@ $(document).ready(function() {
                 b = true;
             }
         }
-
+        
         if (b == true) {
-            window.location.href = "Controller?action=preplaceorder&sabzi=" + sabzi + "&roti=" + $('#rotiIDDinner').val() + "&rotiQuantity=" + rotiQuantity + "&rice=" + $('#riceIDDinner').val() + "&dal=" + $('#dalIDDinner').val() + "&salad=" + salad + "&menuID=" + $('#MenuIDDinner').val() + "&tiffin=" + tiffin + "&vendorUN=" + $('#VendorUN').val();
+            window.location.href = "Controller?action=preplaceorder&sabzi=" + sabzi + "&roti=" + $('#rotiIDDinner').val() + "&rotiQuantity=" + rotiQuantity + "&rice=" + $('#riceIDDinner').val() + "&dal=" + $('#dalIDDinner').val() + "&salad=" + salad + "&curd=" + curd + "&buttermilk=" + buttermilk + "&papad=" + papad + "&pickle=" + pickle  + "&menuID=" + $('#MenuIDDinner').val() + "&tiffin=" + tiffin + "&vendorUN=" + $('#VendorUN').val();
         } else {
             return;
         }
@@ -447,7 +519,7 @@ function confirmorder()
     var c = new Boolean(true);
     var add = new Boolean(true);
 
-    if ($('#ddlArea option:selected').val() == 0 && $('#ddlCity option:selected').val() == 0 && $.trim($('#deliveryaddress').val()).length == 0) {
+    if ($('#ddlArea option:selected').val() == 0 && $('#ddlCityVendor option:selected').val() == 0 && $.trim($('#deliveryaddress').val()).length == 0) {
         $('#alert').html("please provide address details");
     }
 
@@ -461,8 +533,8 @@ function confirmorder()
         a = false;
         return;
     }
-    if ($('#ddlCity option:selected').val() != 0) {
-        var city = $('#ddlCity option:selected').val();
+    if ($('#ddlCityVendor option:selected').val() != 0) {
+        var city = $('#ddlCityVendor option:selected').val();
     } else {
         $('#a').html("");
         $('#c').html("please select city");
@@ -486,6 +558,7 @@ function confirmorder()
     var vendorUN = $('#vendorUN').val();
     var tiffincost = $('#tiffincost').val();
     if (a == true && c == true && add == true) {
+        
         window.location.href = "Controller?action=confirmOrder&orderID=" + orderID + "&area=" + area + "&city=" + city + "&deliveryaddress=" + deliveryaddress + "&vendor=" + vendorUN + "&tiffincost=" + tiffincost;
     }
     else

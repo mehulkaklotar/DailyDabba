@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="js/../bootstrap/js/bootstrap.js"></script>
 <script src="js/../bootstrap/js/bootstrap.min.js"></script>
 <link type="text/css" rel="stylesheet" href="js/../bootstrap/css/bootstrap-responsive.css" />
@@ -136,7 +138,15 @@
                         <label class="label" style="margin-top: 10px;">Vendor:</label><span>&nbsp;${vendor.vendorName} (${vendor.mobileNo})</span> <br/>
                         <label class="label" style="margin-top: 10px;">No Of Tiffins:</label><span>&nbsp;${tiffin.getNumberOfTiffin()}</span> <br/>
                         <label class="label" style="margin-top: 10px;">Total Cost:</label><span>&nbsp;Rs. ${tiffinCost* tiffin.getNumberOfTiffin()}</span> <br/>
-                        <label class="alert-success text-center" style="margin-top: 10px;">Your tiffin will be delivered between 12 p.m. to 2 p.m.  </label>
+                        <c:choose>
+                            <c:when test="${tiffin.menu.isIsLunch() eq true}">
+                                <label class="alert-success text-center" style="margin-top: 10px;">Your tiffin will be delivered between 1 p.m. to 2 p.m.  </label>
+                            </c:when>
+                            <c:otherwise>
+                                <label class="alert-success text-center" style="margin-top: 10px;">Your tiffin will be delivered between 6 p.m. to 8 p.m.  </label>
+                            </c:otherwise>
+                        </c:choose>
+                        
                     </div>
                     <div style="margin:10px 0 0 0;">
                         <a href="Controller?action=getVendor&vendorUN=${vendor.getUserName()}" class="button"> < Order more?</a>

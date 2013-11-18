@@ -41,6 +41,10 @@ public class preplaceorder implements Action {
         int rice = Integer.parseInt(req.getParameter("rice"));
         int dal = Integer.parseInt(req.getParameter("dal"));
         int salad = Integer.parseInt(req.getParameter("salad"));
+        int curd = Integer.parseInt(req.getParameter("curd"));
+        int buttermilk = Integer.parseInt(req.getParameter("buttermilk"));
+        int papad = Integer.parseInt(req.getParameter("papad"));
+        int pickle = Integer.parseInt(req.getParameter("pickle"));
         int menuID = Integer.parseInt(req.getParameter("menuID"));
         int tiffin = Integer.parseInt(req.getParameter("tiffin"));
         int tiffincost = 0;
@@ -100,7 +104,26 @@ public class preplaceorder implements Action {
             objCustomer.insertOrderDetails(orderID, salad, 1);
             tiffincost += objVisitor.getRateOfItem(salad, menuID);
         }
+        
+        if (papad != 0) {
+            objCustomer.insertOrderDetails(orderID, papad, 1);
+            tiffincost += objVisitor.getRateOfItem(papad, menuID);
+        }
 
+        if (pickle != 0) {
+            objCustomer.insertOrderDetails(orderID, pickle, 1);
+            tiffincost += objVisitor.getRateOfItem(pickle, menuID);
+        }
+        
+        if (buttermilk != 0) {
+            objCustomer.insertOrderDetails(orderID, buttermilk, 1);
+            tiffincost += objVisitor.getRateOfItem(buttermilk, menuID);
+        }
+        
+        if (curd != 0) {
+            objCustomer.insertOrderDetails(orderID, curd, 1);
+            tiffincost += objVisitor.getRateOfItem(curd, menuID);
+        }
         
         req.setAttribute("orderID", orderID);
         req.setAttribute("tiffinCost", tiffincost);

@@ -17,19 +17,7 @@
         <jsp:include page="commonStyle.jsp"></jsp:include>
         <jsp:include page="commonJs.jsp"></jsp:include>
         
-        <script>
-            $(document).ready(function() {
-                $('#ddlType').change(function() {
-                    alert("");
-                    $.ajax({
-                        url: "AdminController?action=getItemOfType&typeID=" + $('#ddlType').val()
-                    }).done(function(result) {
-                        $('#divExistingItems').html(result);
-
-                    });
-                });
-            });
-        </script>
+        
         </head>
         <body class="bg_d">
             <!-- main wrapper (without footer) -->    
@@ -53,7 +41,7 @@
                 <div class="container">
                     <div class="row-fluid">
                         <div class="span12">
-                            <form class="form-horizontal" method="post" action="AdminController?action=addItem&UserName=Sai">
+                            <form class="form-horizontal" method="post" action="AdminController?action=addItem">
                                 <fieldset>
                                     <table>
 
@@ -74,13 +62,7 @@
                                                 </div>
                                             </td>
                                             </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <div id="divExistingItems" name="divExistingItems">
-                                                       
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            
                                             <tr>
                                             <div class="control-group">
                                                 <th>

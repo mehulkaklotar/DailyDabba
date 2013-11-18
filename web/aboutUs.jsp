@@ -109,7 +109,7 @@
                         <div class="padding">
                             <p>Since we ourselves are host elites, hence we can relate to the problem faced by people like us in terms of food. Our target customers are people who need healthy home cooked food to be delivered at their doorstep. We wish to keep them away from unhealthy fast food.
 We believe that every individual has different taste so we strive to ensure that our customers have plethora of options from where they can select their tiffin.
-So find out what the tiffin service providers have to offer you & enjoy! 
+So find out what the tiffin service providers have to offer you & enjoy.
 </p>
                         </div>
                     </div>

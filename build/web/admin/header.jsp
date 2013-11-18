@@ -43,7 +43,7 @@
                             Welcome, <strong>
                                 <a href="<%
                                     if (!session.getAttribute("Role").equals("Admin")) {
-                                %>/DailyDibba/admin/updateProfileVendor.jsp 
+                                %>/DailyDibba/admin/AdminController?action=getProfileDetailsVendor 
                                 <% } else { %>
                                 # <% } %>"><%= session.getAttribute("UserName") %></a></strong>
                             <ul class="unstyled">

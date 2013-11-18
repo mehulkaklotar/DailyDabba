@@ -8,6 +8,7 @@ import com.dailydibba.action.Action;
 import com.dailydibba.bean.Administrator;
 import com.dailydibba.bean.Area;
 import com.dailydibba.bean.City;
+import com.dailydibba.bean.Vendor;
 import java.util.Iterator;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -24,17 +25,11 @@ public class getIndex implements Action{
         Administrator objAdministrator = new Administrator();
         List<Area> areas= objAdministrator.getAllArea();
         List<City> cities= objAdministrator.getAllCity();
+        List<Vendor> vendors= objAdministrator.getAllVendors();
         
-        
-        /*String[] areaArray = new String[areas.size()];
-        Iterator it = areas.iterator();
-        int i = 0;
-        while(it.hasNext()){
-            Area objArea = (Area) it.next();
-            areaArray[i]=objArea.getAreaName();
-            i++;
-        }*/
         req.setAttribute("areas", areas);
+        req.setAttribute("cities", cities);
+        req.setAttribute("vendors", vendors);
         return "index.jsp";
     }
     

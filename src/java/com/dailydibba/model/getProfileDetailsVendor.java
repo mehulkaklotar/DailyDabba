@@ -40,7 +40,7 @@ public class getProfileDetailsVendor implements Action{
         area=admin.getAllCityArea(vendor.getArea().getCity().getCityID());
         req.setAttribute("Areas", area);
        
-        return "dummyupdateProfileVendor.jsp";
+        return "updateProfileVendor.jsp";
     }
     
 }

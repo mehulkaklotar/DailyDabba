@@ -39,7 +39,7 @@
                     box-shadow: 0 1px 2px rgba(0,0,0,.05);
                 }
             </style>
-            <script>
+            <!--<script>
             $(function() {
                 var server = $(".sDate").attr("value");
                 var sarr = server.split(" ");
@@ -79,7 +79,7 @@
                     $('#Dinner').hide();
                 }
             });
-                </script>
+                </script>-->
                 <%
                     Date date = new Date();
                     String sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
@@ -278,7 +278,10 @@
                             <div class="tab-pane fade active in" id="Lunch">
                                 
                                 <c:choose>
-                                    <c:when test="${!empty menuLunch} ">
+                                    <c:when test="${empty menuLunch} ">
+                                        No Lunch from this vendor
+                                    </c:when>
+                                    <c:otherwise>
                                         <label class="alert-error" id ="errorLunch"></label>
                                         <table id="MenuTable">
                                             <c:if test="${menuLunch.tiffinName}">
@@ -365,7 +368,7 @@
                                             </c:forEach>        
 
 
-                                            <c:forEach items="${menu.menuItem}" var="list">
+                                            <c:forEach items="${menuLunch.menuItem}" var="list">
                                                 <c:if test="${list.item.type.typeName == 'Salad'}">
                                                     <c:set var="count" value="${count + list.cost}"/>
                                                     <tr class="sumLunch" data-id ="${list.item.itemID}">
@@ -378,9 +381,67 @@
                                                     </tr>
                                                     <input type="hidden" id="saladIDLunch" value="${list.item.itemID}" />
                                                 </c:if>
-                                            </c:forEach>        
+                                            </c:forEach> 
+                                                    
+                                           <c:forEach items="${menuLunch.menuItem}" var="list">
+                                                <c:if test="${list.item.type.typeName == 'Pickle'}">
+                                                    <c:set var="count" value="${count + list.cost}"/>
+                                                    <tr class="sumLunch" data-id ="${list.item.itemID}">
+                                                        <td data-price="${list.cost}">
+                                                            Salad :
+                                                        </td>
+                                                        <td>
+                                                            Available (${list.cost}) Rs.
+                                                        </td>
+                                                    </tr>
+                                                    <input type="hidden" id="pickleIDLunch" value="${list.item.itemID}" />
+                                                </c:if>
+                                            </c:forEach>  
 
-
+                                            <c:forEach items="${menuLunch.menuItem}" var="list">
+                                                <c:if test="${list.item.type.typeName == 'Papad'}">
+                                                    <c:set var="count" value="${count + list.cost}"/>
+                                                    <tr class="sumLunch" data-id ="${list.item.itemID}">
+                                                        <td data-price="${list.cost}">
+                                                            Salad :
+                                                        </td>
+                                                        <td>
+                                                            Available (${list.cost}) Rs.
+                                                        </td>
+                                                    </tr>
+                                                    <input type="hidden" id="papadIDLunch" value="${list.item.itemID}" />
+                                                </c:if>
+                                            </c:forEach>  
+                                                    
+                                           <c:forEach items="${menuLunch.menuItem}" var="list">
+                                                <c:if test="${list.item.type.typeName == 'Buttermilk'}">
+                                                    <c:set var="count" value="${count + list.cost}"/>
+                                                    <tr class="sumLunch" data-id ="${list.item.itemID}">
+                                                        <td data-price="${list.cost}">
+                                                            Salad :
+                                                        </td>
+                                                        <td>
+                                                            Available (${list.cost}) Rs.
+                                                        </td>
+                                                    </tr>
+                                                    <input type="hidden" id="buttermilkIDLunch" value="${list.item.itemID}" />
+                                                </c:if>
+                                            </c:forEach>  
+                                                    
+                                            <c:forEach items="${menuLunch.menuItem}" var="list">
+                                                <c:if test="${list.item.type.typeName == 'Curd'}">
+                                                    <c:set var="count" value="${count + list.cost}"/>
+                                                    <tr class="sumLunch" data-id ="${list.item.itemID}">
+                                                        <td data-price="${list.cost}">
+                                                            Salad :
+                                                        </td>
+                                                        <td>
+                                                            Available (${list.cost}) Rs.
+                                                        </td>
+                                                    </tr>
+                                                    <input type="hidden" id="curdIDLunch" value="${list.item.itemID}" />
+                                                </c:if>
+                                            </c:forEach>          
                                             <tr>
                                                 <td>
                                                     <label>Enter total no of tiffins :</label>
@@ -419,9 +480,7 @@
                                             <%
                                                 }%>
                                         </div>
-                                    </c:when>
-                                    <c:otherwise>
-                                        No Lunch from this vendor
+                                        
                                     </c:otherwise>
                                 </c:choose>
 
@@ -429,7 +488,10 @@
                             <div class="tab-pane fade" id="Dinner">
                                 
                                 <c:choose>
-                                    <c:when test="${!empty menuDinner} ">
+                                    <c:when test="${empty menuDinner} ">
+                                        No Dinner from this vendor
+                                    </c:when>
+                                    <c:otherwise>
                                         <label class="alert-error" id ="errorDinner"></label>
                                         <table id="MenuTable">
                                             <c:if test="${menuDinner.tiffinName}">
@@ -515,7 +577,7 @@
                                             </c:forEach>        
 
 
-                                            <c:forEach items="${menu.menuItem}" var="list">
+                                            <c:forEach items="${menuDinner.menuItem}" var="list">
                                                 <c:if test="${list.item.type.typeName == 'Salad'}">
                                                     <c:set var="count" value="${count + list.cost}"/>
                                                     <tr class="sumDinner" data-id ="${list.item.itemID}">
@@ -529,8 +591,66 @@
                                                     <input type="hidden" id="saladIDDinner" value="${list.item.itemID}" />
                                                 </c:if>
                                             </c:forEach>        
+                                                    
+                                           <c:forEach items="${menuDinner.menuItem}" var="list">
+                                                <c:if test="${list.item.type.typeName == 'Pickle'}">
+                                                    <c:set var="count" value="${count + list.cost}"/>
+                                                    <tr class="sumLunch" data-id ="${list.item.itemID}">
+                                                        <td data-price="${list.cost}">
+                                                            Salad :
+                                                        </td>
+                                                        <td>
+                                                            Available (${list.cost}) Rs.
+                                                        </td>
+                                                    </tr>
+                                                    <input type="hidden" id="pickleIDDinner" value="${list.item.itemID}" />
+                                                </c:if>
+                                            </c:forEach>  
 
-
+                                            <c:forEach items="${menuDinner.menuItem}" var="list">
+                                                <c:if test="${list.item.type.typeName == 'Papad'}">
+                                                    <c:set var="count" value="${count + list.cost}"/>
+                                                    <tr class="sumLunch" data-id ="${list.item.itemID}">
+                                                        <td data-price="${list.cost}">
+                                                            Salad :
+                                                        </td>
+                                                        <td>
+                                                            Available (${list.cost}) Rs.
+                                                        </td>
+                                                    </tr>
+                                                    <input type="hidden" id="papadIDDinner" value="${list.item.itemID}" />
+                                                </c:if>
+                                            </c:forEach>  
+                                                    
+                                           <c:forEach items="${menuDinner.menuItem}" var="list">
+                                                <c:if test="${list.item.type.typeName == 'Buttermilk'}">
+                                                    <c:set var="count" value="${count + list.cost}"/>
+                                                    <tr class="sumLunch" data-id ="${list.item.itemID}">
+                                                        <td data-price="${list.cost}">
+                                                            Salad :
+                                                        </td>
+                                                        <td>
+                                                            Available (${list.cost}) Rs.
+                                                        </td>
+                                                    </tr>
+                                                    <input type="hidden" id="buttermilkIDDinner" value="${list.item.itemID}" />
+                                                </c:if>
+                                            </c:forEach>  
+                                                    
+                                            <c:forEach items="${menuDinner.menuItem}" var="list">
+                                                <c:if test="${list.item.type.typeName == 'Curd'}">
+                                                    <c:set var="count" value="${count + list.cost}"/>
+                                                    <tr class="sumLunch" data-id ="${list.item.itemID}">
+                                                        <td data-price="${list.cost}">
+                                                            Salad :
+                                                        </td>
+                                                        <td>
+                                                            Available (${list.cost}) Rs.
+                                                        </td>
+                                                    </tr>
+                                                    <input type="hidden" id="curdIDDinner" value="${list.item.itemID}" />
+                                                </c:if>
+                                            </c:forEach>          
                                             <tr>
                                                 <td>
                                                     <label>Enter total no of tiffins :</label>
@@ -569,9 +689,7 @@
                                             <%
                                         }%>
                                         </div>
-                                    </c:when>
-                                    <c:otherwise>
-                                        No Dinner from this vendor
+                                        
                                     </c:otherwise>
                                 </c:choose>
 

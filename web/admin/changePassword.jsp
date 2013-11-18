@@ -54,13 +54,13 @@
                                 <div class="control-group">
                                     <label class="control-label" for="lblItemName">Old Password:</label>
                                     <div class="controls">
-                                        <input type="text" id="txtOldPassword" value="" name="txtOldPassword" placeholder="Type here...">
+                                        <input type="password" id="txtOldPassword" value="" name="txtOldPassword" placeholder="Type here...">
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label" for="lblItemName">New Password:</label>
                                     <div class="controls">
-                                        <input type="text" id="txtNewPassword" value="" name="txtNewPassword" placeholder="Type here...">
+                                        <input type="password" id="txtNewPassword" value="" name="txtNewPassword" placeholder="Type here...">
                                     </div>
                                 </div>
                                 <div class="control-group">

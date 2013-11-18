@@ -32,7 +32,7 @@ public class updateProfileVendor implements Action{
         v.setLane(req.getParameter("txtAddressVendor"));
         v.setLandlineNumber(req.getParameter("txtLandlineNumber"));
         v.updateProfile();
-        return "Successful.jsp";
+        return "AdminController?action=getProfileDetailsVendor";
     }
     
 }

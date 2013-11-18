@@ -13,6 +13,7 @@ import com.dailydibba.bean.Tiffin;
 import com.dailydibba.bean.Vendor;
 import com.dailydibba.bean.VendorArea;
 import com.dailydibba.bean.Visitor;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -67,6 +68,11 @@ public class confimOrder implements Action {
                 objCustomer = new Customer();
                 Tiffin objTiffin = new Tiffin();
                 objTiffin = objCustomer.getOrder(orderID);
+
+                List<City> cities = new ArrayList<City>();
+                Visitor visitor = new Visitor();
+                cities = visitor.getCity();
+                req.setAttribute("Cities", cities);
 
                 req.setAttribute("tiffin", objTiffin);
                 req.setAttribute("Alert", "Vendor is not providing service in this area.");

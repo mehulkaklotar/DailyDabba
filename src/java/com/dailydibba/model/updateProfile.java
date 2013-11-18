@@ -32,7 +32,7 @@ public class updateProfile implements Action{
         cust.setArea(ar);
         cust.setLane(req.getParameter("txtAddress"));
         cust.updateCustomerProfile();
-        return "Successful.jsp";
+        return "Controller?action=getProfileDetailsCustomer";
     }
     
 }

@@ -70,7 +70,7 @@
                             b = false;
                         }
                         else {
-                            $('#alertPassword').html("Perfect!!!!");
+                            $('#alertPassword').html("Valid");
                             b = true;
                             return true;
                         }
@@ -86,7 +86,7 @@
                         return;
                     }
                     else {
-                        $('#alertPassword').html("Perfect!!");
+                        $('#alertPassword').html("Valid");
                         b = true;
                         return true;
                     }
@@ -100,7 +100,7 @@
                             b = false;
                         }
                         else {
-                            $('#alertEmail').html("Gr8!!");
+                            $('#alertEmail').html("Valid");
                             b = true;
                             return true;
                         }
@@ -115,7 +115,7 @@
                             b = false;
                         }
                         else {
-                            $('#alertMobile').html("Yoo!!");
+                            $('#alertMobile').html("Valid");
                             b = true;
                             return true;
                         }
@@ -123,7 +123,7 @@
                 }
 
                 function vendorRegister() {
-                    
+
                     if (b == false) {
                         $('#alertRegisterVendor').attr("style", "color: #C60F13;margin: 20px 0 0 20px;");
                         $('#alertRegisterVendor').html("Please provide correct details !!!");
@@ -168,7 +168,7 @@
                 }
 
                 function verification() {
-                    window.location.href = "verificationVendor.jsp?username="+$('#txtUsername').val();
+                    window.location.href = "verificationVendor.jsp?username=" + $('#txtUsername').val();
                 }
 
             </script>
@@ -301,6 +301,11 @@
                             <div>
                                 <h3> Tiffin Center address </h3>
 
+                                <div>
+                                    <input type="text" style="width:auto;" id="txtFlatNumber" placeholder="Flat Number" name="txtFlatNumber" >
+                                    <input type="text" style="width:auto;" id="txtStreetName" placeholder="Street Name" name="txtStreetName">
+                                    <input type="text" style="width:auto;" id="txtLandmark" placeholder="Landmark" name="txtLandmark">
+                                </div>
                                 <select id="ddlCityVendor" name="ddlCityVendor" class ="selectStyle">
                                     <option>Select City</option>
                                 <c:forEach items="${Cities}" var="city">
@@ -317,12 +322,7 @@
                             </select>
                         </div>
 
-                        <div>
-                            <input type="text" style="width:auto;" id="txtLandmark" placeholder="Landmark" name="txtLandmark">
-                            <input type="text" style="width:auto;" id="txtStreetName" placeholder="Street Name" name="txtStreetName">
-                            <input type="text" style="width:auto;" id="txtFlatNumber" placeholder="Flat Number" name="txtFlatNumber" >
 
-                        </div>
                         <br>
 
                     </div>

@@ -602,4 +602,72 @@ public class Vendor extends User {
         return objVendor;
 
     }
+
+    public ArrayList getDeliveryArea(String vendor) {
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+            callableStatement = con.connection.prepareCall("{call getDeliveryArea (?)}");
+            callableStatement.setString(1, vendor);
+            ResultSet rs = callableStatement.executeQuery();
+            while (rs.next()) {
+                Map objMap = new HashMap();
+                objMap.put("AreaName", rs.getString("AreaName"));
+                objMap.put("CityName", rs.getString("CityName"));
+                objMap.put("AreaID", rs.getInt("AreaID"));
+                objMap.put("vendor", vendor);
+                list.add(objMap);
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return list;
+    }
+
+    public boolean deleteVendorArea(String vendor, int id) {
+        con = new DBConnection();
+        try {
+            callableStatement = con.connection.prepareCall("{call deleteVendorArea (?,?)}");
+            callableStatement.setString(1, vendor);
+            callableStatement.setInt(2, id);
+            int row = callableStatement.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+    
+    public ArrayList getAllItemsByVendor(String vendor) {
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+
+            callableStatement = con.connection.prepareCall("{call getAllItemsByVendor (?)}");
+            callableStatement.setString(1, vendor);
+            ResultSet rs = callableStatement.executeQuery();
+            while (rs.next()) {
+                Map objMap = new HashMap();
+                objMap.put("ItemID", rs.getInt("ItemID"));
+                objMap.put("ItemName", rs.getString("ItemName"));
+                objMap.put("TypeID", rs.getInt("TypeID"));
+                objMap.put("TypeName", rs.getString("TypeName"));
+                objMap.put("UserName", rs.getString("UserName"));
+                
+                list.add(objMap);
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return list;
+    }
 }

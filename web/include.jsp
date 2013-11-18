@@ -1,7 +1,6 @@
 <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
     <![endif]-->
-
 <link href="css/grid.css" rel="stylesheet" type="text/css">
 <link href="css/base.css" rel="stylesheet" type="text/css">
 <link href="css/adv.css" rel="stylesheet" type="text/css">

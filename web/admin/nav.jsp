@@ -26,10 +26,15 @@
                         <% }%>
                     </li>
                     <% }%>
-                    <li><a href="">Items</a>
+                    <li><a href="/DailyDibba/admin/AdminController?action=getAllItemsByVendor">Menu Items</a>
                         <ul>
-                            <li><a href="/DailyDibba/admin/addItem.jsp">Add Item</a></li>
+                            <li><a href="/DailyDibba/admin/addItem.jsp">Add Menu Item</a></li>
 
+                        </ul>
+                    </li>
+                    <li><a href="/DailyDibba/admin/AdminController?action=getDeliveryArea">My Delivery Areas</a>
+                        <ul>
+                            <li><a href="/DailyDibba/admin/AdminController?action=">Add New Delivery Area</a></li>
                         </ul>
                     </li>
                     <li><a href="/DailyDibba/admin/AdminController?action=getAllType">Item Type</a>

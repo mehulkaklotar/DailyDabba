@@ -24,8 +24,13 @@
         <% if (session.getAttribute("UserName") == null) {%><li><a href="selectCategory.jsp">Register</a></li> <% }%>
             <% if (session.getAttribute("UserName") != null) {%>
         <li><a href="Controller?action=getOrderHistory">Order History</a></li>
-        <li><a href="updateProfileCustomer.jsp">Update Profile</a></li>
+        <li><a href="Controller?action=getProfileDetailsCustomer">Update Profile</a></li>
             <% }%>
-        <li><a href="contact.jsp">Contact Us</a></li>
+        <li><a href="contact.jsp">Contact Us</a>
+            <ul>
+                <li><a href="contact.jsp">Contact Us</a></li>
+            </ul>
+        </li>
+        
     </ul>
 </nav>

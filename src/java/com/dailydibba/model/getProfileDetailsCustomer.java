@@ -40,7 +40,7 @@ public class getProfileDetailsCustomer implements Action {
         area=admin.getAllCityArea(customer.getArea().getCity().getCityID());
         req.setAttribute("Areas", area);
        
-        return "/dummyupdateProfileCustomer.jsp";
+        return "updateProfileCustomer.jsp";
     }
     
 }

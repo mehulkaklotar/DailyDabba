@@ -7,6 +7,7 @@ package com.dailydibba.model;
 import com.dailydibba.action.Action;
 import com.dailydibba.bean.Administrator;
 import com.dailydibba.bean.Area;
+import com.dailydibba.bean.City;
 import com.dailydibba.bean.Customer;
 import com.dailydibba.bean.Feedback;
 import com.dailydibba.bean.Menu;
@@ -68,9 +69,15 @@ public class Login implements Action {
                         req.setAttribute("menuDinner", objMenuDinner);
                     }
                     if (fromPage.equals("index.jsp")) {
+
                         Administrator objAdministrator = new Administrator();
                         List<Area> areas = objAdministrator.getAllArea();
+                        List<Vendor> vendors = objAdministrator.getAllVendors();
+                        List<City> cities = objAdministrator.getAllCity();
+                        
                         req.setAttribute("areas", areas);
+                        req.setAttribute("cities", cities);
+                        req.setAttribute("vendors", vendors);
                     }
 
                 } else {
