@@ -15,16 +15,16 @@
         <%
             if(request.getAttribute("Response").equals("Available"))
             {
-                %>
-                Available
-                <%
-            }
-            else
-            {
-                %>
-                Unavailable
-                <%
-            }
+        %>
+        Available
+        <%
+    }
+    else
+    {
+        %>
+        Unavailable
+        <%
+    }
         %>
     </body>
 </html>

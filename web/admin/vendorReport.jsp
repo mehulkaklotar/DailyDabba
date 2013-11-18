@@ -9,16 +9,16 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
-        
+
         <jsp:include page="commonStyle.jsp"></jsp:include>
         <jsp:include page="commonJs.jsp"></jsp:include>
-        <script defer="defer">
-            $(document).ready(function()
-            {
-                $("#table_my_table").tablesorter();
-            }
-            );
-        </script>
+            <script defer="defer">
+                $(document).ready(function()
+                {
+                    $("#table_my_table").tablesorter();
+                }
+                );
+            </script>
         </head>
         <body>
         <jsp:include page="nav.jsp"></jsp:include>
@@ -59,16 +59,16 @@
                             </c:choose>
                         </tr>
                     </c:forEach>
-                        <tr>
-                            <td>Hiren</td>
-                            <td>1111</td>
-                            <td>zzz@gmail.com</td>
-                            <td>aaa</td>
-                            <td>zzz</td>
-                            <td>aaa</td>
-                            <td>999</td>
-                            <td>Inactive</td>
-                        </tr>
+                    <tr>
+                        <td>Hiren</td>
+                        <td>1111</td>
+                        <td>zzz@gmail.com</td>
+                        <td>aaa</td>
+                        <td>zzz</td>
+                        <td>aaa</td>
+                        <td>999</td>
+                        <td>Inactive</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

@@ -26,11 +26,138 @@
                 <!-- header -->
             <jsp:include page="header.jsp"></jsp:include>
 
-                
+                <!-- breadcrumbs -->
+                <div class="container">
+                    <ul id="breadcrumbs">
+                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
+                        <li><a href="javascript:void(0)">Content</a></li>
+                        <li><a href="javascript:void(0)">Article: Lorem ipsum dolor...</a></li>
+                        <li><a href="javascript:void(0)">Comments</a></li>
+                        <li><span>Lorem ipsum dolor sit amet...</span></li>
+                    </ul>
+                </div>
 
                 <!-- main content -->
                 <div class="container">
-                    
+                    <div class="row-fluid">
+                        <div class="span8">
+                            <div class="w-box">
+                                <div class="w-box-header">
+                                    <h4>Analytics</h4>
+                                    <i class="icsw16-graph icsw16-white pull-right"></i>
+                                </div>
+                                <div class="w-box-content cnt_a">
+                                    <div class="slidewrap">
+                                        <ul class="slider" id="sliderName">
+                                            <li class="slide">  
+                                                <span class="hide headName">Pageviews</span>
+                                                <div class="row-fluid">
+                                                    <div class="span12">
+                                                        <div id="ch_pages" class="chart_a"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="row-fluid">
+                                                    <div class="span10 offset1">
+                                                        <div class="row-fluid">
+                                                            <div class="span4">
+                                                                <div class="anlt_box">
+                                                                    <p class="anlt_heading">Last 24h<span class="up">+12%</span></p>
+                                                                    <p class="anlt_content">2 131</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="span4">
+                                                                <div class="anlt_box">
+                                                                    <p class="anlt_heading">Last 7 days<span class="down">-5%</span></p>
+                                                                    <p class="anlt_content">14 483</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="span4">
+                                                                <div class="anlt_box">
+                                                                    <p class="anlt_heading">Last Month<span class="up">+14%</span></p>
+                                                                    <p class="anlt_content">64 250</p>
+                                                                </div>
+                                                            </div>  
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="slide">
+                                                <span class="hide headName">Users</span>
+                                                <div class="row-fluid">
+                                                    <div class="span12">
+                                                        <div id="ch_users" class="chart_a"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="row-fluid">
+                                                    <div class="span10 offset1">
+                                                        <div class="row-fluid">
+                                                            <div class="span6">
+                                                                <div class="anlt_box">
+                                                                    <p class="anlt_heading">Last 24h<span class="up">+8%</span></p>
+                                                                    <p class="anlt_content">184</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="span6">
+                                                                <div class="anlt_box">
+                                                                    <p class="anlt_heading">Last 7 days<span class="up">+20%</span></p>
+                                                                    <p class="anlt_content">1468</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="slide">
+                                                <span class="hide headName">Sales</span>
+                                                <div class="row-fluid">
+                                                    <div class="span12">
+                                                        <div id="ch_sales" class="chart_a"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="row-fluid">
+                                                    <div class="span10 offset1">
+                                                        <div class="row-fluid">
+                                                            <div class="span6">
+                                                                <div class="anlt_box">
+                                                                    <p class="anlt_heading">Last 24h<span class="up">+20%</span></p>
+                                                                    <p class="anlt_content">$1 843</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="span6">
+                                                                <div class="anlt_box">
+                                                                    <p class="anlt_heading">Last 7 days<span class="down">-10%</span></p>
+                                                                    <p class="anlt_content">$11 638</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span4">
+                            <div class="w-box w-box-green hideable">
+                                <div class="w-box-header">
+                                    <h4>Analysis</h4>
+                                </div>
+                                <div class="w-box-content todo-list">
+
+                                    <ul class="connectedSortable">
+                                        <li class="high-pr">Buy groceries</li>
+                                        <li class="low-pr completed"> Do laundry</li>
+                                        <li class="low-pr">Meeting with Macy</li>
+                                        <li class="high-pr">Pick up kids</li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+
+                </div>
                 <div class="footer_space"></div>
             </div> 
 
@@ -40,27 +167,27 @@
 
         <!-- Dashboard JS -->
         <!-- jQuery UI -->
-        <script src="js/lib/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+        <script src="admin/js/lib/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
         <!-- touch event support for jQuery UI -->
-        <script src="js/lib/jquery-ui/jquery.ui.touch-punch.min.js"></script>
+        <script src="admin/js/lib/jquery-ui/jquery.ui.touch-punch.min.js"></script>
         <!-- colorbox -->
-        <script src="js/lib/colorbox/jquery.colorbox.min.js"></script>
+        <script src="admin/js/lib/colorbox/jquery.colorbox.min.js"></script>
         <!-- fullcalendar -->
-        <script src="js/lib/fullcalendar/fullcalendar.min.js"></script>
+        <script src="admin/js/lib/fullcalendar/fullcalendar.min.js"></script>
         <!-- flot charts -->
-        <script src="js/lib/flot-charts/jquery.flot.js"></script>
-        <script src="js/lib/flot-charts/jquery.flot.resize.js"></script>
-        <script src="js/lib/flot-charts/jquery.flot.pie.js"></script>
-        <script src="js/lib/flot-charts/jquery.flot.orderBars.js"></script>
-        <script src="js/lib/flot-charts/jquery.flot.tooltip.js"></script>
-        <script src="js/lib/flot-charts/jquery.flot.time.js"></script>
+        <script src="admin/js/lib/flot-charts/jquery.flot.js"></script>
+        <script src="admin/js/lib/flot-charts/jquery.flot.resize.js"></script>
+        <script src="admin/js/lib/flot-charts/jquery.flot.pie.js"></script>
+        <script src="admin/js/lib/flot-charts/jquery.flot.orderBars.js"></script>
+        <script src="admin/js/lib/flot-charts/jquery.flot.tooltip.js"></script>
+        <script src="admin/js/lib/flot-charts/jquery.flot.time.js"></script>
         <!-- responsive carousel -->
-        <script src="js/lib/carousel/plugin.min.js"></script>
+        <script src="admin/js/lib/carousel/plugin.min.js"></script>
         <!-- responsive image grid -->
-        <script src="js/lib/wookmark/jquery.imagesloaded.min.js"></script>
-        <script src="js/lib/wookmark/jquery.wookmark.min.js"></script>
+        <script src="admin/js/lib/wookmark/jquery.imagesloaded.min.js"></script>
+        <script src="admin/js/lib/wookmark/jquery.wookmark.min.js"></script>
 
-        <script src="js/pages/beoro_dashboard.js"></script>
+        <script src="admin/js/pages/beoro_dashboard.js"></script>
 
         <script>
             if ($(window).width() > '1280') {

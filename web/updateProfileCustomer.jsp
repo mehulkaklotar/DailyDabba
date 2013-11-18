@@ -16,11 +16,11 @@
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> <!-- or use local jquery -->
-        
+
 
         <jsp:include page="include.jsp"></jsp:include>
-        <script>
-            $(document).ready(function() {
+            <script>
+                $(document).ready(function() {
                     var b = new Boolean(true);
                     $('#ddlCity').change(function() {
                         $.ajax({
@@ -32,10 +32,10 @@
 
                     $('#ddlCity').val($('#ddlCity').data('city'));
                     $('#ddlArea').val($('#ddlArea').data('area'));
-                    
+
                 });
 
-        </script>
+            </script>
         </head>
 
         <body class="home">
@@ -72,63 +72,55 @@
                         <% }
                         %>
                     </span>
-                    </div>
                 </div>
-                <!-- ******** FULL WIDTH SLIDER START ******** -->
-                <div id="fwslider">
-                    <div class="slider_container">
+            </div>
+            <!-- ******** FULL WIDTH SLIDER START ******** -->
+            <div id="fwslider">
+                <div class="slider_container">
 
-                        <div class="slide" style="height:300px;" > 
-                            <img src="images/thali.JPG" />
-
-                        </div>
-
-                        <div class="slide" style="height:300px;"> 
-                            <img src="images/thali1.jpg" />
-
-                        </div>
-
-                        <div class="slide" style="height:300px;"> 
-                            <img src="images/thali2.jpg" />
-
-                        </div>
+                    <div class="slide" style="height:300px;" > 
+                        <img src="images/thali.JPG" />
 
                     </div>
 
+                    <div class="slide" style="height:300px;"> 
+                        <img src="images/thali1.jpg" />
 
-                    <div class="timers"></div>
-                    <div class="slidePrev"><span></span></div>
-                    <div class="slideNext"><span></span></div>
-                </div> 
-                <div style="height:20px;background-color: #222;">
-
-                </div>
-                <!-- ******** FULL WIDTH SLIDER END ******** -->
-
-            </header>
-
-            <article class="wrapper"> 
-
-
-                <div class="row">
-                    <div class="span12">
-                        <hr>
-                        <h2>Update Profile</h2>
-                        <div class="message">
-                            <div id="alert"></div>
-                        </div>
                     </div>
+
+                    <div class="slide" style="height:300px;"> 
+                        <img src="images/thali2.jpg" />
+
+                    </div>
+
                 </div>
 
-                <form name="updateProfileCustomer" method="post" action="Controller?action=updateProfile" id="updateProfileCustomer">
-                    <div align="center" class="row">
+
+                <div class="timers"></div>
+                <div class="slidePrev"><span></span></div>
+                <div class="slideNext"><span></span></div>
+            </div> 
+            <div style="height:20px;background-color: #222;">
+
+            </div>
+            <!-- ******** FULL WIDTH SLIDER END ******** -->
+
+        </header>
+
+        <article class="wrapper"> 
+            <ul class="breadcrumb">
+                <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
+                <lii class="active">Update Profile</li>
+            </ul>
+            <form name="updateProfileCustomer" method="post" action="Controller?action=updateProfile" id="updateProfileCustomer">
+                <div align="center" class="row">
                     <%
                         Customer cust = (Customer) request.getAttribute("Customer");
                     %>
-                    <table align="center" width="500px">
+                    <table>
                         <tbody>
                             <tr align="left">
-                                <th>Username:</th>
+                                <td>Username:</td>
                                 <td>
                                     <div>
                                         <input type="text" readonly="readonly" style="width:auto;" name="txtUsername" required="" value="<%=cust.getUserName()%>">
@@ -137,17 +129,16 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr></tr>
                             <tr>
-                                <th>First Name:</th>
+                                <td>First Name:</td>
                                 <td>
                                     <div>
-                                        <input type="text" style="width:auto;" placeholder="First Name" name="txtFirstname" id="txtFirstname" value="<%=cust.getFirstName()%>" 
+                                        <input type="text" style="width:auto;" placeholder="First Name" name="txtFirstname" id="txtFirstname" value="<%=cust.getFirstName()%>" />
                                     </div>
-                                <td>   
+                                </td>                             
                             </tr>
                             <tr>
-                                <th>Last Name:</th>
+                                <td>Last Name:</td>
                                 <td>
                                     <div>
                                         <input type="text" style="width:auto;" placeholder="Last Name" name="txtLastname" id="txtLastname" value="<%=cust.getLastName()%>">
@@ -155,7 +146,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Mobile Number:</th>
+                                <td>Mobile Number:</td>
                                 <td>
                                     <div>
                                         <input type="text" style="width:auto;" placeholder="Mobile Number"   name="txtMobileNumber" value="<%=cust.getMobileNo()%>">
@@ -163,43 +154,43 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Email ID:</th>
+                                <td>Email ID:</td>
                                 <td>
                                     <div>
                                         <input type="email" style="width:auto;" placeholder="Email ID" name="txtEmailID" value="<%=cust.getEmailID()%>"> 
                                     </div>
                                 </td>
                             </tr>
-                            
+
                             <tr>
-                                <th>City:</th>
+                                <td>City:</td>
                                 <td>
                                     <select id="ddlCity" name="ddlCity" data-city="<%=cust.getArea().getCity().getCityID()%>" class ="selectStyle">
                                         <c:forEach items="${Cities}" var="city">
-                                          
+
                                             <option value="${city.cityID}">${city.cityName}</option>
-                                            
+
                                         </c:forEach>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Area</th>
+                                <td>Area</td>
                                 <td>
                                     <div name="areaDiv" id="areaDiv">
                                         <select id="ddlArea" data-area="<%=cust.getArea().getAreaID()%>"  name="ddlArea" class ="selectStyle">
-                                        <c:forEach items="${Areas}" var="area">
-                                          
+                                            <c:forEach items="${Areas}" var="area">
+
                                                 <option value="${area.areaID}">${area.areaName}</option>
-                                                    
-                                        </c:forEach>
-                                    </select>
+
+                                            </c:forEach>
+                                        </select>
                                     </div>
 
                                 </td>
                             </tr>
                             <tr>
-                                <th>Address:</th>
+                                <td>Address:</td>
                                 <td>
                                     <div>
                                         <textarea placeholder="Address" style="width:300px;" name="txtAddress" ><%=cust.getLane()%>

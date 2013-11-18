@@ -78,7 +78,7 @@
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <th>Username:</th>
+                                                    <td>Username:</td>
                                                     <td>
                                                         <div>
                                                             <input readonly="readonly" type="text" id="txtUsername" name="txtUsername" value="<%=vend.getUserName()%>">
@@ -86,9 +86,9 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th>
+                                                    <td>
                                                         Vendor Name:
-                                                    </th>
+                                                    </td>
                                                     <td>
                                                         <div>
                                                             <input type="text" style="width:auto;" placeholder="First Name" name="txtVendorname" value="<%=vend.getVendorName()%>" >
@@ -96,7 +96,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Owner Name:</th>
+                                                    <td>Owner Name:</td>
                                                     <td>
                                                         <div>
                                                             <input type="text" style="width:auto;" placeholder="Last Name" name="txtOwnername" value="<%=vend.getOwnerName()%>">
@@ -104,7 +104,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Mobile Number:</th>
+                                                    <td>Mobile Number:</td>
                                                     <td>
                                                         <div>
                                                             <input type="text" style="width:auto;" placeholder="Mobile Number" name="txtMobileNumber" value="<%=vend.getMobileNo()%>">
@@ -112,7 +112,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Email ID:</th>
+                                                    <td>Email ID:</td>
                                                     <td>
                                                         <div>
                                                             <input type="text" style="width:auto;" placeholder="Email ID" name="txtEmailID" value="<%=vend.getEmailID()%>">
@@ -120,7 +120,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th>City:</th>
+                                                    <td>City:</td>
                                                     <td>
                                                         <select id="ddlCity" name="ddlCity" data-city="<%=vend.getArea().getCity().getCityID()%>" class ="selectStyle">
                                                             <c:forEach items="${Cities}" var="city">
@@ -132,7 +132,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Area</th>
+                                                    <td>Area</td>
                                                     <td>
                                                         <div name="areaDiv" id="areaDiv">
                                                             <select id="ddlArea" data-area="<%=vend.getArea().getAreaID()%>"  name="ddlArea" class ="selectStyle">
@@ -147,7 +147,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Address:</th>
+                                                    <td>Address:</td>
                                                     <td>    
                                                         <div>
                                                             <textarea style="width:300px;" placeholder="Address" id="txtAdressVendor" name="txtAddressVendor"><%=vend.getLane()%></textarea>           
@@ -155,7 +155,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Landline Number:</th>
+                                                    <td>Landline Number:</td>
                                                     <td>
                                                         <div>
                                                             <input type="text" style="width:auto;" placeholder="Email ID" name="txtLandlineNumber" value="<%=vend.getLandlineNumber()%>">
@@ -228,25 +228,25 @@
     <script src="js/pages/beoro_dashboard.js"></script>
 
     <script>
-            if ($(window).width() > '1280') {
-                $('body').append('<a href="javascript:void" class="fluid_lay" style="position:fixed;top:6px;right:10px;z-index:10000" title="fluid layout"><i class="splashy-arrow_state_grey_left"></i><i class="splashy-arrow_state_grey_right"></i></a>');
-                $('.fluid_lay').click(function() {
-                    var url = window.location.href;
-                    if (url.indexOf('?') > -1) {
-                        url += '&fluid=1'
-                    } else {
-                        url += '?fluid=1'
-                    }
-                    window.location.href = url;
-                });
-                $(window).on('resize', function() {
-                    if ($(window).width() > '1280') {
-                        $('.fluid_lay').show();
-                    } else {
-                        $('.fluid_lay').hide();
-                    }
-                })
-            }
+                if ($(window).width() > '1280') {
+                    $('body').append('<a href="javascript:void" class="fluid_lay" style="position:fixed;top:6px;right:10px;z-index:10000" title="fluid layout"><i class="splashy-arrow_state_grey_left"></i><i class="splashy-arrow_state_grey_right"></i></a>');
+                    $('.fluid_lay').click(function() {
+                        var url = window.location.href;
+                        if (url.indexOf('?') > -1) {
+                            url += '&fluid=1'
+                        } else {
+                            url += '?fluid=1'
+                        }
+                        window.location.href = url;
+                    });
+                    $(window).on('resize', function() {
+                        if ($(window).width() > '1280') {
+                            $('.fluid_lay').show();
+                        } else {
+                            $('.fluid_lay').hide();
+                        }
+                    })
+                }
     </script>
     <script type="text/javascript">
 

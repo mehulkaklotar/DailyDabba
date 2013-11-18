@@ -24,7 +24,7 @@
             <tr>
                 <td align="center"><b><font style="font-size: x-large;color: #2fbbb2;">No Result</font></b><br></td>
             </tr>
-            
+
         </c:otherwise>
     </c:choose>
 

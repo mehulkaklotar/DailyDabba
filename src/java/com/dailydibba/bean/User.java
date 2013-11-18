@@ -74,7 +74,7 @@ public class User {
             stmtStatic.setString(2, Password);
             ResultSet rs = stmtStatic.executeQuery();
             if (rs.next()) {
-                User objUser =new User();
+                User objUser = new User();
                 objUser.setUserName(rs.getString("UserName"));
                 return objUser;
             } else {
@@ -216,11 +216,11 @@ public class User {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Rating objRating = new Rating();
-                
+
                 Vendor objVendor = new Vendor();
                 objVendor.setUserName(rs.getString("UserName"));
                 objRating.setUserNameVendor(objVendor);
-                
+
                 Customer objCustomer = new Customer();
                 objCustomer.setUserName(rs.getString("CustomerUN"));
                 objRating.setUserNamecustomer(objCustomer);
@@ -234,5 +234,51 @@ public class User {
         }
     }
 
-    
+    public String getMobileUser(String username) {
+        con = new DBConnection();
+
+        try {
+            stmt = con.connection.prepareCall("{call getMobileUser(?)}");
+            stmt.setString(1, username);
+
+            ResultSet rs = stmt.executeQuery();
+
+            Customer objCustomer = new Customer();
+            objCustomer.setMobileNo(rs.getString("MobileNo"));
+
+            String s = rs.getString("MobileNo");
+            return s;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+
+            con.closeConnection();
+        }
+    }
+
+    public boolean updatePassword(String password, String username) {
+        con = new DBConnection();
+
+        try {
+            stmt = con.connection.prepareCall("{call updatePassword(?,?)}");
+            stmt.setString(1, password);
+            stmt.setString(2, username);
+
+            int rs = stmt.executeUpdate();
+            if (rs == 1) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        } finally {
+
+            con.closeConnection();
+        }
+    }
 }

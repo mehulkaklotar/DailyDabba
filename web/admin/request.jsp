@@ -64,7 +64,7 @@
                                                     <c:when test="${b.Status=='1'}">
                                                         <td style="width: 15%">
                                                             <div class="btn-group">
-                                                                 <a href="AdminController?action=blockHitVendor&name=${b.UserName}" class="btn btn-mini" title="Click to block this Vendor"><i class="icon-remove"></i></a>
+                                                                <a href="AdminController?action=blockHitVendor&name=${b.UserName}" class="btn btn-mini" title="Click to block this Vendor"><i class="icon-remove"></i></a>
                                                             </div>
                                                         </td>
                                                     </c:when>

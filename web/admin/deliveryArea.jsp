@@ -9,7 +9,7 @@
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
-         
+
         <jsp:include page="commonStyle.jsp"></jsp:include>
             <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
         </head>

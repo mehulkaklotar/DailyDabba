@@ -40,15 +40,14 @@
                     <div class="row-fluid">
                         <div class="span12">
                         <%
-                        if(request.getAttribute("city")!=null)
-                        {
-                            %>
-                            <form class="form-horizontal" action="AdminController?action=updateCity" method="post">
-                                <fieldset>
-                                    <legend>Update city</legend>
-                                    <div class="control-group">
-                                        <label class="control-label" for="lblItemName">City name:</label>
-                                        <div class="controls">
+                            if (request.getAttribute("city") != null) {
+                        %>
+                        <form class="form-horizontal" action="AdminController?action=updateCity" method="post">
+                            <fieldset>
+                                <legend>Update city</legend>
+                                <div class="control-group">
+                                    <label class="control-label" for="lblItemName">City name:</label>
+                                    <div class="controls">
                                         <input type="hidden" id="txtCityID" value="${city.cityID}" name="txtCityID">
                                         <input type="text" id="txtCityName" value="${city.cityName}" name="txtCityName" placeholder="Type here...">
                                     </div>
@@ -61,18 +60,14 @@
                                 </div>
                             </fieldset>
                         </form>
-                        <% 
-                            
-                        } 
-                        else
-                        {
+                        <%                        } else {
                         %>
-                            <form class="form-horizontal" action="AdminController?action=addCity" method="post">
-                                <fieldset>
-                                    <legend>Add city</legend>
-                                    <div class="control-group">
-                                        <label class="control-label" for="lblItemName">City name:</label>
-                                        <div class="controls">
+                        <form class="form-horizontal" action="AdminController?action=addCity" method="post">
+                            <fieldset>
+                                <legend>Add city</legend>
+                                <div class="control-group">
+                                    <label class="control-label" for="lblItemName">City name:</label>
+                                    <div class="controls">
                                         <input type="text" id="txtCityName" value="" name="txtCityName" placeholder="Type here...">
                                     </div>
                                 </div>
@@ -84,7 +79,7 @@
                                 </div>
                             </fieldset>
                         </form>
-                        <% } %>
+                        <% }%>
                     </div>
                 </div>
             </div>

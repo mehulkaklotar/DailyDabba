@@ -17,8 +17,8 @@
         <meta name="author" content="Marcin Banaszek">
 
         <jsp:include page="include.jsp"></jsp:include>
-        <script>
-            $(document).ready(function() {
+            <script>
+                $(document).ready(function() {
                     var b = new Boolean(true);
                     $('#ddlCityVendor').change(function() {
                         $.ajax({
@@ -29,7 +29,7 @@
                     });
 
                 });
-        </script>
+            </script>
             <script src="js/commonTask.js"></script>
             <style type="text/css">
                 .Cart{

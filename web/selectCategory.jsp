@@ -91,7 +91,7 @@
 
             </header>
 
-                <article class="wrapper" style="height: 400px;"> 
+            <article class="wrapper" style="height: 400px;"> 
                 <div class="row">
                     <div class="span12">
                         <hr>

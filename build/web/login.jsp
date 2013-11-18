@@ -19,7 +19,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
-<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" />
+        <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" />
         <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css" />
         <jsp:include page="include.jsp"></jsp:include>
 

@@ -10,7 +10,7 @@
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
-        <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
+            <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
         </head>
         <body class="bg_d">
             <!-- main wrapper (without footer) -->    
@@ -150,7 +150,7 @@
         })();
 
     </script>
-    
+
     <!-- Jquery data tables -->
 
     <script type="text/javascript" src="data-tables/jquery.dataTables.js"></script><!-- For Tables -->

@@ -11,23 +11,23 @@
     <head>
         <jsp:include page="commonStyle.jsp"></jsp:include>
         <jsp:include page="commonJs.jsp"></jsp:include>
-        <script defer="defer">
-            $(document).ready(function()
-            {
-                $("#table_my_table").tablesorter();
-            }
-            );
-        </script>
-        <meta charset="UTF-8">
+            <script defer="defer">
+                $(document).ready(function()
+                {
+                    $("#table_my_table").tablesorter();
+                }
+                );
+            </script>
+            <meta charset="UTF-8">
         <jsp:include page="commonStyle.jsp"></jsp:include>
         </head>
 
         <body>
         <jsp:include page="nav.jsp"></jsp:include>
-        <div style="margin-top: 20px; margin-left: 40%; font-family: cursive;">
-            <label style="font-size: 200%"> Customer Report </label>
-        </div>
-        <div style="margin-top: 20px; margin-left: 30px; margin-right: 30px">
+            <div style="margin-top: 20px; margin-left: 40%; font-family: cursive;">
+                <label style="font-size: 200%"> Customer Report </label>
+            </div>
+            <div style="margin-top: 20px; margin-left: 30px; margin-right: 30px">
                 <table class="table" id="table_my_table">
                     <thead>
                         <tr style="font-family: cursive">

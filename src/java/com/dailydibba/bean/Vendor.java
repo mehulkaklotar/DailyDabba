@@ -346,7 +346,7 @@ public class Vendor extends User {
                 ResultSet rs = callableStatement.executeQuery();
                 rs.next();
                 int menuID = rs.getInt(1);
-
+                m.setMenuID(menuID);
                 for (MenuItem mi : m.getMenuItem()) {
                     con = new DBConnection();
                     callableStatement = con.connection.prepareCall("{call  insertMenuItem(?,?,?,?)}");
@@ -643,7 +643,7 @@ public class Vendor extends User {
             return false;
         }
     }
-    
+
     public ArrayList getAllItemsByVendor(String vendor) {
         con = new DBConnection();
         ArrayList list = new ArrayList();
@@ -659,7 +659,7 @@ public class Vendor extends User {
                 objMap.put("TypeID", rs.getInt("TypeID"));
                 objMap.put("TypeName", rs.getString("TypeName"));
                 objMap.put("UserName", rs.getString("UserName"));
-                
+
                 list.add(objMap);
             }
             rs.close();
@@ -669,5 +669,49 @@ public class Vendor extends User {
             con.closeConnection();
         }
         return list;
+    }
+
+    public boolean addDeliveryArea(String vendor, int area) {
+        con = new DBConnection();
+        try {
+            callableStatement = con.connection.prepareCall("{call insertVendorArea (?,?)}");
+            callableStatement.setString(1, vendor);
+            callableStatement.setInt(2, area);
+            int row = callableStatement.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+
+    public List<MenuItem> getMenuDetails(int MenuID) {
+        con = new DBConnection();
+        try {
+            callableStatement = con.connection.prepareCall("{call getMenuItems(?)}");
+            callableStatement.setInt(1, MenuID);
+            ResultSet rs = callableStatement.executeQuery();
+            List<MenuItem> list;
+            list = new ArrayList<MenuItem>();
+            while (rs.next()) {
+                MenuItem mi = new MenuItem();
+                Item it = new Item();
+                it.setItemName(rs.getString("ItemName"));
+                ItemType type = new ItemType();
+                type.setTypeName(rs.getString("TypeName"));
+                it.setType(type);
+                mi.setItem(it);
+                mi.setCost(rs.getDouble("Cost"));
+                mi.setQuantity(rs.getInt("Quantity"));
+                list.add(mi);
+            }
+            return list;
+        } catch (SQLException exc) {
+            exc.printStackTrace();
+            return null;
+        }
     }
 }

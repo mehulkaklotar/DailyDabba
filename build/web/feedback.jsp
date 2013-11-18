@@ -30,10 +30,10 @@
             <script src="js/addFeedback.js"></script>
 
             <script>
-                
-                    var b = new Boolean(true);
 
-                
+                var b = new Boolean(true);
+
+
                 function checkrating() {
                     var r = $('#rating').val();
                     if ($('#rating').val() != "") {

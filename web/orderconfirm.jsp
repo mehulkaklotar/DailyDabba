@@ -80,80 +80,80 @@
                         <% }
                         %>
                     </span>
-                    </div>
                 </div>
-                <!-- ******** FULL WIDTH SLIDER START ******** -->
-                <div id="fwslider">
-                    <div class="slider_container">
+            </div>
+            <!-- ******** FULL WIDTH SLIDER START ******** -->
+            <div id="fwslider">
+                <div class="slider_container">
 
-                        <div class="slide" style="height:300px;" > 
-                            <img src="images/thali.JPG" />
-
-                        </div>
-
-                        <div class="slide" style="height:300px;"> 
-                            <img src="images/thali1.jpg" />
-
-                        </div>
-
-                        <div class="slide" style="height:300px;"> 
-                            <img src="images/thali2.jpg" />
-
-                        </div>
+                    <div class="slide" style="height:300px;" > 
+                        <img src="images/thali.JPG" />
 
                     </div>
 
+                    <div class="slide" style="height:300px;"> 
+                        <img src="images/thali1.jpg" />
 
-                    <div class="timers"></div>
-                    <div class="slidePrev"><span></span></div>
-                    <div class="slideNext"><span></span></div>
-                </div> 
-                <div style="height:20px;background-color: #222;">
+                    </div>
+
+                    <div class="slide" style="height:300px;"> 
+                        <img src="images/thali2.jpg" />
+
+                    </div>
 
                 </div>
-                <!-- ******** FULL WIDTH SLIDER END ******** -->
 
-            </header>
 
-            <article class="wrapper"> 
+                <div class="timers"></div>
+                <div class="slidePrev"><span></span></div>
+                <div class="slideNext"><span></span></div>
+            </div> 
+            <div style="height:20px;background-color: #222;">
 
-                <ul class="breadcrumb">
-                    <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
-                    <li><a href="Controller?action=getVendor&vendorUN=${vendor.getUserName()}">Vendor</a> <span class="divider">/</span></li>
-                    <li class="active">Cart</li>
-                    <li class="active">Order Summery</li>
-                </ul>
-                <div id="order" style="height: 500px;width:50%;">
-                    <div style="background-color: powderblue">
-                        <div style="float: left; padding-left: 10px; padding-top: 10px">
-                            <i class="icon-envelope"></i>
-                        </div>
-                        <div>
-                            <h3 style="text-align: center;">Order Summery</h3>
-                        </div>
+            </div>
+            <!-- ******** FULL WIDTH SLIDER END ******** -->
+
+        </header>
+
+        <article class="wrapper"> 
+
+            <ul class="breadcrumb">
+                <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
+                <li><a href="Controller?action=getVendor&vendorUN=${vendor.getUserName()}">Vendor</a> <span class="divider">/</span></li>
+                <li class="active">Cart</li>
+                <li class="active">Order Summery</li>
+            </ul>
+            <div id="order" style="height: 500px;width:50%;">
+                <div style="background-color: powderblue">
+                    <div style="float: left; padding-left: 10px; padding-top: 10px">
+                        <i class="icon-envelope"></i>
                     </div>
-                    <div id="ordersummery" class="Cart">
-
-                        <label class="label" style="margin-top: 10px;">Order ID:</label><span>&nbsp;${tiffin.getOrderID()}</span> <br/>
-                        <label class="label" style="margin-top: 10px;">Vendor:</label><span>&nbsp;${vendor.vendorName} (${vendor.mobileNo})</span> <br/>
-                        <label class="label" style="margin-top: 10px;">No Of Tiffins:</label><span>&nbsp;${tiffin.getNumberOfTiffin()}</span> <br/>
-                        <label class="label" style="margin-top: 10px;">Total Cost:</label><span>&nbsp;Rs. ${tiffinCost* tiffin.getNumberOfTiffin()}</span> <br/>
-                        <c:choose>
-                            <c:when test="${tiffin.menu.isIsLunch() eq true}">
-                                <label class="alert-success text-center" style="margin-top: 10px;">Your tiffin will be delivered between 1 p.m. to 2 p.m.  </label>
-                            </c:when>
-                            <c:otherwise>
-                                <label class="alert-success text-center" style="margin-top: 10px;">Your tiffin will be delivered between 6 p.m. to 8 p.m.  </label>
-                            </c:otherwise>
-                        </c:choose>
-                        
-                    </div>
-                    <div style="margin:10px 0 0 0;">
-                        <a href="Controller?action=getVendor&vendorUN=${vendor.getUserName()}" class="button"> < Order more?</a>
+                    <div>
+                        <h3 style="text-align: center;">Order Summery</h3>
                     </div>
                 </div>
+                <div id="ordersummery" class="Cart">
 
-            </article>
+                    <label class="label" style="margin-top: 10px;">Order ID:</label><span>&nbsp;${tiffin.getOrderID()}</span> <br/>
+                    <label class="label" style="margin-top: 10px;">Vendor:</label><span>&nbsp;${vendor.vendorName} (${vendor.mobileNo})</span> <br/>
+                    <label class="label" style="margin-top: 10px;">No Of Tiffins:</label><span>&nbsp;${tiffin.getNumberOfTiffin()}</span> <br/>
+                    <label class="label" style="margin-top: 10px;">Total Cost:</label><span>&nbsp;Rs. ${tiffinCost* tiffin.getNumberOfTiffin()}</span> <br/>
+                    <c:choose>
+                        <c:when test="${tiffin.menu.isIsLunch() eq true}">
+                            <label class="alert-success text-center" style="margin-top: 10px;">Your tiffin will be delivered between 1 p.m. to 2 p.m.  </label>
+                        </c:when>
+                        <c:otherwise>
+                            <label class="alert-success text-center" style="margin-top: 10px;">Your tiffin will be delivered between 6 p.m. to 8 p.m.  </label>
+                        </c:otherwise>
+                    </c:choose>
+
+                </div>
+                <div style="margin:10px 0 0 0;">
+                    <a href="Controller?action=getVendor&vendorUN=${vendor.getUserName()}" class="button"> < Order more?</a>
+                </div>
+            </div>
+
+        </article>
 
         <jsp:include page="footer.jsp"></jsp:include>
 

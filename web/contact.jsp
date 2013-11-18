@@ -95,33 +95,33 @@
                     </div>
                     <!-- ******** GOOGLE END ******** -->
 
-            </header>
-            <!-- ******** RESERVATION START ******** -->
-            <form name="contactform" method="post" action="Controller?action=insertSuggestion" id="">
-                
-                <div align="center" class="row">
-                    <h2 class="center">Your Suggestion</h2>
-                    <% if(request.getParameter("Message")!=null){ %><label class="alert-info">${Message}</label> <% } %>
-                    <div>
-                        <input type="text" style="width:200px;" placeholder="Your Name" id="name" name="name">
-                    </div>
-                    <div style="margin-top: 10px;">
-                        <input type="text" style="width:200px;" placeholder="Your E-Mail ID" id="email" name="email">
-                    </div>
-                    <div style="margin-top: 10px;">
-                        <textarea style="width: 500px;" required placeholder="Message" id="message" name="message"></textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="span12 center">
-                        <input type="submit" value="Submit your Suggestion">
-                    </div>
-                </div>
-            </form>
-            <!-- ******** RESERVATION END ******** -->
-        </article>
-    <jsp:include page="footer.jsp"></jsp:include>
+                    </header>
+                    <!-- ******** RESERVATION START ******** -->
+                    <form name="contactform" method="post" action="Controller?action=insertSuggestion" id="">
 
-    <button class="back-to-top">^</button>
-</body>
-</html>
+                        <div align="center" class="row">
+                            <h2 class="center">Your Suggestion</h2>
+                            <% if(request.getParameter("Message")!=null){ %><label class="alert-info">${Message}</label> <% } %>
+                            <div>
+                                <input type="text" style="width:200px;" placeholder="Your Name" id="name" name="name">
+                            </div>
+                            <div style="margin-top: 10px;">
+                                <input type="text" style="width:200px;" placeholder="Your E-Mail ID" id="email" name="email">
+                            </div>
+                            <div style="margin-top: 10px;">
+                                <textarea style="width: 500px;" required placeholder="Message" id="message" name="message"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="span12 center">
+                                <input type="submit" value="Submit your Suggestion">
+                            </div>
+                        </div>
+                    </form>
+                    <!-- ******** RESERVATION END ******** -->
+                </article>
+                <jsp:include page="footer.jsp"></jsp:include>
+
+                <button class="back-to-top">^</button>
+                </body>
+                </html>

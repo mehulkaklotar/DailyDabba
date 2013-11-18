@@ -16,9 +16,9 @@
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
-            <jsp:include page="commonJs.jsp"></jsp:include>
+        <jsp:include page="commonJs.jsp"></jsp:include>
 
-        <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
+            <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
         </head>
         <body class="bg_d">
             <!-- main wrapper (without footer) -->    
@@ -53,7 +53,7 @@
                                     <table class="table table-vam table-striped" id="dt_gal">
                                         <thead>
                                             <tr>
-                                                
+
 
                                                 <th width="85%">Name</th>
                                                 <th width="15%">Actions</th>
@@ -62,7 +62,7 @@
                                         <tbody>
                                         <c:forEach items="${cities}" var="city">
                                             <tr>
-                                                
+
 
                                                 <td><c:out value="${city.cityName}"></c:out></td>
                                                     <td>
@@ -151,7 +151,7 @@
         })();
 
     </script>
-    
+
     <!-- Jquery data tables -->
 
     <script type="text/javascript" src="data-tables/jquery.dataTables.js"></script><!-- For Tables -->
@@ -162,7 +162,7 @@
         $('#dt_gal').dataTable({
             "aoColumns": [{
                     "bSortable": true
-                },null],
+                }, null],
             "aLengthMenu": [[5, 15, 20, -1], [5, 15, 20, "All"] // change per page values here
             ],
             // set the initial value

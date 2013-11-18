@@ -11,14 +11,14 @@
     <head>
         <jsp:include page="commonStyle.jsp"></jsp:include>
         <jsp:include page="commonJs.jsp"></jsp:include>
-        <script defer="defer">
-            $(document).ready(function()
-            {
-                $("#table_my_table").tablesorter();
-            }
-            );
-        </script>
-        <meta charset="UTF-8">
+            <script defer="defer">
+                $(document).ready(function()
+                {
+                    $("#table_my_table").tablesorter();
+                }
+                );
+            </script>
+            <meta charset="UTF-8">
         </head>
 
         <body>
@@ -56,7 +56,7 @@
                             <td>${order.OrderDate}</td>
                         </tr>
                     </c:forEach>
-                    
+
                 </tbody>
             </table>
             <div class="footer_space"></div>

@@ -918,7 +918,7 @@ public class Administrator extends User {
             return false;
         }
     }
-    
+
     public List<ItemType> getAllItemType() {
         List<ItemType> typeList = new ArrayList<ItemType>();
         con = new DBConnection();
@@ -962,7 +962,7 @@ public class Administrator extends User {
             return false;
         }
     }
-    
+
     public boolean updateVendorStatus(String username) {
         con = new DBConnection();
         try {
@@ -978,5 +978,31 @@ public class Administrator extends User {
         } catch (SQLException ex) {
             return false;
         }
+    }
+
+    public ArrayList getAllItems() {
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+
+            cstmt = con.connection.prepareCall("{call getAllItemsForAdmin ()}");
+            ResultSet rs = cstmt.executeQuery();
+            while (rs.next()) {
+                Map objMap = new HashMap();
+                objMap.put("ItemID", rs.getInt("ItemID"));
+                objMap.put("ItemName", rs.getString("ItemName"));
+                objMap.put("TypeID", rs.getInt("TypeID"));
+                objMap.put("TypeName", rs.getString("TypeName"));
+                objMap.put("UserName", rs.getString("UserName"));
+
+                list.add(objMap);
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return list;
     }
 }
