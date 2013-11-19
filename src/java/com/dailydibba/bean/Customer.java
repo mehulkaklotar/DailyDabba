@@ -510,6 +510,7 @@ public class Customer extends User {
                 lane = rs.getString("Lane");
                 mobileNo = rs.getString("MobileNo");
                 emailID = rs.getString("EmailID");
+                status=rs.getBoolean("Status");
             }
         } catch (SQLException exc) {
             System.out.println(exc.toString());
@@ -558,9 +559,7 @@ public class Customer extends User {
 
             callableStatement = con.connection.prepareCall("{call getCustomerStatus(?)}");
             callableStatement.setString(1, username);
-
             ResultSet rs = callableStatement.executeQuery();
-
             if (rs.next()) {
                 objCustomer = new Customer();
                 objCustomer.setStatus(rs.getBoolean("Status"));

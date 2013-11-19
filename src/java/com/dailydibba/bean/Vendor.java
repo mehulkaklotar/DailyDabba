@@ -22,6 +22,7 @@ public class Vendor extends User {
     private boolean flag;
     private boolean status;
     private int rating;
+    private boolean customizableFlag;
     private List<Area> areas;
     DBConnection con;
     CallableStatement callableStatement = null;
@@ -383,6 +384,8 @@ public class Vendor extends User {
                 lane = rs.getString("Lane");
                 ownerName = rs.getString("OwnerName");
                 landlineNumber = rs.getString("LandlineNo");
+                status=rs.getBoolean("Status");
+                customizableFlag=rs.getBoolean("CustomizableFlag");
                 area = new Area();
                 area.setAreaID(rs.getInt("AreaID"));
                 area.setAreaName(rs.getString("AreaName"));
