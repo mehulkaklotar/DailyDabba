@@ -34,7 +34,7 @@
         <!-- breadcrumbs -->
         <div class="container">
                 <ul id="breadcrumbs">
-                    <li><a href="/DailyDibba/admin/AdminController?action=getAdminIndex"><i class="icon-home"></i></a></li>
+                    <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
                     <li><a href="AdminController?action=getAllVendors">Vendor</a></li>
                     <li><span>View Vendors ...</span></li>
                 </ul>

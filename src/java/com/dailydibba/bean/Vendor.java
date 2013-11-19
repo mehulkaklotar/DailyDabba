@@ -714,4 +714,150 @@ public class Vendor extends User {
             return null;
         }
     }
+
+    public boolean deleteMenu(int menuID) {
+        con = new DBConnection();
+        try {
+            callableStatement = con.connection.prepareCall("{call deleteMenu (?)}");
+            callableStatement.setInt(1, menuID);
+            int row = callableStatement.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+
+    public boolean updateItem(Item it) {
+        con = new DBConnection();
+        try {
+            callableStatement = con.connection.prepareCall("{call getTypeID(?)}");
+            callableStatement.setString(1, it.getType().getTypeName());
+            ResultSet rs = callableStatement.executeQuery();
+            if (rs.next()) {
+                it.getType().setTypeID(rs.getInt("TypeID"));
+            }
+            con = new DBConnection();
+            callableStatement = con.connection.prepareCall("{call updateItemDetails(?,?,?,?)}");
+            callableStatement.setString(1, it.getItemName());
+            callableStatement.setInt(2, it.getType().getTypeID());
+            callableStatement.setString(3, userName);
+            callableStatement.setInt(4, it.getItemID());
+            int i = callableStatement.executeUpdate();
+            if (i >= 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+
+    public boolean deleteItem(int item_id) {
+        con = new DBConnection();
+        CallableStatement cstmt;
+        try {
+            cstmt = con.connection.prepareCall("{call deleteItemDetails(?)}");
+            cstmt.setInt(1, item_id);
+            int row = cstmt.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+
+    public Item getItemDetails(int itemId) {
+        Item objItem = null;
+        CallableStatement cstmt;
+        con = new DBConnection();
+        try {
+            cstmt = con.connection.prepareCall("{call getItemDetails(?)}");
+            cstmt.setInt(1, itemId);
+            ResultSet rs = cstmt.executeQuery();
+            if (rs.next()) {
+                objItem = new Item();
+                objItem.setItemName(rs.getString("ItemName"));
+                objItem.setItemID(rs.getInt("ItemID"));
+                ItemType objItemType = new ItemType();
+                //ct.setCityID(rs.getInt("CityID"));
+                objItemType.setTypeName(rs.getString("TypeName"));
+                objItem.setType(objItemType);
+            }
+        } catch (SQLException ex) {
+            return null;
+        }
+        return objItem;
+    }
+    
+    public int getTotalOrderForVendor(String vendor) {
+        int count = 0;
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+
+            callableStatement = con.connection.prepareCall("{call getTotalOrderForVendor (?)}");
+            callableStatement.setString(1, vendor);
+            ResultSet rs = callableStatement.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt("TotalOrder");
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return count;
+    }
+    
+    public int getLastMonthOrderForVendor(String vendor) {
+        int count = 0;
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+
+            callableStatement = con.connection.prepareCall("{call getLastMonthOrderForVendor (?)}");
+            callableStatement.setString(1, vendor);
+            ResultSet rs = callableStatement.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt("TotalOrder");
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return count;
+    }
+    
+    public int getLastWeekOrderForVendor(String vendor) {
+        int count = 0;
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+
+            callableStatement = con.connection.prepareCall("{call getLastWeekOrderForVendor (?)}");
+            callableStatement.setString(1, vendor);
+            ResultSet rs = callableStatement.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt("TotalOrder");
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return count;
+    }
+    
 }

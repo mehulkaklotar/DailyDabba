@@ -18,12 +18,12 @@
     <div class="container">
         <div class="row">
             <div class="span3">
-                <div class="main-logo"><a href="index.jsp"><img src="/DailyDibba/admin/img/beoro_logo.png" alt="Beoro Admin"></a></div>
+                <div class="main-logo"><a href="dindex.jsp"><img src="/DailyDibba/admin/img/beoro_logo.png" alt="Beoro Admin"></a></div>
             </div>
             <div class="span5">
                 <nav class="nav-icons">
                     <ul>
-                        <li><a href="/DailyDibba/admin/index.jsp" class="ptip_s" title="Dashboard"><i class="icsw16-home"></i></a></li>
+                        <li><a href="/DailyDibba/admin/dindex.jsp" class="ptip_s" title="Dashboard"><i class="icsw16-home"></i></a></li>
                                 <%
                                     if (session.getAttribute("Role").equals("Admin")) {
                                 %>

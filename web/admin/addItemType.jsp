@@ -29,9 +29,9 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Menu</a></li>
-                        <li><a href="javascript:void(0)">Update Menu...</a></li>
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><a href="AdminController?action=createUpdateMenuPage">Menu</a></li>
+                        <li><span>Update Menu...</span ></li>
                     </ul>
                 </div>
 

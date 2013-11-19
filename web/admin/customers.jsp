@@ -33,7 +33,7 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
                         <li><a href="AdminController?action=getCustomerList">Customers</a></li>
                         <li><span>View Customers ...</span></li>
                     </ul>

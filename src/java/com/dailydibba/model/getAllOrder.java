@@ -22,7 +22,7 @@ public class getAllOrder implements Action {
         Administrator objAdministraotr = new Administrator();
         ArrayList objArrayList = objAdministraotr.getAllOrders();
         req.setAttribute("orders", objArrayList);
-        return "orders.jsp";
+        return "viewOrders.jsp";
     }
     
 }

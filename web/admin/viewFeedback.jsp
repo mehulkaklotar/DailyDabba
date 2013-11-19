@@ -32,9 +32,9 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Feedback</a></li>
-                        <li><a href="javascript:void(0)">View Feedback</a></li>
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><a href="AdminController?action=getFeedbackList">Feedback</a></li>
+                        <li><span>View Feedback</span></li>
                     </ul>
                 </div>
 

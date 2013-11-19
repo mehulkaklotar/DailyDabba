@@ -285,7 +285,7 @@
                         <div class="tab-pane fade active in" id="Lunch">
 
                             <c:choose>
-                                <c:when test="${empty menuLunch} ">
+                                <c:when test="${menuLunch.getMenuID() == 0} ">
                                     No Lunch from this vendor
                                 </c:when>
                                 <c:otherwise>
@@ -495,7 +495,7 @@
                         <div class="tab-pane fade" id="Dinner">
 
                             <c:choose>
-                                <c:when test="${empty menuDinner} ">
+                                <c:when test="${menuDinner.getMenuID() == 0} ">
                                     No Dinner from this vendor
                                 </c:when>
                                 <c:otherwise>

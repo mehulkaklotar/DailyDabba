@@ -27,9 +27,8 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Home</a></li>
-                        <li><a href="javascript:void(0)">Suggestions</a></li>
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><span>Suggestions</span></li>
 
                     </ul>
                 </div>

@@ -31,9 +31,8 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Menu Item </a></li>
-
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><a href="AdminController?action=getAllItemsByVendor">Menu Item </a></li>
                         <li><span>View Menu Items...</span></li>
                     </ul>
                 </div>
@@ -70,13 +69,23 @@
                                                 <td><c:out value="${item.UserName}"></c:out></td>
 
                                                     <td>
-                                                    <c:if test="${item.UserName != 'admin'}">
-                                                        <div class="btn-group">
-                                                            <a href="AdminController?action=editItem&itemId=<c:out value="${item.ItemID}"></c:out>" class="btn btn-mini" title="Edit"><i class="icon-pencil"></i></a>
-                                                                <!--<a href="../Controller?action?viewCity&cityId=" class="btn btn-mini" title="View"><i class="icon-eye-open"></i></a>-->
-                                                                <a href="AdminController?action=deleteItem&itemId=<c:out value="${item.ItemID}"></c:out>" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                            </div>
-                                                    </c:if>
+                                                    <c:choose>
+                                                        <c:when test="${sessionScope.UserName == 'admin'}">
+                                                            <div class="btn-group">
+                                                                <a href="AdminController?action=editItem&itemId=<c:out value="${item.ItemID}"></c:out>" class="btn btn-mini" title="Edit"><i class="icon-pencil"></i></a>
+                                                            <a href="AdminController?action=deleteItem&itemId=<c:out value="${item.ItemID}"></c:out>" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
+                                                                </div>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <c:if test="${item.UserName != 'admin'}">
+                                                                <div class="btn-group">
+                                                                    <a href="AdminController?action=editItem&itemId=<c:out value="${item.ItemID}"></c:out>" class="btn btn-mini" title="Edit"><i class="icon-pencil"></i></a>
+                                                            <a href="AdminController?action=deleteItem&itemId=<c:out value="${item.ItemID}"></c:out>" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
+                                                                    </div>
+                                                            </c:if>
+                                                        </c:otherwise>
+                                                    </c:choose>
+
                                                 </td>
 
                                             </tr>

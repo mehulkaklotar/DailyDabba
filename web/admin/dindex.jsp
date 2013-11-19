@@ -13,54 +13,54 @@
         <meta charset="UTF-8">
         <title>DailyDabba</title>
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-        <link rel="icon" type="admin/image/ico" href="favicon.ico">
+        <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
-        <jsp:include page="AdminCommonStyle.jsp"></jsp:include>
-        <jsp:include page="AdmincommonJs.jsp"></jsp:include>
+        <jsp:include page="commonStyle.jsp"></jsp:include>
+        <jsp:include page="commonJs.jsp"></jsp:include>
 
             <script>
 
                 $(document).ready(function() {
             <% if (session.getAttribute("Role").equals("Admin")) {%>
                     $.ajax({
-                        url: "admin/AdminController?action=getTotalOrderNumbers",
+                        url: "AdminController?action=getTotalOrderNumbers",
                     }).done(function(result) {
                         $('#ordercount').html(result);
                     });
 
                     $.ajax({
-                        url: "admin/AdminController?action=getTotalCustomers",
+                        url: "AdminController?action=getTotalCustomers",
                     }).done(function(result) {
                         $('#customercount').html(result);
                     });
 
                     $.ajax({
-                        url: "admin/AdminController?action=getTotalVendors",
+                        url: "AdminController?action=getTotalVendors",
                     }).done(function(result) {
                         $('#vendorcount').html(result);
                     });
 
                     $.ajax({
-                        url: "admin/AdminController?action=getTotalUsers",
+                        url: "AdminController?action=getTotalUsers",
                     }).done(function(result) {
                         $('#usercount').html(result);
                     });
             <% }%>
             <% if (session.getAttribute("Role").equals("Vendor")) {%>
                     $.ajax({
-                        url: "admin/AdminController?action=getTotalOrderForVendor",
+                        url: "AdminController?action=getTotalOrderForVendor",
                     }).done(function(result) {
                         $('#ordercount').html(result);
                     });
 
                     $.ajax({
-                        url: "admin/AdminController?action=getLastMonthOrderForVendor",
+                        url: "AdminController?action=getLastMonthOrderForVendor",
                     }).done(function(result) {
                         $('#customercount').html(result);
                     });
                     
                     $.ajax({
-                        url: "admin/AdminController?action=getLastWeekOrderForVendor",
+                        url: "AdminController?action=getLastWeekOrderForVendor",
                     }).done(function(result) {
                         $('#vendorcount').html(result);
                     });
@@ -216,27 +216,27 @@
 
         <!-- Dashboard JS -->
         <!-- jQuery UI -->
-        <script src="admin/js/lib/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+        <script src="js/lib/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
         <!-- touch event support for jQuery UI -->
-        <script src="admin/js/lib/jquery-ui/jquery.ui.touch-punch.min.js"></script>
+        <script src="js/lib/jquery-ui/jquery.ui.touch-punch.min.js"></script>
         <!-- colorbox -->
-        <script src="admin/js/lib/colorbox/jquery.colorbox.min.js"></script>
+        <script src="js/lib/colorbox/jquery.colorbox.min.js"></script>
         <!-- fullcalendar -->
-        <script src="admin/js/lib/fullcalendar/fullcalendar.min.js"></script>
+        <script src="js/lib/fullcalendar/fullcalendar.min.js"></script>
         <!-- flot charts -->
-        <script src="admin/js/lib/flot-charts/jquery.flot.js"></script>
-        <script src="admin/js/lib/flot-charts/jquery.flot.resize.js"></script>
-        <script src="admin/js/lib/flot-charts/jquery.flot.pie.js"></script>
-        <script src="admin/js/lib/flot-charts/jquery.flot.orderBars.js"></script>
-        <script src="admin/js/lib/flot-charts/jquery.flot.tooltip.js"></script>
-        <script src="admin/js/lib/flot-charts/jquery.flot.time.js"></script>
+        <script src="js/lib/flot-charts/jquery.flot.js"></script>
+        <script src="js/lib/flot-charts/jquery.flot.resize.js"></script>
+        <script src="js/lib/flot-charts/jquery.flot.pie.js"></script>
+        <script src="js/lib/flot-charts/jquery.flot.orderBars.js"></script>
+        <script src="js/lib/flot-charts/jquery.flot.tooltip.js"></script>
+        <script src="js/lib/flot-charts/jquery.flot.time.js"></script>
         <!-- responsive carousel -->
-        <script src="admin/js/lib/carousel/plugin.min.js"></script>
+        <script src="js/lib/carousel/plugin.min.js"></script>
         <!-- responsive image grid -->
-        <script src="admin/js/lib/wookmark/jquery.imagesloaded.min.js"></script>
-        <script src="admin/js/lib/wookmark/jquery.wookmark.min.js"></script>
+        <script src="js/lib/wookmark/jquery.imagesloaded.min.js"></script>
+        <script src="js/lib/wookmark/jquery.wookmark.min.js"></script>
 
-        <script src="admin/js/pages/beoro_dashboard.js"></script>
+        <script src="js/pages/beoro_dashboard.js"></script>
 
         <script>
                 if ($(window).width() > '1280') {

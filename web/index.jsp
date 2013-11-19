@@ -300,8 +300,8 @@
                 <div class="span3">
                     <div class="padding center">
                         <p><img src="images/icon-food.png" alt="Excellent Food" /></p>
-                        <h3>Edible gift</h3>
-                        <p>homemade gourmet presents for everyone</p>
+                        <h3>Edible Gift</h3>
+                        <p>Homemade gourmet presents for everyone. Get yourself a feeling of having home cooked every day. Tasty and hearty food in appropriate portions.</p>
                     </div>
                 </div>
                 <hr class="line">
@@ -309,23 +309,23 @@
                     <div class="padding center">
                         <p><img src="images/icon-wine.png" alt="Fantastic Wine" /></p>
                         <h3>Healthy </h3>
-                        <p>Lighter choices for a guilt free mealtime</p>
+                        <p>Lighter choices for a guilt free mealtime. A well planned meal having a good mix of nutrition and taste. Your body is a Temple. You are what you eat.</p>
                     </div>
                 </div>
                 <hr class="line">
                 <div class="span3">
                     <div class="padding center">
                         <p><img src="images/icon-staff.png" alt="Friendly Staff" /></p>
-                        <h3>Quick & easy</h3>
-                        <p>Delicious food at your door step</p>
+                        <h3>Quick & Easy</h3>
+                        <p>Don't let your busy routine get in the way of your food,delicious food at your door step in just a few clicks as a fit and healthy body is the best fashion statement.</p>
                     </div>
                 </div>
                 <hr class="line">
                 <div class="span3">
                     <div class="padding center">
                         <p><img src="images/icon-location.png" alt="Great Location" /></p>
-                        <h3>Array of menus</h3>
-                        <p>Range of dishes to choose from</p>
+                        <h3>Variety of Menus</h3>
+                        <p>Bored of eating the same kind of food everyday!! Choose from range of dishes and also customize your menu.</p>
                     </div>
                 </div>
             </div>

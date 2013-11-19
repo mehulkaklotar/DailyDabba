@@ -31,9 +31,8 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Item Type</a></li>
-
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><a href="AdminController?action=getAllType">Item Type</a></li>
                         <li><span>View Item Types...</span></li>
                     </ul>
                 </div>

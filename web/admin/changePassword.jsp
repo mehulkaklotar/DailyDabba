@@ -24,7 +24,7 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
                         <li><span>Change Password...</span></li>
                     </ul>
                 </div>

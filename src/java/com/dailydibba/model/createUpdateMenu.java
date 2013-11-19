@@ -7,8 +7,10 @@ package com.dailydibba.model;
 
 import com.dailydibba.action.Action;
 import com.dailydibba.bean.Item;
+import com.dailydibba.bean.Menu;
 import com.dailydibba.bean.Vendor;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +28,12 @@ public class createUpdateMenu implements Action{
 
         HttpSession session=req.getSession();
         Vendor vendor=new Vendor();
+        
+        Menu listLunch = vendor.getVendorMenuLunch(session.getAttribute("UserName").toString());
+        req.setAttribute("listLunch", listLunch);
+        Menu listDinner = vendor.getVendorMenuDinner(session.getAttribute("UserName").toString());
+        req.setAttribute("listDinner", listDinner);
+        
         vendor.setUserName(session.getAttribute("UserName").toString());
         List<Item> itemlist = vendor.getItemOfType("Sabzi");
         req.setAttribute("itemlist", itemlist);
@@ -49,7 +57,7 @@ public class createUpdateMenu implements Action{
         String sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
         
         req.setAttribute("date", sd);
-        return "dummyupdatemenu.jsp";
+        return "updatemenu.jsp";
     }
 
 }

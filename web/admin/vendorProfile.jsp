@@ -30,9 +30,8 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Vendor</a></li>
-                        <li><a href="javascript:void(0)">Profile</a></li>
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><a href="AdminController?action=getAllVendors">Vendor</a></li>
                         <li><span>View Profile...</span></li>
                     </ul>
                 </div>

@@ -11,6 +11,8 @@ import com.dailydibba.bean.Menu;
 import com.dailydibba.bean.MenuItem;
 import com.dailydibba.bean.Vendor;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -33,10 +35,11 @@ public class uploadUpdateMenu implements Action {
            for(int i=1;i<=n;i++){
                ItemID=Integer.parseInt(req.getParameter("sabzi"+i));
                cost=Double.parseDouble(req.getParameter("costOfsabzi"+i));
+                mi=new MenuItem();
                mi.setCost(cost);
                Item it=new Item();
                it.setItemID(ItemID);
-               mi=new MenuItem();
+              
                mi.setItem(it);
                mi.setQuantity(1);
                m.getMenuItem().add(mi);
@@ -113,6 +116,8 @@ public class uploadUpdateMenu implements Action {
            String txt=req.getParameter("desc");
            m.setTiffinName(txt);
            if(v.updateMenu(m)){
+               List<MenuItem> items=v.getMenuDetails(m.getMenuID());
+               req.setAttribute("Items", items);
                req.setAttribute("result", "Successful");
            }else{
                 req.setAttribute("result", "Unsuccesful");
@@ -127,10 +132,11 @@ public class uploadUpdateMenu implements Action {
            for(int i=1;i<=n;i++){
                ItemID=Integer.parseInt(req.getParameter("sabzi"+i));
                cost=Double.parseDouble(req.getParameter("costOfsabzi"+i));
+                mi=new MenuItem();
                mi.setCost(cost);
                Item it=new Item();
                it.setItemID(ItemID);
-               mi=new MenuItem();
+              
                mi.setItem(it);
                mi.setQuantity(1);
                m.getMenuItem().add(mi);
@@ -207,6 +213,8 @@ public class uploadUpdateMenu implements Action {
            String txt=req.getParameter("desc");
            m.setTiffinName(txt);
            if(v.updateMenu(m)){
+               List<MenuItem> items=v.getMenuDetails(m.getMenuID());
+               req.setAttribute("Items", items);
                req.setAttribute("result", "Successful");
            }else{
                 req.setAttribute("result", "Unsuccesful");

@@ -32,7 +32,7 @@
                         $.ajax({
                             url: "Controller?action=getAllAreaByCity&cityID=" + $('#ddlCity').val(),
                         }).done(function(result) {
-                            $('#areaDiv').html(result);
+                            $('#ddlArea').html(result);
                         });
                     });
 

@@ -1,3 +1,12 @@
+<script type = "text/javascript" >
+
+   function preventBack(){window.history.forward();}
+
+    setTimeout("preventBack()", 0);
+
+    window.onunload=function(){null};
+
+</script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="js/../bootstrap/js/bootstrap.js"></script>
 <script src="js/../bootstrap/js/bootstrap.min.js"></script>
@@ -24,7 +33,7 @@
                         $.ajax({
                             url: "Controller?action=getAllAreaByCity&cityID=" + $('#ddlCityVendor').val(),
                         }).done(function(result) {
-                            $('#areaDiv').html(result);
+                            $('#ddlArea').html(result);
                         });
                     });
 

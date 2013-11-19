@@ -23,11 +23,9 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Order</a></li>
-                        <li><a href="javascript:void(0)">View Lunch Order</a></li>
-
-                        <li><span></span></li>
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><a href="AdminController?action=getAllOrdersForVendor">Order</a></li>
+                        <li><span>View Lunch Order</span></li>
                     </ul>
                 </div>
 

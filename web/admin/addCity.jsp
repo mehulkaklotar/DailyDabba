@@ -27,11 +27,9 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">City</a></li>
-                        <li><a href="javascript:void(0)">Add city</a></li>
-
-                        <li><span></span></li>
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><a href="AdminController?action=getAllCity">City</a></li>
+                        <li><span>Add City...</span></li>
                     </ul>
                 </div>
 

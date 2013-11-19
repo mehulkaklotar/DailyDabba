@@ -27,10 +27,8 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Home</a></li>
-                        <li><a href="javascript:void(0)">Vendor Block Hit List</a></li>
-
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><span>Vendor Block Hit List</span></li>
                     </ul>
                 </div>
 

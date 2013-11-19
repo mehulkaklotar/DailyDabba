@@ -16,6 +16,9 @@
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
+        
+            <!-- Common JS -->
+        <jsp:include page="commonJs.jsp"></jsp:include>
         </head>
         <body class="bg_d">
             <!-- main wrapper (without footer) -->    
@@ -28,12 +31,9 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Block</a></li>
-                        <li><a href="javascript:void(0)">Block Vender</a></li>
-
-
-                        <li><span></span></li>
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><a href="AdminController?action=getBlockRequest">Block</a></li>
+                        <li><span>Block Vender</span></li>
                     </ul>
                 </div>
 
@@ -93,8 +93,6 @@
         <!-- footer --> 
         <jsp:include page="footer.jsp"></jsp:include>
 
-            <!-- Common JS -->
-        <jsp:include page="commonJs.jsp"></jsp:include>
 
         <!-- Dashboard JS -->
         <!-- jQuery UI -->

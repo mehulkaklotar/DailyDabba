@@ -607,6 +607,7 @@ public class Administrator extends User {
                 objMap.put("Status", rs.getBoolean("Status"));
                 objMap.put("NoOfTiffin", rs.getInt("NoOfTiffin"));
                 objMap.put("OrderDate", rs.getDate("OrderDate"));
+                objMap.put("OrderID", rs.getDate("OrderID"));
                 list.add(objMap);
             }
             rs.close();
@@ -1004,5 +1005,85 @@ public class Administrator extends User {
             con.closeConnection();
         }
         return list;
+    }
+    
+    public int getTotalOrderNumbers() {
+        int count = 0;
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+
+            cstmt = con.connection.prepareCall("{call getTotalOrderNumbers ()}");
+            ResultSet rs = cstmt.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt("OrderCount");
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return count;
+    }
+    
+    public int getTotalUsers() {
+        int count = 0;
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+
+            cstmt = con.connection.prepareCall("{call getTotalUsers ()}");
+            ResultSet rs = cstmt.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt("TotalUser");
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return count;
+    }
+    
+    public int getTotalVendors() {
+        int count = 0;
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+
+            cstmt = con.connection.prepareCall("{call getTotalVendors ()}");
+            ResultSet rs = cstmt.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt("TotalVendor");
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return count;
+    }
+    
+    public int getTotalCustomers() {
+        int count = 0;
+        con = new DBConnection();
+        ArrayList list = new ArrayList();
+        try {
+
+            cstmt = con.connection.prepareCall("{call getTotalCustomers ()}");
+            ResultSet rs = cstmt.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt("CustomerCount");
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.getMessage();
+        } finally {
+            con.closeConnection();
+        }
+        return count;
     }
 }

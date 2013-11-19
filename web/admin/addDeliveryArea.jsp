@@ -27,8 +27,8 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Delivery Area</a></li>
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><a href="AdminController?action=getDeliveryArea">Delivery Area</a></li>
                         <li><span>Add delivery area...</span></li>
                     </ul>
                 </div>

@@ -22,11 +22,10 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Order</a></li>
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><a href="AdminController?action=getAllOrdersForVendor">Order</a></li>
                         <li><a href="AdminController?action=getVendorDinnerList">View Dinner Order</a></li>
-                        <li><a href="javascript:void(0)">View Dinner Order Menu</a></li>
-                        <li><span></span></li>
+                        <li><span>View Dinner Order Menu</span></li>
                     </ul>
                 </div>
 

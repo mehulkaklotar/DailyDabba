@@ -1,4 +1,8 @@
-
+<%-- 
+    Document   : orders
+    Created on : 12 Oct, 2013, 1:41:39 AM
+    Author     : kaklo
+--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -13,8 +17,7 @@
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
         <jsp:include page="commonJs.jsp"></jsp:include>
-        <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
-
+            <link rel="stylesheet" href="data-tables/DT_bootstrap.css" />
         </head>
         <body class="bg_d">
             <!-- main wrapper (without footer) -->    
@@ -27,9 +30,10 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
-                        <li><a href="#">Order</a></li>
-                        <li><span>All Orders</span></li>
+                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
+                        <li><a href="javascript:void(0)">Menu</a></li>
+
+                        <li><span>View Menu</span></li>
                     </ul>
                 </div>
 
@@ -40,43 +44,40 @@
                             <div class="w-box">
                                 <div class="w-box-header">
                                     <div class="btn-group">
-                                        <label>Orders</label>
+                                        <label>Todays menu</label>
                                     </div>
                                 </div>
                                 <div class="w-box-content" style="padding:10px;">
                                     <table class="table table-vam table-striped" id="dt_gal">
                                         <thead>
                                             <tr>
-                                                <th>Order No.</th>
-                                                <th>Vendor Name</th>
-                                                <th>Customer Name</th>
-                                                <th>Order Date</th>
-                                                <th>NoOfTiffin</th>
+                                                <th width="40%">Description</th>
+                                                <th width="10%">Date</th>
+                                                <th width="15%">Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                        <c:forEach items="${orders}" var="o">
+                                        <tbody
+                                        <c:forEach items="" var="area">
                                             <tr>
-                                                <td><a href="#">${o.OrderID}</a></td>
-                                                <td>${o.Vendor}</td>
-                                                <td>${o.Customer}</td>
-                                                <td>${o.OrderDate}</td>
-                                                <td>${o.NoOfTiffin}</td>
-                                            </tr>
+                                                <td><c:out value=""></c:out></td>
+                                                <td><c:out value=""></c:out></td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a href="AdminController?action=editArea&areaId=<c:out value=""></c:out>" class="btn btn-mini" title="Edit"><i class="icon-pencil"></i></a>
+                                                    <a href="AdminController?action=deleteArea&areaId=<c:out value=""></c:out>" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
+                                                    </div>
+                                                </td>
+                                                </tr>
+
                                         </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
-
-                            
-                        </div>
-
+                        </div>  
                     </div>
                 </div>
             </div>
         </div>
-
-
         <div class="footer_space"></div>
     </div> 
 
@@ -155,7 +156,9 @@
         $('#dt_gal').dataTable({
             "aoColumns": [{
                     "bSortable": true
-                }, null, null, null, null],
+                }, {
+                    "bSortable": true
+                },null],
             "aLengthMenu": [[5, 15, 20, -1], [5, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
@@ -198,4 +201,3 @@
 
 
 </html>
-

@@ -24,10 +24,8 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">My Delivery Areas</a></li>
-
-                        <li><span></span></li>
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><span>My Delivery Areas</span></li>
                     </ul>
                 </div>
 
@@ -38,8 +36,7 @@
                             <div class="w-box">
                                 <div class="w-box-header">
                                     <div class="btn-group">
-                                        <a href="#" class="btn btn-inverse btn-mini delete_rows_dt" data-tableid="dt_gal" title="Edit">Delete</a>
-                                        <a href="#" class="btn btn-inverse btn-mini" title="View">Another Action</a>
+                                        <label>Item Type</label>
                                     </div>
                                 </div>
                                 <div class="w-box-content" style="padding: 10px;">
