@@ -8,6 +8,7 @@ package com.dailydibba.model;
 
 import com.dailydibba.action.Action;
 import com.dailydibba.bean.Vendor;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,16 +22,11 @@ public class getVendorProfile implements Action {
         String uname=req.getParameter("uname");
         Vendor vendor=new Vendor();
         vendor.setUserName(uname);
+        ArrayList areas=new ArrayList();
         vendor.getProfileDetails();
+        areas=vendor.getDeliveryArea(uname);
         req.setAttribute("vendor", vendor);
-//        List<City> cities;
-//        Administrator admin=new Administrator();
-//        cities=admin.getAllCity();
-//        req.setAttribute("Cities", cities);
-//        
-//        List<Area> area;
-//        area=admin.getAllCityArea(vendor.getArea().getCity().getCityID());
-//        req.setAttribute("Areas", area);
+        req.setAttribute("areas", areas);
         return "vendorProfile.jsp";
     }
     public static void main(String args[]){
