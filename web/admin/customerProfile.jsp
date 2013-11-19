@@ -53,24 +53,24 @@
                                             </div>
                                         </div>
                                         <div class="span10">
-                                            <p class="formSep"><small class="muted">Verified:</small> <span class="label label-success">Yes</span></p>
-                                            <p class="formSep"><small class="muted">Username:</small>${customer.getUserName()}</p>
+                                            <p class="formSep"><small class="muted">Verified:</small> <span class="label label-success">
+                                                <c:choose>
+                                                <c:when test="${customer.isStatus()==true}">
+                                                    Yes
+                                                </c:when>
+                                                <c:otherwise>
+                                                    No                                                        
+                                                </c:otherwise>
+                                            </c:choose>
+                                            </p></span></p>
+                                        <p class="formSep"><small class="muted">Username:</small>${customer.getUserName()}</p>
                                         <p class="formSep"><small class="muted">First Name:</small>${customer.firstName}
                                         <p class="formSep"><small class="muted">Last Name:</small> ${customer.lastName}</p>
                                         <p class="formSep"><small class="muted">Email:</small> ${customer.emailID}</p>
                                         <p class="formSep"><small class="muted">Mobile No:</small> ${customer.mobileNo}</p>
                                         <p class="formSep"><small class="muted">Lane:</small> ${customer.lane}</p>
                                         <p class="formSep"><small class="muted">Area:</small> ${customer.area.getAreaName()}</p>
-                                        <p class="formSep"><small class="muted">Status:</small> 
-                                            <c:choose>
-                                                <c:when test="${customer.status == false}">
-                                                    Active
-                                                </c:when>
-                                                <c:otherwise>
-                                                    Inactive                                                        
-                                                </c:otherwise>
-                                            </c:choose></p>
-
+                                        <p class="formSep"><small class="muted">City:</small> ${customer.getArea().getCity().getCityName()}</p>
                                     </div>
                                 </div>
                             </div>

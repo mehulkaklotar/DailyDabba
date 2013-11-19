@@ -53,7 +53,16 @@
                                             </div>
                                         </div>
                                         <div class="span10">
-                                            <p class="formSep"><small class="muted">Verified:</small> <span class="label label-success">Yes</span></p>
+                                            <p class="formSep"><small class="muted">Verified:</small> <span class="label label-success">
+                                                <c:choose>
+                                                <c:when test="${vendor.isStatus()==true}">
+                                                    Yes
+                                                </c:when>
+                                                <c:otherwise>
+                                                    No                                                        
+                                                </c:otherwise>
+                                            </c:choose>
+                                            </span></p>
                                             <p class="formSep"><small class="muted">Username:</small> ${vendor.getUserName()}</p>
                                         <p class="formSep"><small class="muted">Name:</small> ${vendor.getVendorName()}</p>
                                         <p class="formSep"><small class="muted">Owner Name:</small> ${vendor.ownerName}</p>
@@ -61,10 +70,11 @@
                                         <p class="formSep"><small class="muted">Email:</small> ${vendor.emailID}</p>
                                         <p class="formSep"><small class="muted">Landline No:</small> ${vendor.landlineNumber}</p>
                                         <p class="formSep"><small class="muted">Lane:</small> ${vendor.lane}</p>
-                                        <p class="formSep"><small class="muted">Area:</small> ${vendor.area.getAreaName()}</p>
+                                        <p class="formSep"><small class="muted">Area:</small> ${vendor.getArea().getAreaName()}</p>
                                         <p class="formSep"><small class="muted">City:</small> ${vendor.getArea().getCity().getCityName()}</p>
+                                        
                                         <p class="formSep"><small class="muted">Provides Customizable menu:</small> <c:choose>
-                                                <c:when test="${vendor.status == false}">
+                                                <c:when test="${vendor.isFlag() == true}">
                                                     Yes
                                                 </c:when>
                                                 <c:otherwise>
@@ -72,8 +82,8 @@
                                                 </c:otherwise>
                                             </c:choose></p></p>
                                         <p class="formSep"><small class="muted">Service Available At:</small> 
-                                            <c:forEach items="${vendor.getAreas()}" var="area">
-                                                <c:out value="${area.getAreaName()}"/>                                             
+                                            <c:forEach items="${areas}" var="area">
+                                               <br/> ${area.AreaName} 
                                             </c:forEach></p>                            
                                     </div>
                                 </div>
