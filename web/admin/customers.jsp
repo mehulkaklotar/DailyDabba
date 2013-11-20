@@ -55,6 +55,7 @@
                                             <tr>                                                                                    
                                                 <th>Name</th>
                                                 <th>Status</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -71,7 +72,13 @@
                                                         </c:otherwise>
                                                     </c:choose>
                                                 </td>
-                                                
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <c:if test="${customer.status == false}">
+                                                            <a href="AdminController?action=BlockCustomer&customerUN=${customer.getUserName()}" class="btn btn-mini" title="Click to block this Customer"><i class="icon-remove"></i></a>
+                                                        </c:if>>
+                                                    </div>
+                                                </td>
                                             </tr></c:forEach>
 
                                         </tbody>
@@ -116,25 +123,25 @@
     <script src="js/pages/beoro_dashboard.js"></script>
 
     <script>
-                if ($(window).width() > '1280') {
-                    $('body').append('<a href="javascript:void" class="fluid_lay" style="position:fixed;top:6px;right:10px;z-index:10000" title="fluid layout"><i class="splashy-arrow_state_grey_left"></i><i class="splashy-arrow_state_grey_right"></i></a>');
-                    $('.fluid_lay').click(function() {
-                        var url = window.location.href;
-                        if (url.indexOf('?') > -1) {
-                            url += '&fluid=1'
-                        } else {
-                            url += '?fluid=1'
-                        }
-                        window.location.href = url;
-                    });
-                    $(window).on('resize', function() {
-                        if ($(window).width() > '1280') {
-                            $('.fluid_lay').show();
-                        } else {
-                            $('.fluid_lay').hide();
-                        }
-                    })
-                }
+            if ($(window).width() > '1280') {
+                $('body').append('<a href="javascript:void" class="fluid_lay" style="position:fixed;top:6px;right:10px;z-index:10000" title="fluid layout"><i class="splashy-arrow_state_grey_left"></i><i class="splashy-arrow_state_grey_right"></i></a>');
+                $('.fluid_lay').click(function() {
+                    var url = window.location.href;
+                    if (url.indexOf('?') > -1) {
+                        url += '&fluid=1'
+                    } else {
+                        url += '?fluid=1'
+                    }
+                    window.location.href = url;
+                });
+                $(window).on('resize', function() {
+                    if ($(window).width() > '1280') {
+                        $('.fluid_lay').show();
+                    } else {
+                        $('.fluid_lay').hide();
+                    }
+                })
+            }
     </script>
     <script type="text/javascript">
 
@@ -164,7 +171,7 @@
                     "bSortable": true
                 }, {
                     "bSortable": true
-                }],
+                }, null],
             "aLengthMenu": [[5, 15, 20, -1], [5, 15, 20, "All"] // change per page values here
             ],
             // set the initial value

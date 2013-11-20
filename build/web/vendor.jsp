@@ -7,6 +7,7 @@
 <%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!doctype html>
 
 <html>
@@ -22,12 +23,7 @@
 
         <jsp:include page="include.jsp"></jsp:include>
             <script src="js/jquery-scrollto.js"></script>
-            <script type="text/javascript">
-
-                $(document).ready(function() {
-                    $("#fwslider").ScrollTo();
-                });
-            </script>
+            
             <script src="js/commonTask.js"></script>
 
             <style type="text/css">
@@ -305,7 +301,7 @@
                         <div class="tab-pane fade active in" id="Lunch">
 
                             <c:choose>
-                                <c:when test="${menuLunch.getMenuID() == 0} ">
+                                <c:when test="${empty menuLunch}">
                                     No Lunch from this vendor
                                 </c:when>
                                 <c:otherwise>
@@ -515,7 +511,7 @@
                         <div class="tab-pane fade" id="Dinner">
 
                             <c:choose>
-                                <c:when test="${menuDinner.getMenuID() == 0} ">
+                                <c:when test="${empty menuDinner} ">
                                     No Dinner from this vendor
                                 </c:when>
                                 <c:otherwise>

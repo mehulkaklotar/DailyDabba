@@ -1,10 +1,16 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <script type = "text/javascript" >
 
-   function preventBack(){window.history.forward();}
+    function preventBack() {
+        window.history.forward();
+    }
 
     setTimeout("preventBack()", 0);
 
-    window.onunload=function(){null};
+    window.onunload = function() {
+        null
+    };
 
 </script>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -26,26 +32,71 @@
         <meta name="author" content="Marcin Banaszek">
 
         <jsp:include page="include.jsp"></jsp:include>
+            <script>
+    $(function() {
+        var server = $(".sDate").attr("value");
+        var sarr = server.split(" ");
 
+        var sDate = sarr[0]; // server Date
+        var sTime = sarr[1]; // server Time
 
-        </head>
+        var sD = sDate.split("-"); // split date
+        var sDY = sD[0]; // Year
+        var sDM = sD[1]; // Month
+        var sDD = sD[2]; // Date
 
-        <body class="home">
-            <header>
-                <div class="nav-bar">
-                    <div class="nav-inside"> </div>
-                </div>
-                <div class="wrapper"> 
+        var sT = sTime.split(":"); // split time
+        var sTH = sT[0]; // Hour
+        var sTM = sT[1]; // Minute
+        var sTS = sT[2]; // Second
 
-                    <!-- ******** LOGO START ******** -->
-                    <div class="logo">
-                        <h2>Daily Dibba</h2>
-                        <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
-                        <p>Eat Healthy, Live Healthy</p>
-                        <a href="index.html"></a> </div>
-                    <!-- ******** LOGO END ******** -->
+        if (sTH < 9) { // if system time is not greater than 9 AM then don't show the Lunch menu)
+            var label = $("<label>").text("You can not order now. Orders will be accepted from 9 AM to 11 AM").addClass('alert');
+            $('#cancelLink').before(label);
+            /*$('#lblLunch').text("You can not order now. Orders will be accepted from 9 AM to 11 AM");*/
+            $('#cancelLink').hide();
+        } else if (sTH >= 11) {
+            var label = $("<label>").text("You can not order now. Orders will be accepted from 9 AM to 11 AM").addClass('alert');
+            $('#cancelLink').before(label);
+            /*$('#lblLunch').text("You can not order now. Orders will be accepted from 9 AM to 11 AM");*/
+            $('#cancelLink').hide();
+        }
 
-                    <!-- ******** NAVIGATION START ******** -->
+        if (sTH < 14) { // if system time is greater than 14 PM (i.e 2 PM)  then don't show the Dinner menu
+            var label = $("<label>").text("You can not order now. Orders will be accepted from 2 PM to 4 PM").addClass('alert');
+            $('#cancelLink').append(label);
+            $('#cancelLink').hide();
+        } else if (sTH >= 16) {
+            var label = $("<label>").text("You can not order now. Orders will be accepted from 2 PM to 4 PM").addClass('alert');
+            $('#cancelLink').append(label);
+            $('#cancelLink').hide();
+        }
+    });
+            </script>
+        <%
+            Date date = new Date();
+            String sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+
+        %>
+
+    </head>
+
+    <body class="home">
+        <header>
+            <div class="nav-bar">
+                <div class="nav-inside"> </div>
+            </div>
+            <div class="wrapper"> 
+
+                <!-- ******** LOGO START ******** -->
+                <div class="logo">
+                    <h2>Daily Dibba</h2>
+                    <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
+                    <p>Eat Healthy, Live Healthy</p>
+                    <a href="index.html"></a> </div>
+                <!-- ******** LOGO END ******** -->
+
+                <!-- ******** NAVIGATION START ******** -->
 
                 <jsp:include page="nav.jsp"></jsp:include>
 
@@ -149,8 +200,10 @@
                                     <td>
                                         ${h.getTotalcost() * h.getNumberOfTiffin()}
                                     </td>
-                                    <td>
-                                        <a  href="Controller?action=cancelOrder&orderID=${h.getOrderID()}&from=${pageContext.request.requestURI}">Cancel Order?</a>
+                                    <td >
+                                        <c:if test="${h.getOrderDate() eq now}">
+                                        <a id="cancelLink" href="Controller?action=cancelOrder&orderID=${h.getOrderID()}&from=${pageContext.request.requestURI}">Cancel Order?</a>
+                                        </c:if>
                                     </td>
                                 </tr>
                             </c:forEach>

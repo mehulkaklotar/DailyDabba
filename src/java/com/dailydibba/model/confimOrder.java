@@ -13,11 +13,13 @@ import com.dailydibba.bean.Tiffin;
 import com.dailydibba.bean.Vendor;
 import com.dailydibba.bean.VendorArea;
 import com.dailydibba.bean.Visitor;
+import static com.dailydibba.model.SMSSender.smsSender;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -86,6 +88,12 @@ public class confimOrder implements Action {
         objCustomer = new Customer();
         Tiffin objTiffin = new Tiffin();
         objTiffin = objCustomer.getOrder(orderID);
+        Administrator objAdministrator = new Administrator(); 
+        HttpSession session = req.getSession();
+        objCustomer.setUserName(session.getAttribute("UserName").toString());
+        objCustomer.getProfileDetails();
+        SMSSender.smsSender("akypvs", "156424", "91"+objCustomer.getMobileNo(), "Daily Dabba \n Your order has been successfully placed \n Order ID : "+orderID+ "\n Tiffin Vendor :"+ vendor + "\n Total Cost: "+tiffincost, "WebSMS", "0");   
+        
 
         req.setAttribute("tiffin", objTiffin);
         req.setAttribute("Alert", "Vendor is not providing service in this area.");

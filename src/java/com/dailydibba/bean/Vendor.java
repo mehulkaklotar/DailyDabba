@@ -182,13 +182,13 @@ public class Vendor extends User {
 
     }
 
-    public boolean blockCustomer(String username) {
+    public boolean blockCustomer(String cusername) {
         con = new DBConnection();
         try {
 
-            callableStatement = con.connection.prepareCall("{call getBlockCustomer(?)}");
-            callableStatement.setString(1, userName);
-            callableStatement.registerOutParameter(2, java.sql.Types.INTEGER);
+            callableStatement = con.connection.prepareCall("{call blockCustomer(?,?)}");
+            callableStatement.setString(2, userName);
+            callableStatement.setString(1, cusername);
             int row = callableStatement.executeUpdate();
 
             if (row == 1) {
@@ -259,14 +259,15 @@ public class Vendor extends User {
     }
 
     public Menu getVendorMenuLunch(String vendor) {
+        Menu objMenu = null;
         try {
             con = new DBConnection();
             ArrayList<MenuItem> menuList = new ArrayList<MenuItem>();
             callableStatement = con.connection.prepareCall("{call getVendorMenuLunch(?)}");
             callableStatement.setString(1, vendor);
             ResultSet rs = callableStatement.executeQuery();
-            Menu objMenu = new Menu();
-
+            objMenu = new Menu();
+            
             while (rs.next()) {
                 objMenu.setMenuID(rs.getInt("MenuID"));
                 objMenu.setTiffinName(rs.getString("TiffinDescription"));
@@ -286,6 +287,7 @@ public class Vendor extends User {
                 menuList.add(objMenuItem);
             }
             objMenu.setMenuItem(menuList);
+            
             return objMenu;
         } catch (SQLException ex) {
             return null;

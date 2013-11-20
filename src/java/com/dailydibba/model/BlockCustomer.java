@@ -12,6 +12,7 @@ import com.dailydibba.bean.Vendor;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -21,15 +22,15 @@ public class BlockCustomer implements Action {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) {
-        String vendorUN = req.getParameter("vendorUN");
-       
+        HttpSession session=req.getSession();
+        String vendorUN = session.getAttribute("UserName").toString();      
         Vendor objVendor = new Vendor();
         objVendor.setUserName(vendorUN);
-        objVendor.blockCustomer(req.getParameter("customerList"));
+        objVendor.blockCustomer(req.getParameter("customerUN"));
        // req.setAttribute("cities", cities);
         //go to vendor.jsp
         req.setAttribute("blocked",objVendor );
-        return "blockCustomer.jsp";
+        return "AdminController?action=getCustomerList" ;
         
     }
     

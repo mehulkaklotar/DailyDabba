@@ -31,6 +31,7 @@ public class getVendor implements Action {
         Menu objMenuLunch = objVendor.getVendorMenuLunch(vendorUN);
         Menu objMenuDinner = objVendor.getVendorMenuDinner(vendorUN);
         
+        
         // Get the details of feedback of that vendor
         List<Feedback> feedbackList = objVisitor.getFeedbackForVendor(vendorUN);
         req.setAttribute("feedback", feedbackList);

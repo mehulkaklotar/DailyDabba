@@ -15,16 +15,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="HTML Theme">
         <meta name="author" content="Marcin Banaszek">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> <!-- or use local jquery -->
-
 
         <jsp:include page="include.jsp"></jsp:include>
             <script>
-                $(document).ready(function() {
-                    var b = new Boolean(true);
+                
+                var b = new Boolean(true);
+                $(document).ready(function() {    
                     $('#ddlCity').change(function() {
                         $.ajax({
-                            url: "Controller?action=getAllAreaByCity&cityID=" + $('#ddlCity').val(),
+                            url: "Controller?action=getAllAreaByCity&cityID=" + $('#ddlCity').val()
                         }).done(function(result) {
                             $('#ddlArea').html(result);
                         });
@@ -34,7 +33,119 @@
                     $('#ddlArea').val($('#ddlArea').data('area'));
 
                 });
+                
 
+                function checkemail() {
+                    if ($('#txtEmailID').val() != "") {
+                        var pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                        if (!pattern.test($('#txtEmailID').val())) {
+                            $('#alertEmail').html("Invalid Email");
+                            b = false;
+                        }
+                        else {
+                            $('#alertEmail').html("Valid");
+                            b = true;
+                            return true;
+                        }
+                    }
+                }
+                  function checkfirstname() {
+                    if ($('#txtFirstname').val() != "") {
+                            $('#alertFirstName').html("Required");
+                            b = true;
+                            return true;
+                        
+                        }
+                        else {
+                                $('#alertFirstName').html("*");
+                            b = false;
+                        
+                        }
+                    }
+                
+                  function checklastname() {
+                    if ($('#txtLastname').val() != "") {
+                            $('#alertLastName').html("Required");
+                            b = true;
+                            return true;
+                        
+                        }
+                        else {
+                                $('#alertLastName').html("*");
+                            b = false;
+                        
+                        }
+                    }
+                
+                  function checkaddress() {
+                    if ($('#txtAddress').val() != "") {
+                          
+                              $('#alertAddress').html("*");
+                            b = true;
+                            return true;
+                        
+                        }
+                        else {
+                            $('#alertAddress').html("* Required");
+                            b = false;
+                            }
+                    }
+                
+                 function checkarea() {
+                    if ($('#ddlArea').val() != "") {
+                        
+                        
+                            $('#alertArea').html("Required");
+                            b = true;
+                            return true;
+                         }
+                        else {
+                                $('#alertArea').html("*");
+                            b = false;
+                       
+                        }
+                    }
+                
+                function checkmobile() {
+                    if ($('#txtMobileNumber').val() != "") {
+                        var pattern = /^[789]\d{9}$/;
+                        if (!pattern.test($('#txtMobileNumber').val())) {
+                            $('#alertMobile').html("Invalid Mobile");
+                            b = false;
+                        }
+                        else {
+                            $('#alertMobile').html("Valid");
+                            b = true;
+                            return true;
+                        }
+                    }
+                }
+                function updateprofile()
+                {
+                    if(b)
+                        {
+                              $.post("Controller?action=updateProfile", {
+                                    username: $('#txtUsername').val(),                                 
+                                    firstname: $('#txtFirstname').val(),
+                                    lastname: $('#txtLastname').val(),
+                                    mobileno: $('#txtMobileNumber').val(),
+                                    emailid: $('#txtEmailID').val(),                                   
+                                    area: $('#ddlArea').val(),
+                                    address: $('#txtAddress').val()
+                                },
+                                function(response) {
+                                    if ($.trim(response) == 'success') {
+                                        setTimeout("verification()", 2000);
+                                    } else {
+                                        alertMessage("error", "Invalid Usename and password!!!");
+                                    }
+                                });
+                        }else
+                            {
+                                  $('#alertupdatecustomer').html("Enter your details properly");
+                            }
+                }
+      
             </script>
         </head>
 
@@ -110,10 +221,11 @@
         <article class="wrapper"> 
             <ul class="breadcrumb">
                 <li><a href="Controller?action=getIndex">Home</a> <span class="divider">/</span></li>
-                <lii class="active">Update Profile</li>
+                <li class="active">Update Profile</li>
             </ul>
-            <form name="updateProfileCustomer" method="post" action="Controller?action=updateProfile" id="updateProfileCustomer">
-                <div align="center" class="row">
+            <form name="updateProfileCustomer" method="post" onsubmit="updateprofile();" id="updateProfileCustomer">
+                
+                                  <div align="center" class="row">
                     <%
                         Customer cust = (Customer) request.getAttribute("Customer");
                     %>
@@ -123,7 +235,7 @@
                                 <td>Username:</td>
                                 <td>
                                     <div>
-                                        <input type="text" readonly="readonly" style="width:auto;" name="txtUsername" required="" value="<%=cust.getUserName()%>">
+                                        <input type="text" readonly="readonly" style="width:auto;" name="txtUsername" id="txtUsername" required="" value="<%=cust.getUserName()%>">
                                         <!-- <span class="required">*</span>
                                          <span class="required">Should be unique</span> -->
                                     </div>
@@ -133,7 +245,8 @@
                                 <td>First Name:</td>
                                 <td>
                                     <div>
-                                        <input type="text" style="width:auto;" placeholder="First Name" name="txtFirstname" id="txtFirstname" value="<%=cust.getFirstName()%>" />
+                                        <input type="text" style="width:auto;" placeholder="First Name" onkeyup="checkfirstname();" name="txtFirstname" id="txtFirstname" value="<%=cust.getFirstName()%>" />
+                                     <span id="alertFirstName" name="alertFirstName" class="alert">* Required</span>
                                     </div>
                                 </td>                             
                             </tr>
@@ -141,7 +254,9 @@
                                 <td>Last Name:</td>
                                 <td>
                                     <div>
-                                        <input type="text" style="width:auto;" placeholder="Last Name" name="txtLastname" id="txtLastname" value="<%=cust.getLastName()%>">
+                                        <input type="text" style="width:auto;" placeholder="Last Name" onkeyup="checklastname();" name="txtLastname" id="txtLastname" value="<%=cust.getLastName()%>">
+                                   <span id="alertLastName" name="alertLastName" class="alert">* Required</span>
+                                    
                                     </div>
                                 </td>
                             </tr>
@@ -149,7 +264,10 @@
                                 <td>Mobile Number:</td>
                                 <td>
                                     <div>
-                                        <input type="text" style="width:auto;" placeholder="Mobile Number"   name="txtMobileNumber" value="<%=cust.getMobileNo()%>">
+                                        <input type="text" style="width:auto;" placeholder="Mobile Number" onkeyup="checkmobile();"  name="txtMobileNumber" id="txtMobileNumber" value="<%=cust.getMobileNo()%>">
+                                          <span id="alertMobile" class="alert">Valid mobile no only</span>
+                                    <span style="margin-left: 25px;" class="alert-info">Enter 10 digits only i.e.9090909090 </span>
+                               
                                     </div>
                                 </td>
                             </tr>
@@ -157,7 +275,8 @@
                                 <td>Email ID:</td>
                                 <td>
                                     <div>
-                                        <input type="email" style="width:auto;" placeholder="Email ID" name="txtEmailID" value="<%=cust.getEmailID()%>"> 
+                                        <input type="email" style="width:auto;" onkeyup="checkemail();" placeholder="Email ID" name="txtEmailID" id="txtEmailID" value="<%=cust.getEmailID()%>"> 
+                                         <span id="alertEmail" class="alert">Valid Email Address only</span>
                                     </div>
                                 </td>
                             </tr>
@@ -178,13 +297,14 @@
                                 <td>Area</td>
                                 <td>
                                     <div name="areaDiv" id="areaDiv">
-                                        <select id="ddlArea" data-area="<%=cust.getArea().getAreaID()%>"  name="ddlArea" class ="selectStyle">
+                                        <select id="ddlArea" data-area="<%=cust.getArea().getAreaID()%>"  required="" name="ddlArea" class ="selectStyle">
                                             <c:forEach items="${Areas}" var="area">
 
                                                 <option value="${area.areaID}">${area.areaName}</option>
 
                                             </c:forEach>
                                         </select>
+                                              <span id="alertArea" class="alert">* Required</span>
                                     </div>
 
                                 </td>
@@ -193,8 +313,9 @@
                                 <td>Address:</td>
                                 <td>
                                     <div>
-                                        <textarea placeholder="Address" style="width:300px;" name="txtAddress" ><%=cust.getLane()%>
-                                        </textarea>              
+                                        <textarea placeholder="Address" style="width:300px;"  onkeyup="checkaddress();" name="txtAddress" id="txtAddress" >
+                                        <%=cust.getLane()%></textarea>  
+                                          <span id="alertAddress" name="alertAddress" class="alert">* Required</span>
                                     </div>
                                 </td>
                             </tr>
@@ -206,7 +327,7 @@
                     <div class="row" >
                         <div class="span6">
 
-                            <input type="submit" value="Update">
+                            <input type="submit"  value="Update" >
                         </div>
                     </div>
             </form>
