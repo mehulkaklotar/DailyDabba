@@ -28,7 +28,7 @@
                         $.ajax({
                             url: "Controller?action=getAllAreaByCity&cityID=" + $('#ddlCityVendor').val(),
                         }).done(function(result) {
-                            $('#areaDiv').html(result);
+                            $('#ddlArea').html(result);
                         });
                     });
 

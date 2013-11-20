@@ -16,8 +16,15 @@
         <!-- common stylesheets -->
         <jsp:include page="commonStyle.jsp"></jsp:include>
         <jsp:include page="commonJs.jsp"></jsp:include>
-        
-        
+        <script>
+                $(document).ready(function() {
+
+                    $('#ddlType').val($('#ddlType').data('type'));
+
+                });
+
+            </script>
+
         </head>
         <body class="bg_d">
             <!-- main wrapper (without footer) -->    
@@ -30,10 +37,9 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Item</a></li>
-                        <li><a href="javascript:void(0)">Add Item...</a></li>
-
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><a href="AdminController?action=getAllItemsByVendor">Items</a></li>
+                        <li><span>Add Item...</span></li>
                     </ul>
                 </div>
 
@@ -41,60 +47,76 @@
                 <div class="container">
                     <div class="row-fluid">
                         <div class="span12">
-                            <form class="form-horizontal" method="post" action="AdminController?action=addItem">
-                                <fieldset>
-                                    <table>
-
-                                        <tr>
-                                        <div class="control-group">
-                                            <th>
-                                                <label class="control-label" for="lblTypeName">Type name:</label>
-                                            </th>
-                                            <td>
-                                                <div class="controls">
-                                                    <select name="ddlType" id="ddlType" class="selectStyle">
-                                                        <option value="Null">Select Type</option>
-                                                        <option value="Sabzi">Sabzi</option>
-                                                        <option value="Roti">Roti</option>
-                                                        <option value="Rice">Rice</option>
-                                                        <option value="Dal">Dal</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            </tr>
-                                            
-                                            <tr>
-                                            <div class="control-group">
-                                                <th>
-                                                    <label class="control-label" for="lblItemName">Item name:</label>
-                                                </th>
-                                                <td>
-                                                    <div class="controls">
-                                                        <input type="text" id="txtItemName" name="txtItemName" placeholder="Type here...">
-                                                    </div>
-                                                </td>
-                                            </div>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2"> 
-                                                    <div class="control-group">
-                                                        <div class="controls">
-                                                            <button type="submit" class="btn">Add</button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                    </table>
-                                </fieldset>
-                            </form>
-                        </div>
+                        <%
+                            if (request.getAttribute("itemList") == null) {
+                        %>
+                        <form class="form-horizontal" method="post" action="AdminController?action=addItem">
+                            <fieldset>
+                                <div class="control-group">
+                                    <label class="control-label" for="lblTypeName">Type name:</label>
+                                    <div class="controls">
+                                        <select name="ddlType" id="ddlType" class="selectStyle">
+                                            <option value="Null">Select Type</option>
+                                            <option value="Sabzi">Sabzi</option>
+                                            <option value="Roti">Roti</option>
+                                            <option value="Rice">Rice</option>
+                                            <option value="Dal">Dal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="lblItemName">Item name:</label>
+                                    <div class="controls">
+                                        <input type="text" id="txtItemName" name="txtItemName" placeholder="Type here...">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" class="btn">Add</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <%                            } else {
+                        %>
+                        <form class="form-horizontal" method="post" action="AdminController?action=updateItem">
+                            <fieldset>
+                                <div class="control-group">
+                                    <label class="control-label" for="lblTypeName">Type name:</label>
+                                    <div class="controls">
+                                        <select name="ddlType" data-type="${itemList.type.getTypeName()}" id="ddlType" class="selectStyle">
+                                            <option value="Null">Select Type</option>
+                                            <option value="Sabzi">Sabzi</option>
+                                            <option value="Roti">Roti</option>
+                                            <option value="Rice">Rice</option>
+                                            <option value="Dal">Dal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="lblItemName">Item name:</label>
+                                    <div class="controls">
+                                        <input type="hidden" id="txtItemID" name="txtItemID" value="${itemList.itemID}">
+                                        <input type="text" id="txtItemName" name="txtItemName" value="${itemList.itemName}">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" class="btn">Update</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <%                             }
+                        %>
                     </div>
                 </div>
             </div>
-            <div class="footer_space"></div>
-        </div> 
+        </div>
+        <div class="footer_space"></div>
+    </div> 
 
-        <!-- footer --> 
+    <!-- footer --> 
     <jsp:include page="footer.jsp"></jsp:include>
 
         <!-- Common JS -->
@@ -125,25 +147,25 @@
     <script src="js/pages/beoro_dashboard.js"></script>
 
     <script>
-            if ($(window).width() > '1280') {
-                $('body').append('<a href="javascript:void" class="fluid_lay" style="position:fixed;top:6px;right:10px;z-index:10000" title="fluid layout"><i class="splashy-arrow_state_grey_left"></i><i class="splashy-arrow_state_grey_right"></i></a>');
-                $('.fluid_lay').click(function() {
-                    var url = window.location.href;
-                    if (url.indexOf('?') > -1) {
-                        url += '&fluid=1'
-                    } else {
-                        url += '?fluid=1'
-                    }
-                    window.location.href = url;
-                });
-                $(window).on('resize', function() {
-                    if ($(window).width() > '1280') {
-                        $('.fluid_lay').show();
-                    } else {
-                        $('.fluid_lay').hide();
-                    }
-                })
-            }
+        if ($(window).width() > '1280') {
+            $('body').append('<a href="javascript:void" class="fluid_lay" style="position:fixed;top:6px;right:10px;z-index:10000" title="fluid layout"><i class="splashy-arrow_state_grey_left"></i><i class="splashy-arrow_state_grey_right"></i></a>');
+            $('.fluid_lay').click(function() {
+                var url = window.location.href;
+                if (url.indexOf('?') > -1) {
+                    url += '&fluid=1'
+                } else {
+                    url += '?fluid=1'
+                }
+                window.location.href = url;
+            });
+            $(window).on('resize', function() {
+                if ($(window).width() > '1280') {
+                    $('.fluid_lay').show();
+                } else {
+                    $('.fluid_lay').hide();
+                }
+            })
+        }
     </script>
     <script type="text/javascript">
 

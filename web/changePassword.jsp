@@ -112,7 +112,6 @@
 
                     if (b)
                     {
-                        alert(b);
                         $.post("Controller?action=changePasswordCustomer", {
                             txtOldPassword: $('#txtOldPassword').val(),
                             txtNewPassword: $('#txtNewPassword:').val(),

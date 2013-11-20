@@ -28,7 +28,7 @@
 
                     <!-- ******** LOGO START ******** -->
                     <div class="logo">
-                        <h2>Daily Dabba</h2>
+                        <h2>Daily Dibba</h2>
                         <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
                         <p>Eat Healthy, Live Healthy</p>
                         <a href="index.html"></a> </div>
@@ -42,17 +42,18 @@
 
                     <!-- ******** NAVIGATION END ******** --> 
 
-                    <div class="labelWelcome">
+                    <div id ="labelWelcome" class="labelWelcome">
                         <span>Welcome, 
                         <% if (session.getAttribute("UserName") != null) {
                                 out.print(session.getAttribute("UserName"));
-                        %> <a href='Controller?action=logout'>Logout</a> 
+                        %> <a href="Controller?action=logout" >Logout</a> 
                         <%
                         } else {
                         %> Guest
                         <% }
                         %>
                     </span>
+                </div>
                 </div>
                 <!-- ******** FULL WIDTH SLIDER START ******** -->
                 <div id="fwslider">
@@ -85,7 +86,8 @@
                 </div>
                 <!-- ******** FULL WIDTH SLIDER END ******** -->
 
-                <!-- ******** GOOGLE MAP START ******** -->
+            </header>
+                    <!-- ******** GOOGLE MAP START ******** -->
                 <article class="wrapper">
                     <div class="row">
                         <div class="span12">
@@ -95,8 +97,8 @@
                     </div>
                     <!-- ******** GOOGLE END ******** -->
 
-                    </header>
                     <!-- ******** RESERVATION START ******** -->
+                    <div align="center">
                     <form name="contactform" method="post" action="Controller?action=insertSuggestion" id="">
 
                         <div align="center" class="row">
@@ -118,6 +120,7 @@
                             </div>
                         </div>
                     </form>
+                    </div>
                     <!-- ******** RESERVATION END ******** -->
                 </article>
                 <jsp:include page="footer.jsp"></jsp:include>

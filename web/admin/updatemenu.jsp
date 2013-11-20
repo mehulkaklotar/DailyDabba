@@ -116,6 +116,7 @@
                 var noOfSabzi = document.getElementById("ddlNoOFSabzilunch").value;
                 var sabzi1 = document.getElementById("ddlsabzilunch1").value;
                 var costOfsabzi1 = document.getElementById("txtcostOfsabzilunch1").value;
+                //alert('here');
                 var sabzi2 = document.getElementById("ddlsabzilunch2").value;
                 var costOfsabzi2 = document.getElementById("txtcostOfsabzilunch2").value;
                 var sabzi3 = document.getElementById("ddlsabzilunch3").value;
@@ -345,9 +346,9 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
-                        <li><a href="AdminController?action=createUpdateMenuPage">Menu</a></li>
-                        <li><span>Update Menu...</span></li>
+                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
+                        <li><a href="javascript:void(0)">Menu</a></li>
+                        <li><a href="javascript:void(0)">Update Menu...</a></li>
                     </ul>
                 </div>
 
@@ -472,7 +473,7 @@
                                                                     </c:forEach>
                                                                 </select>
 
-                                                                <input type="text" name="txtcostOfsabzilunch${i}" id="txtcostOfsabzilunch${i}" value="0" onchange="changeCostLunch(this)">
+                                                                <span>     </span> <input type="number" class="span5" min="0" max="1000" name="txtcostOfsabzilunch${i}" id="txtcostOfsabzilunch${i}" value="0" onchange="changeCostLunch(this)">
 
                                                                 <br/>
 
@@ -507,7 +508,7 @@
                                                                 <tr>
                                                                     <td>Price :</td>
                                                                     <td>
-                                                                        <input value="0" placeholder="Rs." class="span2" type="text" name="txtDalPrizelunch" id="txtDalPrizelunch" onchange="changeCostLunch(this)"/>
+                                                                        <input value="0" placeholder="Rs." class="span12" type="number" min="0" max="1000" name="txtDalPrizelunch" id="txtDalPrizelunch" onchange="changeCostLunch(this)"/>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -542,10 +543,10 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <input value="0" placeholder="Rs." class="span2" type="text" name="txtRotiPricelunch" id="txtRotiPricelunch" onchange="changeCostLunch(this)"/>
+                                                                        <input value="0" placeholder="Rs." class="span12" type="number" min="0" max="1000" name="txtRotiPricelunch" id="txtRotiPricelunch" onchange="changeCostLunch(this)"/>
                                                                     </td>
                                                                     <td>
-                                                                        <input value="0" class="span2" type="text" name="txtRotiQuantitylunch" id="txtRotiQuantitylunch" onchange="changeCostLunch(this)"/>
+                                                                        <input value="0" class="span12" type="number" min="0" max="100" name="txtRotiQuantitylunch" id="txtRotiQuantitylunch" onchange="changeCostLunch(this)"/>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -577,7 +578,7 @@
                                                                 <tr>
                                                                     <td>Price :</td>
                                                                     <td>
-                                                                        <input value="0" placeholder="Rs." class="span2" type="text" name="txtRicePricelunch" id="txtRicePricelunch" onchange="changeCostLunch(this)"/>
+                                                                        <input value="0" placeholder="Rs." class="span12" type="number" min="0" max="1000" name="txtRicePricelunch" id="txtRicePricelunch" onchange="changeCostLunch(this)" width="800px"/>
                                                                     </td>
                                                                 </tr>
 
@@ -698,7 +699,7 @@
                                                                     </c:forEach>
                                                                 </select>
 
-                                                                <input type="text" name="txtcostOfsabzidinner${i}" id="txtcostOfSabzidinner${i}" value="0" onchange="changeCostDinner(this)">
+                                                                <input type="number" min="0" max="100" name="txtcostOfsabzidinner${i}" id="txtcostOfSabzidinner${i}" value="0" class="span5" onchange="changeCostDinner(this)">
 
                                                                 <br/>
 
@@ -733,7 +734,7 @@
                                                                 <tr>
                                                                     <td>Price :</td>
                                                                     <td>
-                                                                        <input value="0" placeholder="Rs." class="span2" type="text" name="txtDalPrizedinner" id="txtDalPrizedinner" onchange="changeCostDinner(this)"/>
+                                                                        <input value="0" placeholder="Rs.000"  class="span12" type="number" min="0" max="100" name="txtDalPrizedinner" id="txtDalPrizedinner" onchange="changeCostDinner(this)"/>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -768,10 +769,10 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <input value="0" placeholder="Rs." class="span2" type="text" name="txtRotiPricedinner" id="txtRotiPricedinner" onchange="changeCostDinner(this)"/>
+                                                                        <input value="0" placeholder="Rs." class="span12" type="number" min="0" max="100" name="txtRotiPricedinner" id="txtRotiPricedinner" onchange="changeCostDinner(this)"/>
                                                                     </td>
                                                                     <td>
-                                                                        <input value="0" class="span2" type="text" name="txtRotiQtydinner" id="txtRotiQtydinner" onchange="changeCostDinner(this)" />
+                                                                        <input value="0" class="span12" type="number" min="0" max="100" name="txtRotiQtydinner" id="txtRotiQtydinner" onchange="changeCostDinner(this)" />
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -804,7 +805,7 @@
                                                                 <tr>
                                                                     <td>Price :</td>
                                                                     <td>
-                                                                        <input value="0" placeholder="Rs." class="span2" type="text" name="txtRicePricedinner" id="txtRicePricedinner" onchange="changeCostDinner(this)"/>
+                                                                        <input value="0" placeholder="Rs." class="span12" type="number" min="0" max="100" name="txtRicePricedinner" id="txtRicePricedinner" onchange="changeCostDinner(this)"/>
                                                                     </td>
                                                                 </tr>
 

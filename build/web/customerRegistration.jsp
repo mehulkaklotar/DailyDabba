@@ -32,7 +32,7 @@
                         $.ajax({
                             url: "Controller?action=getAllAreaByCity&cityID=" + $('#ddlCity').val(),
                         }).done(function(result) {
-                            $('#areaDiv').html(result);
+                            $('#ddlArea').html(result);
                         });
                     });
 
@@ -162,7 +162,6 @@
                                     flatnumber: $('#txtFlatNumber').val()
                                 },
                                 function(response) {
-                                    alert(response);
                                     if ($.trim(response) == 'success') {
                                         setTimeout("verification()", 2000);
                                     } else {

@@ -510,7 +510,7 @@ public class Customer extends User {
                 lane = rs.getString("Lane");
                 mobileNo = rs.getString("MobileNo");
                 emailID = rs.getString("EmailID");
-                status=rs.getBoolean("Status");
+                status = rs.getBoolean("Status");
             }
         } catch (SQLException exc) {
             System.out.println(exc.toString());
@@ -573,5 +573,23 @@ public class Customer extends User {
         }
         return objCustomer;
 
+    }
+
+    public boolean increaseBlockVendorHits(String vendorname) {
+        con = new DBConnection();
+        try {
+            callableStatement = con.connection.prepareCall("{call updateVendorBlockHits(?)}");
+            callableStatement.setString(1, vendorname);
+            int row = callableStatement.executeUpdate();
+            if (row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception ex) {
+            return false;
+        } finally {
+            con.closeConnection();
+        }
     }
 }

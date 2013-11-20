@@ -230,7 +230,21 @@
                                 </div>
                             </td>
                         </tr>
+                        <tr>
+                            <td colspan="2">
+                                <% if (session.getAttribute("UserName") != null) {
+                                %> 
+                                <a href="Controller?action=blockVendor&UserName=${vendor.userName}" class="button">Block ${vendor.vendorName}</a>
 
+                                <% } else {
+                                %>
+                                <a href="login.jsp?from=${pageContext.request.requestURI}&vendorUN=${vendor.userName}"  class="button" style="margin-bottom: 10px;">Login to block vendor</a>
+
+                                <%                                }
+                                %>
+
+                            </td>
+                        </tr>
                     </table>
                     <div style="background-color: powderblue">
                         <div style="float: left; padding-left: 10px; padding-top: 10px">
@@ -241,19 +255,9 @@
                         </div>
                     </div>
                     <table class="table table-hover">
-                        <c:forEach items="${feedback}" var="vendorFeedback" >
-                            <tr>     
-                                <td>
-                                    ${vendorFeedback.customer.firstName} ${vendorFeedback.customer.lastName}
-                                </td>
-                                <td style="width: 70%">
-                                    ${vendorFeedback.message}
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </table>
-
-                    <div style="margin-bottom: 10px">
+                        <tr>
+                            <td colspan="2">
+                                <div style="margin-bottom: 10px">
 
                         <% if (session.getAttribute("UserName") != null) {
                         %> 
@@ -266,6 +270,22 @@
                         <%                                }
                         %>
                     </div>
+                            </td>
+                            
+                        </tr>
+                        <c:forEach items="${feedback}" var="vendorFeedback" >
+                            <tr>     
+                                <td>
+                                    ${vendorFeedback.customer.firstName} ${vendorFeedback.customer.lastName}
+                                </td>
+                                <td style="width: 70%">
+                                    ${vendorFeedback.message}
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+
+                    
                 </form>
             </div>
             <div style="float: right">
@@ -285,7 +305,7 @@
                         <div class="tab-pane fade active in" id="Lunch">
 
                             <c:choose>
-                                <c:when test="${empty menuLunch} ">
+                                <c:when test="${menuLunch.getMenuID() == 0} ">
                                     No Lunch from this vendor
                                 </c:when>
                                 <c:otherwise>
@@ -495,7 +515,7 @@
                         <div class="tab-pane fade" id="Dinner">
 
                             <c:choose>
-                                <c:when test="${empty menuDinner} ">
+                                <c:when test="${menuDinner.getMenuID() == 0} ">
                                     No Dinner from this vendor
                                 </c:when>
                                 <c:otherwise>

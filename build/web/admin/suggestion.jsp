@@ -28,11 +28,9 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Suggestion</a></li>
-                        <li><a href="javascript:void(0)">View suggestion</a></li>
-
-                        <li><span></span></li>
+                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><a href="AdminController?action=getSuggestions">Suggestion</a></li>
+                        <li><span>View suggestion</span></li>
                     </ul>
                 </div>
 

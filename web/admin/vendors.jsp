@@ -56,13 +56,12 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Status</th>
-                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                          <c:forEach items="${vendors}" var="vendor">
                                         <tr>                             
-                                            <td><a href="AdminController?action=getVendorProfile&uname=${vendor.getUserName()}"><c:out value="${vendor.vendorName}"/></a><br/> Rating:<c:out value="${vendor.rating}"/></td>                                            
+                                            <td><a href="AdminController?action=getVendorProfile&uname=${vendor.getUserName()}"><c:out value="${vendor.vendorName}"/></a></td>                                            
                                             <td>   
                                                 <c:choose>
                                                     <c:when test="${vendor.status == true}" >
@@ -73,13 +72,7 @@
                                                     </c:otherwise>
                                                 </c:choose>
                                             </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a href="#" class="btn btn-mini" title="Edit"><i class="icon-pencil"></i></a>
-                                                    <a href="#" class="btn btn-mini" title="View"><i class="icon-eye-open"></i></a>
-                                                    <a href="#" class="btn btn-mini" title="Delete"><i class="icon-trash"></i></a>
-                                                </div>
-                                            </td>
+                                            
                                         </tr></c:forEach>                                        
                                     </tbody>
                                 </table>
@@ -168,7 +161,7 @@
                     "bSortable": true
                 }, {
                     "bSortable": true
-                } ,null],
+                }],
             "aLengthMenu": [[5, 15, 20, -1], [5, 15, 20, "All"] // change per page values here
             ],
             // set the initial value

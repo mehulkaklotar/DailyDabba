@@ -76,59 +76,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="span6">
-                        <div class="w-box">
-                            <div class="w-box-header">
-                                <h4>User settings</h4>
-                            </div>
-                            <div class="w-box-content">
-                                <form>
-                                    <div class="formSep">
-                                        <label>Avatar</label>
-                                        <div class="fileupload fileupload-new" data-provides="fileupload">
-                                            <div class="fileupload-new thumbnail" style="width: 60px; height: 60px;"><img src="img/dummy_60x60.gif" alt="" ></div>
-                                            <div class="fileupload-preview fileupload-exists thumbnail" style="width: 60px; height: 60px;"></div>
-                                            <span class="btn btn-small btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file"></span>
-                                            <a href="#" class="btn btn-small btn-link fileupload-exists" data-dismiss="fileupload">Remove</a>
-                                        </div>
-                                    </div>
-                                    <div class="formSep">
-                                        <label for="u_username">Username</label>
-                                        <input type="text" id="u_username" name="u_username" class="span8" value="${customer.getUserName()}" />
-                                    </div>
-                                    <div class="formSep">
-                                        <label for="u_name">First Name</label>
-                                        <input type="text" id="u_name" name="u_name" class="span8" value="${customer.firstName}" />
-                                    </div>
-                                    <div class="formSep">
-                                        <label for="u_name">Last Name</label>
-                                        <input type="text" id="u_name" name="u_name" class="span8" value="${customer.lastName}" />
-                                    </div>
-                                    <div class="formSep">
-                                        <label for="u_password">Password</label>
-                                        <input type="password" id="u_password" name="u_password" class="span8" />
-                                        <span class="help-block">Enter Password</span>
-                                        <input type="password" id="u_repassword" name="u_repassword" class="span8" />
-                                        <span class="help-block">Repeat Password</span>
-                                    </div>
-                                    <div class="formSep">
-                                        <label for="u_email">Email</label>
-                                        <input type="text" id="u_email" name="u_email" class="span8" value="${customer.emailID}" />
-                                    </div>
-                                    <div class="formSep">
-                                        <label>I want to receive</label>
-                                        <label for="u_newsletter" class="checkbox inline"><input type="checkbox" name="u_newsletter" id="u_newsletter"/> Newsletter</label>
-                                        <label for="u_system_msg" class="checkbox inline"><input type="checkbox" name="u_system_msg" id="u_system_msg"/> System Messages</label>
-                                        <label for="u_other_msg" class="checkbox inline"><input type="checkbox" name="u_other_msg" id="u_other_msg"/> Other Messages</label>
-                                    </div>
-                                    <div class="formSep sepH_b">
-                                        <button class="btn btn-beoro-3" type="button">Save changes</button>
-                                        <a href="#" class="btn btn-link">Cancel</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>

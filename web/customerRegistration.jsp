@@ -162,7 +162,6 @@
                                     flatnumber: $('#txtFlatNumber').val()
                                 },
                                 function(response) {
-                                    alert(response);
                                     if ($.trim(response) == 'success') {
                                         setTimeout("verification()", 2000);
                                     } else {

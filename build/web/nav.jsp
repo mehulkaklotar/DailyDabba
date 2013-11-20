@@ -21,15 +21,14 @@
         </ul>-->
 
         <% if (session.getAttribute("UserName") == null) {%><li><a href="login.jsp?from=${pageContext.request.requestURI}">Login</a></li> <% }%>
-        <% if (session.getAttribute("UserName") == null) {%><li><a href="selectCategory.jsp">Register</a></li> <% }%>
+        <% if (session.getAttribute("UserName") == null) {%><li><a href="selectCategory.jsp">Sign Up</a></li> <% }%>
             <% if (session.getAttribute("UserName") != null) {%>
         <li><a href="Controller?action=getOrderHistory">Order History</a></li>
         <li><a href="Controller?action=getProfileDetailsCustomer">Update Profile</a></li>
+        <li><a href="changePassword.jsp">Change Password</a></li>
             <% }%>
         <li><a href="contact.jsp">Contact Us</a>
-            <ul>
-                <li><a href="contact.jsp">Contact Us</a></li>
-            </ul>
+            
         </li>
 
     </ul>

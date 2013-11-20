@@ -32,15 +32,15 @@ public class forgotPassword implements Action {
         str = filterStr.replaceAll("-", "");
         String code = str;
         System.out.println(code);
-      //  HttpSession session = req.getSession();
+        //  HttpSession session = req.getSession();
         //session.setAttribute("code", code);
-   boolean a= objUser.updatePassword(code, username);
+        boolean a = objUser.updatePassword(code, username);
         //sms send
-        SMSSender.smsSender("akypvs", "156424", "91" + mobile, "www.dailydabba.co.in \n Username : "+username +"\n Your New Password : " + code, "WebSMS", "0");
+        SMSSender.smsSender("akypvs", "156424", "91" + mobile, "www.dailydabba.co.in \n Username : " + username + "\n Your New Password : " + code, "WebSMS", "0");
 
         //sendmail
         //sendmail(email,username);
-      JOptionPane.showMessageDialog(null, "Are you really OK?");
+        //JOptionPane.showMessageDialog(null, "Are you really OK?");
 
         return "login.jsp";
         //objUser.changePassword(username, username);

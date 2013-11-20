@@ -34,7 +34,136 @@
                     $('#ddlArea').val($('#ddlArea').data('area'));
 
                 });
-
+     function checkemail() {
+                    if ($('#txtEmailID').val() != "") {
+                        var pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                        if (!pattern.test($('#txtEmailID').val())) {
+                            $('#alertEmail').html("Invalid Email");
+                            b = false;
+                        }
+                        else {
+                            $('#alertEmail').html("Valid");
+                            b = true;
+                            return true;
+                        }
+                    }
+                }
+                  function checkvendorname() {
+                    if ($('#txtVendorname').val() != "") {
+                            $('#alertVendorName').html("*");
+                            b = false;
+                        }
+                        else {
+                            $('#alertVendorName').html("Required");
+                            b = true;
+                            return true;
+                        }
+                    }
+                
+                  function checkownername() {
+                    if ($('#txtOwnername').val() != "") {
+                            $('#alertOwnerName').html("*");
+                            b = false;
+                        }
+                        else {
+                            $('#alertOwnerName').html("Required");
+                            b = true;
+                            return true;
+                        }
+                    }
+                     function checkarea() {
+                    if ($('#ddlArea').val() != "") {
+                            $('#alertOwnerName').html("*");
+                            b = false;
+                        }
+                        else {
+                            $('#alertOwnerName').html("Required");
+                            b = true;
+                            return true;
+                        }
+                    }
+                
+                  function checkaddress() {
+                    if ($('#txtAddress').val() != "") {
+                            $('#alertAddress').html("*");
+                            b = false;
+                        }
+                        else {
+                            $('#alertAddress').html("Required");
+                            b = true;
+                            return true;
+                        }
+                    }
+                    
+                      function checklandline() {
+                      
+                        var pattern = /[0-9]{1,45}$/;
+                        if (!pattern.test($('#txtLandlineNumber').val())) {
+                            $('#alertLandlineNumber').html("Enter valid number");
+                              b = false;
+                        }
+                        else
+                            {
+                                if ($('#txtLandlineNumber').val() != "") {
+                            $('#alertLandlineNumber').html("*");
+                            b = false;
+                        }
+                        else {
+                            $('#alertLandlineNumber').html("Required");
+                            b = true;
+                            return true;
+                        }
+                    
+                            }
+                      }
+                    
+                
+                
+                
+                function checkmobile() {
+                    if ($('#txtMobileNumber').val() != "") {
+                        var pattern = /^[789]\d{9}$/;
+                        if (!pattern.test($('#txtMobileNumber').val())) {
+                            $('#alertMobile').html("Invalid Mobile");
+                            b = false;
+                        }
+                        else {
+                            $('#alertMobile').html("Valid");
+                            b = true;
+                            return true;
+                        }
+                    }
+                }
+                
+                function updateprofile()
+                {
+                    if(b)
+                        {
+                              $.post("Controller?action=updateProfileVendor", {
+                                    username: $('#txtUsername').val(),                                 
+                                    firstname: $('#txtVendorname').val(),
+                                    lastname: $('#txtOwnername').val(),
+                                    mobileno: $('#txtMobileNumber').val(),
+                                    emailid: $('#txtEmailID').val(),                                   
+                                    area: $('#ddlArea').val(),
+                                    address: $('#txtAddressVendor').val(),
+                                    landline:$('#txtLandlineNumber').val()
+                                },
+                                function(response) {
+                                 
+                                    if ($.trim(response) == 'success') {
+                                        setTimeout("verification()", 2000);
+                                    } else {
+                                        alertMessage("error", "Invalid Usename and password!!!");
+                                    }
+                                });
+                                alert("Profile Updated!!");
+                        }else
+                            {
+                                $('#alertupdatevendor').html("Please enter details properly");
+                
+                            }
+                          }
             </script>
         </head>
         <body class="bg_d">
@@ -48,7 +177,7 @@
                 <!-- breadcrumbs -->
                 <div class="container">
                     <ul id="breadcrumbs">
-                        <li><a href="dindex.jsp"><i class="icon-home"></i></a></li>
+                        <li><a href="AdminController?action=getAdminIndex"><i class="icon-home"></i></a></li>
                         <li><span>Profile Update...</span></li>
                     </ul>
                 </div>
@@ -66,6 +195,7 @@
                                 </div>
                                 <div class="w-box-content">
                                     <form name="updateProfileVendorForm" method="post" action="AdminController?action=updateProfileVendor" id="updateProfileVendor">
+                                        
                                         <div align="center" class="row">
                                         <%
 
@@ -88,7 +218,8 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            <input type="text" style="width:auto;" placeholder="First Name" name="txtVendorname" value="<%=vend.getVendorName()%>" >
+                                                            <input type="text" style="width:auto;" placeholder="Vendor Name" name="txtVendorname" onkeyup="checkvendorname();" value="<%=vend.getVendorName()%>" >
+                                                             <span id="alertVendorName" class="alert">* Required</span>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -96,7 +227,8 @@
                                                     <td>Owner Name:</td>
                                                     <td>
                                                         <div>
-                                                            <input type="text" style="width:auto;" placeholder="Last Name" name="txtOwnername" value="<%=vend.getOwnerName()%>">
+                                                            <input type="text" style="width:auto;" placeholder="Owner Name" name="txtOwnername" onkeyup="checkownername();" value="<%=vend.getOwnerName()%>">
+                                                             <span id="alertOwnerName" class="alert">* Required</span>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -104,7 +236,10 @@
                                                     <td>Mobile Number:</td>
                                                     <td>
                                                         <div>
-                                                            <input type="text" style="width:auto;" placeholder="Mobile Number" name="txtMobileNumber" value="<%=vend.getMobileNo()%>">
+                                                            <input type="text" style="width:auto;" placeholder="Mobile Number" onkeyup="checkmobile();" name="txtMobileNumber" value="<%=vend.getMobileNo()%>">
+                                                              <span id="alertMobile" class="alert">Valid mobile no only</span>
+                                                             <span style="margin-left: 25px;" class="alert-info">Enter 10 digits only i.e.9090909090 </span>
+                               
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -112,7 +247,8 @@
                                                     <td>Email ID:</td>
                                                     <td>
                                                         <div>
-                                                            <input type="text" style="width:auto;" placeholder="Email ID" name="txtEmailID" value="<%=vend.getEmailID()%>">
+                                                            <input type="text" style="width:auto;" placeholder="Email ID" onkeyup="checkemail();" name="txtEmailID" id="txtEmailID" value="<%=vend.getEmailID()%>">
+                                                             <span id="alertEmail" class="alert">Valid Email Address only</span>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -132,13 +268,15 @@
                                                     <td>Area</td>
                                                     <td>
                                                         <div name="areaDiv" id="areaDiv">
-                                                            <select id="ddlArea" data-area="<%=vend.getArea().getAreaID()%>"  name="ddlArea" class ="selectStyle">
+                                                            <select id="ddlArea" data-area="<%=vend.getArea().getAreaID()%>"  name="ddlArea" class ="selectStyle" onchange="checkarea();">
                                                                 <c:forEach items="${Areas}" var="area">
 
                                                                     <option value="${area.areaID}">${area.areaName}</option>
 
                                                                 </c:forEach>
                                                             </select>
+                                                         <span id="alertArea" class="alert">* Required</span>
+                     
                                                         </div>
 
                                                     </td>
@@ -147,7 +285,8 @@
                                                     <td>Address:</td>
                                                     <td>    
                                                         <div>
-                                                            <textarea style="width:300px;" placeholder="Address" id="txtAdressVendor" name="txtAddressVendor"><%=vend.getLane()%></textarea>           
+                                                            <textarea style="width:300px;" placeholder="Address" id="txtAdressVendor" onkeyup="checkaddress();" name="txtAddressVendor"><%=vend.getLane()%></textarea>           
+                                                             <span id="alertAddress" class="alert">* Required</span>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -155,7 +294,8 @@
                                                     <td>Landline Number:</td>
                                                     <td>
                                                         <div>
-                                                            <input type="text" style="width:auto;" placeholder="Email ID" name="txtLandlineNumber" value="<%=vend.getLandlineNumber()%>">
+                                                            <input type="text" style="width:auto;" placeholder="Landline Number" onkeyup="checklandline();" name="txtLandlineNumber" id="txtLandlineNumber" value="<%=vend.getLandlineNumber()%>">
+                                                        <span id="alertLandlineNumber" class="alert">* Required</span>
                                                         </div>
                                                     </td>
                                                 </tr>                          

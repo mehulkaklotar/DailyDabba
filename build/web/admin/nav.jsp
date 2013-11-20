@@ -8,28 +8,36 @@
                         if (session.getAttribute("Role").equals("Vendor")) {
                     %>
                     <li>
-                        <a href="/DailyDibba/admin/updatemenu.jsp">Menu</a>
+                        <a href="/DailyDibba/admin/AdminController?action=createUpdateMenuPage">Menu</a>
 
-                    </li>
-                    <% }%>
-                    <%
-                        if (session.getAttribute("Role").equals("Vendor") || session.getAttribute("Role").equals("Admin")) {
-                    %>
-                    <li><a href="/DailyDibba/admin/AdminController?action=getAllOrdersForVendor">Orders</a>
-                        <%
-                            if (session.getAttribute("Role").equals("Vendor")) {
-                        %>
-                        <ul>
-                            <li><a href="/DailyDibba/admin/AdminController?action=getVendorLunchList">Lunch Orders<span class="badge badge-info">6</span></a></li>
-                            <li><a href="/DailyDibba/admin/AdminController?action=getVendorDinnerList">Dinner Orders<span class="badge badge-info">6</span></a></li>
-                        </ul>
-                        <% }%>
                     </li>
                     <li><a href="/DailyDibba/admin/AdminController?action=getDeliveryArea">My Delivery Areas</a>
                         <ul>
                             <li><a href="/DailyDibba/admin/AdminController?action=getAddDeliveryArea">Add New Delivery Area</a></li>
                         </ul>
                     </li>
+                    <% }%>
+                    <%
+                        if (session.getAttribute("Role").equals("Vendor") || session.getAttribute("Role").equals("Admin")) {
+                    %>
+                        <%
+                            if (session.getAttribute("Role").equals("Admin")) {
+                        %>
+                        <li><a href="/DailyDibba/admin/AdminController?action=getAllOrder">Orders</a>
+                        <%
+                            }
+                        %>
+                        <%
+                            if (session.getAttribute("Role").equals("Vendor")) {
+                        %>
+                        <li><a href="/DailyDibba/admin/AdminController?action=getAllOrdersForVendor">Orders</a>
+                        <ul>
+                            <li><a href="/DailyDibba/admin/AdminController?action=getVendorLunchList">Lunch Orders<span class="badge badge-info">6</span></a></li>
+                            <li><a href="/DailyDibba/admin/AdminController?action=getVendorDinnerList">Dinner Orders<span class="badge badge-info">6</span></a></li>
+                        </ul>
+                        <% }%>
+                    </li>
+                    
                     <% }%>
                     <li><a href="/DailyDibba/admin/AdminController?action=getAllItemsByVendor">Menu Items</a>
                         <ul>
@@ -41,15 +49,16 @@
                     <li><a href="/DailyDibba/admin/AdminController?action=getAllType">Item Type</a>
                         
                     </li>
+                    <li><a href="/DailyDibba/admin/AdminController?action=getCustomerList">Customers</a>
+
+                    </li>
                     <%
                         if (session.getAttribute("Role").equals("Admin")) {
                     %>
                     <li><a href="/DailyDibba/admin/AdminController?action=getFeedbackList">Feedbacks</a>
 
                     </li>
-                    <li><a href="/DailyDibba/admin/AdminController?action=getCustomerList">Customers</a>
-
-                    </li>
+                    
                     <li><a href="/DailyDibba/admin/AdminController?action=getAllVendors">Vendors</a>
 
                     </li>

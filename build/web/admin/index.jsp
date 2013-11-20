@@ -17,25 +17,67 @@
         <!-- common stylesheets -->
         <jsp:include page="AdminCommonStyle.jsp"></jsp:include>
         <jsp:include page="AdmincommonJs.jsp"></jsp:include>
-        </head>
-        <body class="bg_d">
-            <!-- main wrapper (without footer) -->    
-            <div class="main-wrapper">
-                <!-- top bar -->
+
+            <script>
+
+                $(document).ready(function() {
+            <% if (session.getAttribute("Role").equals("Admin")) {%>
+                    $.ajax({
+                        url: "admin/AdminController?action=getTotalOrderNumbers",
+                    }).done(function(result) {
+                        $('#ordercount').html(result);
+                    });
+
+                    $.ajax({
+                        url: "admin/AdminController?action=getTotalCustomers",
+                    }).done(function(result) {
+                        $('#customercount').html(result);
+                    });
+
+                    $.ajax({
+                        url: "admin/AdminController?action=getTotalVendors",
+                    }).done(function(result) {
+                        $('#vendorcount').html(result);
+                    });
+
+                    $.ajax({
+                        url: "admin/AdminController?action=getTotalUsers",
+                    }).done(function(result) {
+                        $('#usercount').html(result);
+                    });
+            <% }%>
+            <% if (session.getAttribute("Role").equals("Vendor")) {%>
+                    $.ajax({
+                        url: "admin/AdminController?action=getTotalOrderForVendor",
+                    }).done(function(result) {
+                        $('#ordercount').html(result);
+                    });
+
+                    $.ajax({
+                        url: "admin/AdminController?action=getLastMonthOrderForVendor",
+                    }).done(function(result) {
+                        $('#customercount').html(result);
+                    });
+                    
+                    $.ajax({
+                        url: "admin/AdminController?action=getLastWeekOrderForVendor",
+                    }).done(function(result) {
+                        $('#vendorcount').html(result);
+                    });
+                    
+            <% }%>
+                });
+        </script>
+    </head>
+    <body class="bg_d">
+        <!-- main wrapper (without footer) -->    
+        <div class="main-wrapper">
+            <!-- top bar -->
             <jsp:include page="nav.jsp"></jsp:include>
                 <!-- header -->
             <jsp:include page="header.jsp"></jsp:include>
 
-                <!-- breadcrumbs -->
-                <div class="container">
-                    <ul id="breadcrumbs">
-                        <li><a href="javascript:void(0)"><i class="icon-home"></i></a></li>
-                        <li><a href="javascript:void(0)">Content</a></li>
-                        <li><a href="javascript:void(0)">Article: Lorem ipsum dolor...</a></li>
-                        <li><a href="javascript:void(0)">Comments</a></li>
-                        <li><span>Lorem ipsum dolor sit amet...</span></li>
-                    </ul>
-                </div>
+                <div style="padding: 20px;"></div>
 
                 <!-- main content -->
                 <div class="container">
@@ -146,22 +188,29 @@
                                 <div class="w-box-content todo-list">
 
                                     <ul class="connectedSortable">
-                                        <li class="high-pr">Buy groceries</li>
-                                        <li class="low-pr completed"> Do laundry</li>
-                                        <li class="low-pr">Meeting with Macy</li>
-                                        <li class="high-pr">Pick up kids</li>
-                                    </ul>
+                                    <% if (session.getAttribute("Role").equals("Admin")) {%>
+                                    <li class="high-pr">Order #:<font id="ordercount" style="color: #002a80;font-size: x-large;"></font></li>
+                                    <li class="low-pr"> Customer #:<font id="customercount" style="color: #002a80;font-size: x-large;"></font></li>
+                                    <li class="low-pr">Vendor #:<font id="vendorcount" style="color: #002a80;font-size: x-large;"></font></li>
+                                    <li class="high-pr">Users #:<font id="usercount" style="color: #002a80;font-size: x-large;"></font></li>
+                                        <% }%> 
+                                        <% if (session.getAttribute("Role").equals("Vendor")) {%>
+                                    <li class="high-pr">Order #:<font id="ordercount" style="color: #002a80;font-size: x-large;"></font></li>
+                                    <li class="low-pr"> Last Month Order #:<font id="customercount" style="color: #002a80;font-size: x-large;"></font></li>
+                                    <li class="low-pr">Last Week Order #:<font id="vendorcount" style="color: #002a80;font-size: x-large;"></font></li>
+                                        <% }%> 
+                                </ul>
 
-                                </div>
                             </div>
-                        </div>  
-                    </div>
-
+                        </div>
+                    </div>  
                 </div>
-                <div class="footer_space"></div>
-            </div> 
 
-            <!-- footer --> 
+            </div>
+            <div class="footer_space"></div>
+        </div> 
+
+        <!-- footer --> 
         <jsp:include page="footer.jsp"></jsp:include>
 
 
@@ -190,25 +239,25 @@
         <script src="admin/js/pages/beoro_dashboard.js"></script>
 
         <script>
-            if ($(window).width() > '1280') {
-                $('body').append('<a href="javascript:void" class="fluid_lay" style="position:fixed;top:6px;right:10px;z-index:10000" title="fluid layout"><i class="splashy-arrow_state_grey_left"></i><i class="splashy-arrow_state_grey_right"></i></a>');
-                $('.fluid_lay').click(function() {
-                    var url = window.location.href;
-                    if (url.indexOf('?') > -1) {
-                        url += '&fluid=1'
-                    } else {
-                        url += '?fluid=1'
-                    }
-                    window.location.href = url;
-                });
-                $(window).on('resize', function() {
-                    if ($(window).width() > '1280') {
-                        $('.fluid_lay').show();
-                    } else {
-                        $('.fluid_lay').hide();
-                    }
-                })
-            }
+                if ($(window).width() > '1280') {
+                    $('body').append('<a href="javascript:void" class="fluid_lay" style="position:fixed;top:6px;right:10px;z-index:10000" title="fluid layout"><i class="splashy-arrow_state_grey_left"></i><i class="splashy-arrow_state_grey_right"></i></a>');
+                    $('.fluid_lay').click(function() {
+                        var url = window.location.href;
+                        if (url.indexOf('?') > -1) {
+                            url += '&fluid=1'
+                        } else {
+                            url += '?fluid=1'
+                        }
+                        window.location.href = url;
+                    });
+                    $(window).on('resize', function() {
+                        if ($(window).width() > '1280') {
+                            $('.fluid_lay').show();
+                        } else {
+                            $('.fluid_lay').hide();
+                        }
+                    })
+                }
         </script>
         <script type="text/javascript">
 
