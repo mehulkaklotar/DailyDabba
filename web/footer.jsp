@@ -10,7 +10,7 @@
                         <p>Phone: <a href="#">+91 95 10 363083</a><br>
                             Email: <a href="dailydabba@gmail.com">dailydabba@gmail.com</a></p>
                     </address>
-                    <p class="social-networks"> <a href="http://facebook.com/" target="_blank" class="facebook">Facebook</a> <a href="http://twitter.com/" target="_blank" class="twitter">Twitter</a> </p>
+                    <!--<p class="social-networks"> <a href="http://facebook.com/" target="_blank" class="facebook">Facebook</a> <a href="http://twitter.com/" target="_blank" class="twitter">Twitter</a> </p>-->
                 </div>
             </div>
             <hr>
@@ -32,9 +32,16 @@
                     <h3>Ordering Hours</h3>
                     <ul>
                         <li><span>Lunch</span> 09:00 AM - 11:00 AM </li>
-                        <li><span>Dinner</span> 03:00 PM - 05:00 PM</li>
+                        <li><span>Dinner</span> 04:00 PM - 06:00 PM</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+    <section class="prefooter">
+        <div class="row wrapper">
+            <div class="span12 center">
+                Best Viewed in FireFox & Chrome 
             </div>
         </div>
     </section>

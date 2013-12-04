@@ -10,11 +10,12 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
         <meta charset="UTF-8">
-        <title>Daily Dabba : Admin</title>
+        <title>Daily Dabba : Admin </title>
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
         <link rel="icon" type="image/ico" href="favicon.ico">
         <script> src = "js.commonTask.js"</script>
@@ -55,7 +56,6 @@
                                             <tr>                                                                                    
                                                 <th>Name</th>
                                                 <th>Status</th>
-                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -72,13 +72,13 @@
                                                         </c:otherwise>
                                                     </c:choose>
                                                 </td>
-                                                <td>
+                                                <!--<td>
                                                     <div class="btn-group">
                                                         <c:if test="${customer.status == false}">
                                                             <a href="AdminController?action=BlockCustomer&customerUN=${customer.getUserName()}" class="btn btn-mini" title="Click to block this Customer"><i class="icon-remove"></i></a>
                                                         </c:if>>
                                                     </div>
-                                                </td>
+                                                </td>-->
                                             </tr></c:forEach>
 
                                         </tbody>
@@ -171,7 +171,7 @@
                     "bSortable": true
                 }, {
                     "bSortable": true
-                }, null],
+                }],
             "aLengthMenu": [[5, 15, 20, -1], [5, 15, 20, "All"] // change per page values here
             ],
             // set the initial value

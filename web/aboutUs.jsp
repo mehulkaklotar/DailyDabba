@@ -21,7 +21,7 @@
         </head>
 
         <body class="home">
-            <header>
+           <header>
                 <div class="nav-bar">
                     <div class="nav-inside"> </div>
                 </div>
@@ -29,10 +29,10 @@
 
                     <!-- ******** LOGO START ******** -->
                     <div class="logo">
-                        <h2>Daily Dabba</h2>
+                        <h2>Daily Dibba</h2>
                         <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
                         <p>Eat Healthy, Live Healthy</p>
-                        <a href="index.html"></a> </div>
+                        <a href="Controller?action=getIndex"></a> </div>
                     <!-- ******** LOGO END ******** -->
 
                     <!-- ******** NAVIGATION START ******** -->
@@ -43,17 +43,18 @@
 
                     <!-- ******** NAVIGATION END ******** --> 
 
-                    <div class="labelWelcome">
+                    <div id ="labelWelcome" class="labelWelcome">
                         <span>Welcome, 
                         <% if (session.getAttribute("UserName") != null) {
                                 out.print(session.getAttribute("UserName"));
-                        %> <a href='Controller?action=logout'>Logout</a> 
+                        %> <a href="Controller?action=logout" >Logout</a> 
                         <%
                         } else {
                         %> Guest
                         <% }
                         %>
                     </span>
+                </div>
                 </div>
                 <!-- ******** FULL WIDTH SLIDER START ******** -->
                 <div id="fwslider">
@@ -86,8 +87,8 @@
                 </div>
                 <!-- ******** FULL WIDTH SLIDER END ******** -->
 
-        </header>
-
+            </header>
+            
         <article class="wrapper"> 
 
             <!-- ******** CONTENT START ******** -->

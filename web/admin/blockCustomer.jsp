@@ -7,12 +7,13 @@
 <%@page import="com.dailydibba.bean.Customer"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
 
         <meta charset="UTF-8">
-        <title>Block Customer</title>
+        <title>Daily Dabba : Admin </title>
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->

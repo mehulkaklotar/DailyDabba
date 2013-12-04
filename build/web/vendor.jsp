@@ -42,7 +42,7 @@
                     box-shadow: 0 1px 2px rgba(0,0,0,.05);
                 }
             </style>
-            <!--<script>
+          <!-- <script>
             $(function() {
                 var server = $(".sDate").attr("value");
                 var sarr = server.split(" ");
@@ -72,17 +72,17 @@
                     $('#Lunch').hide();
                 }
 
-                if (sTH < 14) { // if system time is greater than 14 PM (i.e 2 PM)  then don't show the Dinner menu
+                if (sTH < 16) { // if system time is greater than 14 PM (i.e 2 PM)  then don't show the Dinner menu
                     var label = $("<label>").text("You can not order now. Orders will be accepted from 2 PM to 4 PM").addClass('alert');
                     $('#Dinner').append(label);
                     $('#Dinner').hide();
-                } else if (sTH >= 16) {
+                } else if (sTH >= 18) {
                     var label = $("<label>").text("You can not order now. Orders will be accepted from 2 PM to 4 PM").addClass('alert');
                     $('#Dinner').append(label);
                     $('#Dinner').hide();
                 }
             });
-                </script>-->
+                </script> -->
         <%
             Date date = new Date();
             String sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
@@ -104,7 +104,7 @@
                 <h2>Daily Dibba</h2>
                 <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
                 <p>Eat Healthy, Live Healthy</p>
-                <a href="index.html"></a> </div>
+                <a href="Controller?action=getIndex"></a> </div>
             <!-- ******** LOGO END ******** -->
 
             <!-- ******** NAVIGATION START ******** -->
@@ -411,7 +411,7 @@
                                                 <c:set var="count" value="${count + list.cost}"/>
                                                 <tr class="sumLunch" data-id ="${list.item.itemID}">
                                                     <td data-price="${list.cost}">
-                                                        Salad :
+                                                        Pickle :
                                                     </td>
                                                     <td>
                                                         Available (${list.cost}) Rs.
@@ -426,7 +426,7 @@
                                                 <c:set var="count" value="${count + list.cost}"/>
                                                 <tr class="sumLunch" data-id ="${list.item.itemID}">
                                                     <td data-price="${list.cost}">
-                                                        Salad :
+                                                        Papad :
                                                     </td>
                                                     <td>
                                                         Available (${list.cost}) Rs.
@@ -441,7 +441,7 @@
                                                 <c:set var="count" value="${count + list.cost}"/>
                                                 <tr class="sumLunch" data-id ="${list.item.itemID}">
                                                     <td data-price="${list.cost}">
-                                                        Salad :
+                                                        Buttermilk :
                                                     </td>
                                                     <td>
                                                         Available (${list.cost}) Rs.
@@ -456,7 +456,7 @@
                                                 <c:set var="count" value="${count + list.cost}"/>
                                                 <tr class="sumLunch" data-id ="${list.item.itemID}">
                                                     <td data-price="${list.cost}">
-                                                        Salad :
+                                                        Curd :
                                                     </td>
                                                     <td>
                                                         Available (${list.cost}) Rs.
@@ -620,7 +620,7 @@
                                                 <c:set var="count" value="${count + list.cost}"/>
                                                 <tr class="sumLunch" data-id ="${list.item.itemID}">
                                                     <td data-price="${list.cost}">
-                                                        Salad :
+                                                        Pickle :
                                                     </td>
                                                     <td>
                                                         Available (${list.cost}) Rs.
@@ -635,7 +635,7 @@
                                                 <c:set var="count" value="${count + list.cost}"/>
                                                 <tr class="sumLunch" data-id ="${list.item.itemID}">
                                                     <td data-price="${list.cost}">
-                                                        Salad :
+                                                        Papad :
                                                     </td>
                                                     <td>
                                                         Available (${list.cost}) Rs.
@@ -650,7 +650,7 @@
                                                 <c:set var="count" value="${count + list.cost}"/>
                                                 <tr class="sumLunch" data-id ="${list.item.itemID}">
                                                     <td data-price="${list.cost}">
-                                                        Salad :
+                                                        Buttermilk :
                                                     </td>
                                                     <td>
                                                         Available (${list.cost}) Rs.
@@ -665,7 +665,7 @@
                                                 <c:set var="count" value="${count + list.cost}"/>
                                                 <tr class="sumLunch" data-id ="${list.item.itemID}">
                                                     <td data-price="${list.cost}">
-                                                        Salad :
+                                                        Curd :
                                                     </td>
                                                     <td>
                                                         Available (${list.cost}) Rs.

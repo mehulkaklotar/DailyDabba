@@ -5,12 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
 
         <meta charset="UTF-8">
-        <title>Beoro Admin Template v1.2</title>
+        <title>Daily Dabba : Admin </title>
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->

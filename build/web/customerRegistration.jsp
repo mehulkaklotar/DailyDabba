@@ -213,7 +213,7 @@
                         <h2>Daily Dibba</h2>
                         <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
                         <p>Eat Healthy, Live Healthy</p>
-                        <a href="index.html"></a> </div>
+                        <a href="Controller?action=getIndex"></a> </div>
                     <!-- ******** LOGO END ******** -->
 
                     <!-- ******** NAVIGATION START ******** -->
@@ -280,7 +280,7 @@
                                     <input type="text" onkeyup="checkUsername();" style="width:auto;" placeholder="User Name" id="txtUsername" name="txtUsername" required="">
                                     <span class="required">*</span>
                                     <span id="usernameunique" class="alert">Should be unique</span>
-                                    <span style="margin-left: 25px;" class="alert-info">alphabets and numbers, no special characters, min 3 and max 30 </span>
+                                    <span style="margin-left: 25px;" class="alert-info">alphabets or numbers, no special characters, min 3 and max 30 </span>
                                 </div>
                                 <br>
                                 <div>
@@ -291,8 +291,8 @@
                                 </div>
                                 <br>
                                 <div>
-                                    <input type="text" id="txtFirstname" style="width:auto;" placeholder="First Name" name="txtFirstname" >
-                                    <input type="text" id="txtLastname" style="width:auto;" placeholder="Last Name" name="txtLastname">
+                                    <input type="text" id="txtFirstname" style="width:auto;" required placeholder="First Name" name="txtFirstname" >
+                                    <input type="text" id="txtLastname" style="width:auto;" required placeholder="Last Name" name="txtLastname">
                                 </div>
                                 <br>
                                 <div>

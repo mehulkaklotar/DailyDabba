@@ -48,7 +48,6 @@ public class Login implements Action {
                     session.setAttribute("UserName", username);
                     session.setAttribute("Role", objUser.getUsertype().getRole());
 
-
                     if (fromPage.equals("vendor.jsp")) {
                         String vendorUN = req.getParameter("vendorUN");
                         objVisitor = new Visitor();
@@ -74,10 +73,17 @@ public class Login implements Action {
                         List<Area> areas = objAdministrator.getAllArea();
                         List<Vendor> vendors = objAdministrator.getAllVendors();
                         List<City> cities = objAdministrator.getAllCity();
-                        
+
                         req.setAttribute("areas", areas);
                         req.setAttribute("cities", cities);
                         req.setAttribute("vendors", vendors);
+                    }
+
+                    if (fromPage.equals("customerRegistration.jsp")) {
+                        return "Controller?action=getIndex";
+                    }
+                    if (fromPage.equals("vendorRegistration.jsp")) {
+                        return "Controller?action=getIndex";
                     }
 
                 } else {

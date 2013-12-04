@@ -11,7 +11,7 @@
     <head>
 
         <meta charset="UTF-8">
-        <title>Daily Dabba: Vendor Profile</title>
+        <title>Daily Dabba : Admin </title>
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
@@ -49,7 +49,7 @@
                                         <div class="span2">
                                             <div class="img-holder">
                                                 <img class="img-avatar" alt="" src="img/avatars/avatar.png">
-                                                <center><input type="button" name="btnBlock" class ="btn-beoro-3" value="Block" ></center>
+                                                <!--<center><input type="button" name="btnBlock" class ="btn-beoro-3" value="Block" ></center>-->
                                             </div>
                                         </div>
                                         <div class="span10">

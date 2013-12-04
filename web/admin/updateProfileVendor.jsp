@@ -12,7 +12,7 @@
     <head>
 
         <meta charset="UTF-8">
-        <title>Beoro Admin Template v1.2</title>
+        <title>Daily Dabba : Admin </title>
         <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
         <link rel="icon" type="image/ico" href="favicon.ico">
         <!-- common stylesheets -->
@@ -189,8 +189,7 @@
                             <div class="w-box">
                                 <div class="w-box-header">
                                     <div class="btn-group">
-                                        <a href="#" class="btn btn-inverse btn-mini delete_rows_dt" data-tableid="dt_gal" title="Edit">Delete</a>
-                                        <a href="#" class="btn btn-inverse btn-mini" title="View">Another Action</a>
+                                        
                                     </div>
                                 </div>
                                 <div class="w-box-content">
@@ -303,8 +302,9 @@
                                                 </div>
                                             <div class="row">
                                                 <div class="span6">
-                                                    <td colspan="2">
-                                                        <input type="submit" value="Update">
+                                                    <td></td>
+                                                    <td>
+                                                        <input type="submit" class="btn" value="Update">
                                                     </td>
                                                 </div>
                                                 </tbody>
@@ -314,18 +314,7 @@
 
                             </div>
 
-                            <div class="w-box-footer">
-                                <div class="pagination pagination-centered">
-                                    <ul>
-                                        <li class="disabled"><a href="#">Prev</a></li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">Next</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            
                         </div>
 
                     </div>

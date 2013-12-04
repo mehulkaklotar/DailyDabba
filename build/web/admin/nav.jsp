@@ -1,3 +1,16 @@
+<script type = "text/javascript" >
+
+    function preventBack() {
+        window.history.forward();
+    }
+
+    setTimeout("preventBack()", 0);
+
+    window.onunload = function() {
+        null
+    };
+
+</script>
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">

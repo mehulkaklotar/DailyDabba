@@ -166,7 +166,7 @@
                         <h2>Daily Dibba</h2>
                         <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
                         <p>Eat Healthy, Live Healthy</p>
-                        <a href="index.html"></a> </div>
+                       <a href="Controller?action=getIndex"></a> </div>
                     <!-- ******** LOGO END ******** -->
 
                     <!-- ******** NAVIGATION START ******** -->
@@ -251,17 +251,18 @@
                 </div>
                 <div class="control-group" style="width: 40%;">
                     <div class="controls">
-                        <input type="password" placeholder="New Password" onkeyup="checkPassword();" name="txtNewPassword" id="txtNewPassword" required>
+                        <input type="password" data-validation-regex-regex="^[A-Za-z0-9!@#$%^&*()_]{6,20}$" data-validation-regex-message="must contain special character" minlength = "6" maxlength = "20" placeholder="New Password"  name="txtNewPassword" id="txtNewPassword" required>
                         <p class="help-block"></p>
                     </div>
                 </div>
                 <div class="control-group" style="width: 40%;">
                     <div class="controls">
                         <input
-                            type="text"
+                            type="password"
                             data-validation-match-match="txtNewPassword"
                             name="txtPass"
                             placeholder="Confirm Password"
+                            
                             />
                         <p class="help-block"></p>
                     </div>

@@ -204,7 +204,7 @@
                         <h2>Daily Dabba</h2>
                         <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
                         <p>Eat Healthy, Live Healthy</p>
-                        <a href="index.jsp"></a> </div>
+                        <a href="Controller?action=getIndex"></a> </div>
                     <!-- ******** LOGO END ******** -->
 
                     <!-- ******** NAVIGATION START ******** -->
@@ -271,7 +271,7 @@
                                 <input type="text" onkeyup="checkUsername();" style="width:auto;" placeholder="User Name" id="txtUsername" name="txtUsername" required="">
                                 <span class="required">*</span>
                                 <span id="usernameunique" class="alert">Should be unique</span>
-                                <span style="margin-left: 25px;" class="alert-info">alphabets and numbers, no special characters, min 3 and max 30 </span>
+                                <span style="margin-left: 25px;" class="alert-info">alphabets or numbers, no special characters, min 3 and max 30 </span>
                             </div>
                             <br>
                             <div>
@@ -282,8 +282,8 @@
                             </div>
                             <br>
                             <div>
-                                <input type="text" id="txtVendorname" style="width:auto;" placeholder="Vendor Name" name="txtVendorname" >
-                                <input type="text" id="txtOwnername" style="width:auto;" placeholder="Owner Name" name="txtOwnername">
+                                <input type="text" id="txtVendorname" required style="width:auto;" placeholder="Vendor Name" name="txtVendorname" >
+                                <input type="text" id="txtOwnername" required style="width:auto;" placeholder="Owner Name" name="txtOwnername">
                             </div>
 
                             <br>

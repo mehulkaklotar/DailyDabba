@@ -161,7 +161,7 @@
                         <h2>Daily Dibba</h2>
                         <!--<img src="images/daily-dibba.png" width="150" height="120"/>-->
                         <p>Eat Healthy, Live Healthy</p>
-                        <a href="index.html"></a> </div>
+                        <a href="Controller?action=getIndex"></a> </div>
                     <!-- ******** LOGO END ******** -->
 
                     <!-- ******** NAVIGATION START ******** -->
@@ -245,7 +245,7 @@
                                 <td>First Name:</td>
                                 <td>
                                     <div>
-                                        <input type="text" style="width:auto;" placeholder="First Name" onkeyup="checkfirstname();" name="txtFirstname" id="txtFirstname" value="<%=cust.getFirstName()%>" />
+                                        <input type="text" style="width:auto;" placeholder="First Name" onkeyup="checkfirstname();" name="txtFirstname" id="txtFirstname" required value="<%=cust.getFirstName()%>" />
                                      <span id="alertFirstName" name="alertFirstName" class="alert">* Required</span>
                                     </div>
                                 </td>                             
@@ -254,7 +254,7 @@
                                 <td>Last Name:</td>
                                 <td>
                                     <div>
-                                        <input type="text" style="width:auto;" placeholder="Last Name" onkeyup="checklastname();" name="txtLastname" id="txtLastname" value="<%=cust.getLastName()%>">
+                                        <input type="text" style="width:auto;" placeholder="Last Name" onkeyup="checklastname();" name="txtLastname" required id="txtLastname" value="<%=cust.getLastName()%>">
                                    <span id="alertLastName" name="alertLastName" class="alert">* Required</span>
                                     
                                     </div>
@@ -264,7 +264,7 @@
                                 <td>Mobile Number:</td>
                                 <td>
                                     <div>
-                                        <input type="text" style="width:auto;" placeholder="Mobile Number" onkeyup="checkmobile();"  name="txtMobileNumber" id="txtMobileNumber" value="<%=cust.getMobileNo()%>">
+                                        <input type="text" style="width:auto;" placeholder="Mobile Number" onkeyup="checkmobile();" required  name="txtMobileNumber" id="txtMobileNumber" value="<%=cust.getMobileNo()%>">
                                           <span id="alertMobile" class="alert">Valid mobile no only</span>
                                     <span style="margin-left: 25px;" class="alert-info">Enter 10 digits only i.e.9090909090 </span>
                                
@@ -275,7 +275,7 @@
                                 <td>Email ID:</td>
                                 <td>
                                     <div>
-                                        <input type="email" style="width:auto;" onkeyup="checkemail();" placeholder="Email ID" name="txtEmailID" id="txtEmailID" value="<%=cust.getEmailID()%>"> 
+                                        <input type="email" required style="width:auto;" onkeyup="checkemail();" placeholder="Email ID" name="txtEmailID" id="txtEmailID" value="<%=cust.getEmailID()%>"> 
                                          <span id="alertEmail" class="alert">Valid Email Address only</span>
                                     </div>
                                 </td>
@@ -313,7 +313,7 @@
                                 <td>Address:</td>
                                 <td>
                                     <div>
-                                        <textarea placeholder="Address" style="width:300px;"  onkeyup="checkaddress();" name="txtAddress" id="txtAddress" >
+                                        <textarea placeholder="Address" required style="width:300px;"  onkeyup="checkaddress();" name="txtAddress" id="txtAddress" >
                                         <%=cust.getLane()%></textarea>  
                                           <span id="alertAddress" name="alertAddress" class="alert">* Required</span>
                                     </div>
